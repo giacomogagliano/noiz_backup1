@@ -5,7 +5,9 @@ export default function Element() {
     console.log(event);
   }
 
-  return <div onClick={handleClick}>Hello World</div>;
+  return (
+    <div onClick={handleClick}>Hello World ma daiiii</div>
+  );
 }
 
 export { Element };
