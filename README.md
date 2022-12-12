@@ -1,6 +1,6 @@
-# ZION - Network State
+# Noiz - Network State (formerly Noiz)
 
-Zion is a network state based on Music. We are building a
+Noiz is a network state based on Music. We are building a
 community which shall be united by a strong ideology of
 collectivism with the sole aim to make the people of the
 community thrive and live a life full of meaning. There for
@@ -26,7 +26,7 @@ world.
     - [testpack](#testpack)
     - [Ui](#ui)
     - [Utils](#utils)
-    - [ZionBase](#utils)
+    - [NoizBase](#utils)
   - [Bin](#bin)
     - []()
 - [How it works](#how-it-works)
@@ -64,11 +64,11 @@ just a first small step towards the ambitious goal.</br>
 
 # Constitution \*
 
-> Zion constitution will be realized through a collective
+> Noiz constitution will be realized through a collective
 > effort and it will be deployed on the blockchain.
 
 \* This section can be moved, but I liked the idea of mixing
-up the political part of Zion with the actual building of
+up the political part of Noiz with the actual building of
 it. As we shall one day be appearing in the
 [networkstate]('thenetworkstate.com') dashboard panel, it
 would be nice that our actual constitution could sit in our
@@ -103,7 +103,7 @@ Git repo (Github, Gitlab or whatever)
 
 ## Architectural design
 
-The zion-network-state is set to work on a distributed
+The noiz-network-state is set to work on a distributed
 server system of Kubernetes Clusters. Therefore, every
 application is meant to run in a containerized environement,
 where the connection between services happens inside the
@@ -113,7 +113,7 @@ communicate with instances of other applications deployed in
 the containerized environment.
 Static contents are served via the IPFS system.
 Dynamic contents need a server who provides the informations
-required by the client, therefore Zion uses a distributed
+required by the client, therefore Noiz uses a distributed
 network of master and worker nodes, who will be loading the
 state-less applications which will communicate with relay
 databases which will hold short-living documents before they
@@ -125,10 +125,10 @@ installation, we
 
 ## Contents
 
-The zion-network-state repo is a Monorepo which uses
+The noiz-network-state repo is a Monorepo which uses
 [bolt]('https://github.com/boltpkg/bolt) to manage packages
 and applications.
-Every application and package has its own repo. This means
+Every application and package has its own repo[^1]. This means
 that by downloading the repo of the application or package
 alone, one should be able to work on that part of the code
 independently. This can happen as long as the packages are
@@ -146,7 +146,7 @@ Each smart contract has its own functionality. We will
 provide a set of smart contracts which are the result of the
 composition of several smart contracts standards (EIPs), and
 with this application we will distribute user interfaces
-which easily enables them to interact with zion smart
+which easily enables them to interact with noiz smart
 contracts.
 
 We will provide also with a simple tool which will enable to
@@ -165,7 +165,15 @@ that we may want to offer with some form of contribution,
 fee, stake or whatever the DLT technologies can inspire us
 with.
 
-### scripts
+> At the moment the applications is not working as we moved
+> most of the code into the `ui` package.
+
+### CLI
+
+Newly added application with which we will create an
+interactive application to deal with the Noiz monorepo.
+
+### scripts (this one is going to be deprecated)
 
 This application is used to write simple scripts which call
 our own packages, in order to quickly test and create some
@@ -210,9 +218,11 @@ contents:
   - administrative
   - .....
 
-## Packages
+# Packages
 
-### blockchain
+## database
+
+### blockchain (has been merged into database)
 
 This package has a different folder strcture than the other
 as it implements a tool to build TS interfaces for smart
@@ -259,7 +269,8 @@ classes provided by the package.
 
 - FS
 - IPFS
-- RAM
+- ~~RAM~~ deprecated all code as been merged into zionbase
+  datastructure.
 
 to be added:
 
@@ -298,7 +309,19 @@ At the moment this are the classes / methods exported by the package
 \* currently implemented\
 \*\* not yet working correctly
 
-### testpack
+### Git
+
+- deleteGitFolder.sh
+
+- build.sh
+- dev.sh
+- makeFileExecutable.sh
+- prebuild.sh
+- prod.sh
+
+The bin folder contains some useful script.
+
+## test
 
 We are using this package to make tests on the behave of
 bolt and the way it exports and bundes the code we write. As
@@ -307,7 +330,7 @@ delete this package.
 
 -
 
-### ui
+## ui
 
 This package is meant to be and easy access point for
 front-end developers to build cool interfaces quickly. At
@@ -330,6 +353,8 @@ code for Discord bots here.
 \* currently implemented\
 \*\* to be implemented, i have some code for it, that I will share
 
+## zionbase
+
 ### utils
 
 This package contains utilities which are related to
@@ -349,18 +374,6 @@ sort of a \_lodash but DIY.
 \* to be implemented
 
 ## Bin
-
-### Git
-
-- deleteGitFolder.sh
-
-- build.sh
-- dev.sh
-- makeFileExecutable.sh
-- prebuild.sh
-- prod.sh
-
-The bin folder contains some useful script.
 
 # How it works
 
@@ -407,39 +420,22 @@ then build the applications and packages:
 bolt build
 ```
 
-> At the moment the build process runs fine but there is one
-> error which occurs:
->
-> > `FetchError: request to http://localhost:3000/api/products failed, reason: connect ECONNREFUSED 127.0.0.1:3000`. <br/>
-
-> This happens cause the test
-> tries to connect to the servers created by Next, but they
-> are not running, hence not reachable.
+> if you are using windows you shall install `bash` from the
+> `git` utils in order to be able to run the scripts which
+> are packed in the `/bin/` folder.
 
 ## Dev
 
 ## application
 
-In order to start the a development server with the target
-application at the moment you need to pass one of this two
-commands:
-
-```sh
-bolt nft-minter
-```
-
-or
-
-```sh
-bolt social
-```
-
-This will start both applcations in development mode and
-create a local server.
-
 ## Packages
 
-In order to test packages we need to import them
+We are currently working on an internal application which
+helps us to display the components we are building. At the
+moment the working code can be seen by running the command
+`yarn next_dev` inside the `ui` package which runs an
+application in which there are all of the components we are
+working on.
 
 ## Prod
 
@@ -453,7 +449,7 @@ replicated as needed.
 
 The best way to contribute to the code base is to download
 the monorepo, install it and push code changes to the github
-Zion Organization account.
+Noiz Organization account.
 
 > In order to make life easier with working with git, we (me
 > and Arianna), suggest to usage of
@@ -569,7 +565,7 @@ code editor where we can specify the details of the issue:
 
 # Version control.
 
-At the moment version control on zion is run on Github. In
+At the moment version control on noiz is run on Github. In
 the future we may switch to decentralized opensource version
 controlling system. Here a brief list of the choice that the
 market offer us at the moment:
@@ -629,3 +625,7 @@ it to work.
 > I am working on the translation of those scripts in node
 > scripts so that they can be easily run with no stress. Thats
 > why I created the `CLI` application.
+
+[^1]:
+    at the moment applications and packages do not have
+    their own repo but thy will soon have.
