@@ -1,13 +1,15 @@
 import styled, { css } from "styled-components";
 import { Css } from "../../lib/global/BaseNoiz/Css";
+import { NoizProps } from "../../lib/types";
 import {
   checkBorderColor,
   checkCss,
 } from "../../lib/util";
 import { paletteDarkGrey } from "../../lib/util";
+import { CssPropUnion } from "../../lib/utility";
 import { sixty } from "../common/position";
 
-type Css_ = utility.CssPropUnion<
+type Css_ = CssPropUnion<
   | "width"
   | "height"
   | "border"

@@ -1,4 +1,4 @@
-import { useEthereum_v2 as v2, useEthereum_v2Props as v2Props } from './useEthereum_v2';
+export { useEthereum_v2 as v2 } from "./useEthereum_v2";
 import {
   useEthereum_v1 as v1,
   type UseEthereum_v1 as v1Props,
@@ -29,6 +29,3 @@ export * from "./requestAccounts";
 
 export const useEthereum_v1 = v1;
 export type useEthereum_v1Props = v1Props;
-
-export const useEthereum_v2 = v2;
-export type useEthereum_v2Props = v2Props;

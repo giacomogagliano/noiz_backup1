@@ -3,6 +3,8 @@ import {
   css,
   FlattenSimpleInterpolation,
 } from "styled-components";
+import { CssAttributeValueTypes } from "../../../global";
+import { CssStyled } from "../../../utility";
 
 /**
  * @param attribute the Css attribute
@@ -27,7 +29,7 @@ import {
  * // CLASS
  * ```
  */
-export class Css_v1<T extends utility.CssStyled> {
+export class Css_v1<T extends CssStyled> {
   static #kebabize(str: string) {
     return str
       .split("")
@@ -40,7 +42,7 @@ export class Css_v1<T extends utility.CssStyled> {
       })
       .join("");
   }
-  static #checkCssAttribute<T extends utility.CssStyled>(
+  static #checkCssAttribute<T extends CssStyled>(
     attribute: keyof CSSProperties,
     defaultValue: FlattenSimpleInterpolation,
     props?: T

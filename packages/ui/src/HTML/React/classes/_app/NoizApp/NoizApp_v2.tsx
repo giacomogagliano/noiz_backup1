@@ -1,4 +1,5 @@
 import React, {
+  ChangeEvent,
   Dispatch,
   FC,
   SetStateAction,
@@ -29,19 +30,21 @@ import {
 } from "../../../lib/hooks";
 import { WindowEthRequired } from "../../../lib/hooks/useEthereum/useEthereum_v2";
 import { dataGuard } from "@zionstate/zionbase/utils";
-
+import Router from "next/router";
+import Link from "next/link";
+React;
 ////////ETH
 
-type useEthereumData_v2 = {
-  contractAddress: string;
-  connectMetamaskMessage: string;
-  metamaskNotInstalled: string;
-};
+// type useEthereumData_v2 = {
+//   contractAddress: string;
+//   connectMetamaskMessage: string;
+//   metamaskNotInstalled: string;
+// };
 
 //////////
 
 const theme = lightTheme;
-const dark = darkTheme;
+// const dark = darkTheme;
 
 enum layouts {
   main = "main",
@@ -91,12 +94,14 @@ export interface NoizApp_v2State
   contractAddress: string | null;
   contract: ethers.Contract | null;
   contractFactory:
-    | EVMweb["contractFactories"][number]
+    | keyof EVMweb["contractFactories"]
     | null;
   provider: ethers.providers.Web3Provider | null;
   metamask: MetaMaskEthereumProvider | null;
   evm: IEVMweb | null;
   handleClick: () => void;
+  selectOptions: string[];
+  selectedContract: keyof EVMweb["contractFactories"];
 }
 
 export class NoizApp_v2State extends BaseNoizState<NoizApp_v2Props> {}
@@ -146,6 +151,8 @@ export class NoizApp_v2 extends BaseNoiz<
     state.provider = null;
     state.metamask = null;
     state.evm = null;
+    state.selectOptions = [];
+    state.selectedContract = "";
     state.handleClick = () => console.log("anvedi");
 
     this.state = state;
@@ -167,16 +174,36 @@ export class NoizApp_v2 extends BaseNoiz<
     </div>
   );
 
-  istia(props: NoizApp_v2Props) {
-    const Layout = this.standard1;
-    console.log("istia", theme.primary.color);
+  Option = ({
+    title,
+    value,
+  }: {
+    value: string;
+    title: string;
+  }) => <option value={value}>{title}</option>;
 
+  istia({ Component, pageProps }: NoizApp_v2Props) {
+    const Layout = this.standard1;
+    const handleSelectChange = this.handleSelectChange;
+    const noizContractFactories =
+      this.state.evm?.newNoizContractFactories;
+    const selectedContract = this.state.selectedContract;
+    let contract = noizContractFactories?.Membership.abi;
+    if (noizContractFactories) {
+      const contractFactory =
+        noizContractFactories[selectedContract];
+      const contractFactoryAbi = contractFactory?.abi;
+      contract = contractFactoryAbi;
+    }
     return (
       <ThemeProvider theme={this.state.theme}>
         <GlobalStyle />
         <Layout>
           <header>
-            I am the header
+            <button onClick={() => Router.back()}>
+              Back
+            </button>
+            <p>I am the header</p>
             <button onClick={this.state.handleClick}>
               {this.state.buttonMess}
             </button>
@@ -185,11 +212,30 @@ export class NoizApp_v2 extends BaseNoiz<
                 ? "light"
                 : "dark"}
             </button>
+            <select onChange={handleSelectChange}>
+              {this.state.selectOptions &&
+                this.state.selectOptions.length > 0 &&
+                this.state.selectOptions.map((o, idx) => {
+                  const Option = this.Option;
+                  return (
+                    <Option
+                      title={o}
+                      value={o}
+                      key={idx}
+                    ></Option>
+                  );
+                })}
+            </select>
+            <button>
+              <Link href="/">Home</Link>
+            </button>
           </header>
           <section id="content">
-            <props.Component
-              {...props.pageProps}
-            ></props.Component>
+            <Component
+              {...pageProps}
+              contract={contract}
+              evm={this.state.evm}
+            ></Component>
           </section>
           <footer>I am the footer</footer>
         </Layout>
@@ -214,7 +260,7 @@ export class NoizApp_v2 extends BaseNoiz<
 
   defaultStyle = styled(this.Html)``;
 
-  bgcolor = `hsl(${210 + 90}, 55%, 75%)`;
+  bgcolor = `hsl(${210 + 90}, 55%, 22%)`;
 
   standard1 = styled.div`
     display: grid;
@@ -225,10 +271,27 @@ export class NoizApp_v2 extends BaseNoiz<
       "content"
       "f";
     header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
       background-color: ${this.bgcolor};
+      * {
+        align-self: center;
+      }
+      button {
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        color: ${props => props.theme.borderColor};
+        background-color: ${props =>
+          props.theme.backgroundColor};
+        a {
+          color: ${props => props.theme.borderColor};
+          background-color: ${props =>
+            props.theme.backgroundColor};
+        }
+      }
     }
     #content {
-      container-type: size;
       grid-area: content;
       place-items: center;
       width: 100%;
@@ -293,7 +356,6 @@ export class NoizApp_v2 extends BaseNoiz<
     this.setState({ buttonMess });
     return this;
   };
-
   setEvm = (evm: EVMweb) => {
     this.setState({ evm });
     return this;
@@ -316,12 +378,25 @@ export class NoizApp_v2 extends BaseNoiz<
     return this;
   };
 
+  setSelectOptions = (selectOptions: string[]) =>
+    this.setState({ selectOptions });
+
+  setSelectedContract = (selectedContract: string) =>
+    this.setState({ selectedContract });
+
   setSignerAddress = (signerAddress: string) => {
     this.setState({ signerAddress });
     return this;
   };
 
   EVMweb = EVMweb;
+
+  handleSelectChange = (
+    e: ChangeEvent<HTMLSelectElement>
+  ) => {
+    e.preventDefault();
+    this.setSelectedContract(e.target.value);
+  };
 
   handleConnection = () => {
     const isConnected = this.state.isConnected;
@@ -372,19 +447,25 @@ export class NoizApp_v2 extends BaseNoiz<
   initizalizeWeb3 = () => {
     const isMetamask = this.state.metamask;
     const contract = this.state.contractFactory;
+
     if (!isMetamask) return;
     if (!contract) throw new Error("no contract factory");
     const evm = new this.EVMweb({
       window: window as WindowEthRequired,
     });
+    const options = Object.getOwnPropertyNames(
+      evm.contractFactories
+    );
+    this.setSelectOptions(options);
     const contractAddress = this.state.contractAddress;
+    ////// CHIAMATA PER CONTRACTFACTORIES
     const factory = evm.contractFactories[contract];
     const provider = evm.provider;
     provider.on("network", this.handleNetworkChange);
     this.setEvm(evm)
       .setProvider(provider)
       .setHandleClick(requestAccounts(provider))
-      .setContract(factory.attach(contractAddress));
+      .setContract(factory!.attach(contractAddress!));
   };
 
   handleNetworkChange = handleNetworkChange;
@@ -408,6 +489,7 @@ export class NoizApp_v2 extends BaseNoiz<
     return prev !== curr;
   }
 
+  // TODO aggiungere questa in BaseNoiz
   UpdateHandler = class<T> {
     current?: T;
     previous?: T;
@@ -471,9 +553,11 @@ export class NoizApp_v2 extends BaseNoiz<
 
   didMount() {
     const isDark = this.isDarkColorScheme();
+
     const handleClrScheme = this.handleColorSchemeChange;
     this.detectEth();
     if (isDark) this.setPrefersColorScheme(themes.dark);
+
     window
       .matchMedia("(prefers-color-scheme: dark)")
       .addEventListener("change", handleClrScheme);

@@ -57,3 +57,19 @@ Shall be named with one underscore : `_<variableOrFunctionName>`.
 ## Public members
 
 Shall be named without underscore : `<variableOrFunctionName>`.
+
+## Hardhat networks
+
+The hardhat config file is setup to retrive datas from the `.env` file. It is supposed to get 4 variables:
+
+```
+
+ACCOUNT1_PrK=69a4ac....
+ACCOUNT1_BLNC=10000....
+
+ACCOUNT2_PrK=a8ef1c....
+ACCOUNT2_BLNC=10000....
+
+```
+
+> make sure to create a `.env` file and place it in `/Blockchain`

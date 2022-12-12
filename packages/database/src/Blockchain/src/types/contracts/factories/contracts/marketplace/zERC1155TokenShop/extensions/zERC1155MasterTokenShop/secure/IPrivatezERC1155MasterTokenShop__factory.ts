@@ -42,7 +42,7 @@ const _abi = [
     name: "SnapshotTokenSet",
     type: "event",
   },
-];
+] as const;
 
 export class IPrivatezERC1155MasterTokenShop__factory {
   static readonly abi = _abi;

@@ -11,14 +11,24 @@ export interface TypedEvent<
   args: TArgsArray & TArgsObject;
 }
 
-export interface TypedEventFilter<_TEvent extends TypedEvent>
-  extends EventFilter {}
+export interface TypedEventFilter<
+  _TEvent extends TypedEvent
+> extends EventFilter {}
 
 export interface TypedListener<TEvent extends TypedEvent> {
-  (...listenerArg: [...__TypechainArgsArray<TEvent>, TEvent]): void;
+  (
+    ...listenerArg: [
+      ...__TypechainArgsArray<TEvent>,
+      TEvent
+    ]
+  ): void;
 }
 
-type __TypechainArgsArray<T> = T extends TypedEvent<infer U> ? U : never;
+type __TypechainArgsArray<T> = T extends TypedEvent<
+  infer U
+>
+  ? U
+  : never;
 
 export interface OnEvent<TRes> {
   <TEvent extends TypedEvent>(
@@ -32,15 +42,12 @@ export type MinEthersFactory<C, ARGS> = {
   deploy(...a: ARGS[]): Promise<C>;
 };
 
-export type GetContractTypeFromFactory<F> = F extends MinEthersFactory<
-  infer C,
-  any
->
-  ? C
-  : never;
+export type GetContractTypeFromFactory<F> =
+  F extends MinEthersFactory<infer C, any> ? C : never;
 
-export type GetARGsTypeFromFactory<F> = F extends MinEthersFactory<any, any>
-  ? Parameters<F["deploy"]>
-  : never;
+export type GetARGsTypeFromFactory<F> =
+  F extends MinEthersFactory<any, any>
+    ? Parameters<F["deploy"]>
+    : never;
 
 export type PromiseOrValue<T> = T | Promise<T>;

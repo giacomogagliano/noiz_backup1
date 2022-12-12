@@ -542,7 +542,7 @@ const _abi = [
     stateMutability: "nonpayable",
     type: "function",
   },
-];
+] as const;
 
 export class ERC20Votes__factory {
   static readonly abi = _abi;

@@ -17,7 +17,8 @@ enum styles {
 type layoutTypes = keyof typeof layouts;
 type styleTypes = keyof typeof styles;
 
-// TODO #36 @giacomogagliano sistemare il delirio
+// TODO #6 @giacomogagliano sistemare il delirio
+// @ts-ignore
 export interface Chart_v2Props
   extends BaseNoizProps<layoutTypes, styleTypes>,
     ChartProps {

@@ -4,7 +4,8 @@ import {
   TertiaryColors,
   ColorWheel,
 } from "..";
-
+// TODO trovare un modo per nominare i colori in base alle
+// color wheels di provenienza.
 export class RGBPrimary_v1 extends PrimaryColors {
   constructor(
     public red: string,

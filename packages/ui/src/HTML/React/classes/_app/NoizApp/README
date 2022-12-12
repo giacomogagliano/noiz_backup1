@@ -1,0 +1,18 @@
+# Simple storage page
+
+- [ ] passare la contract factory SimpleStorage al
+      componente
+  - [ ] provare i metodi:
+    - [ ] deploy
+    - [ ] attach
+    - [ ] connect
+  - [ ]
+
+# Smart-contract class
+
+- [ ] importare la sezione Factory methods da simple storage
+- [ ] passare la factory selezionata al componente
+  - [ ] ricordarsi di cancellarlo una volta trovato il modo
+        giusto
+- [ ] trovare un modo per passare EVMweb solo alle pagine
+      interessate

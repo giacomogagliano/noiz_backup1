@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { BasicLayoutProps } from "../../lib/global";
 
 export type NavBarProps = BasicLayoutProps & {
   gridTemplateColumns?: string;

@@ -43,6 +43,7 @@ const step2 =
     const evm = new EVMweb_({
       window: window as WindowEthRequired,
     });
+    // @ts-expect-error
     const factory = evm.contractFactories[contract];
 
     const provider = evm.provider;
@@ -158,6 +159,7 @@ export const useEthereum_v2: UseEthereum_v2 = (
     data,
     isMetamask,
     EVMweb,
+    // @ts-expect-error
     "ERC1155IndividualURI",
     setEvm,
     setProvider,

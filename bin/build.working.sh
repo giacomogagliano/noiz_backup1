@@ -1,25 +1,24 @@
 #!/bin/bash
 
-# TODO #47 @ariannatnl togliere blockchain e utils
-utils="@zionstate/utils"
+test="@zionstate/test"
 zionbase="@zionstate/zionbase"
-blockchain="@zionstate/blockchain"
 database="@zionstate/database"
 ui="@zionstate/ui"
-yarnUtils="bolt w ${utils} "
+# //////////////
+yarnTest="bolt w ${test} "
 yarnZionBase="bolt w ${zionbase} "
-yarnBlockchain="bolt w ${blockchain} "
 yarnDatabase="bolt w ${database} "
+# i am suspending the building of ui till we found a
+# solution for the next app within it which uses the same
+# `tsconfig` file.
 yarnUi="bolt w ${ui} "
 
-${yarnUtils} preconstruct build &&
-  ${yarnUtils} build &&
-  ${yarnBlockchain} preconstruct build &&
-  ${yarnBlockchain} build &&
+${yarnTest} preconstruct build &&
+  ${yarnTest} build &&
   ${yarnZionBase} preconstruct build &&
   ${yarnZionBase} build &&
   ${yarnDatabase} preconstruct build &&
   ${yarnDatabase} build &&
-  ${yarnUi} preconstruct build &&
-  ${yarnUi} build &&
+  # ${yarnUi} preconstruct build &&
+  # ${yarnUi} build &&
   echo "well done"

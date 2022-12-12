@@ -14,6 +14,7 @@ export interface Image_v2Props
   width?: string;
   height?: string;
   maxWidth?: string;
+  maxHeight?: string;
   backgroundColor?: string;
   borderTop?: string;
   gridArea?: string;
@@ -69,7 +70,10 @@ export class Image_v2 extends BaseNoiz<
 
   LogoImage = (props: Image_v2Props) => {
     return (
-      <div className={props.className} css={props.css}>
+      <div
+        className={props.className}
+        // css={props.css}
+      >
         <circle />
       </div>
     );
@@ -97,7 +101,10 @@ export class Image_v2 extends BaseNoiz<
       this.handleIsLoading(false);
     };
     return (
-      <div className={props.className} css={props.css}>
+      <div
+        className={props.className}
+        // css={props.css}
+      >
         <img
           onLoad={handleOnLoad}
           src={props.src}
@@ -162,6 +169,8 @@ export class Image_v2 extends BaseNoiz<
       height: ${props => props.image?.height};
       max-width: ${props =>
         props.maxWidth ? props.maxWidth : "100%"};
+      max-height: ${props =>
+        props.maxHeight ? props.maxHeight : "100%"};
       display: ${props =>
         props.display ? props.display : "block"};
       height: ${props =>

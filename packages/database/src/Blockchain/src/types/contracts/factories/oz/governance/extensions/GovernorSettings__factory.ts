@@ -538,7 +538,7 @@ const _abi = [
     stateMutability: "payable",
     type: "receive",
   },
-];
+] as const;
 
 export class GovernorSettings__factory {
   static readonly abi = _abi;

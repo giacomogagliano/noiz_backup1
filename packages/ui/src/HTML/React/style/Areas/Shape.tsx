@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { MakeBooleansFromUnion } from "../../lib/global";
+import { EnumToUnion } from "../../lib/utility";
 
 export enum CardShapesEnum {
   landscape,
@@ -7,7 +9,7 @@ export enum CardShapesEnum {
   slim,
   resource,
 }
-export type CardShapesTypes = utility.EnumToUnion<
+export type CardShapesTypes = EnumToUnion<
   typeof CardShapesEnum
 >;
 

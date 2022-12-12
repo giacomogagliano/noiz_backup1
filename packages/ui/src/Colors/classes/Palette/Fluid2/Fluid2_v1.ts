@@ -1,4 +1,7 @@
-import { colors_, Palette } from "../../Palette";
+import {
+  colors_,
+  Palette_v1 as Palette,
+} from "../../Palette";
 
 export type Fluid2Type_v1 = Pick<
   colors_,

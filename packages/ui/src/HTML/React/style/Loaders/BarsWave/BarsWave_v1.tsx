@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { StyledDefault } from "../../../lib/types/utility";
 import { LoadingWavesAreaProps } from "../../Areas";
 
 export function BarWavesData(

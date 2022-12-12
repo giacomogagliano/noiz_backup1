@@ -59,9 +59,13 @@
     ]
   },
   "scripts": {
+    "test": "mocha --require ts-node/register ./test/**/*.test.ts",
+    "test2": "mocha ./test/**/*.test.mjs",
+    "test_of": "cd test && NODE_DEBUG=log ts-node --project ../tsconfig.json",
     "clean": "rm -rf dist",
     "build": "yarn preconstruct build && run-p build:*",
     "build:types": "tsc --declaration --emitDeclarationOnly --outDir dist",
+    "start_node": "cd src && cd Blockchain && npx hardhat node",
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {

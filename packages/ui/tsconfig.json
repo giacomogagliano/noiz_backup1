@@ -1,17 +1,5 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "dist",
-    "src/pages",
-    "src/giacomo"
-  ],
-  "compilerOptions": {
-    "incremental": true,
-    "jsx": "preserve",
-    "isolatedModules": true,
-    "noEmit": true
-  }
+  "include": ["src"],
+  "exclude": ["dist", "src/giacomo"]
 }

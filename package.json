@@ -82,6 +82,7 @@
     "gun": "^0.2020.1237",
     "hardhat": "^2.12.3",
     "hardhat-gas-reporter": "^1.0.9",
+    "highlight.js": "^11.7.0",
     "ink": "^3.2.0",
     "ink-use-stdout-dimensions": "^1.0.5",
     "inquirer": "^9.1.4",

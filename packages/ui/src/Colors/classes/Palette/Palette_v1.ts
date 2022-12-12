@@ -1,5 +1,7 @@
 import { colors } from "../../../HTML/React/lib/types/colors";
 
+// Ho creato la v2 ma questa è ancora in uso quindi non cancellare
+
 export type PaletteType_v1 = {
   [key in colors]?: string;
 };

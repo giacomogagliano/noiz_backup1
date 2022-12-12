@@ -1,5 +1,5 @@
 import { styles } from "../../../style/common/CommonStyles";
-import React, { Component } from "react";
+import { Component } from "react";
 import styled from "styled-components";
 import { ReactNode } from "react";
 import { ComponentDecorator } from "./ComponentDecorator";
@@ -162,7 +162,7 @@ export class BaseNoiz_v4<
     let Style: StyledGComponent<P> = this.state.style;
     let El: () => JSX.Element = () => <div>ciao</div>;
     this.children.forEach(child => {
-      // TODO #34 @giacomogagliano chooseChild ts
+      // TODO #7 @giacomogagliano chooseChild ts
       // capire come fare per permettere a ts di sapere
       // quali saranno i nomi dei child che ricevera. Nel
       // caso del layout e style usiamo un membro che può

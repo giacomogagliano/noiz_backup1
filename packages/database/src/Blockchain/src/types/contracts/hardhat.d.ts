@@ -101,6 +101,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Membership__factory>;
     getContractFactory(
+      name: "Propaganda_Presale",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.Propaganda_Presale__factory>;
+    getContractFactory(
       name: "ProvaMaster",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.ProvaMaster__factory>;
@@ -192,6 +196,10 @@ declare module "hardhat/types/runtime" {
       name: "IERC20Permit",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IERC20Permit__factory>;
+    getContractFactory(
+      name: "ERC20Capped",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ERC20Capped__factory>;
     getContractFactory(
       name: "ERC20Votes",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -328,6 +336,11 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.Membership>;
     getContractAt(
+      name: "Propaganda_Presale",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.Propaganda_Presale>;
+    getContractAt(
       name: "ProvaMaster",
       address: string,
       signer?: ethers.Signer
@@ -442,6 +455,11 @@ declare module "hardhat/types/runtime" {
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.IERC20Permit>;
+    getContractAt(
+      name: "ERC20Capped",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ERC20Capped>;
     getContractAt(
       name: "ERC20Votes",
       address: string,

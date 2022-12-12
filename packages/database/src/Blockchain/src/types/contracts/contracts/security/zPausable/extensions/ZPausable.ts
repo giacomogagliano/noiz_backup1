@@ -15,77 +15,51 @@ import type {
   Result,
   EventFragment,
 } from "@ethersproject/abi";
-import type {
-  Listener,
-  Provider,
-} from "@ethersproject/providers";
+import type { Listener, Provider } from "@ethersproject/providers";
 import type {
   TypedEventFilter,
   TypedEvent,
   TypedListener,
   OnEvent,
-  // PromiseOrValue,
+  // // PromiseOrValue,
 } from "../../../../common";
 
-export interface ZPausableInterface
-  extends utils.Interface {
+export interface ZPausableInterface extends utils.Interface {
   functions: {
     "paused()": FunctionFragment;
   };
 
-  getFunction(
-    nameOrSignatureOrTopic: "paused"
-  ): FunctionFragment;
+  getFunction(nameOrSignatureOrTopic: "paused"): FunctionFragment;
 
-  encodeFunctionData(
-    functionFragment: "paused",
-    values?: undefined
-  ): string;
+  encodeFunctionData(functionFragment: "paused", values?: undefined): string;
 
-  decodeFunctionResult(
-    functionFragment: "paused",
-    data: BytesLike
-  ): Result;
+  decodeFunctionResult(functionFragment: "paused", data: BytesLike): Result;
 
   events: {
     "Paused(address)": EventFragment;
     "Unpaused(address)": EventFragment;
   };
 
-  getEvent(
-    nameOrSignatureOrTopic: "Paused"
-  ): EventFragment;
-  getEvent(
-    nameOrSignatureOrTopic: "Unpaused"
-  ): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "Paused"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "Unpaused"): EventFragment;
 }
 
 export interface PausedEventObject {
   account: string;
 }
-export type PausedEvent = TypedEvent<
-  [string],
-  PausedEventObject
->;
+export type PausedEvent = TypedEvent<[string], PausedEventObject>;
 
-export type PausedEventFilter =
-  TypedEventFilter<PausedEvent>;
+export type PausedEventFilter = TypedEventFilter<PausedEvent>;
 
 export interface UnpausedEventObject {
   account: string;
 }
-export type UnpausedEvent = TypedEvent<
-  [string],
-  UnpausedEventObject
->;
+export type UnpausedEvent = TypedEvent<[string], UnpausedEventObject>;
 
-export type UnpausedEventFilter =
-  TypedEventFilter<UnpausedEvent>;
+export type UnpausedEventFilter = TypedEventFilter<UnpausedEvent>;
 
 export interface ZPausable extends BaseContract {
-  connect(
-    signerOrProvider: Signer | Provider | string
-  ): this;
+  connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
 
@@ -124,9 +98,7 @@ export interface ZPausable extends BaseContract {
     "Paused(address)"(account?: null): PausedEventFilter;
     Paused(account?: null): PausedEventFilter;
 
-    "Unpaused(address)"(
-      account?: null
-    ): UnpausedEventFilter;
+    "Unpaused(address)"(account?: null): UnpausedEventFilter;
     Unpaused(account?: null): UnpausedEventFilter;
   };
 
@@ -135,8 +107,6 @@ export interface ZPausable extends BaseContract {
   };
 
   populateTransaction: {
-    paused(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
+    paused(overrides?: CallOverrides): Promise<PopulatedTransaction>;
   };
 }

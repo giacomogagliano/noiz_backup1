@@ -4,7 +4,7 @@ export interface NoizPath_v1 {}
 
 import path from "path";
 
-// TODO #23 @giacomogagliano delete this class cause it's going
+// TODO #8 @giacomogagliano delete this class cause it's going
 // to be eported from the zionstate/utils package
 export class NoizPath_v1 implements INoizPath_v1 {
   #path: string = "no path given";
@@ -29,4 +29,5 @@ export type NoizPath_v1Ctor = {
   new (): NoizPath_v1;
 };
 
-export const NoizPath_v1Ctor: NoizPath_v1Ctor = NoizPath_v1;
+export const NoizPath_v1Ctor: NoizPath_v1Ctor =
+  NoizPath_v1;

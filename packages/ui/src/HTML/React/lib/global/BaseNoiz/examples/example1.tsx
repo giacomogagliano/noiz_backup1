@@ -1,11 +1,9 @@
-import React from "react";
 import styled from "styled-components";
 enum layouts {
   main = "main",
   test = "test",
 }
 type layoutTypes = keyof typeof layouts;
-type test = typeof layouts;
 
 enum styles {
   normal = "normal",
