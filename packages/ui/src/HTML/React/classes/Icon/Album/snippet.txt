@@ -1,0 +1,9 @@
+"const ${TM_FILENAME_BASE/(.*)/${1:/downcase}/} = new IconPath();",
+"${TM_FILENAME_BASE/(.*)/${1:/downcase}/}.name = Icons.${TM_FILENAME_BASE/(.*)/${1:/downcase}/};",
+"${TM_FILENAME_BASE/(.*)/${1:/downcase}/}.Component = ${TM_FILENAME_BASE};",
+"${TM_FILENAME_BASE/(.*)/${1:/downcase}/}.JsxPath = ${TM_FILENAME_BASE};",
+"${TM_FILENAME_BASE/(.*)/${1:/downcase}/}.filled = true;",
+"",
+"export const ${TM_FILENAME_BASE/(.*)/${1:/downcase}/} = ${TM_FILENAME_BASE/(.*)/${1:/downcase}/};",
+
+ 

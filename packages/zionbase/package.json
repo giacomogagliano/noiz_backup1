@@ -1,0 +1,64 @@
+{
+  "name": "@zionstate/zionbase",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Zion zionbase",
+  "source": "src/index.ts",
+  "main": "dist/zionstate-zionbase.cjs.js",
+  "module": "dist/zionstate-zionbase.esm.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "module": "./dist/zionstate-zionbase.esm.js",
+      "default": "./dist/zionstate-zionbase.cjs.js"
+    },
+    "./utils": {
+      "module": "./utils/dist/zionstate-zionbase-utils.esm.js",
+      "default": "./utils/dist/zionstate-zionbase-utils.cjs.js"
+    },
+    "./zionbase": {
+      "module": "./zionbase/dist/zionstate-zionbase-zionbase.esm.js",
+      "default": "./zionbase/dist/zionstate-zionbase-zionbase.cjs.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "utils",
+    "zionbase"
+  ],
+  "preconstruct": {
+    "entrypoints": [
+      "index.ts",
+      "utils/index.ts",
+      "zionbase/index.ts"
+    ]
+  },
+  "scripts": {
+    "test": "mocha --require ts-node/register ./test/**/*.test.ts",
+    "test2": "mocha ./test/**/*.test.mjs",
+    "test_of": "cd test && NODE_DEBUG=log ts-node",
+    "clean": "rm -rf dist",
+    "build": "yarn preconstruct build && run-p build:*",
+    "build:types": "tsc --declaration --emitDeclarationOnly --outDir dist",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.20.2",
+    "@zionstate/test": "0.0.1"
+  },
+  "peerDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.20.2",
+    "@zionstate/test": "0.0.1"
+  },
+  "dependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^1.0.3",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.6",
+    "@nomicfoundation/hardhat-toolbox": "^1.0.2",
+    "@nomiclabs/hardhat-ethers": "^2.0.2",
+    "@nomiclabs/hardhat-etherscan": "^3.1.0",
+    "@nomiclabs/hardhat-web3": "^2.0.0",
+    "@typechain/ethers-v5": "^10.1.0",
+    "@typechain/hardhat": "^6.1.4"
+  }
+}

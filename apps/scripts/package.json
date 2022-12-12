@@ -1,0 +1,19 @@
+{
+  "name": "@zionstate/scripts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/zionstate-scripts.cjs.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "noiz": "node ./src/Base/noiz/noiz_v1.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@zionstate/database": "0.0.1",
+    "@zionstate/zionbase": "0.0.1",
+    "dotenv": "^16.0.2"
+  }
+}

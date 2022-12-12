@@ -1,0 +1,153 @@
+# UI
+
+This package containes utilities to build Noiz Fluid (due to
+an already existing application called `Zion`, which is also
+a web3 platform, we decided to start thinking about a name
+change and at the moment we opted for Noiz, which is Zion
+reversed) applications.
+
+## File syntax formatting.
+
+We found that we prefer having the types as closes as
+possible to the components. This means that, broadly
+speaking, a component should look always somehow like this:
+
+```tsx
+// IMPORTS
+import { something } from "./somewhere";
+
+type ComponentProps = {
+  name: string;
+};
+
+export function Component() {
+  return <div></div>;
+}
+```
+
+# RULES
+
+## Components
+
+- shall have as first child a basic jsx element:
+
+  ```tsx
+  ....
+  return (
+    <div><div>
+  )
+  ```
+
+- shall all receive className from their props. This enables
+  the possibility to use the component in `styled(Component)`.
+
+  ```tsx
+  function Component(props:{className:string}){
+    ....
+    return (
+      <div className{props.className}><div>
+    )
+  }
+  ```
+
+- shall receive datas which are going to be consumed by the
+  component in a datas object:
+
+  ```tsx
+  function Component(props: {
+    datas: { text: string }[];
+  }) {
+    ....
+  }
+  ```
+
+- when used in another component it shall not receive spread
+  props looking like this:
+
+  ```tsx
+  ...
+  return (
+    <div className={props.className}>
+      <UsedComponent {...props} />
+    </div>
+  )
+  ```
+
+- should get props divided in two main types:
+  - data: component data shall be wrapped in an array, in
+    order to leverage the automatic factory functino which
+    is in the `BaseNoiz` class. This means that the
+    component can render multiple instances of itsels,
+    simply by passing down more than one data object in
+    the `props.datas` member.
+    ```tsx
+    type ComponentData = {
+      name: string;
+      surname: string;
+    };
+    ```
+  - booleans: component shall be configurable via
+    booleans. For example `main`, or `big`, `small` ..etc.
+    ```tsx
+    type ComponentBooleans = {
+      main?: boolean;
+      exotic: ?boolean;
+    };
+    ```
+- should receive a prop object which looks like this:
+
+  ```tsx
+  type ComponentProps = {
+    datas: ComponentData[];
+    main?: boolean;
+    exotic?: boolean;
+  };
+  ```
+
+- in order to make life easy I prepared some useful types
+  which wrap datas with other usually required props
+  members like `className`, `css` or
+  `JSX.InstrinsicAttributes`. The final Component props
+  shall look something like this:
+  **deprecated** a new version for this has been
+  implemented, I will describe it asap
+  TODO @giacomogagliano change the rule for Components props
+
+  ```tsx
+  type ComponentProps = StyledDefault<{
+    datas: ComponentData[];
+    main?: boolean;
+    exotic?: boolean;
+  }>;
+  ```
+
+- Parent components which are composed by other components
+  shall also provide a smart way to pass props downwards
+  and avoid collisions. In order to do this Components
+  should always provide a member, named as the child
+  component, and should use the `ChildrenDatas` helper
+  type which wraps data of a single child component into a
+  `datas` objects. This shall be declared with the props:
+
+  ```tsx
+  type HigherOrderComponent = StyledDefault<{
+    datas: HigherOrderComponentData[];
+    firemode?: boolean;
+    ChildComponent: ChildDatas<ChildData>;
+  }>;
+  ```
+
+- In the case the Parent component has an higher
+  order component child, it shall require all of
+  the child components datas this ways:
+  ```tsx
+  type HigherWithHigherComponent = StyledDefault<{
+    datas: HigherWithHigherComponentData[];
+    snowmode?: boolean;
+    HigherChild: ChildDatas<HigherChildData> & {
+      LowerChild1: ChildDatas<LowerChild1Data>;
+      LowerChild2: ChildDatas<LowerChild2Data>;
+    };
+  }>;
+  ```
+  - in certain cases it can be useful to compose a

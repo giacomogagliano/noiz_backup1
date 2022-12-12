@@ -1,0 +1,10 @@
+"///// TYPES",
+"type Data_v${1} = { age: number };",
+"",
+"type Booleans_v${1} = { small?:boolean; }",
+"",
+"export type ${TM_FILENAME_BASE}Props = NoizDatas<",
+"  Data_v3,",
+"  Booleans_v3",
+">;",
+"////////////"

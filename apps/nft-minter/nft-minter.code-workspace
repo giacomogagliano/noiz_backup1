@@ -1,0 +1,25 @@
+{
+  "folders": [
+    {
+      "name": "nft-minter",
+      "path": "."
+    },
+    {
+      "name": "pages",
+      "path": "src/pages"
+    },
+    {
+      "name": "lib",
+      "path": "src/lib"
+    },
+    {
+      "name": "components",
+      "path": "src/components"
+    },
+    {
+      "name": "ui",
+      "path": "../../packages/ui"
+    }
+  ],
+  "settings": {}
+}

@@ -1,0 +1,5 @@
+{
+  "main": "dist/zionstate-database-IPFS.cjs.js",
+  "module": "dist/zionstate-database-IPFS.esm.js",
+  "types": "../dist/IPFS/index.d.ts"
+}

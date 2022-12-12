@@ -1,0 +1,25 @@
+{
+  "folders": [
+    {
+      "name": "Graph",
+      "path": "../../../../../database/src/RAM/DataStructures/Graph"
+    },
+    {
+      "name": "Algorythms",
+      "path": "../../Algorythms"
+    },
+    {
+      "name": "DataStructures",
+      "path": ".."
+    },
+    {
+      "name": "DataStructures",
+      "path": "../../../../../database/src/RAM/DataStructures"
+    },
+    {
+      "name": "zionbase",
+      "path": "../.."
+    }
+  ],
+  "settings": {}
+}

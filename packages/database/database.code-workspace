@@ -1,0 +1,26 @@
+{
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "src/FS"
+    },
+    {
+      "path": "src/IPFS"
+    },
+    {
+      "path": "src/RAM"
+    },
+    {
+      "path": "src/EVM"
+    },
+    {
+      "path": "src/Git"
+    },
+    {
+      "path": "src/Blockchain"
+    }
+  ],
+  "settings": {}
+}

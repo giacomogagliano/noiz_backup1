@@ -1,0 +1,17 @@
+{
+  "folders": [
+    {
+      "name": "ui",
+      "path": "."
+    },
+    {
+      "name": "React",
+      "path": "src/HTML/React"
+    },
+    {
+      "name": "pages",
+      "path": "src/pages"
+    }
+  ],
+  "settings": {}
+}

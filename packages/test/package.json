@@ -1,0 +1,39 @@
+{
+  "name": "@zionstate/test",
+  "version": "0.0.1",
+  "private": true,
+  "source": "src/index.ts",
+  "main": "dist/zionstate-test.cjs.js",
+  "module": "dist/zionstate-test.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "preconstruct": {
+    "entrypoint": [
+      "src/index.ts"
+    ]
+  },
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "yarn preconstruct build && run-p build:*",
+    "build:types": "tsc --declaration --emitDeclarationOnly --outDir dist",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "@types/chai-as-promised": "^7.1.5",
+    "@types/mocha": "^9.1.1",
+    "chai": "^4.3.6",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^10.0.0",
+    "sinon": "^14.0.0"
+  },
+  "devDependencies": {
+    "@types/chai-as-promised": "^7.1.5",
+    "@types/mocha": "^9.1.1",
+    "chai": "^4.3.6",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^10.0.0",
+    "sinon": "^14.0.0"
+  }
+}

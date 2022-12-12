@@ -1,0 +1,5 @@
+{
+  "main": "dist/zionstate-zionbase-utils.cjs.js",
+  "module": "dist/zionstate-zionbase-utils.esm.js",
+  "types": "../dist/utils/index.d.ts"
+}

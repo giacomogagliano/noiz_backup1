@@ -1,0 +1,5 @@
+{
+  "name": "Espacio Publicitario",
+  "description": "Cada token representa un espacio publicitario único en la ciudad.",
+  "comment" : "https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1155.md#erc-1155-metadata-uri-json-schema"
+}

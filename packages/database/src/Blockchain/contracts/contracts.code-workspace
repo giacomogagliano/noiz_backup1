@@ -1,0 +1,38 @@
+{
+	"folders": [
+		{
+			"path": "access"
+		},
+		{
+			"path": "finance"
+		},
+		{
+			"path": "governance"
+		},
+		{
+			"path": "interfaces"
+		},
+		{
+			"path": "marketplace"
+		},
+		{
+			"path": "remix"
+		},
+		{
+			"path": "security"
+		},
+		{
+			"path": "token"
+		},
+		{
+			"path": "utils"
+		},
+		{
+			"path": "zion"
+		},
+		{
+			"path": "zion_contracts"
+		}
+	],
+	"settings": {}
+}

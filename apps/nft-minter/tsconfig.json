@@ -1,0 +1,10 @@
+{
+  "extends:": "../../tsconfig.app.json",
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/pages/funzione.js"
+  ],
+  "exclude": ["node_modules"]
+}

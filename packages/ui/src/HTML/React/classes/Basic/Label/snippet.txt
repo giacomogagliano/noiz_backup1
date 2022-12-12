@@ -1,0 +1,28 @@
+"Class Enums": {
+  "prefix": "clenum",
+  "body": [
+  "enum layouts {",
+  "  main = \"main\",",
+  "}",
+  "enum styles {",
+  "  defaultStyle = \"defaultStyle\",",
+  "}",
+  "type layoutTypes = keyof typeof layouts",
+  "type styleTypes = keyof typeof styles",
+],
+  "description": "creates the basic enums for a class"
+}
+
+"layouts = [",
+"    new this.Layout({",
+"      name: layouts.main,",
+"      component: this.main,",
+"    }),",
+"  ];",
+
+"styledlayouts = [",
+"  new this.Style({",
+"    name: styles.defaultStyle,",
+"    style: this.defaultStyle,",
+"  }),",
+"];",

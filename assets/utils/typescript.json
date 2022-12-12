@@ -1,0 +1,119 @@
+{
+  // Place your snippets for typescript here. Each snippet is defined under a snippet name and has a prefix, body and
+  // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
+  // same ids are connected.
+  // Example:
+  // "Print to console": {
+  // 	"prefix": "log",
+  // 	"body": [
+  // 		"console.log('$1');",
+  // 		"$2"
+  // 	],
+  // 	"description": "Log output to console"
+  // }
+  "test-TM": {
+    "prefix": "testTM",
+    "body": [
+    "'${TM_FILEPATH}'",
+    "'${TM_FILENAME}'",
+    "'${TM_DIRECTORY}'"
+  ],
+    "description": "tests TM"
+  },
+  "getFact": {
+    "prefix": "getfact",
+    "body": [
+      "import { Signer, ethers } from 'ethers';",
+      "import { ${TM_FILENAME/(get|.ts)/$2/g} } from '../types/contracts';",
+      "import contract from './${TM_FILENAME/(get|__factory.ts)/$2/g}.sol/${TM_FILENAME/(get|__factory.ts)/$2/g}.json';",
+      "",
+      "export const ${TM_FILENAME/(__factory.ts)/$2/g} = (signer: Signer): ${TM_FILENAME/(get|.ts)/$2/g} =>",
+      "\tnew ethers.ContractFactory(",
+      "\t\tcontract.abi,",
+      "\t\tcontract.bytecode,",
+      "\t\tsigner",
+      "\t) as ${TM_FILENAME/(get|.ts)/$2/g};"
+  ],
+    "description": "get<contract>__factory"
+  },
+  // Typescript
+  "Expect error": {
+    "prefix": "exerr",
+    "body": [
+    "// @ts-expect-error"
+  ],
+    "description": "Places a comment which includes a call for TS compiler to expect the following error."
+  },
+  "index export": {
+    "prefix": "iexp",
+    "body": [
+    "export * from '${1:./}'"
+  ],
+    "description": "exports a file from within the folder"
+  },
+
+  /// MIXIN
+  "Mixin Interface": {
+    "prefix": "misp",
+    "body": [
+      "export interface I${TM_FILENAME_BASE} {\n\t__type: Symbol;\n\t${1:param}: ${3:type};\n}",
+      "$4"
+    ],
+    "description": "Crea Interface TypeScript per un mixin con singolo parametro"
+  },
+  "Zion Mixin": {
+    "prefix": "zm",
+    "body": [
+      "import { ComplexMixin } from \"../../lib/types/zionTypes.js\";",
+      "",
+      "export interface I${TM_FILENAME_BASE} {\n\t__type: Symbol;\n\t${1:param}: ${2:type};\n}",
+      "export const ${TM_FILENAME_BASE}: ComplexMixin<I${TM_FILENAME_BASE}> = function (Base, id: number) {",
+      "\treturn class extends Base implements I${TM_FILENAME_BASE} {",
+      "\t\t__type: Symbol = Symbol(\"$1\");",
+      "\t\t#$1Id = id;",
+      "\t\tget $1Id() {",
+      "\t\t\treturn this.#$1Id;",
+      "\t\t}",
+      "\t\t#$1: $2 ${3:value};",
+      "\t\tget $1() {",
+      "\t\t\treturn this.#$1;",
+      "\t\t}",
+      "\t\tconstructor(...arg: any[]) {",
+      "\t\t\tsuper(...arg);",
+      "\t\t\tthis.#$1 = arg[this.#$1Id];",
+      "\t\t}",
+      "\t};",
+      "};",
+      "$4"
+    ],
+    "description": "Crea ed esporta uno Zion Mixin (che accetta un parametro id da essere usato con MixWith."
+  },
+  "nextApiHandler": {
+    "prefix": "nah",
+    "body": [
+      "export default async function handler(",
+      "\treq: NextApiRequest,",
+      "\tres: NextApiResponse<NftsData>",
+      ") {",
+      "\tconst handler = new NextApiHandler('ram');",
+      "\thandler.strategy(req, res, database);",
+      "}"
+  ],
+    "description": "Crea ed esporta una funziona Hanlder per le api di Next. La funzione simple handler invia una lista di dati direttamente caricati nel file"
+  },
+  "Smart Contract test Environment": {
+    "prefix": "scte",
+    "body": [
+    "// ${TM_DIRECTORY}",
+    "import '@nomicfoundation/hardhat-toolbox';",
+    "import '@nomiclabs/hardhat-ethers';",
+    "import { expect } from 'chai';",
+    "import { ethers } from 'hardhat';",
+    "import { zionUtils } from './utils/test-utils';",
+    "",
+    "$0"
+  ],
+    "description": "writes all the necessary code to write tests for a smart contract."
+  }
+}

@@ -1,0 +1,119 @@
+# What's inside
+
+This application is meant to be the interface for minting
+methods of Smart Contract standard tokens and the specific
+functions of each Contract type that the application will be
+able to handle.
+
+# Content
+
+- [Technical](#technical)
+  - [Run the project](#run-the-project)
+  - [Open VsCode workspace](#open-vscode-workspace)
+  - [Work on the UI library](#work-on-the-ui-library)
+- [Contents](#contents)
+  - [Contract types](#contract-types)
+    - [Discography Album](#discography-album)
+    - [Pfp](#pfp)
+    - [...](#more)
+  - [Description](#description)
+    - [Pfp](#pfp-1)
+    - [Disclaimer](#disclaimer)
+
+# Technical
+
+## Run the project.
+
+Once downloaded the monorepo, run:
+
+```sh
+bolt
+```
+
+which is the equivalent of running `npm i`.
+Then run this:
+
+```sh
+bolt build
+```
+
+This will start the building applications and packages.
+
+> At the moment there is a bug with the building of next
+> application which is related to the API call which happens
+> in the `getStaticProps` function. This should be solved
+> once the calls to retrieve datas will be forwarded to the
+> blockchain.
+
+In the root of the monorepo run `bolt nft-minter`.
+
+## Open VsCode workspace
+
+In the the folder of the application, at the relative root
+level, there is a file `nft-minter.code-workspace` which is
+convienent selection of folder to work on the nft-minter
+application.
+It contains:
+
+- **nft-minter**: the package's root folder
+- **pages**: the pages folder of the Next® application
+  `src/pages`
+- **lib**: the library folder `src/lib`
+- **components**: the components folder `src/components`
+- **ui**: the entire @zionstate/ui package folder, in order to
+  quickly operate on the library itself.
+
+## Work on the UI library
+
+Working on the library requires a little extra-work:
+each time we make a change and we wish to have it reflecting
+in the browser we need to perform the following (in the
+project's root folder, NOT in the monorepo root folder):
+
+- `yarn run build`
+
+This commands runs a script that I put in `./bin/build.sh`.
+This folders shall be put global in your system in order for
+it to work.
+
+> Windows users shall install `git` utilities which has a
+> replica of `bash` in order to run this scripts.
+> I am working on the translation of those scripts in node
+> scripts so that they can be easily run with no stress. Thats
+> why I created the `CLI` application.
+
+# Contents
+
+## Contract types
+
+### Discography Album
+
+### Pfp
+
+### ...more
+
+## Description
+
+### Pfp
+
+This contract type is, for example, the one which we will
+use to distribute the Elsewhere© and Underlords© projects.
+
+### Disclaimer
+
+AAA this app is not working. At the moment is pretty broken
+cause we are migrating the code to the library in order for
+the application to be way thinned
+
+We succesfully created classes for this pages:
+
+- profile
+- item
+
+We are currently working on the integration of `.md` files.
+
+We have some issues with exporting modules which use `fs`
+from the packages and import them in client applications.
+
+We created a next application inside the `ui` package to be
+able to visualize every class that we create.

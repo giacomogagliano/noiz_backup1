@@ -1,0 +1,38 @@
+{
+  "name": "@zionapps/social",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "module": "node",
+  "scripts": {
+    "dev": "next dev",
+    "prod": "next start",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@zionstate/database": "*",
+    "@zionstate/learn": "*",
+    "@zionstate/test": "*",
+    "@zionstate/ui": "*",
+    "@zionstate_js/error": "*",
+    "@zionstate_js/regexp": "*",
+    "@zionstate_js/url": "*",
+    "@zionstate_node/crypto": "*",
+    "@zionstate_node/emitter": "*",
+    "@zionstate_node/process": "*",
+    "@zionstate_node/zion-util": "*",
+    "dotenv": "^16.0.2",
+    "next": "^12.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^5.3.5"
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^2.0.7"
+  },
+  "type": "module",
+  "source": "src/index.ts"
+}

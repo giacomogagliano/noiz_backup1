@@ -1,0 +1,24 @@
+{
+  "folders": [
+    {
+      "name": "blockchain",
+      "path": "."
+    },
+    {
+      "name": "src",
+      "path": "src"
+    },
+    {
+      "name": "test",
+      "path": "test"
+    },
+    {
+      "name": "scripts",
+      "path": "scripts"
+    },
+    {
+      "path": "contracts/zion_contracts"
+    }
+  ],
+  "settings": {}
+}

@@ -1,0 +1,19 @@
+{
+  "description": "Elsewhere: Underlords - High tech Freedom Fighters for the Metaverse",
+  "external_url": "https://elsewhere.io/underlords/",
+  "image": "",
+  "name": "Underlord #0",
+  "attributes": [
+    { "trait_type": "clothing", "value": "cyberpunk" },
+    { "trait_type": "accessories", "value": "futuristic aviator helmet" },
+    { "trait_type": "sex", "value": "Artiok" },
+    { "trait_type": "timeofday", "value": "during a full moon" },
+    { "trait_type": "place", "value": "ice kingdom" },
+    { "trait_type": "placestyle", "value": "abandoned" },
+    { "trait_type": "background", "value": "strange clouds" },
+    { "trait_type": "realism", "value": "realistic" },
+    { "trait_type": "color", "value": "neon" },
+    { "trait_type": "planet", "value": "pfp3a.jpg" }
+  ],
+  "comment": "https://docs.opensea.io/docs/metadata-standards"
+}

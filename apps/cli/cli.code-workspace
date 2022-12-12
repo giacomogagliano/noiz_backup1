@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../packages/ui/src/CLI"
+		},
+		{
+			"path": "src"
+		}
+	],
+	"settings": {}
+}

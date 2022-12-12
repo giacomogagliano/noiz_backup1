@@ -1,0 +1,21 @@
+{
+  "input": "pfp3a.jpg",
+  "seed": 300013251,
+  "strength": 0.7,
+  "scale": 5,
+  "prompt": "a portrait of a !!anthropomorphous bear man!! !!resistance fighter!! wearing cyberpunk and futuristic aviator helmet front-facing. in a futuristic abandoned ice kingdom  !!during a full moon!!. strange clouds in the background. HD art. trending on artstation., !!realistic!!. bright pervasive !!neon ambient lighting!!.",
+  "attr": {
+    "clothing": "cyberpunk",
+    "accessories": "futuristic aviator helmet",
+    "sex": "!!anthropomorphous bear man!!",
+    "timeofday": "during a full moon",
+    "place": "ice kingdom",
+    "placestyle": "abandoned",
+    "background": "strange clouds",
+    "realism": "realistic",
+    "media": "art. trending on artstation.",
+    "photography": "depth of field 270mm",
+    "action": "doing the shuffle",
+    "color": "neon"
+  }
+}

@@ -1,0 +1,4 @@
+"static defaultProps: ${TM_FILENAME_BASE}Props = {",
+"  layout: layouts.main,",
+"  style: styles.defaultStyle,",
+"};",

@@ -1,0 +1,4 @@
+{
+  "main": "dist/zionstate-database-FileSystem.cjs.js",
+  "module": "dist/zionstate-database-FileSystem.esm.js"
+}

@@ -1,0 +1,19 @@
+{
+  "description": "Elsewhere: Underlords - High tech Freedom Fighters for the Metaverse",
+  "external_url": "https://znft.tech",
+  "image": "https://ipfs.io/ipfs/QmXzhWLP9XEeDpvJyMKXSoCsop84q3FWJ4UfGA4X3houYM?filename=QmXzhWLP9XEeDpvJyMKXSoCsop84q3FWJ4UfGA4X3houYM",
+  "name": "Human glowraver #41",
+  "attributes": [
+    { "trait_type": "clothing", "value": "glowraver" },
+    { "trait_type": "accessories", "value": "futuristic soldier helmet" },
+    { "trait_type": "sex", "value": "Human" },
+    { "trait_type": "timeofday", "value": "during a rainstorm" },
+    { "trait_type": "place", "value": "atlantis" },
+    { "trait_type": "placestyle", "value": "!!neon-lit!!" },
+    { "trait_type": "background", "value": "gigantic mechs" },
+    { "trait_type": "realism", "value": "movie still" },
+    { "trait_type": "color", "value": "green" },
+    { "trait_type": "planet", "value": "pfp3g.jpg" }
+  ],
+  "comment": "https://docs.opensea.io/docs/metadata-standards"
+}

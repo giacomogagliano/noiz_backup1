@@ -1,0 +1,22 @@
+- [ ] get filename (zERCStateAllowancesPermit)
+- [ ] create folder with name (zERCStateAllowancesPermit)
+- [ ] create zERCStateAllowancesPermit.sol
+  - [ ] create /zERCStateAllowancesPermit/PrivatezERCStateAllowancesPermit.sol
+    - [ ] write spdx
+    - [ ] write contract statement
+    - [ ] import abstract
+  - [ ] create /zERCStateAllowancesPermit/APrivatezERCStateAllowancesPermit.sol
+    - [ ] write spdx
+    - [ ] write abstract contract statement
+    - [ ] import interface
+  - [ ] create /zERCStateAllowancesPermit/IPrivatezERCStateAllowancesPermit.sol
+    - [ ] write spdx
+    - [ ] write interface statement
+  - [ ] create /zERCStateAllowancesPermit/extensions/zIERCStateAllowancesPermit.sol
+    - [ ] write spdx
+    - [ ] write contract statement
+    - [ ] import interface
+  - [ ] create /zERCStateAllowancesPermit/extensions/IzIERCStateAllowancesPermit.sol
+    - [ ] write spdx
+    - [ ] write interface statement
+  - [ ] write imports in first file

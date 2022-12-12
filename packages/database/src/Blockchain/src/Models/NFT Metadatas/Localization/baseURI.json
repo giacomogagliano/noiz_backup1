@@ -1,0 +1,10 @@
+{
+  "name": "Advertising Space",
+  "description": "Each token represents a unique Ad space in the city.",
+  "localization": {
+    "uri": "ipfs://QmWS1VAdMD353A6SDk9wNyvkT14kyCiZrNDYAad4w1tKqT/{locale}.json",
+    "default": "en",
+    "locales": ["en", "es", "fr"]
+  },
+  "comment" : "https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1155.md#erc-1155-metadata-uri-json-schema"
+}

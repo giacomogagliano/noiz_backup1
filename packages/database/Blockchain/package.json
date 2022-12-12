@@ -1,0 +1,5 @@
+{
+  "main": "dist/zionstate-database-Blockchain.cjs.js",
+  "module": "dist/zionstate-database-Blockchain.esm.js",
+  "types": "../dist/Blockchain/index.d.ts"
+}

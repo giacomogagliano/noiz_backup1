@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": ["src", "src/Blockchain/src/**.ts/*.ts"],
+  "exclude": [
+    "dist",
+    "src/Blockchain/chainlink",
+    "src/Blockchain/contracts",
+    "src/Blockchain/giacomo",
+    "src/Blockchain/oz",
+    "src/Blockchain/scripts",
+    "src/Blockchain/tasks",
+    "src/Blockchain/test"
+  ]
+}

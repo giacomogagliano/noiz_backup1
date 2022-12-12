@@ -1,0 +1,21 @@
+{
+  "input": "pfp3g.jpg",
+  "seed": 637635564,
+  "strength": 0.7,
+  "scale": 5,
+  "prompt": "a portrait of a !!anthropomorphous bear man!! !!resistance fighter!! wearing neopunk and futuristic head gear front-facing. in a futuristic !!neon-lit!! holodeck  !!during a sunny day!!. gigantic mechs in the background. HD art. trending on artstation., !!realistic!!. bright pervasive !!80s synthwave ambient lighting!!.",
+  "attr": {
+    "clothing": "neopunk",
+    "accessories": "futuristic head gear",
+    "sex": "!!anthropomorphous bear man!!",
+    "timeofday": "during a sunny day",
+    "place": "holodeck",
+    "placestyle": "!!neon-lit!!",
+    "background": "gigantic mechs",
+    "realism": "realistic",
+    "media": "art. trending on artstation.",
+    "photography": "rule of thirds",
+    "action": "walking",
+    "color": "80s synthwave"
+  }
+}

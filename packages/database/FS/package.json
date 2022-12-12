@@ -1,0 +1,5 @@
+{
+  "main": "dist/zionstate-database-FS.cjs.js",
+  "module": "dist/zionstate-database-FS.esm.js",
+  "types": "../dist/FS/index.d.ts"
+}

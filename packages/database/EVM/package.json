@@ -1,0 +1,5 @@
+{
+  "main": "dist/zionstate-database-EVM.cjs.js",
+  "module": "dist/zionstate-database-EVM.esm.js",
+  "types": "../dist/EVM/index.d.ts"
+}

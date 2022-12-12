@@ -1,0 +1,4 @@
+{
+  "main": "dist/zionstate-database-Git.cjs.js",
+  "module": "dist/zionstate-database-Git.esm.js"
+}
