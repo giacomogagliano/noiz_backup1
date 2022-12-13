@@ -1,4 +1,7 @@
-import { createGlobalStyle } from "styled-components";
+import {
+  createGlobalStyle,
+  DefaultTheme,
+} from "styled-components";
 import { GoogleFonts } from "../../../class";
 
 const roboto = new GoogleFonts({
@@ -7,7 +10,10 @@ const roboto = new GoogleFonts({
 export const robotoGoogleQuery = roboto.googleQuery;
 const robotoCssValue = roboto.cssValue;
 
-export const GlobalStyle = createGlobalStyle`
+// FIXME global style props
+export const GlobalStyle = createGlobalStyle<{
+  theme: DefaultTheme;
+}>`
   body {
     width: 100vw;
     height: 100vh;
