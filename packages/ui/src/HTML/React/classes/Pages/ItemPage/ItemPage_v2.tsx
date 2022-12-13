@@ -7,6 +7,11 @@ import {
   ImageState,
   Image,
 } from "../../Image";
+import {
+  NavBar,
+  NavInput,
+  NavInputProps,
+} from "../../NavBar";
 
 enum layouts {
   main = "main",
@@ -89,6 +94,16 @@ export class ItemPage_v2 extends BaseNoiz<
     const ROYALTIES = "Royalties";
     const HIGHEST_BID = "highest bid:";
 
+    const input5 = new NavInputProps();
+    input5.inputId = "Bid";
+    input5.inputName = "Bid";
+    const input6 = new NavInputProps();
+    input6.inputId = "Details";
+    input6.inputName = "Details";
+    const input7 = new NavInputProps();
+    input7.inputId = "History";
+    input7.inputName = "History";
+
     return (
       <div className={props.className} css={props.css}>
         <div id="bg-upper"></div>
@@ -113,6 +128,11 @@ export class ItemPage_v2 extends BaseNoiz<
             <p id="bold">{data.currency}</p>
           </div>
         </div>
+        <NavBar text layout="main" style="borderOnTop">
+          <NavInput {...input5} layout="text" />
+          <NavInput {...input6} layout="text" />
+          <NavInput {...input7} layout="text" />
+        </NavBar>
         <div id="links">
           <div id="sublink">
             <div id="sublink-text-area">
