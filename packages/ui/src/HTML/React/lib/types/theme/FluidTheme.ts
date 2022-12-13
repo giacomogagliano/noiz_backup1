@@ -1,4 +1,5 @@
 import { Palette1 } from "./Palettes";
+import { BasicColorStyle } from "../../global";
 
 export type FluidTheme = {
   body: string;
@@ -6,7 +7,7 @@ export type FluidTheme = {
   backgroundColor: string;
   borderColor: string;
   headingColor: string;
-  primary: BasicFluidProps;
-  secondary: BasicFluidProps;
+  primary: BasicColorStyle;
+  secondary: BasicColorStyle;
   palette: Palette1;
 };

@@ -1,3 +1,4 @@
+// TODO #21 @giacomogagliano sistemare global.ts in React/lib
 import {
   AllHTMLAttributes as allHTML,
   // FC,
@@ -202,7 +203,7 @@ type _BooleanSizes = {
   big?: boolean;
 };
 
-type _BasicProps = {
+export type BasicColorStyle = {
   color: string;
   backgroundColor: string;
   borderColor: string;
@@ -253,7 +254,6 @@ type Direction = _Direction;
 
 ///// Styled
 type StyledDefault<T> = _StyledDefault<T>;
-type BasicFluidProps = _BasicProps;
 type BooleanSizes = _BooleanSizes;
 type BooleanDisplay = _BooleanDisplay;
 
