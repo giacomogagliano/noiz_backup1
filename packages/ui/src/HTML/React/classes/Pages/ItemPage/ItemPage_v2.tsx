@@ -129,7 +129,7 @@ export class ItemPage_v2 extends BaseNoiz<
           </div>
         </div>
         <NavBar text layout="main" style="borderOnTop">
-          <NavInput {...input5} layout="text" />
+          <NavInput {...input5} layout="text" checked />
           <NavInput {...input6} layout="text" />
           <NavInput {...input7} layout="text" />
         </NavBar>
@@ -173,10 +173,10 @@ export class ItemPage_v2 extends BaseNoiz<
     width: 100%;
     height: 100%;
     overflow: auto;
-    grid-template-rows: 5% 45% 10% 30% 10%;
+    grid-template-rows: 5% 45% 10% 25% 10% 5%;
     grid-template-columns: 5% 90% 5%;
     @media only screen and (min-width: 367px) {
-      grid-template-rows: 5% 5% 35% 5% 5% 30% 15%;
+      grid-template-rows: 5% 5% 35% 5% 5% 25% 15% 5%;
       grid-template-columns: 5% 7% 76% 7% 5%;
       grid-template-areas:
         ". . . . ."
@@ -185,17 +185,20 @@ export class ItemPage_v2 extends BaseNoiz<
         ". . . . ."
         ". social social social ."
         ". infos infos infos ."
-        ". links links links .";
+        ". links links links ."
+        ". navbar navbar navbar .";
     }
     grid-template-areas:
       ". . ."
       ". image ."
       ". social ."
       ". infos ."
-      ". links .";
+      ". links ."
+      ". navbar .";
     div  {
       overflow: auto;
     }
+
     #bg-upper {
       position: absolute;
       z-index: 0;

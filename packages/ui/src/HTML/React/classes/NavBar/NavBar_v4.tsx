@@ -146,6 +146,13 @@ export class NavBar_v4 extends BaseNoiz<
 
   BorderOnTop = styled(this.Html)`
     display: grid;
+    ${props =>
+      props.text === true &&
+      css`
+        .Navbar {
+          grid-area: navbar;
+        }
+      `}
     grid-auto-flow: ${props => {
       if (props.horizontal === true) {
         return "column";
