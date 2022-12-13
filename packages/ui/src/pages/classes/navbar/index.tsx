@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import {
   Icon,
   NavBar,
@@ -22,14 +23,19 @@ export default function index() {
   const input4 = new NavInputProps();
   input4.inputId = "wow";
   input4.inputName = "ok";
+  let NavArea = styled.div`
+    width: inherit;
+  `;
 
   return (
-    <NavBar text layout="main" style="borderOnTop">
-      <NavInput {...input3} layout="icon" checked>
-        <Icon arrowLeft />
-      </NavInput>
-      <NavInput {...input1} layout="text" />
-      <NavInput {...input4} layout="icon" />
-    </NavBar>
+    <NavArea>
+      <NavBar text layout="main" style="borderOnTop">
+        <NavInput {...input3} layout="icon" checked>
+          <Icon arrowLeft />
+        </NavInput>
+        <NavInput {...input1} layout="text" />
+        <NavInput {...input4} layout="icon" />
+      </NavBar>
+    </NavArea>
   );
 }

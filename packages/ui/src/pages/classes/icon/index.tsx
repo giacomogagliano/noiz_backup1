@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import path from "path";
 import { Icon } from "../../../HTML/React/classes";
-import "@zionstate/utils";
 import { node } from "@zionstate/zionbase/utils";
 // FS.system.joinPaths;
 
