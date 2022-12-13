@@ -23,12 +23,12 @@ export default function index() {
   const input4 = new NavInputProps();
   input4.inputId = "wow";
   input4.inputName = "ok";
-  let Navarea = styled.div`
+  let NavArea = styled.div`
     width: inherit;
   `;
 
   return (
-    <Navarea>
+    <NavArea>
       <NavBar text layout="main" style="borderOnTop">
         <NavInput {...input3} layout="icon" checked>
           <Icon arrowLeft />
@@ -36,6 +36,6 @@ export default function index() {
         <NavInput {...input1} layout="text" />
         <NavInput {...input4} layout="icon" />
       </NavBar>
-    </Navarea>
+    </NavArea>
   );
 }
