@@ -56,7 +56,7 @@ class SmartContract extends Component<
     this.setIsCollapsed(!this.state.isCollapsed);
   };
 
-  Collapsed = (
+  Collapsed = () => (
     <form onSubmit={this.handleSubmit}>
       <div id="write-function">
         <div id="input-clpsd">
@@ -77,7 +77,7 @@ class SmartContract extends Component<
     </form>
   );
 
-  Expanded = (
+  Expanded = () => (
     <form onSubmit={this.handleSubmit}>
       <div id="write-function-exp">
         <div id="title-exp">
@@ -90,7 +90,7 @@ class SmartContract extends Component<
           </button>
         </div>
         <div id="input-exp">
-          <div id="field-exp">setNumber</div>
+          <div id="field-exp">number_:</div>
           <input
             id="argument-exp"
             type="text"
@@ -112,7 +112,7 @@ class SmartContract extends Component<
 
   Style = styled(this.Layout)`
     #area {
-      width: 22rem;
+      width: 25rem;
       padding: 2rem;
       form {
         width: 100%;
@@ -137,7 +137,6 @@ class SmartContract extends Component<
             width: 100%;
             #field {
               width: 30%;
-              padding-right: 0.5rem;
               background-color: #ef830f;
               border-radius: 0.3rem 0 0 0.3rem;
               color: #eef2f2;
@@ -146,6 +145,7 @@ class SmartContract extends Component<
               border-left: 0.1rem solid;
               border-top: 0.1rem solid;
               border-bottom: 0.1rem solid;
+              font-size: 100%;
             }
             #field:hover  {
               background-color: #e49a10;
@@ -175,6 +175,7 @@ class SmartContract extends Component<
         #write-function-exp {
           width: 100%;
           height: 100%;
+          color: #617279;
           #title-exp {
             display: flex;
             justify-content: space-between;
@@ -205,7 +206,6 @@ class SmartContract extends Component<
             }
             #field-exp {
               grid-area: smallTitle;
-              color: #eef2f2;
             }
             #argument-exp {
               grid-area: input;
@@ -216,6 +216,9 @@ class SmartContract extends Component<
             justify-content: flex-end;
             #transact-btn {
               border: none;
+              padding-left: 1rem;
+              padding-right: 1rem;
+              font-size: 100%;
               background-color: #ef830f;
               padding: 0.7rem;
               border-radius: 0.3rem;
@@ -246,9 +249,11 @@ class SmartContract extends Component<
 
     return (
       <this.Style>
-        {this.state.isCollapsed
-          ? this.Collapsed
-          : this.Expanded}
+        {this.state.isCollapsed ? (
+          <this.Collapsed />
+        ) : (
+          <this.Expanded />
+        )}
       </this.Style>
     );
   }
