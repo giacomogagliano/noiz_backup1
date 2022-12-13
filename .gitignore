@@ -136,3 +136,5 @@ packages/_testpack
 packages/blockchain/giacomo
 packages/blockchain/cache
 packages/blockchain/artifacts
+packages/database/src/Blockchain/artifacts
+packages/database/src/Blockchain/cache
