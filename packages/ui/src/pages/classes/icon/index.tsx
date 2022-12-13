@@ -1,21 +1,13 @@
 import React from "react";
 import Link from "next/link";
-import path from "path";
 import { Icon } from "../../../HTML/React/classes";
 import { node } from "@zionstate/zionbase/utils";
-// FS.system.joinPaths;
 
 const upperCase = node.util.zionUtil.upperCaseFirst;
-const joinPaths = node.util.zionUtil.joinPaths;
-const buildPathTuple = node.util.zionUtil.buildPathTuple;
+// TODO if useless for a while, delete
+// const joinPaths = node.util.zionUtil.joinPaths;
+// const buildPathTuple = node.util.zionUtil.buildPathTuple;
 const buildPaths = node.util.zionUtil.buildPaths;
-
-// const joinPaths = NoizPath.joinPaths;
-
-// function buildPathTuple(paths: string[], text: string) {
-//   let res: [string, string] = [joinPaths(...paths), text];
-//   return res;
-// }
 
 /**
  * usage:
@@ -58,10 +50,6 @@ function createLinks(
 }
 
 export default function index() {
-  // TODO #12 aggiungere link ad ogni icona
-  // TODO mettere le icone in mezzo la pagina e a tutto
-  // schermo, forse questo conviene farlo se possibile nel
-  // defaul delle icone
   const root = "/classes/icon";
   const iconpaths = Icon.svgslist();
   const builtPaths = buildPaths.bind(node.util.zionUtil)(
