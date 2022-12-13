@@ -1,13 +1,13 @@
 import { FluidTheme } from "../lib/types/theme";
 
-const black = "#090909";
-const white = "#fafafa";
-const darkgrey = "hsl(0, 0%, 53%)";
-const grey = "hsl(0, 0%, 76%)";
+const black_ = "hsl(185, 3%, 6%)";
+const white_ = "hsl(0, 0%, 93%)";
+const darkgrey_ = "hsl(0, 0%, 53%)";
+const grey_ = "hsl(0, 0%, 76%)";
 
 const palette = {
-  grey,
-  darkgrey,
+  grey: grey_,
+  darkgrey: darkgrey_,
   red: "hsl(346, 93%, 39%)",
   orange: "#hsl(18, 67%, 60%)",
   yellow: "hsl(57, 93%, 72%)",
@@ -20,39 +20,39 @@ const palette = {
 };
 
 export const darkTheme: FluidTheme = {
-  body: black,
-  textColor: white,
-  backgroundColor: black,
-  borderColor: white,
+  body: black_,
+  textColor: white_,
+  backgroundColor: black_,
+  borderColor: white_,
   headingColor: "",
   primary: {
-    backgroundColor: black,
-    borderColor: white,
-    color: white,
+    backgroundColor: black_,
+    borderColor: white_,
+    color: white_,
   },
   secondary: {
-    backgroundColor: white,
-    borderColor: black,
-    color: black,
+    backgroundColor: white_,
+    borderColor: black_,
+    color: black_,
   },
   palette,
 };
 
 export const lightTheme: FluidTheme = {
-  body: white,
-  textColor: black,
-  backgroundColor: white,
-  borderColor: black,
+  body: white_,
+  textColor: black_,
+  backgroundColor: white_,
+  borderColor: black_,
   headingColor: "",
   primary: {
-    backgroundColor: white,
-    borderColor: black,
-    color: black,
+    backgroundColor: white_,
+    borderColor: black_,
+    color: black_,
   },
   secondary: {
-    backgroundColor: black,
-    borderColor: white,
-    color: white,
+    backgroundColor: black_,
+    borderColor: white_,
+    color: white_,
   },
   palette,
 };
