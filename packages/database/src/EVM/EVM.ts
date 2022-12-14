@@ -1,54 +1,27 @@
 // import ethers from "ethers";
-import {
-  getProvider,
-  getProviderType,
-} from "./getProvider";
-import {
-  formatEther,
-  formatEtherType,
-} from "./formatEthers";
-import {
-  formatUnits,
-  formatUnitsType,
-} from "./formatUnits";
-import { getBalance, getBalanceType } from "./getBalance";
-import {
-  getGasPrice,
-  getGasPriceType,
-} from "./getGasPrice";
-import { getJsonRpc, getJsonRpcType } from "./getJsonRpc";
-import {
-  buildProviders,
-  buildProvidersType,
-} from "./buildProviders";
+import { getProvider, getProviderType } from "./";
+import { formatEther, formatEtherType } from "./";
+import { formatUnits, formatUnitsType } from "./";
+import { getBalance, getBalanceType } from "./";
+import { getGasPrice, getGasPriceType } from "./";
+import { getJsonRpc, getJsonRpcType } from "./";
+import { buildProviders, buildProvidersType } from "./";
 import { ethers, Signer } from "ethers";
-import {
-  makeContract,
-  makeContractType,
-} from "./getContract";
-import {
-  deployContract,
-  deployContractType,
-} from "./deployContract";
-import {
-  retrieveTxDatas,
-  retrieveTxDatasType,
-} from "./retrieveTxDatas";
+import { makeContract, makeContractType } from "./";
+import { deployContract, deployContractType } from "./";
+import { retrieveTxDatas, retrieveTxDatasType } from "./";
 import {
   calculateTxCosts,
   calculateTxCostsType,
-} from "./calculateTxCosts";
+} from "./";
 // import { printTxLog, printTxLogType } from "./printTxLog";
 import { ZionContractFactories } from "./Types/ZionContractFactories";
-import {
-  detectEthereumProvider,
-  MetaMaskEthereumProvider,
-} from "./detectEthereumProvider";
-import { requestAccounts } from "./requestAccounts";
+import { detectEthereumProvider } from "./";
+import { requestAccounts } from "./";
 import {
   addContractFactory,
   addContractFactoryType,
-} from "./addContractFactory";
+} from "./";
 import {
   AlchemyProvider,
   EtherscanProvider,
@@ -56,6 +29,7 @@ import {
   JsonRpcProvider,
 } from "./Types";
 import { RequireOnlyOne } from "./EVMweb";
+import { MetaMaskEthereumProvider } from "./lib/detectEthereumProvider/detectEthereumProvider_v1";
 
 export type EVMCtorArgs = {
   signer?: Signer;

@@ -1,0 +1,21 @@
+{
+  "folders": [
+    {
+      "name": "database",
+      "path": "../../packages/database"
+    },
+    {
+      "name": "EVM",
+      "path": "../../packages/database/src/EVM"
+    },
+    {
+      "name": "src",
+      "path": "../../packages/database/src/Blockchain/src"
+    },
+    {
+      "name": "src",
+      "path": "../../packages/database/src"
+    }
+  ],
+  "settings": {}
+}
