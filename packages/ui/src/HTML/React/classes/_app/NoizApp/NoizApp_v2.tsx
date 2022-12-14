@@ -32,16 +32,16 @@ import { dataGuard } from "@zionstate/zionbase/utils";
 
 ////////ETH
 
-type useEthereumData_v2 = {
-  contractAddress: string;
-  connectMetamaskMessage: string;
-  metamaskNotInstalled: string;
-};
+// type useEthereumData_v2 = {
+//   contractAddress: string;
+//   connectMetamaskMessage: string;
+//   metamaskNotInstalled: string;
+// };
 
 //////////
 
 const theme = lightTheme;
-const dark = darkTheme;
+// const dark = darkTheme;
 
 enum layouts {
   main = "main",
