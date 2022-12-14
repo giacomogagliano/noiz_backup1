@@ -167,10 +167,8 @@ export class NoizApp_v2 extends BaseNoiz<
     </div>
   );
 
-  istia(props: NoizApp_v2Props) {
+  istia({ Component, pageProps }: NoizApp_v2Props) {
     const Layout = this.standard1;
-    console.log("istia", theme.primary.color);
-
     return (
       <ThemeProvider theme={this.state.theme}>
         <GlobalStyle />
@@ -187,9 +185,7 @@ export class NoizApp_v2 extends BaseNoiz<
             </button>
           </header>
           <section id="content">
-            <props.Component
-              {...props.pageProps}
-            ></props.Component>
+            <Component {...pageProps}></Component>
           </section>
           <footer>I am the footer</footer>
         </Layout>
@@ -372,6 +368,7 @@ export class NoizApp_v2 extends BaseNoiz<
   initizalizeWeb3 = () => {
     const isMetamask = this.state.metamask;
     const contract = this.state.contractFactory;
+
     if (!isMetamask) return;
     if (!contract) throw new Error("no contract factory");
     const evm = new this.EVMweb({
@@ -429,6 +426,15 @@ export class NoizApp_v2 extends BaseNoiz<
     prevState: Readonly<NoizApp_v2State>,
     __?: any
   ) => {
+    const SimpleStorage =
+      this.state.evm?.contractFactories.SimpleStorage;
+    if (SimpleStorage) {
+      const foos = SimpleStorage.interface.functions;
+      for (let key in foos) {
+        const contract = foos[key];
+        if (contract) console.log(contract.name);
+      }
+    }
     const hasUpdated = this.hasUpdated;
     const initizalizeWeb3 = this.initizalizeWeb3;
     const listAccounts = this.listAccounts;
@@ -471,6 +477,7 @@ export class NoizApp_v2 extends BaseNoiz<
 
   didMount() {
     const isDark = this.isDarkColorScheme();
+
     const handleClrScheme = this.handleColorSchemeChange;
     this.detectEth();
     if (isDark) this.setPrefersColorScheme(themes.dark);
