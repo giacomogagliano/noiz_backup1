@@ -1,3 +1,4 @@
+import { EVMweb } from "@zionstate/database/dist/EVM";
 import React, {
   ChangeEvent,
   Component,
@@ -8,15 +9,62 @@ import React, {
 import styled from "styled-components";
 import { Icon } from "../../HTML/React/classes";
 
+// TODO ordinare prima quelli senza input
+// TODO togliere il costruttore
+// TODO ricevere da smart contract
+// TODO risolvere problema child in map
+
+interface CollapsableId {
+  id: number | null;
+  isCollapsed?: boolean;
+}
+
+interface HandleCollapse {
+  handleCollapse: (
+    e: MouseEvent<HTMLButtonElement>
+  ) => void;
+}
+
+interface AbiItem {
+  name?: string;
+  inputs?: {
+    internalType?: string;
+    name: string;
+    type: string;
+  }[];
+  stateMutability?: string;
+  type?: string;
+}
+
+interface CollapsableAbiItem
+  extends CollapsableId,
+    AbiItem,
+    HandleCollapse {
+  hasInputs?: boolean;
+}
+
+class CollapsableAbiItem {
+  constructor(props?: AbiItem) {
+    if (!props) return;
+    this.inputs = props.inputs;
+    this.name = props.name;
+    this.stateMutability = props.stateMutability;
+    this.hasInputs = props.inputs?.length! > 0;
+  }
+}
+
 type LayoutProps = {
   className?: string;
   children?: React.ReactNode;
+  contract?: typeof EVMweb["prototype"]["newNoizContractFactories"]["SimpleStorage"]["abi"];
 };
 
 interface LayoutState {
   input: string;
   number: string;
   isCollapsed?: boolean;
+  contract?: CollapsableAbiItem[];
+  AbiItems?: JSX.Element[];
 }
 class LayoutState {}
 
@@ -26,10 +74,14 @@ class SmartContract extends Component<
 > {
   constructor(props: LayoutProps) {
     super(props);
+    let abiItem = new CollapsableAbiItem();
+    abiItem.id = null;
     let state = new LayoutState();
     state.input = "";
     state.number = "";
     state.isCollapsed = true;
+    state.contract = [abiItem];
+    state.AbiItems = [<></>];
     this.state = state;
   }
 
@@ -41,6 +93,20 @@ class SmartContract extends Component<
   setIsCollapsed = (isCollapsed: boolean) =>
     this.setState({ isCollapsed });
 
+  setIsCollapsedById = (id: number) => {
+    if (!this.state.contract) return;
+    let contractClone = [...this.state.contract];
+    const prevState = this.state.contract[id].isCollapsed;
+    contractClone[id].isCollapsed = !prevState;
+    this.setState({ contract: contractClone });
+  };
+
+  setContract = (contract: CollapsableAbiItem[]) =>
+    this.setState({ contract });
+
+  setAbiItems = (AbiItems: JSX.Element[]) =>
+    this.setState({ AbiItems });
+
   handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     this.setInput(e.target.value);
@@ -51,34 +117,48 @@ class SmartContract extends Component<
     this.setNumber(this.state.input);
   };
 
+  handleCollapseById =
+    (id: number) => (e: MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      this.setIsCollapsedById(id);
+    };
+
   handleCollapse = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     this.setIsCollapsed(!this.state.isCollapsed);
   };
 
-  Collapsed = (props: LayoutProps) => (
-    <form
-      onSubmit={this.handleSubmit}
-      className={props.className}
-    >
-      <div id="write-function">
-        <div id="input-clpsd">
-          <button id="field">setNumber</button>
-          <input
-            id="argument"
-            type="number"
-            onChange={this.handleChange}
-          />
+  Collapsed = (
+    props: LayoutProps &
+      CollapsableAbiItem &
+      HandleCollapse
+  ) => {
+    return (
+      <form
+        onSubmit={this.handleSubmit}
+        className={props.className}
+      >
+        <div id="write-function">
+          <div id="input-clpsd">
+            <button id="field">{props.name}</button>
+            {props.inputs && (
+              <input
+                id="argument"
+                type="number"
+                onChange={this.handleChange}
+              />
+            )}
+          </div>
+          <button
+            id="expand-button"
+            onClick={props.handleCollapse}
+          >
+            {props.inputs && <Icon arrowBack></Icon>}
+          </button>
         </div>
-        <button
-          id="expand-button"
-          onClick={this.handleCollapse}
-        >
-          <Icon arrowBack></Icon>
-        </button>
-      </div>
-    </form>
-  );
+      </form>
+    );
+  };
 
   StyledCollapsed = styled(this.Collapsed)`
     width: 100%;
@@ -111,6 +191,12 @@ class SmartContract extends Component<
           border-top: 0.1rem solid;
           border-bottom: 0.1rem solid;
           font-size: 100%;
+          ${props =>
+            props.hasInputs
+              ? ""
+              : `border-right: 0.1rem solid;
+                border-radius: 0.3rem 0.3rem 0.3rem 0.3rem;
+              `}
         }
         #field:hover  {
           background-color: #e49a10;
@@ -139,35 +225,83 @@ class SmartContract extends Component<
     }
   `;
 
-  Expanded = (props: LayoutProps) => (
-    <form
-      onSubmit={this.handleSubmit}
-      className={props.className}
-    >
-      <div id="write-function-exp">
-        <div id="title-exp">
-          <p id="title-text">setNumber</p>
-          <button
-            id="expand-button"
-            onClick={this.handleCollapse}
-          >
-            <Icon arrowBack></Icon>
-          </button>
-        </div>
-        <div id="input-exp">
-          <div id="field-exp">number_:</div>
-          <input
-            id="argument-exp"
-            type="text"
-            onChange={this.handleChange}
-          ></input>
-        </div>
-        <div id="button-exp">
-          <button id="transact-btn">transact</button>
-        </div>
+  ExpandedInput = (props: {
+    name: string;
+    type: string;
+    handleChange: (
+      e: ChangeEvent<HTMLInputElement>
+    ) => void;
+  }) => {
+    let type: "text" | "number";
+    switch (props.type) {
+      case "address":
+        type = "text";
+        break;
+      case "string":
+        type = "text";
+        break;
+      case "uint256":
+        type = "number";
+        break;
+
+      default:
+        type = "text";
+        break;
+    }
+    return (
+      <div id="input-exp">
+        <p>{props.type}</p>
+        <div id="field-exp">{props.name}</div>
+        <input
+          id="argument-exp"
+          type={type}
+          onChange={props.handleChange}
+        ></input>
       </div>
-    </form>
-  );
+    );
+  };
+
+  Expanded = (
+    props: LayoutProps &
+      CollapsableAbiItem &
+      HandleCollapse
+  ) => {
+    const ExpandedInput = this.ExpandedInput;
+    return (
+      <form
+        onSubmit={this.handleSubmit}
+        className={props.className}
+      >
+        <div id="write-function-exp">
+          <div id="title-exp">
+            <p id="title-text">{props.name}</p>
+            <button
+              id="expand-button"
+              onClick={props.handleCollapse}
+            >
+              <Icon arrowBack></Icon>
+            </button>
+          </div>
+          {props.inputs!.map((e, idx) => {
+            const props = {
+              name: e.name,
+              handleChange: this.handleChange,
+              type: e.type,
+            };
+            return (
+              <ExpandedInput
+                {...props}
+                key={idx + e.name}
+              />
+            );
+          })}
+          <div id="button-exp">
+            <button id="transact-btn">transact</button>
+          </div>
+        </div>
+      </form>
+    );
+  };
 
   StyledExpanded = styled(this.Expanded)`
     width: 100%;
@@ -237,7 +371,7 @@ class SmartContract extends Component<
 
   Style = styled(this.Layout)`
     #area {
-      width: 25rem;
+      width: 30em;
       padding: 2rem;
       border: 0.1rem solid;
       border-color: #344850;
@@ -246,23 +380,75 @@ class SmartContract extends Component<
     }
   `;
 
-  render() {
-    console.log(this.state.isCollapsed);
+  componentDidUpdate(p: LayoutProps, s: LayoutState, sn) {
+    if (p.contract !== this.props.contract) {
+      if (this.state.contract)
+        if (this.state.contract[0].id === null) {
+          if (!this.props.contract) return;
+          const propsContract = this.props.contract;
+          const contract = propsContract.map((a, idx) => {
+            var itm = new CollapsableAbiItem(a);
+            itm.isCollapsed = true;
+            itm.handleCollapse =
+              this.handleCollapseById(idx);
+            itm.id = idx;
+            return itm;
+          });
+          this.setContract(contract);
+        }
+    }
+    if (s.contract !== this.state.contract) {
+      if (this.state.contract) {
+        const abiItems = this.state.contract;
+        const AbiItems: JSX.Element[] = abiItems.map(i => {
+          const isColl = i.isCollapsed;
+          const hasInputs = i.hasInputs;
+          const coll_key = i.id + i.name! + "_c";
+          const exp_key = i.id + i.name! + "_e";
 
-    return (
-      <this.Style>
-        {this.state.isCollapsed ? (
-          <this.StyledCollapsed />
-        ) : (
-          <this.StyledExpanded />
-        )}
-      </this.Style>
-    );
+          const Collapsed = (
+            <this.StyledCollapsed
+              inputs={hasInputs ? i.inputs : undefined}
+              name={i.name}
+              stateMutability={i.stateMutability}
+              type={i.type}
+              key={coll_key}
+              id={i.id}
+              isCollapsed={i.isCollapsed}
+              handleCollapse={i.handleCollapse}
+            />
+          );
+
+          const Expanded = (
+            <this.StyledExpanded
+              inputs={hasInputs ? i.inputs : undefined}
+              name={i.name}
+              stateMutability={i.stateMutability}
+              type={i.type}
+              key={exp_key}
+              id={i.id}
+              isCollapsed={i.isCollapsed}
+              handleCollapse={i.handleCollapse}
+            ></this.StyledExpanded>
+          );
+          return isColl ? Collapsed : Expanded;
+        });
+
+        this.setAbiItems(AbiItems);
+      }
+    }
+  }
+
+  render() {
+    const AbiItems = this.state.AbiItems;
+    return <this.Style>{AbiItems}</this.Style>;
   }
 }
 
-const qualsiasicosa = <SmartContract></SmartContract>;
-
-export default function index() {
-  return qualsiasicosa;
+export default function index(props) {
+  return (
+    <SmartContract
+      contract={props.contract}
+    ></SmartContract>
+  );
 }

@@ -91,7 +91,7 @@ export interface NoizApp_v2State
   contractAddress: string | null;
   contract: ethers.Contract | null;
   contractFactory:
-    | EVMweb["contractFactories"][number]
+    | keyof EVMweb["contractFactories"]
     | null;
   provider: ethers.providers.Web3Provider | null;
   metamask: MetaMaskEthereumProvider | null;
@@ -185,7 +185,13 @@ export class NoizApp_v2 extends BaseNoiz<
             </button>
           </header>
           <section id="content">
-            <Component {...pageProps}></Component>
+            <Component
+              {...pageProps}
+              contract={
+                this.state.evm?.newNoizContractFactories
+                  .SimpleStorage.abi
+              }
+            ></Component>
           </section>
           <footer>I am the footer</footer>
         </Layout>
@@ -381,7 +387,7 @@ export class NoizApp_v2 extends BaseNoiz<
     this.setEvm(evm)
       .setProvider(provider)
       .setHandleClick(requestAccounts(provider))
-      .setContract(factory.attach(contractAddress));
+      .setContract(factory!.attach(contractAddress!));
   };
 
   handleNetworkChange = handleNetworkChange;
@@ -426,12 +432,6 @@ export class NoizApp_v2 extends BaseNoiz<
     prevState: Readonly<NoizApp_v2State>,
     __?: any
   ) => {
-    if (this.state.evm) {
-      const simpleStorage =
-        this.state.evm.newNoizContractFactories
-          .SimpleStorage;
-      console.log(simpleStorage.abi);
-    }
     const hasUpdated = this.hasUpdated;
     const initizalizeWeb3 = this.initizalizeWeb3;
     const listAccounts = this.listAccounts;
