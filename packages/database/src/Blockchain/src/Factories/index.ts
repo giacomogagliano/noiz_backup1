@@ -1,5 +1,5 @@
-import { NoizContractFactory } from "../../../EVM";
 ////
+import { NoizContractFactory } from "../Class";
 import { ERC1155IndividualURI__factory } from "../types/contracts";
 import { ZERC1155TokenShop__factory } from "../types/contracts";
 import { Membership__factory } from "../types/contracts";
