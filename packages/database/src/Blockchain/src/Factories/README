@@ -42,6 +42,10 @@ or use the `getfact` snippet.
 Next step is to add the correct exports to the `index.ts`
 file which is in the
 
+## Load the factory
+
+Once the package is ready it can be imported in the file `EVM/Types/ZionContractFactories.ts` file.
+
 ## Build the package
 
 run `yarn build` in the console.

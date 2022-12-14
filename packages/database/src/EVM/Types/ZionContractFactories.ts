@@ -5,6 +5,7 @@ import {
   ProvaMaster__factory,
   USDC__factory,
   ZERC1155TokenShop__factory,
+  SimpleStorage__factory,
 } from "../../Blockchain/src/types/contracts";
 
 export type ERC1155IndividualURI_Factory =
@@ -22,6 +23,7 @@ export class ZionContractFactories {
     Membership: Membership__factory;
     ProvaMaster: ProvaMaster__factory;
     USDC: USDC__factory;
+    SimpleStorage: SimpleStorage__factory;
     [key: string]: any;
   };
   constructor(public signer?: Signer) {
@@ -33,12 +35,15 @@ export class ZionContractFactories {
     const Membership = Factories.getMembership(signer);
     const ProvaMaster = Factories.getProvaMaster(signer);
     const USDC = Factories.getUSDC(signer);
+    const SimpleStorage =
+      Factories.getSimpleStorage(signer);
     this.contractFactories = {
       ERC1155IndividualURI,
       ERC1155TokenShop,
       Membership,
       ProvaMaster,
       USDC,
+      SimpleStorage,
     };
   }
 }
