@@ -1,7 +1,4 @@
-export {}
-
-//// ZionContractFactory
-export * from './ZionContractFactory';
+export {};
 
 //// NoizContractFactory
-export * from './NoizContractFactory';
+export * from "./NoizContractFactory";

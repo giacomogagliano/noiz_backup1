@@ -21,6 +21,8 @@ export interface IEVMweb {
   provider: ethers.providers.Web3Provider;
   signer: ethers.providers.JsonRpcSigner;
   contractFactories: typeof ZionContractFactories["prototype"]["contractFactories"];
+  newContractFactories: typeof ZionContractFactories["prototype"]["newContractFactories"];
+  newNoizContractFactories: typeof ZionContractFactories["prototype"]["newNoizContractFactories"];
   detect(): Promise<MetaMaskEthereumProvider | null>;
 }
 
@@ -29,6 +31,8 @@ export interface EVMweb {
   provider: ethers.providers.Web3Provider;
   signer: ethers.providers.JsonRpcSigner;
   contractFactories: typeof ZionContractFactories["prototype"]["contractFactories"];
+  newContractFactories: typeof ZionContractFactories["prototype"]["newContractFactories"];
+  newNoizContractFactories: typeof ZionContractFactories["prototype"]["newNoizContractFactories"];
   detect(): Promise<MetaMaskEthereumProvider | null>;
 }
 
@@ -37,8 +41,8 @@ export class EVMweb implements IEVMweb {
   provider: ethers.providers.Web3Provider;
   signer: ethers.providers.JsonRpcSigner;
   contractFactories: typeof ZionContractFactories["prototype"]["contractFactories"];
-  // newContractFactories: typeof ZionContractFactories["prototype"]["newContractFactories"];
-  // newNoizContractFactories: typeof ZionContractFactories["prototype"]["newNoizContractFactories"];
+  newContractFactories: typeof ZionContractFactories["prototype"]["newContractFactories"];
+  newNoizContractFactories: typeof ZionContractFactories["prototype"]["newNoizContractFactories"];
   constructor(args: EVMwebArgs) {
     this.window = args.window;
     this.provider = new ethers.providers.Web3Provider(
@@ -49,10 +53,10 @@ export class EVMweb implements IEVMweb {
       new ZionContractFactories(this.signer);
     this.contractFactories =
       zionContractFactories.contractFactories;
-    // this.newContractFactories =
-    //   zionContractFactories.newContractFactories;
-    // this.newNoizContractFactories =
-    //   zionContractFactories.newNoizContractFactories;
+    this.newContractFactories =
+      zionContractFactories.newContractFactories;
+    this.newNoizContractFactories =
+      zionContractFactories.newNoizContractFactories;
   }
   async detect() {
     return detect(this.window);

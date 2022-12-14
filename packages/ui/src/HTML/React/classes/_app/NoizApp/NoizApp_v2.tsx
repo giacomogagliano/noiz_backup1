@@ -426,11 +426,11 @@ export class NoizApp_v2 extends BaseNoiz<
     prevState: Readonly<NoizApp_v2State>,
     __?: any
   ) => {
-    const SimpleStorage =
-      this.state.evm?.contractFactories.SimpleStorage;
-    if (SimpleStorage) {
-      const foos = SimpleStorage.interface.functions;
-      console.log(foos["getNumber()"]);
+    if (this.state.evm) {
+      const simpleStorage =
+        this.state.evm.newNoizContractFactories
+          .SimpleStorage;
+      console.log(simpleStorage.abi);
     }
     const hasUpdated = this.hasUpdated;
     const initizalizeWeb3 = this.initizalizeWeb3;
