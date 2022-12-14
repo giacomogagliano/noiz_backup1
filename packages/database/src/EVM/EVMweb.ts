@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
-import { detect } from "./detect";
-import { MetaMaskEthereumProvider } from "./detectEthereumProvider";
+import { detect } from "./lib";
+import { MetaMaskEthereumProvider } from "./lib/detectEthereumProvider/detectEthereumProvider_v1";
 import { ZionContractFactories } from "./Types/ZionContractFactories";
 
 export type RequireOnlyOne<
@@ -37,15 +37,22 @@ export class EVMweb implements IEVMweb {
   provider: ethers.providers.Web3Provider;
   signer: ethers.providers.JsonRpcSigner;
   contractFactories: typeof ZionContractFactories["prototype"]["contractFactories"];
+  newContractFactories: typeof ZionContractFactories["prototype"]["newContractFactories"];
+  newNoizContractFactories: typeof ZionContractFactories["prototype"]["newNoizContractFactories"];
   constructor(args: EVMwebArgs) {
     this.window = args.window;
     this.provider = new ethers.providers.Web3Provider(
       this.window.ethereum
     );
     this.signer = this.provider.getSigner();
-    this.contractFactories = new ZionContractFactories(
-      this.signer
-    ).contractFactories;
+    const zionContractFactories =
+      new ZionContractFactories(this.signer);
+    this.contractFactories =
+      zionContractFactories.contractFactories;
+    this.newContractFactories =
+      zionContractFactories.newContractFactories;
+    this.newNoizContractFactories =
+      zionContractFactories.newNoizContractFactories;
   }
   async detect() {
     return detect(this.window);

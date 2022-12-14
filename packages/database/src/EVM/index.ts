@@ -1,3 +1,4 @@
 export * from "./EVM";
 export * from "./EVMweb";
-export * from "./detectEthereumProvider";
+export * from "./lib";
+export * from "./classes";
