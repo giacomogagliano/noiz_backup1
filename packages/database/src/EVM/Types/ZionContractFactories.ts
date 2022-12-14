@@ -25,7 +25,7 @@ export class ZionContractFactories {
     ProvaMaster: ProvaMaster__factory;
     USDC: USDC__factory;
     SimpleStorage: SimpleStorage__factory;
-    [key: string]: any;
+    [key: string]: ContractFactory;
   };
   constructor(public signer?: Signer) {
     if (!signer) throw new Error("");

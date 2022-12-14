@@ -1,15 +1,25 @@
-export type AbiType = "function" | "constructor" | "event" | "fallback";
-export type StateMutabilityType = "pure" | "view" | "nonpayable" | "payable";
+export type AbiType =
+  | "function"
+  | "constructor"
+  | "event"
+  | "fallback";
+export type StateMutabilityType =
+  | "pure"
+  | "view"
+  | "nonpayable"
+  | "payable";
 
-export interface AbiItem {
+export interface AbiItem<
+  T extends StateMutabilityType = StateMutabilityType
+> {
   anonymous?: boolean;
   constant?: boolean;
   inputs?: AbiInput[];
   name?: string;
   outputs?: AbiOutput[];
   payable?: boolean;
-  stateMutability?: StateMutabilityType;
-  type: AbiType;
+  stateMutability?: T | string;
+  type: AbiType | string;
   gas?: number;
 }
 
