@@ -41,7 +41,7 @@ import { dataGuard } from "@zionstate/zionbase/utils";
 //////////
 
 const theme = lightTheme;
-// const dark = darkTheme;
+const dark = darkTheme;
 
 enum layouts {
   main = "main",
@@ -167,8 +167,10 @@ export class NoizApp_v2 extends BaseNoiz<
     </div>
   );
 
-  istia({ Component, pageProps }: NoizApp_v2Props) {
+  istia(props: NoizApp_v2Props) {
     const Layout = this.standard1;
+    console.log("istia", theme.primary.color);
+
     return (
       <ThemeProvider theme={this.state.theme}>
         <GlobalStyle />
@@ -185,7 +187,9 @@ export class NoizApp_v2 extends BaseNoiz<
             </button>
           </header>
           <section id="content">
-            <Component {...pageProps}></Component>
+            <props.Component
+              {...props.pageProps}
+            ></props.Component>
           </section>
           <footer>I am the footer</footer>
         </Layout>
@@ -368,7 +372,6 @@ export class NoizApp_v2 extends BaseNoiz<
   initizalizeWeb3 = () => {
     const isMetamask = this.state.metamask;
     const contract = this.state.contractFactory;
-
     if (!isMetamask) return;
     if (!contract) throw new Error("no contract factory");
     const evm = new this.EVMweb({
@@ -428,11 +431,12 @@ export class NoizApp_v2 extends BaseNoiz<
   ) => {
     const SimpleStorage =
       this.state.evm?.contractFactories.SimpleStorage;
-    if (!SimpleStorage) return;
-    const foos = SimpleStorage.interface.functions;
-    for (let key in foos) {
-      const contract = foos[key];
-      if (contract) console.log(contract.name);
+    if (SimpleStorage) {
+      const foos = SimpleStorage.interface.functions;
+      for (let key in foos) {
+        const contract = foos[key];
+        if (contract) console.log(contract.name);
+      }
     }
     const hasUpdated = this.hasUpdated;
     const initizalizeWeb3 = this.initizalizeWeb3;
@@ -476,7 +480,6 @@ export class NoizApp_v2 extends BaseNoiz<
 
   didMount() {
     const isDark = this.isDarkColorScheme();
-
     const handleClrScheme = this.handleColorSchemeChange;
     this.detectEth();
     if (isDark) this.setPrefersColorScheme(themes.dark);
