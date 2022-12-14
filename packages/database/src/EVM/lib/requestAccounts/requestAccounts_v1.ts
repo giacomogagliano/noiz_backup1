@@ -3,7 +3,7 @@ import "../detectEthereumProvider/detectEthereumProvider_v1";
 
 export type IrequestAccounts_v1 = () => Promise<boolean>;
 
-export const requestAccounts: IrequestAccounts_v1 =
+export const requestAccounts_v1: IrequestAccounts_v1 =
   async function () {
     if (!window.ethereum) return false;
     const provider = new ethers.providers.Web3Provider(
