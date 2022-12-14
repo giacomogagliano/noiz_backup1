@@ -10,6 +10,7 @@ export type StateMutabilityType =
   | "payable";
 
 export interface AbiItem<
+  G extends string | number = string,
   T extends StateMutabilityType = StateMutabilityType
 > {
   anonymous?: boolean;
@@ -20,7 +21,7 @@ export interface AbiItem<
   payable?: boolean;
   stateMutability?: T | string;
   type: AbiType | string;
-  gas?: number;
+  gas?: G;
 }
 
 export interface AbiInput {
