@@ -22,6 +22,7 @@ enum styles {
 type layoutTypes = keyof typeof layouts;
 type styleTypes = keyof typeof styles;
 
+// TODO #25 @ariannatnl sistemare scroll nell'immagine
 export interface ItemPage_v2Props
   extends BaseNoizProps<layoutTypes, styleTypes> {
   src: string;
@@ -128,7 +129,12 @@ export class ItemPage_v2 extends BaseNoiz<
             <p id="bold">{data.currency}</p>
           </div>
         </div>
-        <NavBar text layout="main" style="borderOnTop">
+        <NavBar
+          text
+          layout="main"
+          style="borderOnTop"
+          navbarGrid
+        >
           <NavInput {...input5} layout="text" checked />
           <NavInput {...input6} layout="text" />
           <NavInput {...input7} layout="text" />
@@ -186,7 +192,7 @@ export class ItemPage_v2 extends BaseNoiz<
         ". social social social ."
         ". infos infos infos ."
         ". links links links ."
-        ". navbar navbar navbar .";
+        "navbar navbar navbar navbar navbar";
     }
     grid-template-areas:
       ". . ."
@@ -194,7 +200,7 @@ export class ItemPage_v2 extends BaseNoiz<
       ". social ."
       ". infos ."
       ". links ."
-      ". navbar .";
+      "navbar navbar navbar";
     div  {
       overflow: auto;
     }
