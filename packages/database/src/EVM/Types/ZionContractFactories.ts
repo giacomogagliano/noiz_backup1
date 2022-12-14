@@ -16,6 +16,7 @@ export type ERC1155IndividualURI =
 
 export type ContractFactory = ethers.ContractFactory;
 
+// TODO mettere questi codici nelle cartelle delle classi non nei tipi
 export class ZionContractFactories {
   contractFactories: {
     ERC1155IndividualURI: ERC1155IndividualURI_Factory;
