@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../packages/ui/src/HTML/React/lib/global/BaseNoiz"
+		}
+	],
+	"settings": {}
+}
