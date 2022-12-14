@@ -26,15 +26,6 @@ export default function index() {
   let NavArea = styled.div`
     width: inherit;
   `;
-  const input5 = new NavInputProps();
-  input5.inputId = "Bid";
-  input5.inputName = "Bid";
-  const input6 = new NavInputProps();
-  input6.inputId = "Details";
-  input6.inputName = "Details";
-  const input7 = new NavInputProps();
-  input7.inputId = "History";
-  input7.inputName = "History";
 
   return (
     <NavArea>
@@ -44,11 +35,6 @@ export default function index() {
         </NavInput>
         <NavInput {...input1} layout="text" />
         <NavInput {...input4} layout="icon" />
-      </NavBar>
-      <NavBar text layout="main" style="borderOnTop">
-        <NavInput {...input5} layout="text" />
-        <NavInput {...input6} layout="text" />
-        <NavInput {...input7} layout="text" />
       </NavBar>
     </NavArea>
   );

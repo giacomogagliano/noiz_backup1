@@ -35,7 +35,6 @@ export interface NavBar_v4Props
   inputs?: NavInputProps[];
   layout?: layoutTypes;
   styles?: styleTypes;
-  navbarGrid?: boolean;
 }
 export class NavBar_v4Props extends BaseNoizProps<
   layoutTypes,
@@ -147,11 +146,6 @@ export class NavBar_v4 extends BaseNoiz<
 
   BorderOnTop = styled(this.Html)`
     display: grid;
-    ${props =>
-      props.navbarGrid === true &&
-      css`
-        grid-area: navbar;
-      `}
     grid-auto-flow: ${props => {
       if (props.horizontal === true) {
         return "column";

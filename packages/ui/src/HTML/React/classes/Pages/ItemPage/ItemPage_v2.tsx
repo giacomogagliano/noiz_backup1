@@ -7,11 +7,6 @@ import {
   ImageState,
   Image,
 } from "../../Image";
-import {
-  NavBar,
-  NavInput,
-  NavInputProps,
-} from "../../NavBar";
 
 enum layouts {
   main = "main",
@@ -22,7 +17,6 @@ enum styles {
 type layoutTypes = keyof typeof layouts;
 type styleTypes = keyof typeof styles;
 
-// TODO #25 @ariannatnl sistemare scroll nell'immagine
 export interface ItemPage_v2Props
   extends BaseNoizProps<layoutTypes, styleTypes> {
   src: string;
@@ -95,16 +89,6 @@ export class ItemPage_v2 extends BaseNoiz<
     const ROYALTIES = "Royalties";
     const HIGHEST_BID = "highest bid:";
 
-    const input5 = new NavInputProps();
-    input5.inputId = "Bid";
-    input5.inputName = "Bid";
-    const input6 = new NavInputProps();
-    input6.inputId = "Details";
-    input6.inputName = "Details";
-    const input7 = new NavInputProps();
-    input7.inputId = "History";
-    input7.inputName = "History";
-
     return (
       <div className={props.className} css={props.css}>
         <div id="bg-upper"></div>
@@ -129,16 +113,6 @@ export class ItemPage_v2 extends BaseNoiz<
             <p id="bold">{data.currency}</p>
           </div>
         </div>
-        <NavBar
-          text
-          layout="main"
-          style="borderOnTop"
-          navbarGrid
-        >
-          <NavInput {...input5} layout="text" checked />
-          <NavInput {...input6} layout="text" />
-          <NavInput {...input7} layout="text" />
-        </NavBar>
         <div id="links">
           <div id="sublink">
             <div id="sublink-text-area">
@@ -179,10 +153,10 @@ export class ItemPage_v2 extends BaseNoiz<
     width: 100%;
     height: 100%;
     overflow: auto;
-    grid-template-rows: 5% 45% 10% 25% 10% 5%;
+    grid-template-rows: 5% 45% 10% 30% 10%;
     grid-template-columns: 5% 90% 5%;
     @media only screen and (min-width: 367px) {
-      grid-template-rows: 5% 5% 35% 5% 5% 25% 15% 5%;
+      grid-template-rows: 5% 5% 35% 5% 5% 30% 15%;
       grid-template-columns: 5% 7% 76% 7% 5%;
       grid-template-areas:
         ". . . . ."
@@ -191,20 +165,17 @@ export class ItemPage_v2 extends BaseNoiz<
         ". . . . ."
         ". social social social ."
         ". infos infos infos ."
-        ". links links links ."
-        "navbar navbar navbar navbar navbar";
+        ". links links links .";
     }
     grid-template-areas:
       ". . ."
       ". image ."
       ". social ."
       ". infos ."
-      ". links ."
-      "navbar navbar navbar";
+      ". links .";
     div  {
       overflow: auto;
     }
-
     #bg-upper {
       position: absolute;
       z-index: 0;
