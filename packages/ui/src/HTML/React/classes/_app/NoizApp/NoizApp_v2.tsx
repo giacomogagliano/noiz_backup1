@@ -41,7 +41,7 @@ import { dataGuard } from "@zionstate/zionbase/utils";
 //////////
 
 const theme = lightTheme;
-const dark = darkTheme;
+// const dark = darkTheme;
 
 enum layouts {
   main = "main",
@@ -430,10 +430,7 @@ export class NoizApp_v2 extends BaseNoiz<
       this.state.evm?.contractFactories.SimpleStorage;
     if (SimpleStorage) {
       const foos = SimpleStorage.interface.functions;
-      for (let key in foos) {
-        const contract = foos[key];
-        if (contract) console.log(contract.name);
-      }
+      console.log(foos["getNumber()"]);
     }
     const hasUpdated = this.hasUpdated;
     const initizalizeWeb3 = this.initizalizeWeb3;
