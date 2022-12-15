@@ -2,4 +2,5 @@ export {};
 
 // //// BaseNoiz
 // export * from './BaseNoiz';
-export * as Types from "./Types";
+export { ComponentDecorator } from "./BaseNoiz";
+export * as Types from "./BaseNoiz/Types";
