@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "../../packages/ui"
+		},
+		{
+			"path": "../../packages/ui/src/Colors"
+		},
+		{
+			"path": "../../packages/ui/src/Colors/classes/Palette"
+		},
+		{
+			"path": "../../packages/ui/test"
+		},
+		{
+			"path": "../../packages/ui/src/pages"
+		}
+	],
+	"settings": {}
+}
