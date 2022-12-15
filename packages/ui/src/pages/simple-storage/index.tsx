@@ -2,17 +2,22 @@ import { EVMweb } from "@zionstate/database/dist/EVM";
 import React, {
   ChangeEvent,
   Component,
+  FC,
   FormEvent,
-  FormEventHandler,
   MouseEvent,
 } from "react";
 import styled from "styled-components";
 import { Icon } from "../../HTML/React/classes";
 
-// TODO ordinare prima quelli senza input
-// TODO togliere il costruttore
 // TODO ricevere da smart contract
-// TODO risolvere problema child in map
+// TODO risolvere problema styled chiamato in component
+
+enum StateMutabilities {
+  view = "view",
+  nonpayable = "nonpayable",
+}
+type StateMutabilitieTypes =
+  keyof typeof StateMutabilities;
 
 interface CollapsableId {
   id: number | null;
@@ -41,8 +46,8 @@ interface CollapsableAbiItem
     AbiItem,
     HandleCollapse {
   hasInputs?: boolean;
+  isWrite?: boolean;
 }
-
 class CollapsableAbiItem {
   constructor(props?: AbiItem) {
     if (!props) return;
@@ -50,6 +55,8 @@ class CollapsableAbiItem {
     this.name = props.name;
     this.stateMutability = props.stateMutability;
     this.hasInputs = props.inputs?.length! > 0;
+    this.isWrite =
+      props.stateMutability === "view" ? false : true;
   }
 }
 
@@ -65,6 +72,7 @@ interface LayoutState {
   isCollapsed?: boolean;
   contract?: CollapsableAbiItem[];
   AbiItems?: JSX.Element[];
+  Content: FC;
 }
 class LayoutState {}
 
@@ -82,6 +90,7 @@ class SmartContract extends Component<
     state.isCollapsed = true;
     state.contract = [abiItem];
     state.AbiItems = [<></>];
+    state.Content = () => <></>;
     this.state = state;
   }
 
@@ -106,6 +115,8 @@ class SmartContract extends Component<
 
   setAbiItems = (AbiItems: JSX.Element[]) =>
     this.setState({ AbiItems });
+
+  setContent = (Content: FC) => this.setState({ Content });
 
   handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -160,6 +171,19 @@ class SmartContract extends Component<
     );
   };
 
+  orange = 27;
+  complementar = 180 + this.orange;
+  primary2 = this.orange + 120;
+  primary3 = this.orange + 240;
+  writeColor = `hsl(${this.orange}, 85%, 54%)`;
+  writeBorderColor = `hsl(${this.orange}, 85%, 61%)`;
+  readColor = `hsl(${this.complementar},78%,8%)`;
+  readBorderColor = `hsl(${this.complementar}, 78%, 11%)`;
+  areaBgColor = `hsl(${this.complementar}, 74%, 12%)`;
+  hover = `hsl(${this.orange}, 56%, 77%)`;
+  focus = `hsl(${this.orange}, 98%, 50%)`;
+  active = `hsl(${this.complementar}, 72%, 31%)`;
+
   StyledCollapsed = styled(this.Collapsed)`
     width: 100%;
     display: flex;
@@ -182,30 +206,54 @@ class SmartContract extends Component<
         width: 100%;
         #field {
           width: 30%;
-          background-color: #ef830f;
+          background-color: ${props => {
+            return props.isWrite
+              ? this.writeColor
+              : this.readColor;
+          }};
           border-radius: 0.3rem 0 0 0.3rem;
           color: #eef2f2;
           border-color: #f3f1ef;
           border-right: none;
-          border-left: 0.1rem solid;
-          border-top: 0.1rem solid;
-          border-bottom: 0.1rem solid;
+          border-left: 0.1rem solid
+            ${props => {
+              return props.isWrite
+                ? this.writeBorderColor
+                : this.readBorderColor;
+            }};
+          border-top: 0.1rem solid
+            ${props => {
+              return props.isWrite
+                ? this.writeBorderColor
+                : this.readBorderColor;
+            }};
+          border-bottom: 0.1rem solid
+            ${props => {
+              return props.isWrite
+                ? this.writeBorderColor
+                : this.readBorderColor;
+            }};
           font-size: 100%;
           ${props =>
-            props.hasInputs
+            props.isWrite || props.hasInputs
               ? ""
-              : `border-right: 0.1rem solid;
+              : `border-right: 0.1rem solid ${props => {
+                  return props.isWrite
+                    ? this.writeBorderColor
+                    : this.readBorderColor;
+                }};
                 border-radius: 0.3rem 0.3rem 0.3rem 0.3rem;
               `}
         }
         #field:hover  {
-          background-color: #e49a10;
+          background-color: ${this.hover};
+          color: #0b0b0b;
         }
         #field:focus {
-          background-color: #faa609;
+          background-color: ${this.focus};
         }
         #field:active {
-          background-color: #f63513;
+          background-color: ${this.active};
         }
         #argument {
           width: 62%;
@@ -243,7 +291,6 @@ class SmartContract extends Component<
       case "uint256":
         type = "number";
         break;
-
       default:
         type = "text";
         break;
@@ -374,74 +421,109 @@ class SmartContract extends Component<
       width: 30em;
       padding: 2rem;
       border: 0.1rem solid;
-      border-color: #344850;
-      background-color: #052b3b;
+      border-color: hsl(197, 84%, 16%);
+      background-color: hsl(197, 84%, 12%);
       border-radius: 0.3rem;
     }
   `;
+
+  sort = (a: AbiItem, b: AbiItem) => {
+    let level = 2;
+    const isAWrite = a.stateMutability !== "view";
+    const hasAInputs = a.inputs
+      ? a.inputs.length > 0
+        ? true
+        : false
+      : false;
+    const hasBInputs = b.inputs
+      ? b.inputs.length > 0
+        ? true
+        : false
+      : false;
+    const isBWrite = b.stateMutability !== "view";
+    const condition1 = isAWrite === isBWrite;
+    const condition2 = hasAInputs === hasBInputs;
+
+    if (condition1) level - 1;
+    if (condition2) level - 1;
+
+    return condition1 && condition2 ? 1 : -1;
+  };
+
+  filterUndefNames = (e: AbiItem) => {
+    const cond = e.name !== undefined;
+    return cond ? true : false;
+  };
+
+  filterUndefMutability = (e: AbiItem) => {
+    const cond2 = e.stateMutability === undefined;
+    return cond2 ? false : true;
+  };
+
+  collapsableItems = (a: AbiItem, idx: number) => {
+    var itm = new CollapsableAbiItem(a);
+    itm.isCollapsed = true;
+    itm.handleCollapse = this.handleCollapseById(idx);
+    itm.id = idx;
+    return itm;
+  };
+
+  makeCollapsableItems = (propsContract: AbiItem[]) => {
+    propsContract.sort(this.sort);
+    propsContract = propsContract
+      .filter(this.filterUndefNames)
+      .filter(this.filterUndefMutability);
+    const contract = propsContract.map(
+      this.collapsableItems
+    );
+    return contract;
+  };
 
   componentDidUpdate(p: LayoutProps, s: LayoutState, sn) {
     if (p.contract !== this.props.contract) {
       if (this.state.contract)
         if (this.state.contract[0].id === null) {
           if (!this.props.contract) return;
-          const propsContract = this.props.contract;
-          const contract = propsContract.map((a, idx) => {
-            var itm = new CollapsableAbiItem(a);
-            itm.isCollapsed = true;
-            itm.handleCollapse =
-              this.handleCollapseById(idx);
-            itm.id = idx;
-            return itm;
-          });
+          const mkCollItems = this.makeCollapsableItems;
+          let propsContract = this.props.contract;
+          const contract = mkCollItems(propsContract);
           this.setContract(contract);
         }
     }
     if (s.contract !== this.state.contract) {
       if (this.state.contract) {
         const abiItems = this.state.contract;
-        const AbiItems: JSX.Element[] = abiItems.map(i => {
-          const isColl = i.isCollapsed;
-          const hasInputs = i.hasInputs;
-          const coll_key = i.id + i.name! + "_c";
-          const exp_key = i.id + i.name! + "_e";
-
-          const Collapsed = (
-            <this.StyledCollapsed
-              inputs={hasInputs ? i.inputs : undefined}
-              name={i.name}
-              stateMutability={i.stateMutability}
-              type={i.type}
-              key={coll_key}
-              id={i.id}
-              isCollapsed={i.isCollapsed}
-              handleCollapse={i.handleCollapse}
-            />
-          );
-
-          const Expanded = (
-            <this.StyledExpanded
-              inputs={hasInputs ? i.inputs : undefined}
-              name={i.name}
-              stateMutability={i.stateMutability}
-              type={i.type}
-              key={exp_key}
-              id={i.id}
-              isCollapsed={i.isCollapsed}
-              handleCollapse={i.handleCollapse}
-            ></this.StyledExpanded>
-          );
-          return isColl ? Collapsed : Expanded;
-        });
+        const AbiItems: JSX.Element[] = abiItems.map(
+          (i, idx) => {
+            const isColl = i.isCollapsed;
+            const hasInputs = i.hasInputs;
+            const coll_key = i.id + i.name! + "_c";
+            const exp_key = i.id + i.name! + "_e";
+            const StyledCollapsed = this.StyledCollapsed;
+            const StyledExpanded = this.StyledExpanded;
+            i.inputs = hasInputs ? i.inputs : undefined;
+            return isColl ? (
+              <StyledCollapsed key={idx} {...i} />
+            ) : (
+              <StyledExpanded key={idx} {...i} />
+            );
+          }
+        );
 
         this.setAbiItems(AbiItems);
+        this.setContent(() => <>{AbiItems}</>);
       }
     }
   }
 
   render() {
     const AbiItems = this.state.AbiItems;
-    return <this.Style>{AbiItems}</this.Style>;
+    let Content = this.state.Content;
+    return (
+      <this.Style>
+        <Content></Content>
+      </this.Style>
+    );
   }
 }
 

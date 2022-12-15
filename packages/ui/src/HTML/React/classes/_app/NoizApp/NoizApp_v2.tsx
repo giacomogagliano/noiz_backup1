@@ -189,7 +189,7 @@ export class NoizApp_v2 extends BaseNoiz<
               {...pageProps}
               contract={
                 this.state.evm?.newNoizContractFactories
-                  .SimpleStorage.abi
+                  .ERC1155TokenShop.abi
               }
             ></Component>
           </section>
