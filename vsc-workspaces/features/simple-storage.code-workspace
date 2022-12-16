@@ -29,20 +29,20 @@
       "path": "../../packages/database/src/Blockchain/contracts/zion_contracts"
     },
     {
-      "name": "simple-storage",
-      "path": "../../packages/ui/src/pages/simple-storage"
-    },
-    {
-      "name": "pages",
-      "path": "../../packages/ui/src/pages"
-    },
-    {
       "name": "NoizApp",
       "path": "../../packages/ui/src/HTML/React/classes/_app/NoizApp"
     },
     {
       "name": "Icon",
       "path": "../../packages/ui/src/HTML/React/classes/Icon"
+    },
+    {
+      "name": "simple-storage",
+      "path": "../../packages/ui/src/pages/simple-storage"
+    },
+    {
+      "name": "pages",
+      "path": "../../packages/ui/src/pages"
     }
   ],
   "settings": {}
