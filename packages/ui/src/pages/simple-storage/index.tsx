@@ -1,7 +1,9 @@
 import React, {
   Component,
   FormEvent,
+  lazy,
   MouseEvent,
+  Suspense,
 } from "react";
 import styled from "styled-components";
 
@@ -35,9 +37,20 @@ class SimpleStorage extends Component<
   ) => {
     e.preventDefault();
     console.log("clicked my-string-btn");
-    wait(1000).then(e => {
-      this.setMyString("oh");
-    });
+    this.setMyString("oh");
+  };
+
+  Lazy = ({ value }: { value: string | number }) => {
+    const Lazy = lazy(() =>
+      wait(2000).then(async () => ({
+        default: () => <p>{value}</p>,
+      }))
+    );
+    return (
+      <Suspense fallback={<p>loading..</p>}>
+        <Lazy></Lazy>
+      </Suspense>
+    );
   };
 
   Getter = ({
@@ -48,14 +61,17 @@ class SimpleStorage extends Component<
     value: string | number;
     id: string;
     buttonMsg: string;
-  }) => (
-    <div id={id}>
-      <button onClick={this.handleGetterOnClick}>
-        {buttonMsg}
-      </button>
-      <p>{value}</p>
-    </div>
-  );
+  }) => {
+    const LazyString = this.Lazy;
+    return (
+      <div id={id}>
+        <button onClick={this.handleGetterOnClick}>
+          {buttonMsg}
+        </button>
+        <LazyString value={value}></LazyString>
+      </div>
+    );
+  };
 
   handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -129,16 +145,17 @@ class SimpleStorage extends Component<
   };
 
   StyledLayout = styled(this.Layout)`
-    container-type: size;
+    *:not(:last-child) {
+      padding-bottom: 0.5rem;
+    }
     display: grid;
     width: 25rem;
-    height: 10px;
     button {
       padding: 0.5rem;
       border-radius: 2rem;
       min-width: 10rem;
       max-width: 10rem;
-      border: 0.1rem solid #e6e6e6;
+      border: 0.1rem solid #d4d4d4;
       :hover {
         background-color: #dcdcdc;
       }
@@ -149,6 +166,7 @@ class SimpleStorage extends Component<
     #getter {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       width: 100%;
       p  {
         padding-left: 0.3rem;
@@ -157,6 +175,9 @@ class SimpleStorage extends Component<
     #set-string {
       #set-string-form {
         display: inline-flex;
+        input {
+          padding: 0.3rem;
+        }
         button {
           margin-left: 0.3rem;
         }
@@ -165,6 +186,9 @@ class SimpleStorage extends Component<
     #set-number {
       #set-number-form {
         display: inline-flex;
+        input {
+          padding: 0.3rem;
+        }
         button {
           margin-left: 0.3rem;
         }
