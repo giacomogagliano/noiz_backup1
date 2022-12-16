@@ -7,11 +7,13 @@
     "expect;",
     "log;",
     "",
-    "describe(\"${1:function_name} function is correctly exported\", () => {",
+    "describe(\"if ${1:function_name} function is correctly exported\", () => {",
     "  const regex = /${1:function_name}/g;",
     "  const name = ${1:function_name}.name;",
     "  const res = regex.test(name);",
-    "  expect(res).to.be.true;",
+    "  it(\"shall confirm the existance of a function named ${1:function_name}\", () => {",
+    "    expect(res).to.be.true;",
+    "  });",
     "});"
   ]
 }

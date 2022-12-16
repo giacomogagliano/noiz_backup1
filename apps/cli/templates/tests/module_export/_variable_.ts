@@ -7,9 +7,11 @@ const { expect, log } = testEnvironment();
 expect;
 log;
 
-describe("_variable_ function is correctly exported", () => {
+describe("if _variable_ function is correctly exported", () => {
   const regex = /_variable_/g;
   const name = _variable_.name;
   const res = regex.test(name);
-  expect(res).to.be.true;
+  it("shall confirm the existance of a function named _variable_", () => {
+    expect(res).to.be.true;
+  });
 });
