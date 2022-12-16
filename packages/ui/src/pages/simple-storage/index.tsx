@@ -1,5 +1,15 @@
-import React, { Component, MouseEvent } from "react";
+import React, {
+  Component,
+  FormEvent,
+  MouseEvent,
+} from "react";
 import styled from "styled-components";
+
+function wait(time) {
+  return new Promise<void>((resolve, reject) => {
+    setTimeout(resolve, time);
+  });
+}
 
 interface SimpleStorageProps {
   myString: string;
@@ -7,12 +17,27 @@ interface SimpleStorageProps {
   className?: string;
 }
 
-class SimpleStorage extends Component<SimpleStorageProps> {
+interface SimpleStorageState {
+  myString: string;
+  myNumber: number;
+}
+class SimpleStorageState {}
+
+class SimpleStorage extends Component<
+  SimpleStorageProps,
+  SimpleStorageState
+> {
+  setMyString = (myString: string) =>
+    this.setState({ myString });
+
   handleGetterOnClick = (
     e: MouseEvent<HTMLButtonElement>
   ) => {
     e.preventDefault();
     console.log("clicked my-string-btn");
+    wait(1000).then(e => {
+      this.setMyString("oh");
+    });
   };
 
   Getter = ({
@@ -32,6 +57,11 @@ class SimpleStorage extends Component<SimpleStorageProps> {
     </div>
   );
 
+  handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("form submitted");
+  };
+
   Input = ({
     id,
     type,
@@ -43,7 +73,10 @@ class SimpleStorage extends Component<SimpleStorageProps> {
   }) => {
     return (
       <div id={id}>
-        <form id={`${id}-form`}>
+        <form
+          id={`${id}-form`}
+          onSubmit={this.handleFormSubmit}
+        >
           <input
             type={type}
             placeholder={placeholder}
@@ -73,18 +106,18 @@ class SimpleStorage extends Component<SimpleStorageProps> {
         <h1>Simple Storage</h1>
         <MyString
           value={myString}
-          id="my-string"
+          id="getter"
           buttonMsg="myString"
+        />
+        <GetNumber
+          value={number}
+          id="getter"
+          buttonMsg="Get Number"
         />
         <SetString
           id="set-string"
           placeholder="setString"
           type="text"
-        />
-        <GetNumber
-          value={number}
-          buttonMsg="Get Number"
-          id="get-number"
         />
         <SetNumber
           id="set-number"
@@ -97,10 +130,26 @@ class SimpleStorage extends Component<SimpleStorageProps> {
 
   StyledLayout = styled(this.Layout)`
     container-type: size;
-    width: 35rem;
-    height: auto;
-    #my-string {
-      display: inline-flex;
+    display: grid;
+    width: 25rem;
+    height: 10px;
+    button {
+      padding: 0.5rem;
+      border-radius: 2rem;
+      min-width: 10rem;
+      max-width: 10rem;
+      border: 0.1rem solid #e6e6e6;
+      :hover {
+        background-color: #dcdcdc;
+      }
+      :active {
+        background-color: #f9f9f7;
+      }
+    }
+    #getter {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
       p  {
         padding-left: 0.3rem;
       }
@@ -113,12 +162,6 @@ class SimpleStorage extends Component<SimpleStorageProps> {
         }
       }
     }
-    #get-number {
-      display: inline-flex;
-      p  {
-        padding-left: 0.3rem;
-      }
-    }
     #set-number {
       #set-number-form {
         display: inline-flex;
@@ -129,9 +172,23 @@ class SimpleStorage extends Component<SimpleStorageProps> {
     }
   `;
 
+  constructor(props: SimpleStorageProps) {
+    super(props);
+    let state = new SimpleStorageState();
+    state.myNumber = props.number;
+    state.myString = props.myString;
+    this.state = state;
+  }
+
   render() {
     const Element = this.StyledLayout;
-    return <Element {...this.props} />;
+    return (
+      <Element
+        className={this.props.className}
+        myString={this.state.myString}
+        number={this.state.myNumber}
+      />
+    );
   }
 }
 
