@@ -21,6 +21,8 @@ export interface IEVMweb {
   provider: ethers.providers.Web3Provider;
   signer: ethers.providers.JsonRpcSigner;
   contractFactories: typeof ZionContractFactories["prototype"]["contractFactories"];
+  newContractFactories: typeof ZionContractFactories["prototype"]["newContractFactories"];
+  newNoizContractFactories: typeof ZionContractFactories["prototype"]["newNoizContractFactories"];
   detect(): Promise<MetaMaskEthereumProvider | null>;
 }
 
@@ -29,6 +31,8 @@ export interface EVMweb {
   provider: ethers.providers.Web3Provider;
   signer: ethers.providers.JsonRpcSigner;
   contractFactories: typeof ZionContractFactories["prototype"]["contractFactories"];
+  newContractFactories: typeof ZionContractFactories["prototype"]["newContractFactories"];
+  newNoizContractFactories: typeof ZionContractFactories["prototype"]["newNoizContractFactories"];
   detect(): Promise<MetaMaskEthereumProvider | null>;
 }
 
