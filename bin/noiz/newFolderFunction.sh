@@ -1,7 +1,10 @@
 #!/bin/bash
-
+# // TODO Sistemare percorso perche proviene da WAW
 noiz="$(cd -- "$(dirname "$0")" >/dev/null 2>&1 && pwd -P)"
 zionConfig="$noiz/new.noiz.sh"
+noiz_root="$(cd $noiz && cd .. && cd .. && echo $PWD)"
+
+echo $noiz_root
 
 # ARGUMENTS
 folder=$1
@@ -18,12 +21,12 @@ filepath=${folder}/${filename}.ts
 noizconfigpath=${folder}/.noiz
 indexfile=index.ts
 
-root=/Users/WAW/Documents/Projects/zion-network-state/apps/cli/templates/function/
-template_folder_index=${root}index.ts
+template_folder=$noiz_root/apps/cli/templates/function/
+template_folder_index=${template_folder}index.ts
 template_folder_index_string=$(cat ${template_folder_index})
-template_file=${root}_variable_/_variable__v1.ts
+template_file=${template_folder}_variable_/_variable__v1.ts
 template_file_string=$(cat ${template_file})
-template_file_index=${root}_variable_/index.ts
+template_file_index=${template_folder}_variable_/index.ts
 template_file_index_string=$(cat ${template_file_index})
 
 function capitalize() {
