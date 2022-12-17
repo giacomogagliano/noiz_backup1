@@ -1,0 +1,19 @@
+{
+  "snippet": [
+    "import { testEnvironment } from \"@zionstate/test\";",
+    "import { ${1:function_name} } from \"${2:export_path}\";",
+    "",
+    "const { expect, log } = testEnvironment();",
+    "expect;",
+    "log;",
+    "",
+    "describe(\"if ${1:function_name} function is correctly exported\", () => {",
+    "  const regex = /${1:function_name}/g;",
+    "  const name = ${1:function_name}.name;",
+    "  const res = regex.test(name);",
+    "  it(\"shall confirm the existance of a function named ${1:function_name}\", () => {",
+    "    expect(res).to.be.true;",
+    "  });",
+    "});"
+  ]
+}
