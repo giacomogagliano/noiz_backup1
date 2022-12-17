@@ -220,6 +220,9 @@ contents:
 
 # Packages
 
+Every package has it's own `visual-studio-code` workspace
+inside the `vsc-workspaces` folder.
+
 ## database
 
 ### blockchain (has been merged into database)
