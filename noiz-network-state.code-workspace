@@ -23,20 +23,15 @@
     { "path": "." },
     { "path": "packages/ui" },
     { "path": "packages/database" },
-    { "path": "packages/database/test" },
-    { "path": "packages/database/test/EVM" },
     { "path": "packages/database/src/EVM" },
-    { "path": "packages/database/src/EVM/classes" },
-    { "path": "packages/database/src/EVM/classes/EVMweb" },
-    { "path": "packages/database/src/EVM/classes/NoizContractFactory" },
     { "path": "packages/database/src/Blockchain" },
+    { "path": "packages/database/src/Blockchain/scripts" },
     { "path": "packages/database/src/Blockchain/src" },
-    { "path": "packages/database/src/Blockchain/src/Class" },
-    {
-      "path": "packages/database/src/Blockchain/src/Class/NoizContractFactory"
-    },
-    { "path": "packages/database/src/Blockchain/src/Factories" },
-    { "path": "packages/ui/src/HTML/React/classes/_app/NoizApp" }
+    { "path": "packages/database/src/Blockchain/contracts/zion_contracts" },
+    { "path": "packages/ui/src/HTML/React/classes/_app/NoizApp" },
+    { "path": "packages/ui/src/HTML/React/classes/Icon" },
+    { "path": "packages/ui/src/pages/simple-storage" },
+    { "path": "packages/ui/src/pages" }
   ],
   "settings": {}
 }
