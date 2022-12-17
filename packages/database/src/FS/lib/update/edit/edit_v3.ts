@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 export function edit_v3<T, Prop extends keyof T>(
   obj: T,
   nested: false,
@@ -23,13 +25,18 @@ export function edit_v3<
 }
 
 export type keys<T> = T extends [] ? keyof T : never;
-export type keysOfObject<T> = T extends Object ? keyof T : never;
+export type keysOfObject<T> = T extends Object
+  ? keyof T
+  : never;
 export type flatUnion<T> = T extends string ? T : false;
 export type flatKeysOfObj<T> = flatUnion<keysOfObject<T>>;
 export type ttt = flatUnion<keysOfObject<{ name: "" }>>;
 export type get = flatKeysOfObj<[]>;
 
-export function changPar(obj: { name: string }, value: string) {
+export function changPar(
+  obj: { name: string },
+  value: string
+) {
   obj.name = value;
   return obj;
 }
