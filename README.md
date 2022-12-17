@@ -220,9 +220,6 @@ contents:
 
 # Packages
 
-Every package has it's own `visual-studio-code` workspace
-inside the `vsc-workspaces` folder.
-
 ## database
 
 ### blockchain (has been merged into database)
@@ -448,7 +445,7 @@ application. Once the docker file has been tested and it
 works correctly it can be deployed on the k8s system and
 replicated as needed.
 
-# Contribute
+# Contribute (work in progress)
 
 The best way to contribute to the code base is to download
 the monorepo, install it and push code changes to the github
@@ -461,6 +458,40 @@ Noiz Organization account.
 > [blog]('https://thomasventurini.com/articles/the-best-way-to-work-with-todos-in-vscode/')
 > where he explain some best practices for using TodoTree in
 > a project.
+
+## Start working on something
+
+When starting to work on a new `feature`, an `update` of a
+`fix`, for example, we start by:
+
+- creating a new branch, named possibly with a reference to
+  the application/package on which we want to start working
+  on.
+- add the folders we need to work with in the
+  `noiz-network-state.code-workspace` file and commit the
+  first change.
+- optionally we can add a readme file somewhere so that is
+  clear for everyone what we are trying to achieve.
+
+What this makes possible, is that, when switching between
+repos, the actual workspace changes with the branch.
+
+> if a change occur on the base branch from which we started
+> making out changes, we need to act accordingly.
+
+### A change happened on the base branch.
+
+If a change happened on the base branch, we shall look at
+the changes made to the base repo and take one of these
+decisions:
+
+| quantity of changes | is it necessary for your branch? | action to take                     |
+| ------------------- | -------------------------------- | ---------------------------------- |
+| one                 | no                               | skip                               |
+| one                 | yes                              | rebase your branch on the new base |
+| many                | no                               | skip                               |
+| many                | some of them                     | cherry pick commits you need       |
+| many                | all of them                      | rebase your branch on the new base |
 
 ## Todo's
 
@@ -476,7 +507,7 @@ make this simplier.
 
 \*[back to index](#in-this-document)
 
-## How to contribute
+## How to contribute (work in progress)
 
 \TODOs in visual code have an action menu (the little yellow
 bulb light which appears sometimes next to the code we
