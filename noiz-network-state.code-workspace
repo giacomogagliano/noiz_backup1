@@ -2,7 +2,9 @@
   "folders": [
     { "path": "." },
     { "path": "packages/ui" },
-    { "path": "packages/ui/src" }
+    { "path": "packages/ui/src/HTML" },
+    { "path": "packages/ui/src/HTML/React" },
+    { "path": "packages/ui/src/HTML/React/style" }
   ],
   "settings": {}
 }
