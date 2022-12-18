@@ -30,6 +30,7 @@ import {
 import { WindowEthRequired } from "../../../lib/hooks/useEthereum/useEthereum_v2";
 import { dataGuard } from "@zionstate/zionbase/utils";
 import Router from "next/router";
+import Link from "next/link";
 
 ////////ETH
 
@@ -187,6 +188,9 @@ export class NoizApp_v2 extends BaseNoiz<
                 ? "light"
                 : "dark"}
             </button>
+            <button>
+              <Link href="/">Home</Link>
+            </button>
           </header>
           <section id="content">
             <Component
@@ -231,7 +235,19 @@ export class NoizApp_v2 extends BaseNoiz<
       "content"
       "f";
     header {
+      display: grid;
       background-color: ${this.bgcolor};
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      button {
+        color: ${props => props.theme.borderColor};
+        background-color: ${props =>
+          props.theme.backgroundColor};
+        a {
+          color: ${props => props.theme.borderColor};
+          background-color: ${props =>
+            props.theme.backgroundColor};
+        }
+      }
     }
     #content {
       container-type: size;
