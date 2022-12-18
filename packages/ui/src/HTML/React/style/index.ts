@@ -9,8 +9,7 @@ export * from "./Div";
 export * from "./H1";
 export * from "./Img";
 export * from "./Input";
-export * from "./HTMLElements/P";
-export * from "./HTMLElements/Path";
+
 export * from "./Areas/";
 export * from "./Loaders";
 export * from "./HTMLElements";
