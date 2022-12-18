@@ -21,21 +21,19 @@ export function getStaticProps() {
   return { props: { data: JSON.stringify(data) } };
 }
 
-const AreaIndexClassesPages = styled(IndexPage)`
-  border: solid;
-  padding: 10%;
-  white-space: nowrap;
-  display: grid;
-  flex-direction: column;
-  justify-content: space-around;
-
-  ul {
-    div {
-      div {
-        padding: 10%;
-        border: solid;
-      }
-      a {
+const AreaIndexClassesPages = styled.div`
+  &:first-child {
+    ul {
+      white-space: nowrap;
+      #noiz-class {
+        div {
+          padding: 10%;
+          border: solid;
+        }
+        a {
+          margin-left: 2rem;
+          margin-right: 2rem;
+        }
       }
     }
   }
@@ -43,9 +41,11 @@ const AreaIndexClassesPages = styled(IndexPage)`
 
 export default function index(props: { data: string }) {
   return (
-    <AreaIndexClassesPages
-      data={props.data}
-      path={["classes"]}
-    ></AreaIndexClassesPages>
+    <AreaIndexClassesPages>
+      <IndexPage
+        data={props.data}
+        path={["classes"]}
+      ></IndexPage>
+    </AreaIndexClassesPages>
   );
 }

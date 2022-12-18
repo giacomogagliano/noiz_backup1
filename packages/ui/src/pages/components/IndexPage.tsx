@@ -4,6 +4,12 @@ import { join } from "path";
 import styled from "styled-components";
 import Link from "next/link";
 
+interface FolderCardProps {
+  idx: number;
+  jointpath: string;
+  el: { name: string; status: string };
+}
+
 const Div = styled.div`
   display: grid;
   ul {
@@ -51,9 +57,31 @@ export default class IndexPage extends Component<IndexPageProps> {
   constructor(props: IndexPageProps) {
     super(props);
   }
+
+  FolderCard = (props: FolderCardProps) => {
+    const { idx, jointpath, el } = props;
+    return (
+      <div key={idx} id="noiz-class">
+        <div>
+          <>Name: </>
+          <Link href={`${jointpath}`}>{el.name}</Link>
+        </div>
+        <div>
+          <>Status: </>
+          <>{el.status}</>
+        </div>
+      </div>
+    );
+  };
+
+  StyledFolderCard = styled(this.FolderCard)`
+    background-color: red;
+  `;
+
   render() {
     const { data, path } = this.props;
     const parsed = JSON.parse(data);
+    const StyledCard = this.StyledFolderCard;
 
     // console.log(parsed);
     return (
@@ -65,18 +93,11 @@ export default class IndexPage extends Component<IndexPageProps> {
               jointpath = "/" + join(...path, el.name);
             else jointpath = "/" + join(el.name);
             return (
-              <div key={idx} id="noiz-class">
-                <div>
-                  <>Name: </>
-                  <Link href={`${jointpath}`}>
-                    {el.name}
-                  </Link>
-                </div>
-                <div>
-                  <>Status: </>
-                  <>{el.status}</>
-                </div>
-              </div>
+              <StyledCard
+                el={el}
+                idx={idx}
+                jointpath={jointpath}
+              ></StyledCard>
             );
           })}
         </ul>
