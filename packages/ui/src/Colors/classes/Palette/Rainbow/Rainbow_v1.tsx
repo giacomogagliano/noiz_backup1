@@ -1,4 +1,4 @@
-import { Palette } from "..";
+import { Palette_v1 as Palette } from "..";
 
 export class Rainbow_v1 extends Palette {
   constructor(
