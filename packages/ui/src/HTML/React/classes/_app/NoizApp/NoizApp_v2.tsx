@@ -235,7 +235,19 @@ export class NoizApp_v2 extends BaseNoiz<
       "content"
       "f";
     header {
+      display: grid;
       background-color: ${this.bgcolor};
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      button {
+        color: ${props => props.theme.borderColor};
+        background-color: ${props =>
+          props.theme.backgroundColor};
+        a {
+          color: ${props => props.theme.borderColor};
+          background-color: ${props =>
+            props.theme.backgroundColor};
+        }
+      }
     }
     #content {
       container-type: size;
