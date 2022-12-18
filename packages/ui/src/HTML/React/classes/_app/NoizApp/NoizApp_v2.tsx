@@ -291,7 +291,6 @@ export class NoizApp_v2 extends BaseNoiz<
       }
     }
     #content {
-      container-type: size;
       grid-area: content;
       place-items: center;
       width: 100%;
