@@ -5,25 +5,17 @@ import styled from "styled-components";
 import Link from "next/link";
 
 interface FolderCardProps {
+  className?: string;
   idx: number;
   jointpath: string;
   el: { name: string; status: string };
 }
 
-const Div = styled.div`
-  display: grid;
-  ul {
-    display: grid;
-    #noiz-class {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-`;
 interface IndexPageProps {
   data: string;
   path?: string[];
 }
+
 export default class IndexPage extends Component<IndexPageProps> {
   static makeDati = (el: string) => {
     // const newDati = new Dati(el);
@@ -58,10 +50,18 @@ export default class IndexPage extends Component<IndexPageProps> {
     super(props);
   }
 
+  Div = styled.div`
+    display: grid;
+    ul {
+      display: grid;
+      white-space: nowrap;
+    }
+  `;
+
   FolderCard = (props: FolderCardProps) => {
     const { idx, jointpath, el } = props;
     return (
-      <div key={idx} id="noiz-class">
+      <div key={idx} className={props.className}>
         <div>
           <>Name: </>
           <Link href={`${jointpath}`}>{el.name}</Link>
@@ -75,13 +75,23 @@ export default class IndexPage extends Component<IndexPageProps> {
   };
 
   StyledFolderCard = styled(this.FolderCard)`
-    background-color: red;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    div {
+      padding: 10%;
+      border: solid;
+    }
+    a {
+      margin-left: 2rem;
+      margin-right: 2rem;
+    }
   `;
 
   render() {
     const { data, path } = this.props;
     const parsed = JSON.parse(data);
     const StyledCard = this.StyledFolderCard;
+    const Div = this.Div;
 
     // console.log(parsed);
     return (
