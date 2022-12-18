@@ -8,6 +8,14 @@
     { "path": "packages/ui/src/HTML/React/lib/types" },
     { "path": "packages/ui/src/HTML/React/lib/types/theme" },
     { "path": "packages/ui/src/pages/" }
+    { "path": "./" },
+    { "path": "packages/ui" },
+    { "path": "packages/ui/src/HTML" },
+    { "path": "packages/ui/src/HTML/React" },
+    { "path": "packages/ui/src/Colors" },
+    { "path": "packages/ui/src/Colors/classes/Palette" },
+    { "path": "packages/ui/test" },
+    { "path": "packages/ui/src/pages" }
   ],
   "settings": {}
 }
