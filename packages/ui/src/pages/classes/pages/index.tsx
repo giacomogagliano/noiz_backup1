@@ -1,14 +1,8 @@
 import React from "react";
-import {
-  Dirent,
-  reader,
-  Reader,
-} from "@zionstate/database/FileSystem";
+import { Reader } from "@zionstate/database/FileSystem";
 import IndexPage from "../../components/IndexPage";
-import styled from "styled-components";
 
 const newreader = new Reader("./src/pages/classes/pages");
-const filesInFolder = newreader.readFilesInFolder;
 const foldersInDir = newreader.readFoldersInDir_v2;
 
 export function getStaticProps() {
@@ -25,7 +19,7 @@ export default function index(props: { data: string }) {
   return (
     <IndexPage
       data={props.data}
-      path={["classes"]}
+      path={["classes/pages"]}
     ></IndexPage>
   );
 }
