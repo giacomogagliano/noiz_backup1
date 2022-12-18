@@ -54,7 +54,6 @@ export default class IndexPage extends Component<IndexPageProps> {
     display: grid;
     ul {
       display: grid;
-      white-space: nowrap;
     }
   `;
 
@@ -79,11 +78,14 @@ export default class IndexPage extends Component<IndexPageProps> {
     grid-template-columns: 1fr 1fr;
     div {
       padding: 10%;
-      border: solid;
+      border: solid ${props => props.theme.borderColor};
     }
     a {
       margin-left: 2rem;
       margin-right: 2rem;
+      &:hover {
+        color: ${props => props.theme.palette.blue};
+      }
     }
   `;
 
