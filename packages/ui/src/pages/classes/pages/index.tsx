@@ -4,8 +4,8 @@ import {
   reader,
   Reader,
 } from "@zionstate/database/FileSystem";
-import { Folder } from "@zionstate/database/RAM";
 import IndexPage from "../../components/IndexPage";
+import styled from "styled-components";
 
 const newreader = new Reader("./src/pages/classes/pages");
 const filesInFolder = newreader.readFilesInFolder;
