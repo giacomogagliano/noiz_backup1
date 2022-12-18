@@ -30,6 +30,7 @@ import {
 import { WindowEthRequired } from "../../../lib/hooks/useEthereum/useEthereum_v2";
 import { dataGuard } from "@zionstate/zionbase/utils";
 import Router from "next/router";
+import Link from "next/link";
 
 ////////ETH
 
@@ -186,6 +187,9 @@ export class NoizApp_v2 extends BaseNoiz<
               {this.state.prefersColorScheme === "dark"
                 ? "light"
                 : "dark"}
+            </button>
+            <button>
+              <Link href="/">Home</Link>
             </button>
           </header>
           <section id="content">
