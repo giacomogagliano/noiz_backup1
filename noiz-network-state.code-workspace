@@ -1,9 +1,9 @@
 {
   "folders": [
     { "path": "." },
-    { "path": "apps" },
-    { "path": "packages" },
-    { "path": "bin" }
+    { "path": "packages/ui" },
+    { "path": "packages/ui/src/pages" },
+    { "path": "packages/ui/src/pages/classes" }
   ],
   "settings": {}
 }
