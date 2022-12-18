@@ -29,6 +29,7 @@ import {
 } from "../../../lib/hooks";
 import { WindowEthRequired } from "../../../lib/hooks/useEthereum/useEthereum_v2";
 import { dataGuard } from "@zionstate/zionbase/utils";
+import Router from "next/router";
 
 ////////ETH
 
@@ -174,6 +175,9 @@ export class NoizApp_v2 extends BaseNoiz<
         <GlobalStyle />
         <Layout>
           <header>
+            <button onClick={() => Router.back()}>
+              Back
+            </button>
             I am the header
             <button onClick={this.state.handleClick}>
               {this.state.buttonMess}
