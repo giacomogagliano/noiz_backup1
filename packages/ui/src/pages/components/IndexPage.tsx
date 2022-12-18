@@ -51,9 +51,23 @@ export default class IndexPage extends Component<IndexPageProps> {
   }
 
   Div = styled.div`
-    display: grid;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     ul {
       display: grid;
+      grid-template-columns: 1fr;
+      grid-gap: 1rem;
+      align-items: stretch;
+
+      @media (min-width: 600px) and (max-width: 800px) {
+        grid-template-columns: 1fr 1fr;
+      }
+      @media (max-width: 1000px) and (min-width: 800px) {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      @media (min-width: 1000px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
     }
   `;
 
@@ -66,25 +80,45 @@ export default class IndexPage extends Component<IndexPageProps> {
           <Link href={`${jointpath}`}>{el.name}</Link>
         </div>
         <div>
-          <>Status: </>
-          <>{el.status}</>
+          <p>Status: </p>
+          <p>{el.status}</p>
         </div>
       </div>
     );
   };
 
   StyledFolderCard = styled(this.FolderCard)`
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    transition: translate ease-in-out 100ms,
+      box-shadow ease-in-out 100ms;
+    border: solid ${props => props.theme.borderColor};
+    border-radius: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    min-width: 15rem;
+    &:hover,
+    &:focus {
+      translate: 0 -5px;
+      box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
+      background-color: ${props =>
+        props.theme.palette.blue};
+      color: ${props => props.theme.palette.grey};
+      a {
+        color: ${props => props.theme.palette.grey};
+      }
+    }
+
     div {
-      padding: 10%;
-      border: solid ${props => props.theme.borderColor};
+      padding-left: 10%;
+      padding-right: 10%;
+      padding-top: 5%;
+      padding-bottom: 5%;
+      display: inline-flex;
+      justify-content: space-between;
     }
     a {
       margin-left: 2rem;
-      margin-right: 2rem;
       &:hover {
-        color: ${props => props.theme.palette.blue};
+        color: ${props => props.theme.palette.white};
       }
     }
   `;
