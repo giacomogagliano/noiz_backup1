@@ -35,3 +35,9 @@ Per il momento ho trovato questo:
 
 - https://github.com/jsdoc/jsdoc
 - https://github.com/jsdoc2md/jsdoc-to-markdown
+
+TODO fare dei test per capire come reagiscono i vari tipi di
+wallet
+
+- creare un account per ogni wallet nel browser
+- fare una pagina per ogni wallet in un branch tutto suo
