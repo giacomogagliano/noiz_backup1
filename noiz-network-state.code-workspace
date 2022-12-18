@@ -1,20 +1,9 @@
 {
   "folders": [
-    {
-      "name": "noiz-network-state",
-      "path": "."
-    },
-    {
-      "name": "apps",
-      "path": "apps"
-    },
-    {
-      "name": "packages",
-      "path": "packages"
-    },
-    {
-      "path": "bin"
-    }
+    { "path": "." },
+    { "path": "apps" },
+    { "path": "packages" },
+    { "path": "bin" }
   ],
   "settings": {}
 }
