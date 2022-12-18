@@ -4,8 +4,8 @@ import {
   reader,
   Reader,
 } from "@zionstate/database/FileSystem";
-import { Folder } from "@zionstate/database/RAM";
 import IndexPage from "../../components/IndexPage";
+import styled from "styled-components";
 
 const newreader = new Reader("./src/pages/classes/pages");
 const filesInFolder = newreader.readFilesInFolder;
@@ -21,11 +21,31 @@ export function getStaticProps() {
   return { props: { data: JSON.stringify(data) } };
 }
 
+const AreaIndexClassesPages = styled(IndexPage)`
+  border: solid;
+  padding: 10%;
+  white-space: nowrap;
+  display: grid;
+  flex-direction: column;
+  justify-content: space-around;
+
+  ul {
+    div {
+      div {
+        padding: 10%;
+        border: solid;
+      }
+      a {
+      }
+    }
+  }
+`;
+
 export default function index(props: { data: string }) {
   return (
-    <IndexPage
+    <AreaIndexClassesPages
       data={props.data}
       path={["classes"]}
-    ></IndexPage>
+    ></AreaIndexClassesPages>
   );
 }
