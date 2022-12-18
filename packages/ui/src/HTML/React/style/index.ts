@@ -10,6 +10,7 @@ export * from "./H1";
 export * from "./Img";
 export * from "./Input";
 export * from "./P";
-export * from "./Path";
+export * from "./HTMLElements/Path";
 export * from "./Areas/";
 export * from "./Loaders";
+export * from "./HTMLElements";
