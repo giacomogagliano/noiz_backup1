@@ -22,7 +22,13 @@
     }
     { "path": "." },
     { "path": "packages/database" },
-    { "path": "packages/database/EVM" }
+    { "path": "packages/database/src/Blockchain" },
+    { "path": "packages/database/src/Blockchain/src" },
+    { "path": "packages/database/src/Blockchain/src/Class" },
+    {
+      "path": "packages/database/src/Blockchain/src/Class/NoizContractFactory"
+    },
+    { "path": "packages/database/src/Blockchain/src/Factories" }
   ],
   "settings": {}
 }
