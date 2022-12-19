@@ -5,7 +5,6 @@ export * as global from "./Global";
 export * as layout from "./Layout";
 export * from "./Button";
 export * from "./Circle";
-export * from "./Div";
 
 export * from "./Areas/";
 export * from "./Loaders";
