@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { IEVM } from "../../EVM";
+import { IEVM } from "../../";
 
 export type IdeployContract_v1 = <
   C extends ethers.Contract

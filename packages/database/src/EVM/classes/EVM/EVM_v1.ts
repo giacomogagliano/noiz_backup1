@@ -1,38 +1,41 @@
-// import ethers from "ethers";
-import {
-  getProvider,
-  getProviderType,
-  RequireOnlyOne,
-} from "./";
-import { formatEther, formatEtherType } from "./";
-import { formatUnits, formatUnitsType } from "./";
-import { getBalance, getBalanceType } from "./";
-import { getGasPrice, getGasPriceType } from "./";
-import { getJsonRpc, getJsonRpcType } from "./";
-import { buildProviders, buildProvidersType } from "./";
 import { ethers, Signer } from "ethers";
-import { makeContract, makeContractType } from "./";
-import { deployContract, deployContractType } from "./";
-import { retrieveTxDatas, retrieveTxDatasType } from "./";
-import {
-  calculateTxCosts,
-  calculateTxCostsType,
-} from "./";
-// import { printTxLog, printTxLogType } from "./printTxLog";
-import { ZionContractFactories } from "./Types/ZionContractFactories";
-import { detectEthereumProvider } from "./";
-import { requestAccounts } from "./";
 import {
   addContractFactory,
   addContractFactoryType,
-} from "./";
+  buildProviders,
+  buildProvidersType,
+  calculateTxCosts,
+  calculateTxCostsType,
+  deployContract,
+  deployContractType,
+  detectEthereumProvider,
+  formatEther,
+  formatEtherType,
+  formatUnits,
+  formatUnitsType,
+  getBalance,
+  getBalanceType,
+  getGasPrice,
+  getGasPriceType,
+  getJsonRpc,
+  getJsonRpcType,
+  getProvider,
+  getProviderType,
+  makeContract,
+  makeContractType,
+  MetaMaskEthereumProvider,
+  requestAccounts,
+  retrieveTxDatas,
+  retrieveTxDatasType,
+} from "../../lib";
 import {
   AlchemyProvider,
   EtherscanProvider,
   InfuraProvider,
   JsonRpcProvider,
-} from "./Types";
-import { MetaMaskEthereumProvider } from "./lib/detectEthereumProvider/detectEthereumProvider_v1";
+} from "../../Types";
+import { ZionContractFactories } from "../../Types/ZionContractFactories";
+import { RequireOnlyOne } from "../EVMweb";
 
 export type EVMCtorArgs = {
   signer?: Signer;
@@ -96,7 +99,7 @@ declare global {
   }
 }
 
-export const EVM = class implements IEVM {
+export class EVM_v1 implements IEVM {
   static detectEthereumProvider = detectEthereumProvider;
   static requestAccounts = requestAccounts;
   static Web3Provider = ethers.providers.Web3Provider;
@@ -134,4 +137,4 @@ export const EVM = class implements IEVM {
   // printTxLog = printTxLog;
   retrieveTxDatas = retrieveTxDatas;
   requestAccounts = requestAccounts;
-};
+}

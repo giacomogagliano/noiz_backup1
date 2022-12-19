@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { IEVM } from "../../EVM";
+import { IEVM } from "../../";
 import { getContractFactory } from "../getContractFactory";
 
 export interface IaddContractFactory_v1 {
