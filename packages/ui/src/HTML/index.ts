@@ -1,5 +1,5 @@
 import * as React from "./React";
-export { Input, P, Path } from "./React";
+export { Input, P, Path, Img } from "./React";
 import * as Next from "./Next/index";
 import * as HtmlClasses from "./class";
 

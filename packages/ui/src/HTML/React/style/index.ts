@@ -7,7 +7,6 @@ export * from "./Button";
 export * from "./Circle";
 export * from "./Div";
 export * from "./H1";
-export * from "./Img";
 
 export * from "./Areas/";
 export * from "./Loaders";
