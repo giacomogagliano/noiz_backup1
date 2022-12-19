@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-const emptyDiv = styled.div``;
+const emptyDiv = css<IDiv>``;
 
 interface IDiv {
   empty?: boolean;

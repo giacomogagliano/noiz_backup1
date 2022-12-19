@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
-export const Circle = styled.circle`
+interface ICircle {}
+
+export const Circle = styled.circle<ICircle>`
   stroke: ${props => props.theme.primary.borderColor};
 `;

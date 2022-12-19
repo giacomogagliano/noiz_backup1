@@ -20,6 +20,7 @@ const input = maker("input", "notter ⛔️");
 const img = maker("img", "notter ⛔️");
 const h1 = maker("h1", "working ✅");
 const div = maker("h1", "working ✅");
+const circle = maker("circle", "working ✅");
 const newreader = new Reader(
   "./src/pages/styles/html-elements"
 );
@@ -56,7 +57,8 @@ export function getStaticProps() {
     .map(input)
     .map(img)
     .map(h1)
-    .map(div);
+    .map(div)
+    .map(circle);
   return { props: { data: JSON.stringify(neww) } };
 }
 
