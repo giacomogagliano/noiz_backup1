@@ -1,4 +1,5 @@
 import React, {
+  ChangeEvent,
   Dispatch,
   FC,
   SetStateAction,
@@ -93,12 +94,14 @@ export interface NoizApp_v2State
   contractAddress: string | null;
   contract: ethers.Contract | null;
   contractFactory:
-    | keyof EVMweb["newContractFactories"]
+    | keyof EVMweb["contractFactories"]
     | null;
   provider: ethers.providers.Web3Provider | null;
   metamask: MetaMaskEthereumProvider | null;
   evm: IEVMweb | null;
   handleClick: () => void;
+  selectOptions: string[];
+  selectedContract: keyof EVMweb["contractFactories"];
 }
 
 export class NoizApp_v2State extends BaseNoizState<NoizApp_v2Props> {}
@@ -148,6 +151,8 @@ export class NoizApp_v2 extends BaseNoiz<
     state.provider = null;
     state.metamask = null;
     state.evm = null;
+    state.selectOptions = [];
+    state.selectedContract = "";
     state.handleClick = () => console.log("anvedi");
 
     this.state = state;
@@ -169,8 +174,27 @@ export class NoizApp_v2 extends BaseNoiz<
     </div>
   );
 
+  Option = ({
+    title,
+    value,
+  }: {
+    value: string;
+    title: string;
+  }) => <option value={value}>{title}</option>;
+
   istia({ Component, pageProps }: NoizApp_v2Props) {
     const Layout = this.standard1;
+    const handleSelectChange = this.handleSelectChange;
+    const noizContractFactories =
+      this.state.evm?.newNoizContractFactories;
+    const selectedContract = this.state.selectedContract;
+    let contract = noizContractFactories?.Membership.abi;
+    if (noizContractFactories) {
+      const contractFactory =
+        noizContractFactories[selectedContract];
+      const contractFactoryAbi = contractFactory?.abi;
+      contract = contractFactoryAbi;
+    }
     return (
       <ThemeProvider theme={this.state.theme}>
         <GlobalStyle />
@@ -188,9 +212,19 @@ export class NoizApp_v2 extends BaseNoiz<
                 ? "light"
                 : "dark"}
             </button>
-            <select>
-              <option>Ciao</option>
-              <option>Mondo</option>
+            <select onChange={handleSelectChange}>
+              {this.state.selectOptions &&
+                this.state.selectOptions.length > 0 &&
+                this.state.selectOptions.map((o, idx) => {
+                  const Option = this.Option;
+                  return (
+                    <Option
+                      title={o}
+                      value={o}
+                      key={idx}
+                    ></Option>
+                  );
+                })}
             </select>
             <button>
               <Link href="/">Home</Link>
@@ -199,34 +233,7 @@ export class NoizApp_v2 extends BaseNoiz<
           <section id="content">
             <Component
               {...pageProps}
-              contract={
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                this.state.evm?.newNoizContractFactories
-                  .Membership.abi
-              }
+              contract={contract}
             ></Component>
           </section>
           <footer>I am the footer</footer>
@@ -390,12 +397,25 @@ export class NoizApp_v2 extends BaseNoiz<
     return this;
   };
 
+  setSelectOptions = (selectOptions: string[]) =>
+    this.setState({ selectOptions });
+
+  setSelectedContract = (selectedContract: string) =>
+    this.setState({ selectedContract });
+
   setSignerAddress = (signerAddress: string) => {
     this.setState({ signerAddress });
     return this;
   };
 
   EVMweb = EVMweb;
+
+  handleSelectChange = (
+    e: ChangeEvent<HTMLSelectElement>
+  ) => {
+    e.preventDefault();
+    this.setSelectedContract(e.target.value);
+  };
 
   handleConnection = () => {
     const isConnected = this.state.isConnected;
@@ -500,9 +520,13 @@ export class NoizApp_v2 extends BaseNoiz<
     const evm = new this.EVMweb({
       window: window as WindowEthRequired,
     });
+    const options = Object.getOwnPropertyNames(
+      evm.contractFactories
+    );
+    this.setSelectOptions(options);
     const contractAddress = this.state.contractAddress;
     ////// CHIAMATA PER CONTRACTFACTORIES
-    const factory = evm.newContractFactories[contract];
+    const factory = evm.contractFactories[contract];
     const provider = evm.provider;
     provider.on("network", this.handleNetworkChange);
     this.setEvm(evm)
@@ -567,16 +591,24 @@ export class NoizApp_v2 extends BaseNoiz<
     const prevIsConn = prevState.isConnected;
     const currPrvdr = this.state.provider;
     const prevPrvdr = prevState.provider;
+    const currSelectedContract =
+      this.state.selectedContract;
+    const prevSelectedContract =
+      prevState.selectedContract;
     // statechanges
     const prefScheme = hasUpdated(prevScheme, currScheme);
     const metamask = hasUpdated(prevMtmsk, currMtmsk);
     const provider = hasUpdated(prevPrvdr, currPrvdr);
     const isConn = has(currIsConn).changedFrom(prevIsConn);
+    const isSelContract = has(
+      currSelectedContract
+    ).changedFrom(prevSelectedContract);
     // EXECUTIONS
     prefScheme && this.setTheme(themes[currScheme]);
     metamask && initizalizeWeb3();
     provider && listAccounts(dataGuard(currMtmsk, ""));
     isConn && this.handleConnection();
+    isSelContract && console.log("ok");
   };
 
   isDarkColorScheme = () =>
@@ -599,6 +631,7 @@ export class NoizApp_v2 extends BaseNoiz<
     const handleClrScheme = this.handleColorSchemeChange;
     this.detectEth();
     if (isDark) this.setPrefersColorScheme(themes.dark);
+
     window
       .matchMedia("(prefers-color-scheme: dark)")
       .addEventListener("change", handleClrScheme);
