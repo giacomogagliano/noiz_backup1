@@ -179,7 +179,7 @@ export class NoizApp_v2 extends BaseNoiz<
             <button onClick={() => Router.back()}>
               Back
             </button>
-            I am the header
+            <p>I am the header</p>
             <button onClick={this.state.handleClick}>
               {this.state.buttonMess}
             </button>
@@ -248,7 +248,7 @@ export class NoizApp_v2 extends BaseNoiz<
 
   defaultStyle = styled(this.Html)``;
 
-  bgcolor = `hsl(${210 + 90}, 55%, 75%)`;
+  bgcolor = `hsl(${210 + 90}, 55%, 22%)`;
 
   standard1 = styled.div`
     display: grid;
@@ -259,10 +259,17 @@ export class NoizApp_v2 extends BaseNoiz<
       "content"
       "f";
     header {
-      display: grid;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
       background-color: ${this.bgcolor};
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      * {
+        align-self: center;
+      }
+      /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr; */
       button {
+        padding: 0.5rem;
+        border-radius: 0.5rem;
         color: ${props => props.theme.borderColor};
         background-color: ${props =>
           props.theme.backgroundColor};
