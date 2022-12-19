@@ -34,7 +34,8 @@
     {
       "path": "packages/database/src/Blockchain/src/Class/NoizContractFactory"
     },
-    { "path": "packages/database/src/Blockchain/src/Factories" }
+    { "path": "packages/database/src/Blockchain/src/Factories" },
+    { "path": "packages/ui/src/HTML/React/classes/_app/NoizApp" }
   ],
   "settings": {}
 }
