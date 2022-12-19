@@ -21,8 +21,8 @@
       "path": "packages/ui/src/pages/styles"
     }
     { "path": "." },
+    { "path": "packages/ui" },
     { "path": "packages/database" },
-    { "path": "packages/database/ui" },
     { "path": "packages/database/test" },
     { "path": "packages/database/test/EVM" },
     { "path": "packages/database/src/EVM" },
