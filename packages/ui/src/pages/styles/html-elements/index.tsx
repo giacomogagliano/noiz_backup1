@@ -14,7 +14,8 @@ const maker = IndexPage.maker;
 const filterDs = IndexPage.filter(".DS_Store");
 const filterIndex = IndexPage.filter("index.tsx");
 
-const pages = maker("pages", "index-??");
+const p = maker("p", "working ✅");
+const path = maker("path", "notter ⛔️");
 const newreader = new Reader(
   "./src/pages/styles/html-elements"
 );
@@ -44,7 +45,10 @@ export function getStaticProps() {
   const filtered = res
     .filter(filterDs)
     .filter(filterIndex);
-  const neww = filtered.map(IndexPage.makeDati).map(pages);
+  const neww = filtered
+    .map(IndexPage.makeDati)
+    .map(p)
+    .map(path);
   return { props: { data: JSON.stringify(neww) } };
 }
 

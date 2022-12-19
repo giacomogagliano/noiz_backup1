@@ -13,7 +13,7 @@ const maker = IndexPage.maker;
 const filterDs = IndexPage.filter(".DS_Store");
 const filterIndex = IndexPage.filter("index.tsx");
 
-const pages = maker("pages", "index-??");
+const htmlElements = maker("html-elements", "index-??");
 const newreader = new Reader("./src/pages/styles");
 const foldersInDir = newreader.readFoldersInDir_v2;
 
@@ -31,28 +31,17 @@ export function getStaticProps() {
     TreeNode.makeNodes(res, data);
     return data;
   });
-  const indexes = nodes.filter(e => e.type === "index");
-  const modules = nodes.filter(e => e.type === "module");
 
   const res = fs.readdirSync("./src/pages/styles");
 
   const filtered = res
     .filter(filterDs)
     .filter(filterIndex);
-  const neww = filtered.map(IndexPage.makeDati).map(pages);
+  const neww = filtered
+    .map(IndexPage.makeDati)
+    .map(htmlElements);
   return { props: { data: JSON.stringify(neww) } };
 }
-
-const Div = styled.div`
-  display: grid;
-  ul {
-    display: grid;
-    #noiz-class {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-`;
 
 export default function index({ data }: { data: string }) {
   const parsed = JSON.parse(data);
