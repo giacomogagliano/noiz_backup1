@@ -8,7 +8,6 @@ export * from "./Circle";
 export * from "./Div";
 export * from "./H1";
 export * from "./Img";
-export * from "./Input";
 
 export * from "./Areas/";
 export * from "./Loaders";

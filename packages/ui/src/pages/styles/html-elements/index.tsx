@@ -16,6 +16,7 @@ const filterIndex = IndexPage.filter("index.tsx");
 
 const p = maker("p", "working ✅");
 const path = maker("path", "notter ⛔️");
+const input = maker("input", "notter ⛔️");
 const newreader = new Reader(
   "./src/pages/styles/html-elements"
 );
@@ -48,7 +49,8 @@ export function getStaticProps() {
   const neww = filtered
     .map(IndexPage.makeDati)
     .map(p)
-    .map(path);
+    .map(path)
+    .map(input);
   return { props: { data: JSON.stringify(neww) } };
 }
 
