@@ -3,7 +3,7 @@ import {
   detect,
   MetaMaskEthereumProvider,
 } from "../../lib";
-import { ZionContractFactories } from "../../Types/ZionContractFactories";
+import { ZionContractFactories_v2 as ZionContractFactories } from "../../Types/ZionContractFactories";
 
 // TODO move this in zionbase/somewhere
 export type RequireOnlyOne<
@@ -23,7 +23,7 @@ export interface IEVMweb_v2 {
   window: RequireOnlyOne<Window, "ethereum">;
   provider: ethers.providers.Web3Provider;
   signer: ethers.providers.JsonRpcSigner;
-  newContractFactories: typeof ZionContractFactories["prototype"]["newContractFactories"];
+  contractFactories: typeof ZionContractFactories["prototype"]["contractFactories"];
   newNoizContractFactories: typeof ZionContractFactories["prototype"]["newNoizContractFactories"];
   detect(): Promise<MetaMaskEthereumProvider | null>;
 }
@@ -32,7 +32,7 @@ export interface EVMweb_v2 {
   window: RequireOnlyOne<Window, "ethereum">;
   provider: ethers.providers.Web3Provider;
   signer: ethers.providers.JsonRpcSigner;
-  newContractFactories: typeof ZionContractFactories["prototype"]["newContractFactories"];
+  contractFactories: typeof ZionContractFactories["prototype"]["contractFactories"];
   newNoizContractFactories: typeof ZionContractFactories["prototype"]["newNoizContractFactories"];
   detect(): Promise<MetaMaskEthereumProvider | null>;
 }
@@ -41,7 +41,7 @@ export class EVMweb_v2 implements IEVMweb_v2 {
   window: RequireOnlyOne<Window, "ethereum">;
   provider: ethers.providers.Web3Provider;
   signer: ethers.providers.JsonRpcSigner;
-  newContractFactories: typeof ZionContractFactories["prototype"]["newContractFactories"];
+  contractFactories: typeof ZionContractFactories["prototype"]["contractFactories"];
   newNoizContractFactories: typeof ZionContractFactories["prototype"]["newNoizContractFactories"];
   constructor(args: EVMwebArgs) {
     this.window = args.window;
@@ -51,8 +51,8 @@ export class EVMweb_v2 implements IEVMweb_v2 {
     this.signer = this.provider.getSigner();
     const zionContractFactories =
       new ZionContractFactories(this.signer);
-    this.newContractFactories =
-      zionContractFactories.newContractFactories;
+    this.contractFactories =
+      zionContractFactories.contractFactories;
     this.newNoizContractFactories =
       zionContractFactories.newNoizContractFactories;
   }
