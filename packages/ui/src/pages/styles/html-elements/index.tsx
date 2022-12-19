@@ -21,6 +21,7 @@ const img = maker("img", "working ✅");
 const h1 = maker("h1", "working ✅");
 const div = maker("h1", "working ✅");
 const circle = maker("circle", "working ✅");
+const a = maker("a", "working ✅");
 const newreader = new Reader(
   "./src/pages/styles/html-elements"
 );
@@ -58,7 +59,8 @@ export function getStaticProps() {
     .map(img)
     .map(h1)
     .map(div)
-    .map(circle);
+    .map(circle)
+    .map(a);
   return { props: { data: JSON.stringify(neww) } };
 }
 

@@ -5,3 +5,4 @@ export * from "./Img";
 export * from "./H1";
 export * from "./Div";
 export * from "./Circle";
+export * from "./A";
