@@ -6,3 +6,6 @@ export * from "./H1";
 export * from "./Div";
 export * from "./Circle";
 export * from "./A";
+export * from "./Aside";
+export * from "./Audio";
+export * from "./Article";

@@ -1,6 +1,9 @@
 import * as React from "./React";
 export {
   A,
+  Audio,
+  Article,
+  Aside,
   Input,
   P,
   Path,

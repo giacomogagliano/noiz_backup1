@@ -16,12 +16,15 @@ const filterIndex = IndexPage.filter("index.tsx");
 
 const p = maker("p", "working ✅");
 const path = maker("path", "working ✅");
-const input = maker("input", "notter ⛔️");
+const input = maker("input", "working ✅");
 const img = maker("img", "working ✅");
 const h1 = maker("h1", "working ✅");
 const div = maker("h1", "working ✅");
 const circle = maker("circle", "working ✅");
 const a = maker("a", "working ✅");
+const aside = maker("aside", "working ✅");
+const audio = maker("audio", "working ✅");
+const article = maker("a", "working ✅");
 const newreader = new Reader(
   "./src/pages/styles/html-elements"
 );
@@ -60,7 +63,10 @@ export function getStaticProps() {
     .map(h1)
     .map(div)
     .map(circle)
-    .map(a);
+    .map(a)
+    .map(aside)
+    .map(article)
+    .map(audio);
   return { props: { data: JSON.stringify(neww) } };
 }
 
