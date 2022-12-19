@@ -18,6 +18,7 @@ const p = maker("p", "working ✅");
 const path = maker("path", "notter ⛔️");
 const input = maker("input", "notter ⛔️");
 const img = maker("img", "notter ⛔️");
+const h1 = maker("h1", "working ✅");
 const newreader = new Reader(
   "./src/pages/styles/html-elements"
 );
@@ -52,7 +53,8 @@ export function getStaticProps() {
     .map(p)
     .map(path)
     .map(input)
-    .map(img);
+    .map(img)
+    .map(h1);
   return { props: { data: JSON.stringify(neww) } };
 }
 
