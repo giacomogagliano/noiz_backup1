@@ -266,7 +266,6 @@ export class NoizApp_v2 extends BaseNoiz<
       * {
         align-self: center;
       }
-      /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr; */
       button {
         padding: 0.5rem;
         border-radius: 0.5rem;
