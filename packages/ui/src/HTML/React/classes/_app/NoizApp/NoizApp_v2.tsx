@@ -93,7 +93,7 @@ export interface NoizApp_v2State
   contractAddress: string | null;
   contract: ethers.Contract | null;
   contractFactory:
-    | keyof EVMweb["contractFactories"]
+    | keyof EVMweb["newContractFactories"]
     | null;
   provider: ethers.providers.Web3Provider | null;
   metamask: MetaMaskEthereumProvider | null;
@@ -225,7 +225,7 @@ export class NoizApp_v2 extends BaseNoiz<
                 ////////////////////////////////////////////////
                 ////////////////////////////////////////////////
                 this.state.evm?.newNoizContractFactories
-                  .ERC1155TokenShop.abi
+                  .Membership.abi
               }
             ></Component>
           </section>
@@ -502,7 +502,7 @@ export class NoizApp_v2 extends BaseNoiz<
     });
     const contractAddress = this.state.contractAddress;
     ////// CHIAMATA PER CONTRACTFACTORIES
-    const factory = evm.contractFactories[contract];
+    const factory = evm.newContractFactories[contract];
     const provider = evm.provider;
     provider.on("network", this.handleNetworkChange);
     this.setEvm(evm)
