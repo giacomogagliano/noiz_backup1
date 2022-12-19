@@ -15,7 +15,7 @@ const filterDs = IndexPage.filter(".DS_Store");
 const filterIndex = IndexPage.filter("index.tsx");
 
 const p = maker("p", "working ✅");
-const path = maker("path", "notter ⛔️");
+const path = maker("path", "working ✅");
 const input = maker("input", "notter ⛔️");
 const img = maker("img", "working ✅");
 const h1 = maker("h1", "working ✅");
