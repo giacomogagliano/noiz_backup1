@@ -2,8 +2,7 @@ import React from "react";
 import fs from "fs";
 import styled from "styled-components";
 import "@zionstate/zionbase/utils";
-import IndexPage from "../../components/IndexPage";
-import { filterMaker } from "../../lib/filterMaker";
+import IndexPage from ".././components/IndexPage";
 import { FS } from "@zionstate/database";
 import { TreeNode } from "@zionstate/zionbase/zionbase";
 
@@ -14,23 +13,15 @@ const maker = IndexPage.maker;
 const filterDs = IndexPage.filter(".DS_Store");
 const filterIndex = IndexPage.filter("index.tsx");
 
-const p = maker("p", "working ✅");
-const path = maker("path", "working ✅");
-const input = maker("input", "notter ⛔️");
-const img = maker("img", "working ✅");
-const h1 = maker("h1", "working ✅");
-const div = maker("h1", "working ✅");
-const circle = maker("circle", "working ✅");
-const newreader = new Reader(
-  "./src/pages/styles/html-elements"
-);
+const htmlElements = maker("html-elements", "index-??");
+const newreader = new Reader("./src/pages/styles");
 const foldersInDir = newreader.readFoldersInDir_v2;
 
 export function getStaticProps() {
   newreader.targetResult = [];
 
   const data = foldersInDir(
-    "./src/pages/styles/html-elements"
+    "./src/pages/styles"
   ).targetResult;
   const nodes = data.map(data => {
     const path = data.path + "/" + data.name;
@@ -40,45 +31,21 @@ export function getStaticProps() {
     TreeNode.makeNodes(res, data);
     return data;
   });
-  const indexes = nodes.filter(e => e.type === "index");
-  const modules = nodes.filter(e => e.type === "module");
 
-  const res = fs.readdirSync(
-    "./src/pages/styles/html-elements"
-  );
+  const res = fs.readdirSync("./src/pages/styles");
 
   const filtered = res
     .filter(filterDs)
     .filter(filterIndex);
   const neww = filtered
     .map(IndexPage.makeDati)
-    .map(p)
-    .map(path)
-    .map(input)
-    .map(img)
-    .map(h1)
-    .map(div)
-    .map(circle);
+    .map(htmlElements);
   return { props: { data: JSON.stringify(neww) } };
 }
-
-const Div = styled.div`
-  display: grid;
-  ul {
-    display: grid;
-    #noiz-class {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-`;
 
 export default function index({ data }: { data: string }) {
   const parsed = JSON.parse(data);
   return (
-    <IndexPage
-      data={data}
-      path={["styles/html-elements"]}
-    ></IndexPage>
+    <IndexPage data={data} path={["styles"]}></IndexPage>
   );
 }
