@@ -591,24 +591,16 @@ export class NoizApp_v2 extends BaseNoiz<
     const prevIsConn = prevState.isConnected;
     const currPrvdr = this.state.provider;
     const prevPrvdr = prevState.provider;
-    const currSelectedContract =
-      this.state.selectedContract;
-    const prevSelectedContract =
-      prevState.selectedContract;
     // statechanges
     const prefScheme = hasUpdated(prevScheme, currScheme);
     const metamask = hasUpdated(prevMtmsk, currMtmsk);
     const provider = hasUpdated(prevPrvdr, currPrvdr);
     const isConn = has(currIsConn).changedFrom(prevIsConn);
-    const isSelContract = has(
-      currSelectedContract
-    ).changedFrom(prevSelectedContract);
     // EXECUTIONS
     prefScheme && this.setTheme(themes[currScheme]);
     metamask && initizalizeWeb3();
     provider && listAccounts(dataGuard(currMtmsk, ""));
     isConn && this.handleConnection();
-    isSelContract && console.log("ok");
   };
 
   isDarkColorScheme = () =>
