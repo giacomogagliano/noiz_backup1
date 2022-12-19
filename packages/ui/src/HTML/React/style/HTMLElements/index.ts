@@ -10,3 +10,4 @@ export * from "./Aside";
 export * from "./Audio";
 export * from "./Article";
 export * from "./Code";
+export * from "./Form";
