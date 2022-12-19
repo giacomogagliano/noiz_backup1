@@ -1,5 +1,11 @@
 import * as React from "./React";
 export {
+  A,
+  Audio,
+  Article,
+  Aside,
+  Code,
+  Form,
   Input,
   P,
   Path,

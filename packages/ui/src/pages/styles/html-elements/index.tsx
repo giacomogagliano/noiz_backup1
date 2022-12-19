@@ -16,11 +16,17 @@ const filterIndex = IndexPage.filter("index.tsx");
 
 const p = maker("p", "working ✅");
 const path = maker("path", "working ✅");
-const input = maker("input", "notter ⛔️");
+const input = maker("input", "working ✅");
 const img = maker("img", "working ✅");
 const h1 = maker("h1", "working ✅");
 const div = maker("h1", "working ✅");
 const circle = maker("circle", "working ✅");
+const a = maker("a", "working ✅");
+const aside = maker("aside", "working ✅");
+const audio = maker("audio", "working ✅");
+const article = maker("a", "working ✅");
+const code = maker("code", "working ✅");
+const form = maker("form", "working ✅");
 const newreader = new Reader(
   "./src/pages/styles/html-elements"
 );
@@ -58,7 +64,13 @@ export function getStaticProps() {
     .map(img)
     .map(h1)
     .map(div)
-    .map(circle);
+    .map(circle)
+    .map(a)
+    .map(aside)
+    .map(article)
+    .map(audio)
+    .map(code)
+    .map(form);
   return { props: { data: JSON.stringify(neww) } };
 }
 
