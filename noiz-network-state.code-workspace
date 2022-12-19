@@ -22,6 +22,7 @@
     }
     { "path": "." },
     { "path": "packages/database" },
+    { "path": "packages/database/ui" },
     { "path": "packages/database/test" },
     { "path": "packages/database/test/EVM" },
     { "path": "packages/database/src/EVM" },
