@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
-export const Path = styled.path<{
+interface IPath {
   options?: { fill?: boolean; stroke?: boolean };
-}>`
+}
+
+export const Path = styled.path<IPath>`
   fill: ${props =>
     props.options?.fill
       ? props.theme.primary.borderColor

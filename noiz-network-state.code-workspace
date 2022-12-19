@@ -1,8 +1,25 @@
 {
   "folders": [
-    { "path": "." },
-    { "path": "packages/ui" },
-    { "path": "packages/ui/src" }
+    {
+      "name": "noiz-network-state",
+      "path": "."
+    },
+    {
+      "name": "HTML",
+      "path": "packages/ui/src/HTML"
+    },
+    {
+      "name": "React",
+      "path": "packages/ui/src/HTML/React"
+    },
+    {
+      "name": "style",
+      "path": "packages/ui/src/HTML/React/style"
+    },
+    {
+      "name": "styles",
+      "path": "packages/ui/src/pages/styles"
+    }
   ],
   "settings": {}
 }
