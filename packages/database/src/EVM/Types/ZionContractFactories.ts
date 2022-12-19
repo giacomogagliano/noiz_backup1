@@ -106,3 +106,5 @@ export class ZionContractFactories {
     };
   }
 }
+
+export { ZionContractFactories_v2 } from "./ZionContractFactories_v2";
