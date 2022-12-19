@@ -1,2 +1,2 @@
-export * as Opensea from "./Opensea.js";
+export * as Opensea from "./Opensea";
 export * as ZionContractsTypeScript from "./contracts";

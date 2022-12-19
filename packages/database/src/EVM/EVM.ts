@@ -1,5 +1,9 @@
 // import ethers from "ethers";
-import { getProvider, getProviderType } from "./";
+import {
+  getProvider,
+  getProviderType,
+  RequireOnlyOne,
+} from "./";
 import { formatEther, formatEtherType } from "./";
 import { formatUnits, formatUnitsType } from "./";
 import { getBalance, getBalanceType } from "./";
@@ -28,7 +32,6 @@ import {
   InfuraProvider,
   JsonRpcProvider,
 } from "./Types";
-import { RequireOnlyOne } from "./EVMweb";
 import { MetaMaskEthereumProvider } from "./lib/detectEthereumProvider/detectEthereumProvider_v1";
 
 export type EVMCtorArgs = {

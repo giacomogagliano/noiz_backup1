@@ -1,7 +1,9 @@
 import { ethers } from "ethers";
-import { detect } from "./lib";
-import { MetaMaskEthereumProvider } from "./lib/detectEthereumProvider/detectEthereumProvider_v1";
-import { ZionContractFactories } from "./Types/ZionContractFactories";
+import {
+  detect,
+  MetaMaskEthereumProvider,
+} from "../../lib";
+import { ZionContractFactories } from "../../Types/ZionContractFactories";
 
 export type RequireOnlyOne<
   T,
@@ -36,7 +38,7 @@ export interface EVMweb {
   detect(): Promise<MetaMaskEthereumProvider | null>;
 }
 
-export class EVMweb implements IEVMweb {
+export class EVMweb_v1 implements IEVMweb {
   window: RequireOnlyOne<Window, "ethereum">;
   provider: ethers.providers.Web3Provider;
   signer: ethers.providers.JsonRpcSigner;
