@@ -4,6 +4,7 @@ export {
   Audio,
   Article,
   Aside,
+  Code,
   Input,
   P,
   Path,
