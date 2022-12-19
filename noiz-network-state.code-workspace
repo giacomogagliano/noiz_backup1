@@ -22,6 +22,9 @@
     }
     { "path": "." },
     { "path": "packages/database" },
+    { "path": "packages/database/src/EVM" },
+    { "path": "packages/database/src/EVM/classes" },
+    { "path": "packages/database/src/EVM/classes/NoizContractFactory" },
     { "path": "packages/database/src/Blockchain" },
     { "path": "packages/database/src/Blockchain/src" },
     { "path": "packages/database/src/Blockchain/src/Class" },
