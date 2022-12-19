@@ -1,0 +1,70 @@
+Forse dovremmo creare un elemento in theme, tipo che ne so,
+area colors, che definisca il colore delle aree ... in
+teoria su uno sfondo chiaro dovrebbero essere un po piu
+scure, e piu si va in profondita nell'elemento si dovrebbero
+schiarire. Mentre dovrebbe succedere il contrario quando
+l'area è scura:
+
+| Colore Sfondo | Colore Primo livello | Colore livelli dentro |
+| ------------- | -------------------- | --------------------- |
+| Chiaro        | Scuro                | Più chiari            |
+| Scuro         | Piu Chiaro           | Più scuro del parente |
+
+potremmo quindi creare un oggetto in theme che chiamiamo
+areaColors il quale dovrebbe contenere le informazioni dei
+colori in base all livello di distanza dal parente piu
+lontano.
+
+## DefaultTheme
+
+Al momento abbiamo definito il DefaultStyle in questo modo:
+
+```ts
+export type FluidTheme = {
+  body: string;
+  textColor: string;
+  backgroundColor: string;
+  borderColor: string;
+  headingColor: string;
+  primary: BasicColorStyle;
+  secondary: BasicColorStyle;
+  palette: Palette1;
+};
+```
+
+I valori primary e secondary sono definiti dall'interfaccia:
+
+```ts
+// React/lib/
+export type BasicColorStyle = {
+  color: string;
+  backgroundColor: string;
+  borderColor: string;
+};
+```
+
+Il primary dovrebbe essere il colore primario, ad esempio
+nel caso di B/N,
+
+| light     | color | backgroundColor | borderColor |
+| --------- | ----- | --------------- | ----------- |
+| primary   | black | white           | black       |
+| secondary | white | black           | white       |
+
+| dark      | color | backgroundColor | borderColor |
+| --------- | ----- | --------------- | ----------- |
+| primary   | white | black           | white       |
+| secondary | black | white           | black       |
+
+```
+theme
+|___primary
+| |___color
+| |___backgroundColor
+| |___borderColor
+|___secondary
+| |___color
+| |___backgroundColor
+| |___borderColor
+|___....
+```
