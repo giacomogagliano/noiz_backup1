@@ -188,6 +188,10 @@ export class NoizApp_v2 extends BaseNoiz<
                 ? "light"
                 : "dark"}
             </button>
+            <select>
+              <option>Ciao</option>
+              <option>Mondo</option>
+            </select>
             <button>
               <Link href="/">Home</Link>
             </button>
