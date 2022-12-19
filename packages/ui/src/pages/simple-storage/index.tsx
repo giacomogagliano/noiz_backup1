@@ -78,19 +78,17 @@ class SimpleStorage extends Component<
     console.log("form submitted");
   };
 
-  Input = ({
-    id,
+  Setter = ({
     type,
     placeholder,
   }: {
-    id: string;
     type: "text" | "number";
     placeholder: string;
   }) => {
     return (
-      <div id={id}>
+      <div id="setter">
         <form
-          id={`${id}-form`}
+          id={`setter-form`}
           onSubmit={this.handleFormSubmit}
         >
           <input
@@ -114,9 +112,9 @@ class SimpleStorage extends Component<
     className,
   }: SimpleStorageProps) => {
     const MyString = this.Getter;
-    const SetString = this.Input;
+    const SetString = this.Setter;
     const GetNumber = this.Getter;
-    const SetNumber = this.Input;
+    const SetNumber = this.Setter;
     return (
       <div className={className}>
         <h1>Simple Storage</h1>
@@ -130,23 +128,21 @@ class SimpleStorage extends Component<
           id="getter"
           buttonMsg="Get Number"
         />
-        <SetString
-          id="set-string"
-          placeholder="setString"
-          type="text"
-        />
-        <SetNumber
-          id="set-number"
-          placeholder="setNumber"
-          type="number"
-        />
+        <SetString placeholder="setString" type="text" />
+        <SetNumber placeholder="setNumber" type="number" />
       </div>
     );
   };
 
   StyledLayout = styled(this.Layout)`
-    *:not(:last-child) {
-      padding-bottom: 0.5rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: #0d2832;
+    > *:not(:last-child) {
+      margin-bottom: 0.2rem;
+    }
+    h1 {
+      text-align: center;
     }
     display: grid;
     width: 25rem;
@@ -167,24 +163,20 @@ class SimpleStorage extends Component<
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 1rem;
+      border-radius: 1rem;
+      background-color: #0d2128;
+      box-sizing: border-box;
       width: 100%;
       p  {
         padding-left: 0.3rem;
       }
     }
-    #set-string {
-      #set-string-form {
-        display: inline-flex;
-        input {
-          padding: 0.3rem;
-        }
-        button {
-          margin-left: 0.3rem;
-        }
-      }
-    }
-    #set-number {
-      #set-number-form {
+    #setter {
+      padding: 1rem;
+      border-radius: 1rem;
+      background-color: #0d2128;
+      #setter-form {
         display: inline-flex;
         input {
           padding: 0.3rem;
