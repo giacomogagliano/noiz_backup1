@@ -143,6 +143,7 @@ export default class IndexPage extends Component<IndexPageProps> {
                 el={el}
                 idx={idx}
                 jointpath={jointpath}
+                key={idx}
               ></StyledCard>
             );
           })}
