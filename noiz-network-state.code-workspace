@@ -20,6 +20,9 @@
       "name": "styles",
       "path": "packages/ui/src/pages/styles"
     }
+    { "path": "." },
+    { "path": "packages/database" },
+    { "path": "packages/database/EVM" }
   ],
   "settings": {}
 }
