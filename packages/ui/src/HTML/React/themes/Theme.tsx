@@ -20,39 +20,39 @@ const palette = {
 };
 
 export const darkTheme: FluidTheme = {
-  body: black_,
-  textColor: white_,
-  backgroundColor: black_,
-  borderColor: white_,
+  body: palette.black,
+  textColor: palette.white,
+  backgroundColor: palette.black,
+  borderColor: palette.white,
   headingColor: "",
   primary: {
-    backgroundColor: black_,
-    borderColor: white_,
-    color: white_,
+    backgroundColor: palette.black,
+    borderColor: palette.white,
+    color: palette.white,
   },
   secondary: {
-    backgroundColor: white_,
-    borderColor: black_,
-    color: black_,
+    backgroundColor: palette.white,
+    borderColor: palette.black,
+    color: palette.black,
   },
   palette,
 };
 
 export const lightTheme: FluidTheme = {
-  body: white_,
-  textColor: black_,
-  backgroundColor: white_,
-  borderColor: black_,
+  body: palette.white,
+  textColor: palette.black,
+  backgroundColor: palette.white,
+  borderColor: palette.black,
   headingColor: "",
   primary: {
-    backgroundColor: white_,
-    borderColor: black_,
-    color: black_,
+    backgroundColor: palette.white,
+    borderColor: palette.black,
+    color: palette.black,
   },
   secondary: {
-    backgroundColor: black_,
-    borderColor: white_,
-    color: white_,
+    backgroundColor: palette.black,
+    borderColor: palette.white,
+    color: palette.white,
   },
   palette,
 };
