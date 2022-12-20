@@ -40,6 +40,24 @@ class SimpleStorage extends Component<
     this.setMyString("oh");
   };
 
+  handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("form submitted");
+  };
+
+  handleGetNumber = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    console.log("clicked get-number-btn");
+  };
+
+  handleDeployClick = (
+    e: MouseEvent<HTMLButtonElement>
+  ) => {
+    e.preventDefault();
+
+    console.log("i will deploy");
+  };
+
   Lazy = ({ value }: { value: string | number }) => {
     const Lazy = lazy(() =>
       wait(2000).then(async () => ({
@@ -73,11 +91,6 @@ class SimpleStorage extends Component<
     );
   };
 
-  handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("form submitted");
-  };
-
   Setter = ({
     type,
     placeholder,
@@ -99,11 +112,6 @@ class SimpleStorage extends Component<
         </form>
       </div>
     );
-  };
-
-  handleGetNumber = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    console.log("clicked get-number-btn");
   };
 
   FactoryMethod = ({
@@ -137,7 +145,9 @@ class SimpleStorage extends Component<
         <div id="factory-section">
           <h3>Factory Section</h3>
           <div id="deploy">
-            <button>Deploy</button>
+            <button onClick={this.handleDeployClick}>
+              Deploy
+            </button>
           </div>
           <FactoryMethod
             placeholder="contract address"
