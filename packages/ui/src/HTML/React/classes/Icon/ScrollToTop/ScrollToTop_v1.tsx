@@ -1,3 +1,4 @@
+import React from "react";
 import { IconPath, Icons } from "../../IconPath";
 
 export type ScrollToTop_v1Data = "ScrollToTop_v1Data";

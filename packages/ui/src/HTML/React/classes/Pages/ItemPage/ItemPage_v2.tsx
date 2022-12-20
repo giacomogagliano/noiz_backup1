@@ -1,3 +1,4 @@
+import React from "react";
 import { ComponentClass } from "react";
 import styled from "styled-components";
 import { StyledDefault } from "../../../lib/types/utility";
@@ -90,7 +91,10 @@ export class ItemPage_v2 extends BaseNoiz<
     const HIGHEST_BID = "highest bid:";
 
     return (
-      <div className={props.className} css={props.css}>
+      <div
+        className={props.className}
+        // css={props.css}
+      >
         <div id="bg-upper"></div>
         <Image
           src={this.state.src}

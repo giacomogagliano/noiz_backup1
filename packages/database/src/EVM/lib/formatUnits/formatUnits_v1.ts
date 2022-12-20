@@ -1,5 +1,5 @@
 import { BigNumber, ethers } from "ethers";
-import { IEVM } from "../../EVM";
+import { IEVM } from "../../";
 
 export type IformatUnits_v1 = (
   this: IEVM,

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Dispatch, SetStateAction, useState } from "react";
 import styled, { css } from "styled-components";
 import { Badge } from "../../Badge";

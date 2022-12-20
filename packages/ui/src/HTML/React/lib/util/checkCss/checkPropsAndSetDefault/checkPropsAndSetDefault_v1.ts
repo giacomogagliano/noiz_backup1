@@ -1,18 +1,18 @@
 import { FlattenSimpleInterpolation } from "styled-components";
+import { ZionCss } from "../../../utility";
 
 export function preCheckProp<
-  T extends { css_?: utility.ZionCss } = {
-    css_?: utility.ZionCss;
+  T extends { css_?: ZionCss } = {
+    css_?: ZionCss;
   }
->(props: T): { css_: utility.ZionCss } {
-  if (props.css_)
-    return props as { css_: utility.ZionCss };
+>(props: T): { css_: ZionCss } {
+  if (props.css_) return props as { css_: ZionCss };
   else throw new Error("");
 }
 
 export function checkPropsAndSetDefault_v1<
-  T extends { css_: utility.ZionCss },
-  P extends keyof utility.ZionCss
+  T extends { css_: ZionCss },
+  P extends keyof ZionCss
 >(
   props: T,
   property: P,

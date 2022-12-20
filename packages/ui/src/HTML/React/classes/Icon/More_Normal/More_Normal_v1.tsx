@@ -1,3 +1,4 @@
+import React from "react";
 import { IconPath, Icons } from "../../IconPath";
 
 export type More_Normal_v1Data = "More_Normal_v1Data";

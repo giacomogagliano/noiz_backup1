@@ -82,7 +82,7 @@ const _abi = [
     stateMutability: "view",
     type: "function",
   },
-];
+] as const;
 
 export class IERC1155Snapshot__factory {
   static readonly abi = _abi;

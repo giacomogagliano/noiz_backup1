@@ -6,14 +6,10 @@ import {
 } from "styled-components";
 import { StyledDefault } from "./types/utility";
 
-type _EnumToUnion<T> = keyof T;
+export type EnumToUnion<T> = keyof T;
 
 declare global {}
 // former global
-
-namespace utility {}
-
-type EnumToUnion<T> = _EnumToUnion<T>;
 
 /**
  * Utility type to build css property requierements. The
@@ -42,7 +38,7 @@ type EnumToUnion<T> = _EnumToUnion<T>;
  * @param Optional list of attributes that shall be
  * included but optionally.
  */
-type ZionCss<
+export type ZionCss<
   R extends keyof CSSProperties | undefined = undefined,
   Pick = false,
   Optional extends
@@ -63,14 +59,14 @@ type ZionCss<
   : CSSProperties;
 
 //////
-type CssPropUnion<
+export type CssPropUnion<
   T extends keyof CSSProperties | undefined
 > = ZionCss<undefined, true, T>;
 
 /**
  *
  */
-type CssKeysFromStringArray<
+export type CssKeysFromStringArray<
   T extends (keyof CSSProperties)[]
 > = {
   [props in T[number]]: CSSProperties[props];
@@ -102,19 +98,19 @@ type OmitCss<O extends keyof CSSProperties> = Omit<
 /**
  *
  */
-type ClassicElement<P> = ce<P>;
+export type ClassicElement<P> = ce<P>;
 
 /**
  *
  */
-type GCssStyled<A extends keyof CSSProperties> = {
+export type GCssStyled<A extends keyof CSSProperties> = {
   css_?: ZionCss<undefined, true, A>;
 };
 
 /**
  *
  */
-type CssStyled = { css_?: CSSProperties };
+export type CssStyled = { css_?: CSSProperties };
 
 /**
  *
@@ -123,10 +119,10 @@ type BasicFluidThemedStyledProps = Interpolation<
   ThemedStyledProps<CssStyled, any>
 >;
 
-type FluidThemed<Props> = BasicFluidThemedStyledProps &
-  Props;
+export type FluidThemed<Props> =
+  BasicFluidThemedStyledProps & Props;
 
-type FluidStyled = StyledDefault<CssStyled>;
+export type FluidStyled = StyledDefault<CssStyled>;
 
 export type BooleanizeUnions<T extends string> = {
   [props in T]?: boolean;

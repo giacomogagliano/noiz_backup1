@@ -485,14 +485,13 @@ class SmartContract extends Component<
     sn
   ) {
     if (p.contract !== this.props.contract) {
-      if (this.state.contract)
-        if (this.state.contract[0].id === null) {
-          if (!this.props.contract) return;
-          const mkCollItems = this.makeCollapsableItems;
-          let propsContract = this.props.contract;
-          const contract = mkCollItems(propsContract);
-          this.setContract(contract);
-        }
+      if (this.state.contract) {
+        if (!this.props.contract) return;
+        const mkCollItems = this.makeCollapsableItems;
+        let propsContract = this.props.contract;
+        const contract = mkCollItems(propsContract);
+        this.setContract(contract);
+      }
     }
     if (s.contract !== this.state.contract) {
       if (this.state.contract) {

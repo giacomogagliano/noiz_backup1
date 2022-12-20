@@ -3,6 +3,11 @@ import {
   DefaultTheme,
 } from "styled-components";
 import { GoogleFonts } from "../../../class";
+import { FluidTheme } from "../../lib/types/theme";
+
+declare module "styled-components" {
+  export interface DefaultTheme extends FluidTheme {}
+}
 
 const roboto = new GoogleFonts({
   fontFamily: "Roboto",

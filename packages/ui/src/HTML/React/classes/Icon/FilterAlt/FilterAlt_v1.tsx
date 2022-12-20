@@ -1,3 +1,4 @@
+import React from "react";
 import { IconPath, Icons } from "../../IconPath";
 
 export type FilterAlt_v1Data = "FilterAlt_v1Data";

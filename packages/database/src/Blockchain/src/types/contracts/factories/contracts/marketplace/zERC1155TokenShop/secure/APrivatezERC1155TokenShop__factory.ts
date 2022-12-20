@@ -135,7 +135,7 @@ const _abi = [
     name: "TokenOnSaleWithdrawal",
     type: "event",
   },
-];
+] as const;
 
 export class APrivatezERC1155TokenShop__factory {
   static readonly abi = _abi;

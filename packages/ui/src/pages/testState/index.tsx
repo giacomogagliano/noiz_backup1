@@ -2,6 +2,7 @@ import React, {
   Component,
   PropsWithChildren,
 } from "react";
+import styled from "styled-components";
 interface BProps {}
 interface BState {
   counter: number;
@@ -72,16 +73,22 @@ class A extends Component<AProps, AState> {
     this.setState({ counter: next });
     this.props.handleMinus(this.props.counter - 1);
   };
-  Html = () => (
-    <section>
-      <button onClick={this.plus}>+</button>
-      <button onClick={this.minus}>-</button>
+  Html = ({ className }: { className?: string }) => (
+    <section className={className}>
+      <button onClick={this.plus}>+ Plus</button>
+      <button onClick={this.minus}>- Minus</button>
       <p>{this.props.name}</p>
       <p>{this.state.counter}</p>
     </section>
   );
+  StyledHtml = styled(this.Html)`
+    button {
+      padding: 0.5rem;
+      border-radius: 2rem;
+    }
+  `;
   override render() {
-    return <this.Html></this.Html>;
+    return <this.StyledHtml></this.StyledHtml>;
   }
 }
 

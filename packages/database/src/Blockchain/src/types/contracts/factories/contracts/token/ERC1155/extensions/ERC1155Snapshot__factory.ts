@@ -289,7 +289,7 @@ const _abi = [
     stateMutability: "view",
     type: "function",
   },
-];
+] as const;
 
 export class ERC1155Snapshot__factory {
   static readonly abi = _abi;

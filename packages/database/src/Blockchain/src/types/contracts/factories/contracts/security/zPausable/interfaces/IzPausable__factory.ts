@@ -36,7 +36,7 @@ const _abi = [
     name: "Unpaused",
     type: "event",
   },
-];
+] as const;
 
 export class IzPausable__factory {
   static readonly abi = _abi;

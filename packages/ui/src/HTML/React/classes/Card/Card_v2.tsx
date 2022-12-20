@@ -1,3 +1,4 @@
+import React from "react";
 import { createRef, RefObject } from "react";
 import styled, {
   css,
@@ -179,7 +180,7 @@ export class Card_v2 extends BaseNoiz<
     return (
       <div
         className={props.className}
-        css={props.css}
+        // css={props.css}
         id="card-head"
       >
         <div id="circle" />
@@ -228,7 +229,10 @@ export class Card_v2 extends BaseNoiz<
     }>
   ) => {
     return (
-      <div className={props.className} css={props.css}>
+      <div
+        className={props.className}
+        // css={props.css}
+      >
         <div id="line1">
           <div id="title">
             <p>{props.title}</p>
@@ -458,7 +462,7 @@ export class Card_v2 extends BaseNoiz<
     return (
       <div
         className={props.className}
-        css={props.css}
+        // css={props.css}
         ref={this.container}
       >
         <div id="card">

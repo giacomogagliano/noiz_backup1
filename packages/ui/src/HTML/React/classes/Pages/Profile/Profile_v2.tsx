@@ -1,3 +1,4 @@
+import React from "react";
 import {
   ComponentClass,
   Dispatch,
@@ -142,7 +143,10 @@ export class Profile_v2 extends BaseNoiz<
       props.setIsShowMore(!props.isShowMore);
     }
     return (
-      <div className={props.className} css={props.css}>
+      <div
+        className={props.className}
+        // css={props.css}
+      >
         <div id="bg-upper"></div>
         <div id="profile-avatar">
           <Image src="https://ipfs.io/ipfs/QmPGGowQG4oPoRf884Hz9WXivACoDni1GsdDYkRdXVLfJc?filename=QmPGGowQG4oPoRf884Hz9WXivACoDni1GsdDYkRdXVLfJc"></Image>

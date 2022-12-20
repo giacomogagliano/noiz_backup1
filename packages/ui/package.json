@@ -16,7 +16,8 @@
     "typecheck": "tsc --noEmit",
     "next_dev": "next dev",
     "next_build": "next build",
-    "next_prod": "next start"
+    "next_prod": "next start",
+    "test_of": "cd test && NODE_DEBUG=log ts-node"
   },
   "peerDependencies": {
     "@types/webfontloader": "^1.6.35",

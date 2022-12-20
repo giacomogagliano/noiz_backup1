@@ -1,4 +1,6 @@
-export { Palette_v1 as Palette } from "./Palette_v1";
+export { Palette_v2 as Palette } from "./Palette_v2";
+export type { Palette_v2Props } from "./Palette_v2";
+export { Palette_v1 } from "./Palette_v1";
 import type { Palette_v1 as v1Props } from "./Palette_v1";
 ///// EXPORT
 
@@ -21,3 +23,6 @@ export * from "./Fluid3";
 
 //// Rainbow
 export * from "./Rainbow";
+
+//// NamedPalette
+export { RGB, CYM, RYB } from "./NamedPalette";

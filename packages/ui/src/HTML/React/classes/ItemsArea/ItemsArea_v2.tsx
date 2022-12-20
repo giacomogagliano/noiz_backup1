@@ -1,3 +1,4 @@
+import React from "react";
 import { createRef, RefObject } from "react";
 import styled from "styled-components";
 
@@ -158,7 +159,7 @@ export class ItemsArea_v2 extends BaseNoiz<
     prevState: ItemsArea_v2State,
     __: any
   ) => {
-    const layout = prevState.layout !== this.state.layout;
+    // const layout = prevState.layout !== this.state.layout;
     const style = prevState.style !== this.state.style;
     const parentSize =
       prevState.parentSize.height !==
