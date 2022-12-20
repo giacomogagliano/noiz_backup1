@@ -17,6 +17,7 @@ export {
   Div,
   Circle,
   Canvas,
+  AreaTagHtml,
 } from "./React";
 import * as Next from "./Next/index";
 import * as HtmlClasses from "./class";
