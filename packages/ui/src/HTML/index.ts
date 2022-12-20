@@ -16,6 +16,7 @@ export {
   Text,
   Div,
   Circle,
+  Canvas,
 } from "./React";
 import * as Next from "./Next/index";
 import * as HtmlClasses from "./class";
