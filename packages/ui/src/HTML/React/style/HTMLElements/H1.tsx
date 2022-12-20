@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-interface IH1 {
+export interface IH1 {
   margin?: string;
 }
 

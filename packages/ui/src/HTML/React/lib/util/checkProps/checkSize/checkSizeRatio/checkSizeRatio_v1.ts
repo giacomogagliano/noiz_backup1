@@ -2,6 +2,7 @@ import {
   css,
   FlattenSimpleInterpolation,
 } from "styled-components";
+import { Sizes } from "../../../../global";
 
 const defaultSize = css`
   width: 100%;

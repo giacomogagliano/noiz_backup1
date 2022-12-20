@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { ZionCss } from "../../lib/utility";
 
 type InfoSubDetailsStyle = {
-  css?: utility.ZionCss<
+  css?: ZionCss<
     "display" | "height" | "gridTemplateColumns",
     true
   >;

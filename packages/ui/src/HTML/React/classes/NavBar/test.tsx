@@ -1,3 +1,4 @@
+// @ts-nocheck
 export interface ClassA {
   name: string;
   age: number;

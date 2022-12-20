@@ -3,6 +3,7 @@ import {
   CSSProperties,
   FlattenSimpleInterpolation,
 } from "styled-components";
+import { BooleanSizes, Size } from "../../global";
 import { checkSize } from "./checkSize";
 import {
   CheckSizeOptions,

@@ -31,7 +31,8 @@ export const md_raw_react_v1: Iprocessor =
         let charts: unknown[] = [];
         visit(tree, "html", (pre, index) => {
           if (!index) return;
-          let value: string;
+          let value: string = "";
+          value;
           const test = chartRegex.test(pre.value);
           if (!test) return;
           chartIdxs.push(index);

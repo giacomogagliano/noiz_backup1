@@ -5,6 +5,7 @@ import { ZERC1155TokenShop__factory } from "../types/contracts";
 import { Membership__factory } from "../types/contracts";
 import { ProvaMaster__factory } from "../types/contracts";
 import { SimpleStorage__factory } from "../types/contracts";
+import { Propaganda_Presale__factory } from "../types/contracts";
 import { USDC__factory } from "../types/contracts";
 ////
 import erc1155IndUri from "./ERC1155IndividualUri.sol/ERC1155IndividualURI.json";
@@ -13,6 +14,7 @@ import membership from "./Membership.sol/Membership.json";
 import provaMaster from "./ProvaMaster.sol/ProvaMaster.json";
 import simpleStorage from "./SimpleStorage.sol/SimpleStorage.json";
 import usdc from "./USDC.sol/USDC.json";
+import propaganda_presale from "./Propaganda_Presale.sol/Propaganda_Presale.json";
 
 export * from "./getERC1155IndividualUri__factory";
 export * from "./getERC1155TokenShop__factory";
@@ -46,3 +48,8 @@ export const simpleStorageFactory =
 
 export const usdcFactory =
   new NoizContractFactory<USDC__factory>(usdc);
+
+export const propagandaPresaleFactory =
+  new NoizContractFactory<Propaganda_Presale__factory>(
+    propaganda_presale
+  );

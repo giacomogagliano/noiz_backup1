@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-interface ICode {}
+export interface ICode {}
 
 export const Code = styled.code<ICode>`
-  font-family: cursive;
+  font-family: "Courier New", Courier, monospace;
 `;

@@ -1,5 +1,6 @@
 import { Palette1 } from "./Palettes";
 import { BasicColorStyle } from "../../global";
+import { RYB } from "../../../../../Colors/classes";
 
 export type FluidTheme = {
   body: string;
@@ -10,4 +11,5 @@ export type FluidTheme = {
   primary: BasicColorStyle;
   secondary: BasicColorStyle;
   palette: Palette1;
+  palette_ryb: RYB;
 };

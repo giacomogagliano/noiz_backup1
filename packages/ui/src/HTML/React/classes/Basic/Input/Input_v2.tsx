@@ -74,7 +74,7 @@ export class Input_v2 extends BaseNoiz<
     return (
       <input
         className={props.className}
-        css={props.css}
+        // css={props.css}
         type={props.type}
         placeholder={props.placeholder}
         onChange={this.onChange(props)}

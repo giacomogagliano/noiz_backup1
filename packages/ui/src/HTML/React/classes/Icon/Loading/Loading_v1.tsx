@@ -1,20 +1,25 @@
 import styled, { keyframes } from "styled-components";
+import {
+  MakeAsChild,
+  NoizDatas,
+  NoizProps,
+} from "../../../lib/types";
+import { CssStyled, Flatten } from "../../../lib/utility";
 ///TODO #38 questa classe non riesco a capire bene come farla
-
 /////// TYPES
 export type Loading_v1Data = {};
 
 export type Loading_v1Booleans = { display: boolean };
 
 export type Loading_v1Props = NoizProps<
-  Loading_v1Data & Loading_v1Booleans & utility.CssStyled
+  Loading_v1Data & Loading_v1Booleans & CssStyled
 >;
 
 export type Loading_v1ClassBooleans = {
   waves?: boolean;
 };
 
-export type Loading_v1ClassProps = utility.Flatten<
+export type Loading_v1ClassProps = Flatten<
   NoizDatas<Loading_v1Props> & Loading_v1ClassBooleans
 >;
 
@@ -90,10 +95,13 @@ export class Loading_v1 extends BaseNoiz<
 
   render() {
     let Element = this.Waves;
+    // @ts-expect-error
     if (!this.props.datas[0]) throw new Error("No datas");
+    // @ts-expect-error
     if (this.props.waves) Element = this.Waves;
     return (
       <Element
+        // @ts-expect-error
         display={this.props.datas[0].display}
       ></Element>
     );

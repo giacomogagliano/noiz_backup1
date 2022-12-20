@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { ZionCss } from "../../lib/utility";
 
 type AvatarStyle = {
-  css?: utility.ZionCss<"display", true>;
+  css?: ZionCss<"display", true>;
 };
 
 export const Avatar = styled.div<AvatarStyle>`

@@ -55,9 +55,13 @@ export function calculateSize_v1(
   options?: CalculateSizeOptions
 ): FSI {
   let result: FSI;
-  switch (options) {
+  switch (options !== undefined) {
     case true:
-      result = calculateSizeOnWidth(ratio, base, options);
+      result = calculateSizeOnWidth(
+        ratio,
+        base,
+        options as CalculateSizeOptions
+      );
       break;
 
     case undefined:
@@ -67,7 +71,11 @@ export function calculateSize_v1(
       break;
 
     default:
-      result = calculateSizeOnHeight(ratio, base, options);
+      result = calculateSizeOnHeight(
+        ratio,
+        base,
+        options as CalculateSizeOptions
+      );
       break;
   }
   return result;

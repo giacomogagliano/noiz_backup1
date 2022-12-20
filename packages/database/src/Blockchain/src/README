@@ -1,0 +1,46 @@
+# Step to generate code for EVMweb
+
+In this document I explain the steps to produce the code
+which can be implemented inside the EVMweb class starting
+from the `.sol` file to the actual implementation.
+
+In this example we will use a simple solidity code, which
+can be found in `Blockchain/contracts/zion_contracts`.
+
+## Compilation
+
+First we need to compile the code by running
+`npx hardhat compile` in the console.
+Delete the not used `PromiseOrValue` in each newly compiled
+file cause typescript will complain about it.
+
+## Create a folder with the name of the contract
+
+Simply copy and paste the folder relative to the contract
+which Hardhat compile and placed in the `artifact` folder.
+
+## Creating an instance of NoizContractFactory
+
+At the moment the creation of the instances of NoizContractFactory
+happens in the `Blockchain/Factories/index.ts` file.
+
+> I will look for a better place asap
+
+```ts
+import _newContract_ from "./_newContract_.sol/_newContract_.json";
+
+export const _newContract_Factory =
+  new NoizContractFactory<_newContract___factory>(
+    _newContract_
+  );
+```
+
+or use the `noizcontractfact` snippet.
+
+## Load the factory
+
+Once the package is ready it can be imported in the file `EVM/Types/ZionContractFactories.ts` file.
+
+## Build the package
+
+run `yarn build` in the console.

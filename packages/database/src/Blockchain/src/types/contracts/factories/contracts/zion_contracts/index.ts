@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export { Membership__factory } from "./Membership__factory";
+export { Propaganda_Presale__factory } from "./Propaganda_Presale__factory";
 export { ProvaMaster__factory } from "./ProvaMaster__factory";
 export { SimpleStorage__factory } from "./SimpleStorage__factory";
 export { USDC__factory } from "./USDC__factory";

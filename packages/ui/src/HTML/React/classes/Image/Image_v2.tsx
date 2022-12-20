@@ -70,7 +70,10 @@ export class Image_v2 extends BaseNoiz<
 
   LogoImage = (props: Image_v2Props) => {
     return (
-      <div className={props.className} css={props.css}>
+      <div
+        className={props.className}
+        // css={props.css}
+      >
         <circle />
       </div>
     );
@@ -98,7 +101,10 @@ export class Image_v2 extends BaseNoiz<
       this.handleIsLoading(false);
     };
     return (
-      <div className={props.className} css={props.css}>
+      <div
+        className={props.className}
+        // css={props.css}
+      >
         <img
           onLoad={handleOnLoad}
           src={props.src}

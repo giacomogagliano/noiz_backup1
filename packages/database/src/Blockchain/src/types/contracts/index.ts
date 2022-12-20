@@ -50,6 +50,8 @@ export type { IERC1155Snapshot } from "./contracts/token/ERC1155/extensions/IERC
 export { IERC1155Snapshot__factory } from "./factories/contracts/token/ERC1155/extensions/IERC1155Snapshot__factory";
 export type { Membership } from "./contracts/zion_contracts/Membership";
 export { Membership__factory } from "./factories/contracts/zion_contracts/Membership__factory";
+export type { Propaganda_Presale } from "./contracts/zion_contracts/Propaganda_Presale";
+export { Propaganda_Presale__factory } from "./factories/contracts/zion_contracts/Propaganda_Presale__factory";
 export type { ProvaMaster } from "./contracts/zion_contracts/ProvaMaster";
 export { ProvaMaster__factory } from "./factories/contracts/zion_contracts/ProvaMaster__factory";
 export type { SimpleStorage } from "./contracts/zion_contracts/SimpleStorage";
@@ -96,6 +98,8 @@ export type { ERC20Permit } from "./oz/token/ERC20/extensions/draft-ERC20Permit.
 export { ERC20Permit__factory } from "./factories/oz/token/ERC20/extensions/draft-ERC20Permit.sol/ERC20Permit__factory";
 export type { IERC20Permit } from "./oz/token/ERC20/extensions/draft-IERC20Permit.sol/IERC20Permit";
 export { IERC20Permit__factory } from "./factories/oz/token/ERC20/extensions/draft-IERC20Permit.sol/IERC20Permit__factory";
+export type { ERC20Capped } from "./oz/token/ERC20/extensions/ERC20Capped";
+export { ERC20Capped__factory } from "./factories/oz/token/ERC20/extensions/ERC20Capped__factory";
 export type { ERC20Votes } from "./oz/token/ERC20/extensions/ERC20Votes";
 export { ERC20Votes__factory } from "./factories/oz/token/ERC20/extensions/ERC20Votes__factory";
 export type { IERC20Metadata } from "./oz/token/ERC20/extensions/IERC20Metadata";

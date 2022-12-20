@@ -36,7 +36,7 @@ const _abi = [
     name: "Unpaused",
     type: "event",
   },
-];
+] as const;
 
 export class APrivatezPausable__factory {
   static readonly abi = _abi;

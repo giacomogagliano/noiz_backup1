@@ -3,10 +3,7 @@
 /* eslint-disable */
 import type { BaseContract, Signer, utils } from "ethers";
 import type { EventFragment } from "@ethersproject/abi";
-import type {
-  Listener,
-  Provider,
-} from "@ethersproject/providers";
+import type { Listener, Provider } from "@ethersproject/providers";
 import type {
   TypedEventFilter,
   TypedEvent,
@@ -15,8 +12,7 @@ import type {
   // PromiseOrValue,
 } from "../../../../common";
 
-export interface IzPausableInterface
-  extends utils.Interface {
+export interface IzPausableInterface extends utils.Interface {
   functions: {};
 
   events: {
@@ -24,40 +20,26 @@ export interface IzPausableInterface
     "Unpaused(address)": EventFragment;
   };
 
-  getEvent(
-    nameOrSignatureOrTopic: "Paused"
-  ): EventFragment;
-  getEvent(
-    nameOrSignatureOrTopic: "Unpaused"
-  ): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "Paused"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "Unpaused"): EventFragment;
 }
 
 export interface PausedEventObject {
   account: string;
 }
-export type PausedEvent = TypedEvent<
-  [string],
-  PausedEventObject
->;
+export type PausedEvent = TypedEvent<[string], PausedEventObject>;
 
-export type PausedEventFilter =
-  TypedEventFilter<PausedEvent>;
+export type PausedEventFilter = TypedEventFilter<PausedEvent>;
 
 export interface UnpausedEventObject {
   account: string;
 }
-export type UnpausedEvent = TypedEvent<
-  [string],
-  UnpausedEventObject
->;
+export type UnpausedEvent = TypedEvent<[string], UnpausedEventObject>;
 
-export type UnpausedEventFilter =
-  TypedEventFilter<UnpausedEvent>;
+export type UnpausedEventFilter = TypedEventFilter<UnpausedEvent>;
 
 export interface IzPausable extends BaseContract {
-  connect(
-    signerOrProvider: Signer | Provider | string
-  ): this;
+  connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
 
@@ -90,9 +72,7 @@ export interface IzPausable extends BaseContract {
     "Paused(address)"(account?: null): PausedEventFilter;
     Paused(account?: null): PausedEventFilter;
 
-    "Unpaused(address)"(
-      account?: null
-    ): UnpausedEventFilter;
+    "Unpaused(address)"(account?: null): UnpausedEventFilter;
     Unpaused(account?: null): UnpausedEventFilter;
   };
 
