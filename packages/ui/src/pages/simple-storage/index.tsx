@@ -136,9 +136,11 @@ class SimpleStorage extends Component<
       e.preventDefault();
       const factory = this.props.factory;
       if (!factory) throw new Error("no factory");
+      if (id === 1)
+        console.log("i will attach to a contract");
 
       const values = this.state.factoryMethodsInputValue;
-
+      if (values.get(id) === "") return;
       this.setConnectedContractAddress(values.get(id)!);
       values.set(id, "");
       this.setFactoryMethodsInputValue(values);
@@ -183,7 +185,6 @@ class SimpleStorage extends Component<
       .then(e => {
         const contract = e;
         const address = e.address;
-        console.log(contract);
       })
       .catch(e => console.log(e));
   };
