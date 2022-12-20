@@ -11,6 +11,9 @@ export {
   Path,
   Img,
   H1,
+  H2,
+  H3,
+  Text,
   Div,
   Circle,
 } from "./React";

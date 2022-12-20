@@ -27,6 +27,9 @@ const audio = maker("audio", "working ✅");
 const article = maker("a", "working ✅");
 const code = maker("code", "working ✅");
 const form = maker("form", "working ✅");
+const h2 = maker("h2", "working ✅");
+const h3 = maker("h3", "working ✅");
+const text = maker("text", "working ✅");
 const newreader = new Reader(
   "./src/pages/styles/html-elements"
 );
@@ -70,7 +73,10 @@ export function getStaticProps() {
     .map(article)
     .map(audio)
     .map(code)
-    .map(form);
+    .map(form)
+    .map(h2)
+    .map(h3)
+    .map(text);
   return { props: { data: JSON.stringify(neww) } };
 }
 
