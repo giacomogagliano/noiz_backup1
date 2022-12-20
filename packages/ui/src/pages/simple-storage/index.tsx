@@ -1,4 +1,5 @@
 import React, {
+  ChangeEvent,
   Component,
   FormEvent,
   lazy,
@@ -6,8 +7,12 @@ import React, {
   Suspense,
 } from "react";
 import styled from "styled-components";
+import { EVM } from "@zionstate/database";
 
-function wait(time) {
+// first deployed contract: 0x338f4f701bf4d4175ace7d79c27d71cd998f12dc
+type EVMweb = EVM.IEVMweb;
+
+function wait(time: number) {
   return new Promise<void>((resolve, reject) => {
     setTimeout(resolve, time);
   });
@@ -17,11 +22,14 @@ interface SimpleStorageProps {
   myString: string;
   number: number;
   className?: string;
+  factory?: EVMweb["contractFactories"]["SimpleStorage"];
 }
 
 interface SimpleStorageState {
   myString: string;
   myNumber: number;
+  factoryMethodsInputValue: Map<number, string>;
+  connectedContractAddress: string;
 }
 class SimpleStorageState {}
 
@@ -32,30 +40,9 @@ class SimpleStorage extends Component<
   setMyString = (myString: string) =>
     this.setState({ myString });
 
-  handleGetterOnClick = (
-    e: MouseEvent<HTMLButtonElement>
-  ) => {
-    e.preventDefault();
-    console.log("clicked my-string-btn");
-    this.setMyString("oh");
-  };
-
-  handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("form submitted");
-  };
-
   handleGetNumber = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     console.log("clicked get-number-btn");
-  };
-
-  handleDeployClick = (
-    e: MouseEvent<HTMLButtonElement>
-  ) => {
-    e.preventDefault();
-
-    console.log("i will deploy");
   };
 
   Lazy = ({ value }: { value: string | number }) => {
@@ -69,6 +56,14 @@ class SimpleStorage extends Component<
         <Lazy></Lazy>
       </Suspense>
     );
+  };
+
+  handleGetterOnClick = (
+    e: MouseEvent<HTMLButtonElement>
+  ) => {
+    e.preventDefault();
+    console.log("clicked my-string-btn");
+    this.setMyString("oh");
   };
 
   Getter = ({
@@ -89,6 +84,11 @@ class SimpleStorage extends Component<
         <LazyString value={value}></LazyString>
       </div>
     );
+  };
+
+  handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("form submitted");
   };
 
   Setter = ({
@@ -114,20 +114,79 @@ class SimpleStorage extends Component<
     );
   };
 
+  setFactoryMethodsInputValue = (
+    factoryMethodsInputValue: Map<number, string>
+  ) => this.setState({ factoryMethodsInputValue });
+
+  handleFMChange =
+    (id: number) => (e: ChangeEvent<HTMLInputElement>) => {
+      const values = this.state.factoryMethodsInputValue;
+      let input = values.get(id);
+      input = e.target.value;
+      values.set(id, input);
+      this.setFactoryMethodsInputValue(values);
+    };
+
+  setConnectedContractAddress = (
+    connectedContractAddress: string
+  ) => this.setState({ connectedContractAddress });
+
+  handleFMClick =
+    (id: number) => (e: MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      const factory = this.props.factory;
+      if (!factory) throw new Error("no factory");
+
+      const values = this.state.factoryMethodsInputValue;
+
+      this.setConnectedContractAddress(values.get(id)!);
+      values.set(id, "");
+      this.setFactoryMethodsInputValue(values);
+
+      // this shall be used when the account is changed
+      // factory.connect();
+    };
+
   FactoryMethod = ({
+    id,
     title,
     type,
     placeholder,
   }: {
+    id: number;
     title: string;
     type: "text" | "number";
     placeholder: string;
   }) => (
     <div id="factory-method">
-      <input type={type} placeholder={placeholder} />
-      <button>{title}</button>
+      <input
+        type={type}
+        placeholder={placeholder}
+        onChange={this.handleFMChange(id)}
+        value={this.state.factoryMethodsInputValue.get(id)}
+      />
+      <button onClick={this.handleFMClick(id)}>
+        {title}
+      </button>
     </div>
   );
+
+  handleDeployClick = (
+    e: MouseEvent<HTMLButtonElement>
+  ) => {
+    e.preventDefault();
+    const factory = this.props.factory;
+    if (!factory) throw new Error("no factory");
+
+    factory
+      .deploy()
+      .then(e => {
+        const contract = e;
+        const address = e.address;
+        console.log(contract);
+      })
+      .catch(e => console.log(e));
+  };
 
   Layout = ({
     myString,
@@ -150,11 +209,13 @@ class SimpleStorage extends Component<
             </button>
           </div>
           <FactoryMethod
+            id={0}
             placeholder="contract address"
             title="Connect"
             type="text"
           />
           <FactoryMethod
+            id={1}
             placeholder="contract address"
             title="Attach"
             type="text"
@@ -271,7 +332,27 @@ class SimpleStorage extends Component<
     let state = new SimpleStorageState();
     state.myNumber = props.number;
     state.myString = props.myString;
+    state.factoryMethodsInputValue = new Map<
+      number,
+      string
+    >();
+    state.factoryMethodsInputValue.set(0, "");
+    state.factoryMethodsInputValue.set(1, "");
+    state.connectedContractAddress = "";
     this.state = state;
+  }
+
+  componentDidUpdate(
+    prevProps: Readonly<SimpleStorageProps>,
+    prevState: Readonly<SimpleStorageState>,
+    snapshot?: any
+  ): void {
+    console.log(this.state.factoryMethodsInputValue);
+    console.log(this.state.connectedContractAddress);
+    const changeContractMethod =
+      prevProps.myString === this.props.myString;
+    if (changeContractMethod) {
+    }
   }
 
   render() {
@@ -281,6 +362,7 @@ class SimpleStorage extends Component<
         className={this.props.className}
         myString={this.state.myString}
         number={this.state.myNumber}
+        factory={this.props.factory}
       />
     );
   }
@@ -301,8 +383,15 @@ export function getStaticProps(): {
 
 export default function index({
   data,
+  evm,
 }: {
   data: SimpleStorageProps;
+  evm: EVMweb;
 }) {
-  return <SimpleStorage {...data} />;
+  return (
+    <SimpleStorage
+      {...data}
+      factory={evm?.contractFactories.SimpleStorage}
+    />
+  );
 }
