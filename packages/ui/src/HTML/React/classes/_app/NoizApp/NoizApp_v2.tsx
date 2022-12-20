@@ -234,6 +234,7 @@ export class NoizApp_v2 extends BaseNoiz<
             <Component
               {...pageProps}
               contract={contract}
+              evm={this.state.evm}
             ></Component>
           </section>
           <footer>I am the footer</footer>
