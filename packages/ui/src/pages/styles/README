@@ -11,13 +11,24 @@ Fai una cosa, riempi questa tabella con gli elementi che hai
 già fatto cosi possiamo avere un idea di chi possono essere
 i vari elementi `container`
 
-| nome    | puo contenere | non puo contenere |
-| ------- | ------------- | ----------------- |
-| div     | x             |                   |
-| form    | x             |                   |
-| section | x             |                   |
-| article | x             |                   |
-| ...     | x             |                   |
-| input   |               | x                 |
-| br      |               | x                 |
-| ...     |               | x                 |
+| nome     | puo contenere | non puo contenere |
+| -------- | ------------- | ----------------- |
+| div      | x             |                   |
+| form     | x             |                   |
+| section  | x             |                   |
+| article  | x             |                   |
+| a        |               | x                 |
+| area/map | x             |                   |
+| aside    | x             |                   |
+| audio    |               | x                 |
+| canvas   | x             |                   |
+| circle   | x             |                   |
+| code     |               | x                 |
+| h1       |               | x                 |
+| h2       |               | x                 |
+| h3       |               | x                 |
+| img      |               | x                 |
+| path     |               | x                 |
+| text     | x             |                   |
+| p        |               | x                 |
+| input    | x             |                   |
