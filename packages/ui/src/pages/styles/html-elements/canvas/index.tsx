@@ -12,15 +12,16 @@ export default function index() {
     <Div>
       <H1>The canvas element</H1>
       <P>
-        The <Code>canvas</Code> tag is used to draw
+        The <Code>{"<canvas> "}</Code> tag is used to draw
         graphics, on the fly, via scripting (usually
-        JavaScript). The <Code>canvas</Code> tag is
+        JavaScript). The <Code>{"<canvas> "}</Code> tag is
         transparent, and is only a container for graphics,
         you must use a script to actually draw the
-        graphics. Any text inside the <Code>canvas</Code>{" "}
+        graphics. Any text inside the{" "}
+        <Code>{"<canvas> "}</Code>
         element will be displayed in browsers with
         JavaScript disabled and in browsers that do not
-        support <Code>canvas</Code>.
+        support <Code>{"<canvas> "}</Code>.
       </P>
 
       <Canvas id="myCanvas">
