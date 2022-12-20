@@ -12,3 +12,9 @@ contratto ed interagirvi.
 - sulla rete goerli
 - su polygon
 - su quorum di consensys/microsoft
+
+- [ ] mettere i factory methods nella sezione in alto
+- [ ] far funzionare i metodi dell'istanza
+
+- [ ] lanciare hardhat network
+- [ ] testare il dispiegameno di simple storage
