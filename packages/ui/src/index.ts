@@ -12,4 +12,4 @@ export * as Colors from "./Colors";
 //// CLI
 export * from "./CLI";
 
-export * from "./pages";
+export * from "./pages/classes/responseDiv";
