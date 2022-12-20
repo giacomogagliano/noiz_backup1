@@ -9,7 +9,7 @@ const palette = {
   grey: grey_,
   darkgrey: darkgrey_,
   red: "hsl(346, 93%, 39%)",
-  orange: "#hsl(18, 67%, 60%)",
+  orange: "hsl(18, 67%, 60%)",
   yellow: "hsl(57, 93%, 72%)",
   green: "hsl(102, 18%, 56%)",
   blue: "hsl(203, 74%, 29%)",
