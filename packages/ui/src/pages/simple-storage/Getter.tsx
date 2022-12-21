@@ -1,5 +1,5 @@
 import { EVMweb } from "@zionstate/database/dist/EVM";
-import { BigNumber } from "ethers";
+import { BigNumber, CallOverrides } from "ethers";
 import React, {
   Component,
   lazy,
@@ -9,18 +9,25 @@ import React, {
 } from "react";
 import { wait } from ".";
 
-interface GetterProps {
-  instance: ReturnType<
-    EVMweb["contractFactories"]["SimpleStorage"]["attach"]
-  >;
+interface GetterProps<
+  T extends EVMweb["contractFactories"]["SimpleStorage"]["attach"]
+> {
+  instance: ReturnType<T>;
   get_id: number;
   value: string | number;
   id: string;
   buttonMsg: string;
   methods: Map<number, (value: string | number) => void>;
+  methodName: keyof ReturnType<T>;
 }
 
-export class Getter extends Component<GetterProps> {
+type a = ReturnType<
+  EVMweb["contractFactories"]["SimpleStorage"]["attach"]
+>;
+
+export class Getter<
+  T extends EVMweb["contractFactories"]["SimpleStorage"]["attach"]
+> extends Component<GetterProps<T>> {
   Lazy = ({ value }: { value: string | number }) => {
     const Lazy = lazy(() =>
       wait(2000).then(async () => ({
@@ -39,38 +46,51 @@ export class Getter extends Component<GetterProps> {
     return number.valueOf();
   };
 
+  getString = (
+    v: string,
+    method: (value: string) => void
+  ) => {
+    method(v);
+  };
+
+  getBigNumber = (
+    n: BigNumber,
+    method: (value: number) => void
+  ) => {
+    const number = this.bigNtoN(n);
+    method(number);
+  };
+
   handleGetterOnClick =
     (
       id: number,
       methods: Map<
         number,
         (value: string | number) => void
-      >
+      >,
+      methodOnInstanceName: keyof this["props"]["instance"]
     ) =>
     (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
       const instance = this.props.instance;
+      const methodOnInstance2: (
+        overrides?: CallOverrides | undefined
+      ) => Promise<string | BigNumber> = instance[
+        methodOnInstanceName
+      ] as (
+        overrides?: CallOverrides | undefined
+      ) => Promise<string | BigNumber>;
       const method = methods.get(id);
       if (!method) return;
-      if (id === 0) {
-        instance
-          .myString()
-          .then(n => {
-            method(n);
-          })
-          .catch(e => console.log(e));
-      }
-      if (id === 1) {
-        instance
-          .getNumber()
-          .then(n => {
-            const bigNumber = n;
-            const number = this.bigNtoN(bigNumber);
-            method(number);
-            console.log(number);
-          })
-          .catch(e => console.log(e));
-      }
+      methodOnInstance2().then(r => {
+        let big: BigNumber = r as BigNumber;
+        if (big._isBigNumber) {
+          this.getBigNumber(big, method);
+        }
+        if (typeof r === "string") {
+          this.getString(r, method);
+        }
+      });
     };
 
   Layout = ({
@@ -79,14 +99,16 @@ export class Getter extends Component<GetterProps> {
     id,
     buttonMsg,
     methods,
-  }: GetterProps) => {
+    methodName,
+  }: GetterProps<T>) => {
     const LazyString = this.Lazy;
     return (
       <div id={id}>
         <button
           onClick={this.handleGetterOnClick(
             get_id,
-            methods
+            methods,
+            methodName
           )}
         >
           {buttonMsg}
