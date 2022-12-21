@@ -23,3 +23,6 @@ export * from "./Fluid3";
 
 //// Rainbow
 export * from "./Rainbow";
+
+//// NamedPalette
+export { RGB, CYM, RYB } from "./NamedPalette";

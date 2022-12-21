@@ -3,15 +3,23 @@ export interface Palette_v2Props {}
 interface ColorWheel {
   primary: [number, number, number];
   secondary: [number, number, number];
+  tertiary: [
+    number,
+    number,
+    number,
+    number,
+    number,
+    number
+  ];
 }
 class ColorWheel {}
 
-interface ColorWheels {
+export interface ColorWheels {
   rgb: ColorWheel;
   cym: ColorWheel;
   ryb: ColorWheel;
 }
-class ColorWheels {}
+export class ColorWheels {}
 
 export const DegreesTypes = {
   [0]: 0,
@@ -98,7 +106,13 @@ export interface Palette_v2 {
   secondary1: Hsl;
   complementary: Hsl;
   secondary3: Hsl;
-  setColor(): this;
+  tertiary1: Hsl;
+  tertiary2: Hsl;
+  tertiary3: Hsl;
+  tertiary4: Hsl;
+  tertiary5: Hsl;
+  tertiary6: Hsl;
+  setColor(cl: number): this;
   setSaturation(sat: number): this;
   setBrightness(bright: number): this;
 }
@@ -110,14 +124,17 @@ export class Palette_v2 {
     rgb: {
       primary: [0, 120, 240],
       secondary: [60, 180, 300],
+      tertiary: [30, 90, 150, 210, 270, 330],
     },
     cym: {
       primary: [60, 180, 300],
-      secondary: [0, 120, 240],
+      secondary: [120, 240, 0],
+      tertiary: [90, 150, 210, 270, 330, 30],
     },
     ryb: {
       primary: [0, 60, 240],
       secondary: [30, 180, 270],
+      tertiary: [15, 45, 120, 210, 255, 315],
     },
   };
   constructor(
@@ -130,24 +147,43 @@ export class Palette_v2 {
     };
     const primary = this.colorWheels[wheel].primary;
     const secondary = this.colorWheels[wheel].secondary;
+    const tertiary = this.colorWheels[wheel].tertiary;
     const p1Color = color + primary[0];
     const p2Color = color + primary[1];
     const p3Color = color + primary[2];
     const s1Color = color + secondary[0];
     const s2Color = color + secondary[1];
     const s3Color = color + secondary[2];
+    const t1Color = color + tertiary[0];
+    const t2Color = color + tertiary[1];
+    const t3Color = color + tertiary[2];
+    const t4Color = color + tertiary[3];
+    const t5Color = color + tertiary[4];
+    const t6Color = color + tertiary[5];
     const p1 = { color: p1Color, ...standard };
     const p2 = { color: p2Color, ...standard };
     const p3 = { color: p3Color, ...standard };
     const s1 = { color: s1Color, ...standard };
     const c = { color: s2Color, ...standard };
     const s3 = { color: s3Color, ...standard };
+    const t1 = { color: t1Color, ...standard };
+    const t2 = { color: t2Color, ...standard };
+    const t3 = { color: t3Color, ...standard };
+    const t4 = { color: t4Color, ...standard };
+    const t5 = { color: t5Color, ...standard };
+    const t6 = { color: t6Color, ...standard };
     this.primary1 = new Hsl(p1);
     this.primary2 = new Hsl(p2);
     this.primary3 = new Hsl(p3);
     this.secondary1 = new Hsl(s1);
     this.complementary = new Hsl(c);
     this.secondary3 = new Hsl(s3);
+    this.tertiary1 = new Hsl(t1);
+    this.tertiary2 = new Hsl(t2);
+    this.tertiary3 = new Hsl(t3);
+    this.tertiary4 = new Hsl(t4);
+    this.tertiary5 = new Hsl(t5);
+    this.tertiary6 = new Hsl(t6);
   }
   setSaturation(sat: number) {
     this.#saturation = sat;
@@ -157,6 +193,12 @@ export class Palette_v2 {
     this.secondary1.setSaturation(this.#saturation);
     this.complementary.setSaturation(this.#saturation);
     this.secondary3.setSaturation(this.#saturation);
+    this.tertiary1.setSaturation(this.#saturation);
+    this.tertiary2.setSaturation(this.#saturation);
+    this.tertiary3.setSaturation(this.#saturation);
+    this.tertiary4.setSaturation(this.#saturation);
+    this.tertiary5.setSaturation(this.#saturation);
+    this.tertiary6.setSaturation(this.#saturation);
     return this;
   }
   setBrightness(bright: number) {
@@ -167,6 +209,12 @@ export class Palette_v2 {
     this.secondary1.setBrightness(this.#brightness);
     this.complementary.setBrightness(this.#brightness);
     this.secondary3.setBrightness(this.#brightness);
+    this.tertiary1.setBrightness(this.#brightness);
+    this.tertiary2.setBrightness(this.#brightness);
+    this.tertiary3.setBrightness(this.#brightness);
+    this.tertiary4.setBrightness(this.#brightness);
+    this.tertiary5.setBrightness(this.#brightness);
+    this.tertiary6.setBrightness(this.#brightness);
     return this;
   }
 }
