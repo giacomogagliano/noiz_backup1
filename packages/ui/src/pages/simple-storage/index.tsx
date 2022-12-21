@@ -30,6 +30,10 @@ interface SimpleStorageState {
   myNumber: number;
   factoryMethodsInputValue: Map<number, string>;
   connectedContractAddress: string;
+  attachedContractAddress: string;
+  instance: ReturnType<
+    EVMweb["contractFactories"]["SimpleStorage"]["attach"]
+  >;
 }
 class SimpleStorageState {}
 
@@ -63,6 +67,8 @@ class SimpleStorage extends Component<
   ) => {
     e.preventDefault();
     console.log("clicked my-string-btn");
+    const instance = this.state.instance;
+    instance.getNumber().then(n => console.log(n));
     this.setMyString("oh");
   };
 
@@ -131,19 +137,38 @@ class SimpleStorage extends Component<
     connectedContractAddress: string
   ) => this.setState({ connectedContractAddress });
 
+  setAttachedContractAddress = (
+    attachedContractAddress: string
+  ) => this.setState({ attachedContractAddress });
+
+  setInstance = (
+    instance: ReturnType<
+      EVMweb["contractFactories"]["SimpleStorage"]["attach"]
+    >
+  ) => this.setState({ instance });
+
   handleFMClick =
     (id: number) => (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
       const factory = this.props.factory;
       if (!factory) throw new Error("no factory");
-      if (id === 1)
-        console.log("i will attach to a contract");
 
       const values = this.state.factoryMethodsInputValue;
-      if (values.get(id) === "") return;
-      this.setConnectedContractAddress(values.get(id)!);
-      values.set(id, "");
-      this.setFactoryMethodsInputValue(values);
+      const value = values.get(id);
+      if (value === "" || value === undefined) return;
+      if (id === 1) {
+        console.log("i will attach to a contract");
+        this.setAttachedContractAddress(value);
+        values.set(id, "");
+        this.setFactoryMethodsInputValue(values);
+        const SimpleStorage = factory.attach(value);
+        this.setInstance(SimpleStorage);
+      }
+      if (id === 0) {
+        this.setConnectedContractAddress(value);
+        values.set(id, "");
+        this.setFactoryMethodsInputValue(values);
+      }
 
       // this shall be used when the account is changed
       // factory.connect();
@@ -340,6 +365,7 @@ class SimpleStorage extends Component<
     state.factoryMethodsInputValue.set(0, "");
     state.factoryMethodsInputValue.set(1, "");
     state.connectedContractAddress = "";
+    state.attachedContractAddress = "";
     this.state = state;
   }
 
@@ -348,8 +374,7 @@ class SimpleStorage extends Component<
     prevState: Readonly<SimpleStorageState>,
     snapshot?: any
   ): void {
-    console.log(this.state.factoryMethodsInputValue);
-    console.log(this.state.connectedContractAddress);
+    console.log(this.state.instance);
     const changeContractMethod =
       prevProps.myString === this.props.myString;
     if (changeContractMethod) {
