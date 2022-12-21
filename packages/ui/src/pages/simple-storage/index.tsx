@@ -461,9 +461,6 @@ class SimpleStorage extends Component<
     prevState: Readonly<SimpleStorageState>,
     snapshot?: any
   ): void {
-    console.log(this.state.instanceMethodsInputValue);
-    console.log(this.state.submittedNumber);
-    console.log(this.state.submittedString);
     const changeContractMethod =
       prevProps.myString === this.props.myString;
     if (changeContractMethod) {
