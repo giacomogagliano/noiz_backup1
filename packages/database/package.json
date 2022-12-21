@@ -65,6 +65,7 @@
     "clean": "rm -rf dist",
     "build": "yarn preconstruct build && run-p build:*",
     "build:types": "tsc --declaration --emitDeclarationOnly --outDir dist",
+    "start_node": "cd src && cd Blockchain && npx hardhat node",
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {

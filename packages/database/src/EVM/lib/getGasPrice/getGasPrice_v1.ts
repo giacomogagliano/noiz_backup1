@@ -1,4 +1,4 @@
-import { IEVM } from "../../EVM";
+import { IEVM } from "../../";
 import { NetworksTypes } from "../../Types";
 
 export type IgetGasPrice_v1 = (

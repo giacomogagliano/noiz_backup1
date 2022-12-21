@@ -1,5 +1,5 @@
 import { ethers, Signer } from "ethers";
-import { Factories, types } from "../../Blockchain";
+import { types } from "../../Blockchain";
 import type { Class } from "../../Blockchain";
 import {
   erc1155IndividualURIFactory,
@@ -30,17 +30,7 @@ export type ERC1155IndividualURI =
 export type ContractFactory = ethers.ContractFactory;
 
 // TODO #38 mettere questi codici nelle cartelle delle classi non nei tipi
-export class ZionContractFactories {
-  newContractFactories: {
-    ERC1155IndividualURI: ERC1155IndividualURI_Factory;
-    ERC1155TokenShop: ZERC1155TokenShop__factory;
-    Membership: Membership__factory;
-    ProvaMaster: ProvaMaster__factory;
-    USDC: USDC__factory;
-    SimpleStorage: SimpleStorage__factory;
-    [key: string]: ContractFactory;
-  };
-
+export class ZionContractFactories_v2 {
   newNoizContractFactories: {
     ERC1155IndividualURI: NoizContractFactory<ERC1155IndividualURI_Factory>;
     ERC1155TokenShop: NoizContractFactory<ZERC1155TokenShop__factory>;
@@ -62,23 +52,6 @@ export class ZionContractFactories {
   };
   constructor(public signer?: Signer) {
     if (!signer) throw new Error("");
-    const ERC1155IndividualURI =
-      Factories.getERC1155IndividualURI(signer);
-    const ERC1155TokenShop =
-      Factories.getERC1155TokenShop(signer);
-    const Membership = Factories.getMembership(signer);
-    const ProvaMaster = Factories.getProvaMaster(signer);
-    const USDC = Factories.getUSDC(signer);
-    const SimpleStorage =
-      Factories.getSimpleStorage(signer);
-    this.contractFactories = {
-      ERC1155IndividualURI,
-      ERC1155TokenShop,
-      Membership,
-      ProvaMaster,
-      USDC,
-      SimpleStorage,
-    };
 
     this.newNoizContractFactories = {
       ERC1155IndividualURI: erc1155IndividualURIFactory,
@@ -89,7 +62,7 @@ export class ZionContractFactories {
       USDC: usdcFactory,
     };
 
-    this.newContractFactories = {
+    this.contractFactories = {
       ERC1155IndividualURI:
         erc1155IndividualURIFactory.getContractFactory(
           signer
@@ -106,5 +79,3 @@ export class ZionContractFactories {
     };
   }
 }
-
-export { ZionContractFactories_v2 } from "./ZionContractFactories_v2";

@@ -1,8 +1,11 @@
 import { ethers } from "ethers";
-import { detect } from "./lib";
-import { MetaMaskEthereumProvider } from "./lib/detectEthereumProvider/detectEthereumProvider_v1";
-import { ZionContractFactories } from "./Types/ZionContractFactories";
+import {
+  detect,
+  MetaMaskEthereumProvider,
+} from "../../lib";
+import { ZionContractFactories_v2 as ZionContractFactories } from "../../Types/ZionContractFactories";
 
+// TODO move this in zionbase/somewhere
 export type RequireOnlyOne<
   T,
   Keys extends keyof T = keyof T
@@ -16,32 +19,29 @@ export type EVMwebArgs = {
   window: RequireOnlyOne<Window, "ethereum">;
 };
 
-export interface IEVMweb {
+export interface IEVMweb_v2 {
   window: RequireOnlyOne<Window, "ethereum">;
   provider: ethers.providers.Web3Provider;
   signer: ethers.providers.JsonRpcSigner;
   contractFactories: typeof ZionContractFactories["prototype"]["contractFactories"];
-  newContractFactories: typeof ZionContractFactories["prototype"]["newContractFactories"];
   newNoizContractFactories: typeof ZionContractFactories["prototype"]["newNoizContractFactories"];
   detect(): Promise<MetaMaskEthereumProvider | null>;
 }
 
-export interface EVMweb {
+export interface EVMweb_v2 {
   window: RequireOnlyOne<Window, "ethereum">;
   provider: ethers.providers.Web3Provider;
   signer: ethers.providers.JsonRpcSigner;
   contractFactories: typeof ZionContractFactories["prototype"]["contractFactories"];
-  newContractFactories: typeof ZionContractFactories["prototype"]["newContractFactories"];
   newNoizContractFactories: typeof ZionContractFactories["prototype"]["newNoizContractFactories"];
   detect(): Promise<MetaMaskEthereumProvider | null>;
 }
 
-export class EVMweb implements IEVMweb {
+export class EVMweb_v2 implements IEVMweb_v2 {
   window: RequireOnlyOne<Window, "ethereum">;
   provider: ethers.providers.Web3Provider;
   signer: ethers.providers.JsonRpcSigner;
   contractFactories: typeof ZionContractFactories["prototype"]["contractFactories"];
-  newContractFactories: typeof ZionContractFactories["prototype"]["newContractFactories"];
   newNoizContractFactories: typeof ZionContractFactories["prototype"]["newNoizContractFactories"];
   constructor(args: EVMwebArgs) {
     this.window = args.window;
@@ -53,8 +53,6 @@ export class EVMweb implements IEVMweb {
       new ZionContractFactories(this.signer);
     this.contractFactories =
       zionContractFactories.contractFactories;
-    this.newContractFactories =
-      zionContractFactories.newContractFactories;
     this.newNoizContractFactories =
       zionContractFactories.newNoizContractFactories;
   }
@@ -62,3 +60,23 @@ export class EVMweb implements IEVMweb {
     return detect(this.window);
   }
 }
+
+export type EVMweb_v2Ctor = {
+  new (args: EVMwebArgs): EVMweb_v2;
+};
+
+export const EVMweb_v2Ctor: EVMweb_v2Ctor = EVMweb_v2;
+
+/////////
+/////////
+/////////
+/////////
+/////////
+/////////
+/////////
+/////////
+/////////
+/////////
+/////////
+/////////
+/////////

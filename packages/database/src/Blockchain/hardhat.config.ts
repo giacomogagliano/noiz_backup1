@@ -19,8 +19,8 @@ if (!account2Pk) throw new Error("no account2 pk");
 if (!balance2) throw new Error("no account2 pk");
 
 const account1 = {
-  privateKey: account2Pk,
-  balance: balance2,
+  privateKey: account1Pk,
+  balance: balance1,
 };
 
 const account2 = {

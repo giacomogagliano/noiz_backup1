@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { IEVM } from "../../EVM";
+import { IEVM } from "../../";
 
 export type IgetContract_v1 = (
   this: IEVM,
