@@ -1,15 +1,12 @@
 import React, {
   ChangeEvent,
   Component,
-  FormEvent,
-  lazy,
   MouseEvent,
-  Suspense,
 } from "react";
 import styled from "styled-components";
 import { EVM } from "@zionstate/database";
-import { BigNumber } from "ethers";
 import { Getter } from "./Getter";
+import { Setter } from "./Setter";
 
 // first deployed contract: 0x338f4f701bf4d4175ace7d79c27d71cd998f12dc
 type EVMweb = EVM.IEVMweb;
@@ -52,54 +49,6 @@ class SimpleStorage extends Component<
   setMyNumber = (myNumber: number) =>
     this.setState({ myNumber });
 
-  handleGetNumber = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    console.log("clicked get-number-btn");
-  };
-
-  Lazy = ({ value }: { value: string | number }) => {
-    const Lazy = lazy(() =>
-      wait(2000).then(async () => ({
-        default: () => <p>{value}</p>,
-      }))
-    );
-    return (
-      <Suspense fallback={<p>loading..</p>}>
-        <Lazy></Lazy>
-      </Suspense>
-    );
-  };
-
-  bigNtoN = (bigN: BigNumber) => {
-    const number = new Number(bigN._hex);
-    return number.valueOf();
-  };
-
-  handleGetterOnClick =
-    (id: number) => (e: MouseEvent<HTMLButtonElement>) => {
-      e.preventDefault();
-      const instance = this.state.instance;
-      if (id === 0) {
-        instance
-          .myString()
-          .then(n => {
-            this.setMyString(n);
-          })
-          .catch(e => console.log(e));
-      }
-      if (id === 1) {
-        instance
-          .getNumber()
-          .then(n => {
-            const bigNumber = n;
-            const number = this.bigNtoN(bigNumber);
-            this.setMyNumber(number);
-            console.log(number);
-          })
-          .catch(e => console.log(e));
-      }
-    };
-
   setInstanceMethodsInputValue = (
     instanceMethodsInputValue: Map<number, string | number>
   ) => this.setState({ instanceMethodsInputValue });
@@ -109,65 +58,6 @@ class SimpleStorage extends Component<
 
   setSubmittedNumber = (submittedNumber: number) =>
     this.setState({ submittedNumber });
-
-  handleFormSubmit =
-    (id: number) => (e: FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      const values = this.state.instanceMethodsInputValue;
-      const instance = this.state.instance;
-      if (id === 0) {
-        const input = values.get(0);
-        this.setSubmittedString(input as string);
-        instance
-          .setString(input as string)
-          .then(e => console.log(e))
-          .catch(e => console.log(e));
-      }
-      if (id === 1) {
-        let input = values.get(1);
-        this.setSubmittedNumber(input as number);
-        const bigNumber = BigNumber.from(input);
-        instance
-          .setNumber(bigNumber)
-          .then(e => console.log(e))
-          .catch(e => console.log(e));
-      }
-    };
-
-  handleIMChange =
-    (id: number) => (e: ChangeEvent<HTMLInputElement>) => {
-      const values = this.state.instanceMethodsInputValue;
-      let input = values.get(id);
-      input = e.target.value;
-      values.set(id, input);
-      this.setInstanceMethodsInputValue(values);
-    };
-
-  Setter = ({
-    set_id,
-    type,
-    placeholder,
-  }: {
-    set_id: number;
-    type: "text" | "number";
-    placeholder: string;
-  }) => {
-    return (
-      <div id="setter">
-        <form
-          id={`setter-form`}
-          onSubmit={this.handleFormSubmit(set_id)}
-        >
-          <input
-            type={type}
-            placeholder={placeholder}
-            onChange={this.handleIMChange(set_id)}
-          ></input>
-          <button type="submit">transact</button>
-        </form>
-      </div>
-    );
-  };
 
   setFactoryMethodsInputValue = (
     factoryMethodsInputValue: Map<number, string>
@@ -269,11 +159,11 @@ class SimpleStorage extends Component<
     const MyString = Getter<
       EVMweb["contractFactories"]["SimpleStorage"]["attach"]
     >;
-    const SetString = this.Setter;
+    const SetString = Setter;
     const GetNumber = Getter<
       EVMweb["contractFactories"]["SimpleStorage"]["attach"]
     >;
-    const SetNumber = this.Setter;
+    const SetNumber = Setter;
     const FactoryMethod = this.FactoryMethod;
     const methods: Map<
       number,
@@ -286,6 +176,22 @@ class SimpleStorage extends Component<
     methods.set(
       1,
       this.setMyNumber as (value: string | number) => void
+    );
+    const setMethods: Map<
+      number,
+      (value: string | number) => void
+    > = new Map();
+    setMethods.set(
+      0,
+      this.setSubmittedString as (
+        value: string | number
+      ) => void
+    );
+    setMethods.set(
+      1,
+      this.setSubmittedNumber as (
+        value: string | number
+      ) => void
     );
     return (
       <div className={className}>
@@ -338,11 +244,25 @@ class SimpleStorage extends Component<
             set_id={0}
             placeholder="setString"
             type="text"
+            instanceMethodsInputValue={
+              this.state.instanceMethodsInputValue
+            }
+            methods={setMethods}
+            setInputs={this.setInstanceMethodsInputValue}
+            instance={this.state.instance}
+            methodName="setString"
           />
           <SetNumber
             set_id={1}
             placeholder="setNumber"
             type="number"
+            instanceMethodsInputValue={
+              this.state.instanceMethodsInputValue
+            }
+            methods={setMethods}
+            setInputs={this.setInstanceMethodsInputValue}
+            instance={this.state.instance}
+            methodName="setNumber"
           />
         </div>
       </div>
