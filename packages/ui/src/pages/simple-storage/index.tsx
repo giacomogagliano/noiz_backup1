@@ -9,6 +9,7 @@ import React, {
 import styled from "styled-components";
 import { EVM } from "@zionstate/database";
 import { BigNumber } from "ethers";
+import { Getter } from "./Getter";
 
 // first deployed contract: 0x338f4f701bf4d4175ace7d79c27d71cd998f12dc
 type EVMweb = EVM.IEVMweb;
@@ -98,28 +99,6 @@ class SimpleStorage extends Component<
           .catch(e => console.log(e));
       }
     };
-
-  Getter = ({
-    get_id,
-    value,
-    id,
-    buttonMsg,
-  }: {
-    get_id: number;
-    value: string | number;
-    id: string;
-    buttonMsg: string;
-  }) => {
-    const LazyString = this.Lazy;
-    return (
-      <div id={id}>
-        <button onClick={this.handleGetterOnClick(get_id)}>
-          {buttonMsg}
-        </button>
-        <LazyString value={value}></LazyString>
-      </div>
-    );
-  };
 
   setInstanceMethodsInputValue = (
     instanceMethodsInputValue: Map<number, string | number>
@@ -287,11 +266,27 @@ class SimpleStorage extends Component<
     number,
     className,
   }: SimpleStorageProps) => {
-    const MyString = this.Getter;
+    const MyString = Getter<
+      EVMweb["contractFactories"]["SimpleStorage"]["attach"]
+    >;
     const SetString = this.Setter;
-    const GetNumber = this.Getter;
+    const GetNumber = Getter<
+      EVMweb["contractFactories"]["SimpleStorage"]["attach"]
+    >;
     const SetNumber = this.Setter;
     const FactoryMethod = this.FactoryMethod;
+    const methods: Map<
+      number,
+      (value: string | number) => void
+    > = new Map();
+    methods.set(
+      0,
+      this.setMyString as (value: string | number) => void
+    );
+    methods.set(
+      1,
+      this.setMyNumber as (value: string | number) => void
+    );
     return (
       <div className={className}>
         <h1>Simple Storage</h1>
@@ -322,16 +317,22 @@ class SimpleStorage extends Component<
         <div id="instance-methods">
           <h3>Contract Methods</h3>
           <MyString
+            instance={this.state.instance}
             get_id={0}
             value={myString}
             id="getter"
             buttonMsg="myString"
+            methods={methods}
+            methodName="myString"
           />
           <GetNumber
+            instance={this.state.instance}
             get_id={1}
             value={number}
             id="getter"
             buttonMsg="Get Number"
+            methods={methods}
+            methodName="getNumber"
           />
           <SetString
             set_id={0}
