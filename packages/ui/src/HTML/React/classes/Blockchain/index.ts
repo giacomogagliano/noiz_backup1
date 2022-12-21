@@ -8,3 +8,6 @@ export * from './Getter';
 
 //// Setter
 export * from './Setter';
+
+//// FactoryMethod
+export * from './FactoryMethod';
