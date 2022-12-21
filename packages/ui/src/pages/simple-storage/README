@@ -13,8 +13,16 @@ contratto ed interagirvi.
 - su polygon
 - su quorum di consensys/microsoft
 
-- [ ] mettere i factory methods nella sezione in alto
-- [ ] far funzionare i metodi dell'istanza
+- [x] mettere i factory methods nella sezione in alto
+- [x] far funzionare i metodi dell'istanza
 
-- [ ] lanciare hardhat network
-- [ ] testare il dispiegameno di simple storage
+- [x] lanciare hardhat network
+- [x] testare il dispiegameno di simple storage
+
+## miglioramenti
+
+- [ ] aggiungere errore se non si è connesso il contratto
+
+## next steps
+
+- [ ] creare dei componenti che rappresentino la chiamata ad una funzione in particolare di un contratto
