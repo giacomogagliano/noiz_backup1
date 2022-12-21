@@ -68,3 +68,8 @@ theme
 | |___borderColor
 |___....
 ```
+
+## TODO
+
+- [ ] decidere come creare la nuova palette
+- [x] mergiare i due branch cosi si lavora alla cosa in un unico posto
