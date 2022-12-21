@@ -28,8 +28,13 @@ contratto ed interagirvi.
 - [ ] creare dei componenti che rappresentino la chiamata ad una funzione in particolare di un contratto
 - [ ] aggiungere metodi per quando cambia il signer
   - [x] testare se necessario
-  - [ ] operare se il caso
-        in effetti no serve usare la funzione reconnect perchè il codice passa il signer
+  - controllare se è necessario
+  - [ ] è necessario => operare
+  - [ ] non è necessario => non fare nulla
+  - [x] situazione non chiara, cè un errore nella console
+        della blockchain che puo essere dovuto al fatto del mancato
+        switch in un qualche momento della tx
+- [ ] rendere del tutto generico il getter
 
 ## problemi
 
