@@ -13,7 +13,7 @@ import { BigNumber } from "ethers";
 // first deployed contract: 0x338f4f701bf4d4175ace7d79c27d71cd998f12dc
 type EVMweb = EVM.IEVMweb;
 
-function wait(time: number) {
+export function wait(time: number) {
   return new Promise<void>((resolve, reject) => {
     setTimeout(resolve, time);
   });
