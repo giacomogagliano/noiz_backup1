@@ -10,15 +10,18 @@ import React, {
 import { wait } from ".";
 
 interface GetterProps<
-  T extends EVMweb["contractFactories"]["SimpleStorage"]["attach"]
+  I extends ReturnType<newT>,
+  K extends keyof EVMweb["contractFactories"] = keyof EVMweb["contractFactories"],
+  Interface extends EVMweb["contractFactories"][K] = EVMweb["contractFactories"][K],
+  newT extends Interface["attach"] = Interface["attach"]
 > {
-  instance: ReturnType<T>;
+  instance: I;
   get_id: number;
   value: string | number;
   id: string;
   buttonMsg: string;
   methods: Map<number, (value: string | number) => void>;
-  methodName: keyof ReturnType<T>;
+  methodName: keyof I;
 }
 
 type a = ReturnType<
@@ -26,8 +29,14 @@ type a = ReturnType<
 >;
 
 export class Getter<
-  T extends EVMweb["contractFactories"]["SimpleStorage"]["attach"]
-> extends Component<GetterProps<T>> {
+  I extends ReturnType<newT>,
+  K extends keyof EVMweb["contractFactories"] = keyof EVMweb["contractFactories"],
+  Interface extends EVMweb["contractFactories"][K] = EVMweb["contractFactories"][K],
+  newT extends Interface["attach"] = Interface["attach"]
+> extends Component<GetterProps<I, K>> {
+  constructor(props: GetterProps<I, K>) {
+    super(props);
+  }
   Lazy = ({ value }: { value: string | number }) => {
     const Lazy = lazy(() =>
       wait(2000).then(async () => ({
@@ -100,7 +109,7 @@ export class Getter<
     buttonMsg,
     methods,
     methodName,
-  }: GetterProps<T>) => {
+  }: GetterProps<I, K>) => {
     const LazyString = this.Lazy;
     return (
       <div id={id}>
