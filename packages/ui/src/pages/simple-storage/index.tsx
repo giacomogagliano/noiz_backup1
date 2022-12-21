@@ -5,8 +5,8 @@ import React, {
 } from "react";
 import styled from "styled-components";
 import { EVM } from "@zionstate/database";
-import { Getter } from "./Getter";
-import { Setter } from "./Setter";
+import { Getter } from "../../HTML/React/classes/Blockchain/Getter";
+import { Setter } from "../../HTML/React/classes/Blockchain";
 
 // first deployed contract: 0x338f4f701bf4d4175ace7d79c27d71cd998f12dc
 type EVMweb = EVM.IEVMweb;
@@ -156,17 +156,11 @@ class SimpleStorage extends Component<
     number,
     className,
   }: SimpleStorageProps) => {
-    const MyString = Getter<
-      ReturnType<
-        EVMweb["contractFactories"]["SimpleStorage"]["attach"]
-      >
-    >;
+    console.log("yahh");
+
+    const MyString = Getter;
     const SetString = Setter;
-    const GetNumber = Getter<
-      ReturnType<
-        EVMweb["contractFactories"]["SimpleStorage"]["attach"]
-      >
-    >;
+    const GetNumber = Getter;
     const SetNumber = Setter;
     const FactoryMethod = this.FactoryMethod;
     const methods: Map<
