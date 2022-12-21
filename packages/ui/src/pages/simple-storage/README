@@ -26,3 +26,7 @@ contratto ed interagirvi.
 ## next steps
 
 - [ ] creare dei componenti che rappresentino la chiamata ad una funzione in particolare di un contratto
+- [ ] aggiungere metodi per quando cambia il signer
+  - [x] testare se necessario
+  - [ ] operare se il caso
+        in effetti no serve usare la funzione reconnect perchè il codice passa il signer
