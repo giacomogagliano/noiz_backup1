@@ -3,6 +3,7 @@ import type { types } from "@zionstate/database/Blockchain";
 import {
   BigNumber,
   BigNumberish,
+  Contract,
   ContractTransaction,
   Overrides,
 } from "ethers";
@@ -14,10 +15,8 @@ import React, {
 
 export type PromiseOrValue<T> = T | Promise<T>;
 
-interface SetterProps<
-  T extends EVMweb["contractFactories"]["SimpleStorage"]["attach"]
-> {
-  instance: ReturnType<T>;
+interface SetterProps<C extends Contract> {
+  instance: C;
   methods: Map<number, (value: string | number) => void>;
   instanceMethodsInputValue: Map<number, string | number>;
   set_id: number;
@@ -26,12 +25,12 @@ interface SetterProps<
   setInputs: (
     instanceMethodsInputValue: Map<number, string | number>
   ) => void;
-  methodName: keyof ReturnType<T>;
+  methodName: keyof C;
 }
 
-export class Setter<
-  T extends EVMweb["contractFactories"]["SimpleStorage"]["attach"]
-> extends Component<SetterProps<T>> {
+export class Setter<C extends Contract> extends Component<
+  SetterProps<C>
+> {
   handleFormSubmit =
     (
       id: number,
@@ -43,7 +42,7 @@ export class Setter<
         number,
         (value: string | number) => void
       >,
-      methodName: keyof ReturnType<T>
+      methodName: keyof C
     ) =>
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
@@ -113,7 +112,7 @@ export class Setter<
     methods,
     instanceMethodsInputValue,
     methodName,
-  }: SetterProps<T>) => {
+  }: SetterProps<C>) => {
     return (
       <div id="setter">
         <form
