@@ -30,3 +30,14 @@ contratto ed interagirvi.
   - [x] testare se necessario
   - [ ] operare se il caso
         in effetti no serve usare la funzione reconnect perchè il codice passa il signer
+
+## problemi
+
+- cè un problema con la blockchain, viene effettuata una chiamata con il signer iniziale, o almeno sembra, e la console riporta
+  questo errore.
+  ```
+  Error: Transaction reverted without a reason string
+      at <UnrecognizedContract>.<unknown> (0x338f4f701bf4d4175ace7d79c27d71cd998f12dc)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+  ```
