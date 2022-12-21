@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import styled from "styled-components";
 import { EVM } from "@zionstate/database";
+import { BigNumber } from "ethers";
 
 // first deployed contract: 0x338f4f701bf4d4175ace7d79c27d71cd998f12dc
 type EVMweb = EVM.IEVMweb;
@@ -44,6 +45,9 @@ class SimpleStorage extends Component<
   setMyString = (myString: string) =>
     this.setState({ myString });
 
+  setMyNumber = (myNumber: number) =>
+    this.setState({ myNumber });
+
   handleGetNumber = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     console.log("clicked get-number-btn");
@@ -62,21 +66,43 @@ class SimpleStorage extends Component<
     );
   };
 
-  handleGetterOnClick = (
-    e: MouseEvent<HTMLButtonElement>
-  ) => {
-    e.preventDefault();
-    console.log("clicked my-string-btn");
-    const instance = this.state.instance;
-    instance.getNumber().then(n => console.log(n));
-    this.setMyString("oh");
+  bigNtoN = (bigN: BigNumber) => {
+    const number = new Number(bigN._hex);
+    return number.valueOf();
   };
 
+  handleGetterOnClick =
+    (id: number) => (e: MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      const instance = this.state.instance;
+      if (id === 0) {
+        instance
+          .myString()
+          .then(n => {
+            this.setMyString(n);
+          })
+          .catch(e => console.log(e));
+      }
+      if (id === 1) {
+        instance
+          .getNumber()
+          .then(n => {
+            const bigNumber = n;
+            const number = this.bigNtoN(bigNumber);
+            this.setMyNumber(number);
+            console.log(number);
+          })
+          .catch(e => console.log(e));
+      }
+    };
+
   Getter = ({
+    get_id,
     value,
     id,
     buttonMsg,
   }: {
+    get_id: number;
     value: string | number;
     id: string;
     buttonMsg: string;
@@ -84,7 +110,7 @@ class SimpleStorage extends Component<
     const LazyString = this.Lazy;
     return (
       <div id={id}>
-        <button onClick={this.handleGetterOnClick}>
+        <button onClick={this.handleGetterOnClick(get_id)}>
           {buttonMsg}
         </button>
         <LazyString value={value}></LazyString>
@@ -229,6 +255,10 @@ class SimpleStorage extends Component<
         <h1>Simple Storage</h1>
         <div id="factory-section">
           <h3>Factory Section</h3>
+          <p>
+            contract:
+            0x338f4f701bf4d4175ace7d79c27d71cd998f12dc
+          </p>
           <div id="deploy">
             <button onClick={this.handleDeployClick}>
               Deploy
@@ -250,11 +280,13 @@ class SimpleStorage extends Component<
         <div id="instance-methods">
           <h3>Contract Methods</h3>
           <MyString
+            get_id={0}
             value={myString}
             id="getter"
             buttonMsg="myString"
           />
           <GetNumber
+            get_id={1}
             value={number}
             id="getter"
             buttonMsg="Get Number"
