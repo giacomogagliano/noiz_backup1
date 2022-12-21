@@ -1,8 +1,4 @@
-import {
-  ColorWheels,
-  Hsl,
-  Palette_v2,
-} from "../Palette_v2";
+import { ColorWheels, Palette_v2 } from "../Palette_v2";
 import { ICYM } from "./CYM";
 import { IRGB } from "./RGB";
 import { IRYB } from "./RYB";
