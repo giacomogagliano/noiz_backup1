@@ -6,6 +6,7 @@
     { "path": "packages/ui/src/HTML/React" },
     { "path": "packages/ui/src/HTML/React/lib" },
     { "path": "packages/ui/src/HTML/React/lib/types" },
+    { "path": "packages/ui/src/HTML/React/lib/types/theme" },
     { "path": "packages/ui/src/pages/" }
   ],
   "settings": {}
