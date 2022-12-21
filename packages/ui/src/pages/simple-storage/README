@@ -28,7 +28,11 @@ contratto ed interagirvi.
 - [ ] creare dei componenti che rappresentino la chiamata ad una funzione in particolare di un contratto
   - [ ] getter
     - [x] esportare funzione
-    - [ ] rendere del tutto generico
+    - [x] rendere del tutto generico
+    - [ ] sistemare il lazy loader
+      - [x] creare un elemto che non aspetta
+      - [ ] fare in modo che non rirenderizzi ad ogni cambiamento
+            della pagina principale
   - [ ] setter
     - [x] esportare funzione
     - [ ] rendere del tutto generico
