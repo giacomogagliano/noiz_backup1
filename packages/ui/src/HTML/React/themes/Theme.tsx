@@ -1,3 +1,4 @@
+import { RYB } from "../../../Colors/classes";
 import { FluidTheme } from "../lib/types/theme";
 
 const black_ = "hsl(185, 3%, 6%)";
@@ -36,6 +37,7 @@ export const darkTheme: FluidTheme = {
     color: palette.black,
   },
   palette,
+  palette_ryb: new RYB(-8),
 };
 
 export const lightTheme: FluidTheme = {
@@ -55,4 +57,5 @@ export const lightTheme: FluidTheme = {
     color: palette.white,
   },
   palette,
+  palette_ryb: new RYB(-8),
 };
