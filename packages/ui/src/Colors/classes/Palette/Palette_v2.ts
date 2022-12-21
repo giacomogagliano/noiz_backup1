@@ -84,7 +84,7 @@ export class Hsl {
   }
 
   setColor(cl: number) {
-    this.#color = cl;
+    this.#color = this.#color + cl;
     return this;
   }
 
