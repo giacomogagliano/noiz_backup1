@@ -31,6 +31,8 @@
     { "path": "packages/ui" },
     { "path": "packages/ui/src/HTML/React" },
     { "path": "packages/ui/src/HTML/React/classes/Icon" },
+    { "path": "packages/ui/src/HTML/React/classes/Blockchain" },
+    { "path": "packages/ui/src/HTML/React/classes/Blockchain/FactoryMethod" },
     { "path": "packages/ui/src/HTML/React/classes/_app/NoizApp" },
     { "path": "packages/ui/src/pages/simple-storage" },
     { "path": "packages/ui/src/pages" }
