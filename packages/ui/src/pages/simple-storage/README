@@ -26,6 +26,12 @@ contratto ed interagirvi.
 ## next steps
 
 - [ ] creare dei componenti che rappresentino la chiamata ad una funzione in particolare di un contratto
+  - [ ] getter
+    - [x] esportare funzione
+    - [ ] rendere del tutto generico
+  - [ ] setter
+    - [x] esportare funzione
+    - [ ] rendere del tutto generico
 - [ ] aggiungere metodi per quando cambia il signer
   - [x] testare se necessario
   - controllare se è necessario
@@ -34,7 +40,6 @@ contratto ed interagirvi.
   - [x] situazione non chiara, cè un errore nella console
         della blockchain che puo essere dovuto al fatto del mancato
         switch in un qualche momento della tx
-- [ ] rendere del tutto generico il getter
 
 ## problemi
 
