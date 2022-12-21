@@ -157,11 +157,15 @@ class SimpleStorage extends Component<
     className,
   }: SimpleStorageProps) => {
     const MyString = Getter<
-      EVMweb["contractFactories"]["SimpleStorage"]["attach"]
+      ReturnType<
+        EVMweb["contractFactories"]["SimpleStorage"]["attach"]
+      >
     >;
     const SetString = Setter;
     const GetNumber = Getter<
-      EVMweb["contractFactories"]["SimpleStorage"]["attach"]
+      ReturnType<
+        EVMweb["contractFactories"]["SimpleStorage"]["attach"]
+      >
     >;
     const SetNumber = Setter;
     const FactoryMethod = this.FactoryMethod;
