@@ -1,12 +1,9 @@
-import React, {
-  ChangeEvent,
-  Component,
-  MouseEvent,
-} from "react";
+import React, { Component, MouseEvent } from "react";
 import styled from "styled-components";
 import { EVM } from "@zionstate/database";
 import { Getter } from "../../HTML/React/classes/Blockchain/Getter";
 import { Setter } from "../../HTML/React/classes/Blockchain";
+import { FactoryMethod as FM } from "../../HTML/React/classes/Blockchain";
 
 // first deployed contract: 0x338f4f701bf4d4175ace7d79c27d71cd998f12dc
 type EVMweb = EVM.IEVMweb;
@@ -77,64 +74,6 @@ class SimpleStorage extends Component<
     >
   ) => this.setState({ instance });
 
-  handleFMChange =
-    (id: number) => (e: ChangeEvent<HTMLInputElement>) => {
-      const values = this.state.factoryMethodsInputValue;
-      let input = values.get(id);
-      input = e.target.value;
-      values.set(id, input);
-      this.setFactoryMethodsInputValue(values);
-    };
-
-  handleFMClick =
-    (id: number) => (e: MouseEvent<HTMLButtonElement>) => {
-      e.preventDefault();
-      const factory = this.props.factory;
-      if (!factory) throw new Error("no factory");
-      const values = this.state.factoryMethodsInputValue;
-      const value = values.get(id);
-      if (value === "" || value === undefined) return;
-      if (id === 1) {
-        this.setAttachedContractAddress(value);
-        values.set(id, "");
-        this.setFactoryMethodsInputValue(values);
-        const SimpleStorage = factory.attach(value);
-        this.setInstance(SimpleStorage);
-      }
-      if (id === 0) {
-        this.setConnectedContractAddress(value);
-        values.set(id, "");
-        this.setFactoryMethodsInputValue(values);
-      }
-
-      // this shall be used when the account is changed
-      // factory.connect();
-    };
-
-  FactoryMethod = ({
-    id,
-    title,
-    type,
-    placeholder,
-  }: {
-    id: number;
-    title: string;
-    type: "text" | "number";
-    placeholder: string;
-  }) => (
-    <div id="factory-method">
-      <input
-        type={type}
-        placeholder={placeholder}
-        onChange={this.handleFMChange(id)}
-        value={this.state.factoryMethodsInputValue.get(id)}
-      />
-      <button onClick={this.handleFMClick(id)}>
-        {title}
-      </button>
-    </div>
-  );
-
   handleDeployClick = (
     e: MouseEvent<HTMLButtonElement>
   ) => {
@@ -162,7 +101,7 @@ class SimpleStorage extends Component<
     const SetString = Setter;
     const GetNumber = Getter;
     const SetNumber = Setter;
-    const FactoryMethod = this.FactoryMethod;
+    const FactoryMethod = FM;
     const methods: Map<
       number,
       (value: string | number) => void
@@ -191,6 +130,13 @@ class SimpleStorage extends Component<
         value: string | number
       ) => void
     );
+    const factory = this.props.factory;
+    const fmiValues = this.state.factoryMethodsInputValue;
+    const sAttCon = this.setAttachedContractAddress;
+    const sConnCon = this.setConnectedContractAddress;
+    const sFaMIValue = this.setFactoryMethodsInputValue;
+    const sInst = this.setInstance;
+    // if (!factory) throw new Error("no factory");
     return (
       <div className={className}>
         <h1>Simple Storage</h1>
@@ -210,12 +156,24 @@ class SimpleStorage extends Component<
             placeholder="contract address"
             title="Connect"
             type="text"
+            factory={factory!}
+            factoryMethodsInputValue={fmiValues}
+            setAttachedContractAddress={sAttCon}
+            setConnectedContractAddress={sConnCon}
+            setFactoryMethodsInputValue={sFaMIValue}
+            setInstance={sInst}
           />
           <FactoryMethod
             id={1}
             placeholder="contract address"
             title="Attach"
             type="text"
+            factory={factory!}
+            factoryMethodsInputValue={fmiValues}
+            setAttachedContractAddress={sAttCon}
+            setConnectedContractAddress={sConnCon}
+            setFactoryMethodsInputValue={sFaMIValue}
+            setInstance={sInst}
           />
         </div>
         <div id="instance-methods">
