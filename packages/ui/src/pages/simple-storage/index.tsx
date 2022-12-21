@@ -30,6 +30,9 @@ interface SimpleStorageState {
   myString: string;
   myNumber: number;
   factoryMethodsInputValue: Map<number, string>;
+  instanceMethodsInputValue: Map<number, string | number>;
+  submittedString: string;
+  submittedNumber: number;
   connectedContractAddress: string;
   attachedContractAddress: string;
   instance: ReturnType<
@@ -118,15 +121,55 @@ class SimpleStorage extends Component<
     );
   };
 
-  handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("form submitted");
-  };
+  setInstanceMethodsInputValue = (
+    instanceMethodsInputValue: Map<number, string | number>
+  ) => this.setState({ instanceMethodsInputValue });
+
+  setSubmittedString = (submittedString: string) =>
+    this.setState({ submittedString });
+
+  setSubmittedNumber = (submittedNumber: number) =>
+    this.setState({ submittedNumber });
+
+  handleFormSubmit =
+    (id: number) => (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      const values = this.state.instanceMethodsInputValue;
+      const instance = this.state.instance;
+      if (id === 0) {
+        const input = values.get(0);
+        this.setSubmittedString(input as string);
+        instance
+          .setString(input as string)
+          .then(e => console.log(e))
+          .catch(e => console.log(e));
+      }
+      if (id === 1) {
+        let input = values.get(1);
+        this.setSubmittedNumber(input as number);
+        const bigNumber = BigNumber.from(input);
+        instance
+          .setNumber(bigNumber)
+          .then(e => console.log(e))
+          .catch(e => console.log(e));
+      }
+    };
+
+  handleIMChange =
+    (id: number) => (e: ChangeEvent<HTMLInputElement>) => {
+      const values = this.state.instanceMethodsInputValue;
+      let input = values.get(id);
+      input = e.target.value;
+      values.set(id, input);
+      this.setInstanceMethodsInputValue(values);
+    };
 
   Setter = ({
+    set_id,
     type,
     placeholder,
   }: {
+    set_id: number;
     type: "text" | "number";
     placeholder: string;
   }) => {
@@ -134,11 +177,12 @@ class SimpleStorage extends Component<
       <div id="setter">
         <form
           id={`setter-form`}
-          onSubmit={this.handleFormSubmit}
+          onSubmit={this.handleFormSubmit(set_id)}
         >
           <input
             type={type}
             placeholder={placeholder}
+            onChange={this.handleIMChange(set_id)}
           ></input>
           <button type="submit">transact</button>
         </form>
@@ -149,15 +193,6 @@ class SimpleStorage extends Component<
   setFactoryMethodsInputValue = (
     factoryMethodsInputValue: Map<number, string>
   ) => this.setState({ factoryMethodsInputValue });
-
-  handleFMChange =
-    (id: number) => (e: ChangeEvent<HTMLInputElement>) => {
-      const values = this.state.factoryMethodsInputValue;
-      let input = values.get(id);
-      input = e.target.value;
-      values.set(id, input);
-      this.setFactoryMethodsInputValue(values);
-    };
 
   setConnectedContractAddress = (
     connectedContractAddress: string
@@ -173,17 +208,24 @@ class SimpleStorage extends Component<
     >
   ) => this.setState({ instance });
 
+  handleFMChange =
+    (id: number) => (e: ChangeEvent<HTMLInputElement>) => {
+      const values = this.state.factoryMethodsInputValue;
+      let input = values.get(id);
+      input = e.target.value;
+      values.set(id, input);
+      this.setFactoryMethodsInputValue(values);
+    };
+
   handleFMClick =
     (id: number) => (e: MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
       const factory = this.props.factory;
       if (!factory) throw new Error("no factory");
-
       const values = this.state.factoryMethodsInputValue;
       const value = values.get(id);
       if (value === "" || value === undefined) return;
       if (id === 1) {
-        console.log("i will attach to a contract");
         this.setAttachedContractAddress(value);
         values.set(id, "");
         this.setFactoryMethodsInputValue(values);
@@ -291,8 +333,13 @@ class SimpleStorage extends Component<
             id="getter"
             buttonMsg="Get Number"
           />
-          <SetString placeholder="setString" type="text" />
+          <SetString
+            set_id={0}
+            placeholder="setString"
+            type="text"
+          />
           <SetNumber
+            set_id={1}
             placeholder="setNumber"
             type="number"
           />
@@ -398,6 +445,14 @@ class SimpleStorage extends Component<
     state.factoryMethodsInputValue.set(1, "");
     state.connectedContractAddress = "";
     state.attachedContractAddress = "";
+    state.instanceMethodsInputValue = new Map<
+      number,
+      string
+    >();
+    state.instanceMethodsInputValue.set(0, "");
+    state.instanceMethodsInputValue.set(1, "");
+    state.submittedNumber = -1000;
+    state.submittedString = "default-string";
     this.state = state;
   }
 
@@ -406,7 +461,9 @@ class SimpleStorage extends Component<
     prevState: Readonly<SimpleStorageState>,
     snapshot?: any
   ): void {
-    console.log(this.state.instance);
+    console.log(this.state.instanceMethodsInputValue);
+    console.log(this.state.submittedNumber);
+    console.log(this.state.submittedString);
     const changeContractMethod =
       prevProps.myString === this.props.myString;
     if (changeContractMethod) {
