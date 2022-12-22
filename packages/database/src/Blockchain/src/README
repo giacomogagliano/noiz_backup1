@@ -19,23 +19,21 @@ file cause typescript will complain about it.
 Simply copy and paste the folder relative to the contract
 which Hardhat compile and placed in the `artifact` folder.
 
-## Creating a getSimpleStorage_factory function
+## Creating an instance of NoizContractFactory
 
-This function creates an instance of a
-`ethers.ContractFactory` class.
+At the moment the creation of the instances of NoizContractFactory
+happens in the `Blockchain/Factories/index.ts` file.
+
+> I will look for a better place asap
 
 ```ts
-export const getMyContract = (
-  signer: Signer
-): MyContract__factory =>
-  new ethers.ContractFactory(
-    contract.abi,
-    contract.bytecode,
-    signer
-  ) as MyContract__factory;
+import _newContract_ from "./_newContract_.sol/_newContract_.json";
+
+export const _newContract_Factory =
+  new NoizContractFactory<_newContract___factory>(_newContract_);
 ```
 
-or use the `getfact` snippet.
+or use the `noizcontractfact` snippet.
 
 ## Add export to index file
 
