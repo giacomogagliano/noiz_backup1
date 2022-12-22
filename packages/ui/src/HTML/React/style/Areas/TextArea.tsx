@@ -1,8 +1,10 @@
 import styled, { css } from "styled-components";
+import { StyledDefault } from "../../lib/types/utility";
 import { checkCss } from "../../lib/util/checkCss";
+import { GCssStyled } from "../../lib/utility";
 
 export type TextAreaStyle = StyledDefault<
-  utility.GCssStyled<
+  GCssStyled<
     | "display"
     | "margin"
     | "placeContent"

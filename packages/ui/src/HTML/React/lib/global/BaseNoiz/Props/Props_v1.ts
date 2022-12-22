@@ -3,6 +3,10 @@ import {
   CSSProperties,
   FlattenSimpleInterpolation,
 } from "styled-components";
+import {
+  CssKeysFromStringArray,
+  FluidThemed,
+} from "../../../utility";
 
 type PropTypes = "union" | "object";
 
@@ -10,12 +14,12 @@ export class Props_v1<
   Key extends string,
   CssProps extends (keyof CSSProperties)[],
   Types extends string,
-  PropsInterface extends utility.CssKeysFromStringArray<CssProps>,
+  PropsInterface extends CssKeysFromStringArray<CssProps>,
   ConfigObject extends {
     [props in Types]: PropsInterface;
   },
   Props extends { [props in Key]?: Types },
-  FluidThemedInterpolation extends utility.FluidThemed<Props>,
+  FluidThemedInterpolation extends FluidThemed<Props>,
   Defaults extends {
     [props in Types]?: FluidThemedInterpolation;
   }

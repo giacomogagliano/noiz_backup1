@@ -1,8 +1,10 @@
 import styled from "styled-components";
+import { StyledDefault } from "../../lib/types/utility";
+import { CssStyled, ZionCss } from "../../lib/utility";
 
 type BottomSpaceStyle = {
   css?: StyledDefault<
-    utility.ZionCss<
+    ZionCss<
       undefined,
       true,
       | "textAlign"
@@ -13,7 +15,7 @@ type BottomSpaceStyle = {
       | "margin"
       | "gridArea"
     > &
-      utility.CssStyled
+      CssStyled
   >;
 };
 

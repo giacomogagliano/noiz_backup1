@@ -1,3 +1,4 @@
+import React from "react";
 import { ChangeEvent } from "react";
 import styled from "styled-components";
 import { InputType } from "../../../lib/global";
@@ -74,7 +75,7 @@ export class Input_v2 extends BaseNoiz<
     return (
       <input
         className={props.className}
-        css={props.css}
+        // css={props.css}
         type={props.type}
         placeholder={props.placeholder}
         onChange={this.onChange(props)}

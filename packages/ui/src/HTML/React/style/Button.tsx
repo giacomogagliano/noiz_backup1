@@ -1,5 +1,7 @@
 import { MouseEventHandler } from "react";
 import styled from "styled-components";
+import { Position, Sizes } from "../lib/global";
+import { NoizProps } from "../lib/types";
 import { checkCss } from "../lib/util/checkCss";
 
 export type ButtonStyle = NoizProps<

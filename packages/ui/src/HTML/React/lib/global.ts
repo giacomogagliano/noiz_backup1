@@ -14,13 +14,7 @@ import {
   // CSSObject
 } from "styled-components";
 export { BaseNoizProps } from "./global/BaseNoiz";
-import {
-  NoizProps as NP,
-  MakeAsChild as MAC,
-  NoizDatas as ND,
-} from "./types";
-import { FluidTheme as ft } from "./types/theme";
-import { BooleanizeUnions, Flatten } from "./utility";
+import { BooleanizeUnions } from "./utility";
 
 export {};
 /////////////////////////////
@@ -41,7 +35,7 @@ export {};
 // };
 // type ResTest = Test<datas>;
 
-type _AllHTMLAttributes<T> = allHTML<T>;
+export type _AllHTMLAttributes<T> = allHTML<T>;
 
 export type InputValue =
   | string
@@ -81,8 +75,8 @@ export type InputType =
 /////////////////////////////
 /// REACT
 
-type _BasicComponentProps<P> = PropsWithChildren<P>;
-type _FunctionComponentElement<P> = fce<P>;
+export type BasicComponentProps<P> = PropsWithChildren<P>;
+export type FunctionComponentElement<P> = fce<P>;
 // type _FunctionComponent<P = {}> = fc<P>;
 // type _BasicFC<P> = FC<BasicComponentProps<P>>;
 // type _BasicFCFactory<P> = FunctionComponentFactory<P>;
@@ -103,7 +97,7 @@ type _FunctionComponentElement<P> = fce<P>;
 /**
  * Props with JSX Instrinsic Attributes
  */
-type _PropsWithJsxInstrinsicAttr<T> =
+export type _PropsWithJsxInstrinsicAttr<T> =
   JSX.IntrinsicAttributes & T;
 
 // /**
@@ -157,7 +151,7 @@ type _PropsWithJsxInstrinsicAttr<T> =
 /////////////////////////////
 /// CSS
 
-type _CssAttributeValueTypes =
+export type CssAttributeValueTypes =
   | string
   | number
   | (string & {})
@@ -171,9 +165,9 @@ export type Position = {
   left?: string;
 };
 
-type _Dimensions = "width" | "height";
+export type Dimensions = "width" | "height";
 
-type _Direction = BooleanizeUnions<
+export type Direction = BooleanizeUnions<
   "horizontal" | "vertical"
 >;
 
@@ -184,7 +178,7 @@ export type NavBarType = BooleanizeUnions<
 // type width = number;
 // type height = number;
 
-type _BasicLayoutProps = {
+export type BasicLayoutProps = {
   minHeight?: string;
 };
 
@@ -197,7 +191,7 @@ type _BasicLayoutProps = {
 
 //////// PROPS
 
-type _BooleanSizes = {
+export type BooleanSizes = {
   small?: boolean;
   mid?: boolean;
   big?: boolean;
@@ -209,7 +203,7 @@ export type BasicColorStyle = {
   borderColor: string;
 };
 
-type _BooleanDisplay = {
+export type BooleanDisplay = {
   display: boolean;
 };
 
@@ -217,49 +211,33 @@ export type Sizes = "small" | "mid" | "big";
 
 export type Size = { size: Sizes };
 
-type _StyledDefault<T> = Flatten<
-  T & {
-    css?: string;
-    className?: string;
-  }
->;
+// type _StyledDefault<T> = Flatten<
+//   T & {
+//     css?: string;
+//     className?: string;
+//   }
+// >;
 
 declare global {}
 
 // former global
 
-type MakeBooleansFromEnum<T> = {
+export type MakeBooleansFromEnum<T> = {
   [props in keyof T]?: boolean;
 };
-type MakeBooleansFromUnion<T extends string> = {
+export type MakeBooleansFromUnion<T extends string> = {
   [props in T]?: boolean;
 };
 ///// HTML
-type AllHTMLAttribute<T> = _AllHTMLAttributes<T>;
 
 ///// React
 
-type BasicComponentProps<P> = _BasicComponentProps<P>;
-type FunctionComponentElemen<P> =
-  _FunctionComponentElement<P>;
-
 ///// CSS
-type CssProperties = keyof CSSProperties;
-type CssAttributeValueTypes = _CssAttributeValueTypes;
-type Dimensions = _Dimensions;
-type BasicLayoutProps = _BasicLayoutProps;
-type PropsWithJsxInstrinsicAttr<T> =
-  _PropsWithJsxInstrinsicAttr<T>;
-type Direction = _Direction;
+export type CssProperties = keyof CSSProperties;
 
 ///// Styled
-type StyledDefault<T> = _StyledDefault<T>;
-type BooleanSizes = _BooleanSizes;
-type BooleanDisplay = _BooleanDisplay;
 
 ///////// Themes
-type FluidTheme = ft;
-type NoizProps<T, B extends boolean = true> = NP<T, B>;
 
 /**
  * Standard React Component (class or function) props.
@@ -292,8 +270,8 @@ type NoizProps<T, B extends boolean = true> = NP<T, B>;
  * }
  * ```
  */
-type NoizDatas<Data> = ND<Data>;
-type MakeAsChild<
-  DataId extends string,
-  Datas extends { datas: any }
-> = MAC<DataId, Datas>;
+// type NoizDatas<Data> = ND<Data>;
+// type MakeAsChild<
+//   DataId extends string,
+//   Datas extends { datas: any }
+// > = MAC<DataId, Datas>;

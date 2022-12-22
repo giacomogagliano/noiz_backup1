@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { BooleanDisplay } from "../../../lib/global";
 
 export const LdsHourglass_v1 = styled.div<BooleanDisplay>`
   display: ${props => (props.display ? "block" : "none")};

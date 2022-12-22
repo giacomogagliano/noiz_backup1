@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { BasicLayoutProps } from "../../lib/global";
+import { StyledDefault } from "../../lib/types/utility";
 
 export type FooterProps = StyledDefault<BasicLayoutProps>;
 
