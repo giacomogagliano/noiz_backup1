@@ -21,7 +21,7 @@ import type {
   TypedEvent,
   TypedListener,
   OnEvent,
-  PromiseOrValue,
+  // PromiseOrValue,
 } from "../../../common";
 
 export interface ZPausableInterface extends utils.Interface {

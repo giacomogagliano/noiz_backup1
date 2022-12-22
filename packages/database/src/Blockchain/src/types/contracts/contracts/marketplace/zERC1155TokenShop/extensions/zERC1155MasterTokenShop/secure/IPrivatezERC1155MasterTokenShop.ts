@@ -9,7 +9,7 @@ import type {
   TypedEvent,
   TypedListener,
   OnEvent,
-  PromiseOrValue,
+  // PromiseOrValue,
 } from "../../../../../../common";
 
 export interface IPrivatezERC1155MasterTokenShopInterface
