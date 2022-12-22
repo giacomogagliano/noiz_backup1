@@ -1,8 +1,5 @@
 export {};
 
-//// NoizContractFactory
-// export * from "./NoizContractFactory";
-
 //// EVMweb
 export * from "./EVMweb";
 export type { IEVMweb } from "./EVMweb";
