@@ -27,4 +27,4 @@ export const checkCss_v1 = v1;
 export const checkCss = v1;
 
 //// checkPosition
-export * from "./checkPosition";
+export * from "./";
