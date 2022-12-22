@@ -3,7 +3,7 @@ import {
   detect,
   MetaMaskEthereumProvider,
 } from "../../lib";
-import { ZionContractFactories } from "../../Types/ZionContractFactories";
+import { ZionContractFactories } from "../NoizContractFactories";
 
 export type RequireOnlyOne<
   T,

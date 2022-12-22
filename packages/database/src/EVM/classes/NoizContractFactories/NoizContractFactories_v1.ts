@@ -1,5 +1,5 @@
 import { ethers, Signer } from "ethers";
-import { types } from "../../../Blockchain";
+import { Factories, types } from "../../../Blockchain";
 import type { Class } from "../../../Blockchain";
 import {
   erc1155IndividualURIFactory,
@@ -8,7 +8,6 @@ import {
   provaMasterFactory,
   simpleStorageFactory,
   usdcFactory,
-  propagandaPresaleFactory,
 } from "../../../Blockchain/src/Factories";
 import {
   Membership__factory,
@@ -16,15 +15,7 @@ import {
   USDC__factory,
   ZERC1155TokenShop__factory,
   SimpleStorage__factory,
-  Propaganda_Presale__factory,
 } from "../../../Blockchain/src/types/contracts";
-
-export interface INoizContractFactories_v1 {
-  name: string;
-}
-
-export interface NoizContractFactories_v1 {}
-
 type NoizContractFactory<
   T extends ethers.ContractFactory
 > = Class.NoizContractFactory<T>;
@@ -38,7 +29,18 @@ export type ERC1155IndividualURI =
 
 export type ContractFactory = ethers.ContractFactory;
 
-export class NoizContractFactories_v1 {
+// TODO #38 mettere questi codici nelle cartelle delle classi non nei tipi
+export class ZionContractFactories {
+  newContractFactories: {
+    ERC1155IndividualURI: ERC1155IndividualURI_Factory;
+    ERC1155TokenShop: ZERC1155TokenShop__factory;
+    Membership: Membership__factory;
+    ProvaMaster: ProvaMaster__factory;
+    USDC: USDC__factory;
+    SimpleStorage: SimpleStorage__factory;
+    [key: string]: ContractFactory;
+  };
+
   newNoizContractFactories: {
     ERC1155IndividualURI: NoizContractFactory<ERC1155IndividualURI_Factory>;
     ERC1155TokenShop: NoizContractFactory<ZERC1155TokenShop__factory>;
@@ -46,7 +48,6 @@ export class NoizContractFactories_v1 {
     ProvaMaster: NoizContractFactory<ProvaMaster__factory>;
     USDC: NoizContractFactory<USDC__factory>;
     SimpleStorage: NoizContractFactory<SimpleStorage__factory>;
-    Propaganda_presale: NoizContractFactory<Propaganda_Presale__factory>;
     [key: string]: NoizContractFactory<ContractFactory>;
   };
 
@@ -57,11 +58,27 @@ export class NoizContractFactories_v1 {
     ProvaMaster: ProvaMaster__factory;
     USDC: USDC__factory;
     SimpleStorage: SimpleStorage__factory;
-    Propaganda_presale: Propaganda_Presale__factory;
     [key: string]: ContractFactory;
   };
   constructor(public signer?: Signer) {
     if (!signer) throw new Error("");
+    const ERC1155IndividualURI =
+      Factories.getERC1155IndividualURI(signer);
+    const ERC1155TokenShop =
+      Factories.getERC1155TokenShop(signer);
+    const Membership = Factories.getMembership(signer);
+    const ProvaMaster = Factories.getProvaMaster(signer);
+    const USDC = Factories.getUSDC(signer);
+    const SimpleStorage =
+      Factories.getSimpleStorage(signer);
+    this.contractFactories = {
+      ERC1155IndividualURI,
+      ERC1155TokenShop,
+      Membership,
+      ProvaMaster,
+      USDC,
+      SimpleStorage,
+    };
 
     this.newNoizContractFactories = {
       ERC1155IndividualURI: erc1155IndividualURIFactory,
@@ -70,10 +87,9 @@ export class NoizContractFactories_v1 {
       ProvaMaster: provaMasterFactory,
       SimpleStorage: simpleStorageFactory,
       USDC: usdcFactory,
-      Propaganda_presale: propagandaPresaleFactory,
     };
 
-    this.contractFactories = {
+    this.newContractFactories = {
       ERC1155IndividualURI:
         erc1155IndividualURIFactory.getContractFactory(
           signer
@@ -87,39 +103,6 @@ export class NoizContractFactories_v1 {
       SimpleStorage:
         simpleStorageFactory.getContractFactory(signer),
       USDC: usdcFactory.getContractFactory(signer),
-      Propaganda_presale:
-        propagandaPresaleFactory.getContractFactory(
-          signer
-        ),
     };
   }
 }
-
-export type NoizContractFactories_v1Ctor = {
-  new (signer?: Signer): NoizContractFactories_v1;
-};
-
-export const NoizContractFactories_v1Ctor: NoizContractFactories_v1Ctor =
-  NoizContractFactories_v1;
-
-///////////
-///////////
-///////////
-///////////
-///////////
-///////////
-///////////
-///////////
-///////////
-///////////
-///////////
-///////////
-///////////
-///////////
-///////////
-///////////
-///////////
-///////////
-///////////
-///////////
-///////////

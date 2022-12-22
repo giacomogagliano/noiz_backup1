@@ -1,4 +1,5 @@
 ///// EXPORT
-export { NoizContractFactories_v1 as NoizContractFactories } from "./NoizContractFactories_v1";
-export type { NoizContractFactories_v1Ctor as NoizContractFactoriesCtor } from "./NoizContractFactories_v1";
+export { NoizContractFactories_v2 as NoizContractFactories } from "./NoizContractFactories_v2";
+export type { NoizContractFactories_v2Ctor as NoizContractFactoriesCtor } from "./NoizContractFactories_v2";
 ////////////
+export { ZionContractFactories } from "./NoizContractFactories_v1";
