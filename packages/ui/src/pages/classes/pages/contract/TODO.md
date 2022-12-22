@@ -4,7 +4,8 @@ SOLIDITY
   - [x] mettere 6 decimali
 - [ ] contratto erc20 per pagamento
   - [x] fare test su remix
-  - [ ] compile
+  - [x] compile
+  - [ ] aggiungere Propaganda presale a NoizContractFactories
   - [ ] dispiegare su hardhat network
   - [ ] dispiegare su goerli network
     - [ ] far fare test a
