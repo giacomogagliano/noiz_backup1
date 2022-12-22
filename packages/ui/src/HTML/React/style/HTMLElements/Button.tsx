@@ -1,6 +1,8 @@
-import { MouseEventHandler } from "react";
 import styled from "styled-components";
-import { checkCss } from "../lib/util/checkCss";
+import { MouseEventHandler } from "react";
+import { NoizProps } from "../../lib/types";
+import { Position, Sizes } from "../../lib/global";
+import { checkCss } from "../../lib/util";
 
 export type ButtonStyle = NoizProps<
   {
@@ -17,19 +19,9 @@ export type ButtonStyle = NoizProps<
   true
 >;
 
-// const defaultHeight = css`
-//   height: 70%;
-// `;
-// const defaultWidth = css`
-//   width: 70%;
-// `;
+interface IButton extends ButtonStyle {}
 
-/**
- * ${props => new Css("height", defaultHeight, props).value}
- * ${props => new Css("width", defaultWidth, props).value}
- */
-
-export const Button = styled.button<ButtonStyle>`
+export const Button = styled.button<IButton>`
   line-height: 1.2;
   font-size: 70%;
   place-self: center;
