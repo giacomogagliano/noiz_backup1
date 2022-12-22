@@ -2,55 +2,9 @@
   "folders": [
     { "path": "." },
     { "path": "packages/ui/" },
-    { "path": "packages/ui/src/HTML" },
-    { "path": "packages/ui/src/HTML/React" },
-    { "path": "packages/ui/src/HTML/React/lib" },
-    { "path": "packages/ui/src/HTML/React/lib/types" },
-    { "path": "packages/ui/src/HTML/React/lib/types/theme" },
-    { "path": "packages/ui/src/pages/" }
-    { "path": "./" },
-    { "path": "packages/ui" },
-    { "path": "packages/ui/src/HTML" },
-    { "path": "packages/ui/src/HTML/React" },
-    { "path": "packages/ui/src/Colors" },
-    { "path": "packages/ui/src/Colors/classes/Palette" },
-    { "path": "packages/ui/test" },
-    {
-      "name": "noiz-network-state",
-      "path": "."
-    },
-    {
-      "name": "HTML",
-      "path": "packages/ui/src/HTML"
-    },
-    {
-      "name": "React",
-      "path": "packages/ui/src/HTML/React"
-    },
-    {
-      "name": "style",
-      "path": "packages/ui/src/HTML/React/style"
-    },
-    {
-      "name": "styles",
-      "path": "packages/ui/src/pages/styles"
-    }
-    { "path": "." },
-    { "path": "packages/ui" },
-    { "path": "packages/database" },
-    { "path": "packages/database/src/EVM" },
-    { "path": "packages/database/src/Blockchain" },
-    { "path": "packages/database/src/Blockchain/scripts" },
-    { "path": "packages/database/src/Blockchain/src" },
-    { "path": "packages/database/src/Blockchain/contracts/zion_contracts" },
-    { "path": "packages/ui" },
-    { "path": "packages/ui/src/HTML/React" },
-    { "path": "packages/ui/src/HTML/React/classes/Icon" },
-    { "path": "packages/ui/src/HTML/React/classes/Blockchain" },
-    { "path": "packages/ui/src/HTML/React/classes/Blockchain/FactoryMethod" },
-    { "path": "packages/ui/src/HTML/React/classes/_app/NoizApp" },
-    { "path": "packages/ui/src/pages/simple-storage" },
-    { "path": "packages/ui/src/pages" }
+    { "path": "packages/ui/src/pages" },
+    { "path": "packages/ui/src/pages/classes" },
+    { "path": "packages/ui/src/pages/classes/contract" }
   ],
   "settings": {}
 }
