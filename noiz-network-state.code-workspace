@@ -1,10 +1,12 @@
 {
   "folders": [
     { "path": "." },
+    { "path": "packages/database/" },
+    { "path": "packages/database/src/" },
+    { "path": "packages/database/src/Blockchain/contracts/zion_contracts" },
+    { "path": "packages/database/src/Blockchain/contracts/mocks" },
     { "path": "packages/ui/" },
-    { "path": "packages/ui/src/pages" },
-    { "path": "packages/ui/src/pages/classes" },
-    { "path": "packages/ui/src/pages/classes/contract" }
+    { "path": "packages/ui/src/pages/classes/pages/contract" }
   ],
   "settings": {}
 }
