@@ -34,7 +34,7 @@ import {
   InfuraProvider,
   JsonRpcProvider,
 } from "../../Types";
-import { ZionContractFactories } from "../../Types/ZionContractFactories";
+import { ZionContractFactories } from "../";
 import { RequireOnlyOne } from "../EVMweb";
 
 export type EVMCtorArgs = {
