@@ -12,6 +12,7 @@ import {
   checkBackgroundColor,
   checkSize,
   checkZIndex,
+  checkPosition,
 } from "../checkCss/";
 import { checkGridTemplate } from "../checkCss/checkGridTemplate";
 
@@ -35,7 +36,8 @@ export const checkCss_v1 = function <
     | "size"
     | "zIndex"
     | "gridTemplateRows"
-    | "gridTemplateColumns",
+    | "gridTemplateColumns"
+    | "position",
   props: T
 ): FlattenSimpleInterpolation | undefined {
   let resultCss: FlattenSimpleInterpolation | undefined;
@@ -90,9 +92,10 @@ export const checkCss_v1 = function <
     case "zIndex":
       resultCss = checkZIndex(props);
       break;
+    case "position":
+      resultCss = checkPosition(props);
     default:
       resultCss = css``;
-      break;
   }
   return resultCss;
 };

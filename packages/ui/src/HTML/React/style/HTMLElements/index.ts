@@ -16,3 +16,4 @@ export * from "./H3";
 export * from "./Text";
 export * from "./Canvas";
 export * from "./AreaTagHtml";
+export * from "./Button";
