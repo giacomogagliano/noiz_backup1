@@ -30,15 +30,12 @@ happens in the `Blockchain/Factories/index.ts` file.
 import _newContract_ from "./_newContract_.sol/_newContract_.json";
 
 export const _newContract_Factory =
-  new NoizContractFactory<_newContract___factory>(_newContract_);
+  new NoizContractFactory<_newContract___factory>(
+    _newContract_
+  );
 ```
 
 or use the `noizcontractfact` snippet.
-
-## Add export to index file
-
-Next step is to add the correct exports to the `index.ts`
-file which is in the
 
 ## Load the factory
 
