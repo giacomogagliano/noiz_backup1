@@ -7,7 +7,11 @@ import styled from "styled-components";
 import { Label, LabelProps } from "../Basic";
 import { Form } from "../Form";
 import { dataGuard } from "@zionstate/zionbase/utils";
+
 type USDC = types.contracts.USDC;
+type Propaganda_presale =
+  types.contracts.Propaganda_Presale;
+
 enum layouts {
   main = "main",
 }
@@ -44,6 +48,7 @@ export interface Contract_v3State
   signer_allowance: number;
   isAllowance?: boolean | null;
   usdc: USDC | null;
+  propaganda_presale: Propaganda_presale | null;
 }
 export class Contract_v3State extends BaseNoizState<Contract_v3Props> {}
 
@@ -82,6 +87,7 @@ export class Contract_v3 extends BaseNoiz<
     state.signer_address = "";
     state.isAllowance = null;
     state.usdc = null;
+    state.propaganda_presale = null;
     this.state = state;
   }
   setMax_supply = (max_supply: number) =>
@@ -104,6 +110,9 @@ export class Contract_v3 extends BaseNoiz<
     this.setState({ isAllowance });
 
   setUsdc = (usdc: USDC) => this.setState({ usdc });
+
+  setPropa = (propaganda_presale: Propaganda_presale) =>
+    this.setState({ propaganda_presale });
 
   useForm() {
     const [form, setForm] = useState({
@@ -201,6 +210,8 @@ export class Contract_v3 extends BaseNoiz<
       const Usdc = factories.USDC;
       const Propag = factories.Propaganda_presale;
       const usdc = Usdc.attach(this.udsc_address);
+      this.setUsdc(usdc);
+      usdc.on("Transfer", e => console.log(e));
       const balance = await usdc.balanceOf(this.user1);
       const balance2 = await usdc.balanceOf(this.user2);
       console.log(
@@ -208,6 +219,8 @@ export class Contract_v3 extends BaseNoiz<
         this.formatUsdc(balance2)
       );
       const prop = Propag.attach(this.propa_presale);
+      this.setPropa(prop);
+      prop.on("Purchase", e => console.log("Purchase", e));
       const price = await prop.price();
       this.setPrice(this.formatUsdc(price));
       const supply = await prop.totalSupply();
