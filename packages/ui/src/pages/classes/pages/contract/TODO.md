@@ -5,8 +5,13 @@ SOLIDITY
 - [ ] contratto erc20 per pagamento
   - [x] fare test su remix
   - [x] compile
-  - [ ] aggiungere Propaganda presale a NoizContractFactories
-  - [ ] dispiegare su hardhat network
+  - [x] aggiungere Propaganda presale a NoizContractFactories
+  - [x] dispiegare su hardhat network
+  - [ ] pulsante dispiega usdc
+  - [ ] pulsante dispiega propaganda
+  - [ ] setup listeners
+    - [ ] listen purchase
+    - [ ] listen usdc allowance
   - [ ] dispiegare su goerli network
     - [ ] far fare test a
       - [ ] alieno
@@ -21,10 +26,10 @@ SOLIDITY
 
 UI
 
-- [ ] recuperare la supply dalla blockchain
-- [ ] address dell'owner del contratto
-- [ ] prezzo del token
-- [ ] azione buy
+- [x] recuperare la supply dalla blockchain
+- [x] address dell'owner del contratto
+- [x] prezzo del token
+- [x] azione buy
 - [ ] pagina presentazione propaganda
   - [ ] far funzionare MD
   - [ ] grafico nella pagina
