@@ -1,8 +1,4 @@
-export { ResponseDiv_v1 as ResponseDiv } from "./ResponseDiv_v1";
-
-export type {
-  ResponseDiv_v1Data as ResponseDivData,
-  ResponseDiv_v1Booleans as ResponseDivBooleans,
-  ResponseDiv_v1ClassProps as ResponseDivClassProps,
-  ResponseDiv_v1AsChild as ResponseDivAsChild,
+export {
+  ResponseDiv_v1 as ResponseDiv,
+  ResponseDiv_v1Props as ResponseDivProps,
 } from "./ResponseDiv_v1";

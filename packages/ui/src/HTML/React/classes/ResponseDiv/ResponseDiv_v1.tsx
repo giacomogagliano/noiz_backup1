@@ -1,18 +1,11 @@
-export type ResponseDiv_v1Data = "ResponseDiv_v1Data";
-export type ResponseDiv_v1Booleans =
-  "ResponseDiv_v1Booleans";
-export type ResponseDiv_v1ClassProps =
-  "ResponseDiv_v1ClassProps";
-export type ResponseDiv_v1AsChild =
-  "ResponseDiv_v1AsChild";
-
 import { Component } from "react";
 import styled from "styled-components";
 
-interface ResponseDiv_v1Props {
+export interface ResponseDiv_v1Props {
   clicked: boolean;
   validation: "confirmed" | "negated" | "neutral";
 }
+export class ResponseDiv_v1Props {}
 
 export class ResponseDiv_v1 extends Component<ResponseDiv_v1Props> {
   Layout = (

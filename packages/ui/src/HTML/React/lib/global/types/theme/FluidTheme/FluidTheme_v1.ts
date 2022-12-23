@@ -1,8 +1,8 @@
-import { Palette1 } from "./Palettes";
-import { BasicColorStyle } from "../../global";
-import { RYB } from "../../../../../Colors/classes";
+import { RYB } from "../../../../../../../Colors/classes";
+import { BasicColorStyle } from "../../BasicColorStyle";
+import { Palette1 } from "../Palette1";
 
-export type FluidTheme = {
+export type FluidTheme_v1 = {
   body: string;
   textColor: string;
   backgroundColor: string;

@@ -1,1 +1,21 @@
 export * as Palettes from "./Palettes";
+export {
+  fluid_7,
+  cym1Palette1,
+  cym1Palette2,
+  cym1Palette3,
+  fluid_colors1_a,
+  fluid_colors1_b,
+  fluid_colors1_c,
+  fluid_colors1_d,
+  fluid_colors2_a,
+  fluid_colors2_b,
+  fluid_colors3_a,
+  fluid_colors3_c,
+  rgbPalette1,
+  rgbPalette2,
+  rgbPalette3,
+  ryb1Palette1,
+  ryb1Palette2,
+  ryb1Palette3,
+} from "./Palettes";

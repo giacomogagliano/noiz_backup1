@@ -1,13 +1,58 @@
-// TODO #13 @giacomogagliano riordinare gli export
-// TODO #9 @giacomogagliano controllare gli export in HTML/REACT/classes
-// TODO #10 @giacomogagliano controllare gli export in HTML/REACT/lib
-// TODO #11 @giacomogagliano controllare gli export in HTML/REACT/style
-// TODO #12 @giacomogagliano controllare gli export in HTML/REACT/themes
+// HTML
 export * as HTML from "./HTML";
-export * as themes from "./HTML/React/themes";
+//// REACT Library
+export * as React from "./HTML/React";
+export {
+  themes,
+  classes,
+  lib,
+  styled,
+} from "./HTML/React";
+export {
+  Badge,
+  BadgeProps,
+  Input,
+  InputProps,
+  Label,
+  LabelProps,
+  Svg,
+  FactoryMethod,
+  FactoryMethodProps,
+  Getter,
+  GetterProps,
+  Setter,
+  SetterProps,
+  Card,
+  CardProps,
+  Chart,
+  Form,
+  FormProps,
+  Icon,
+  IconProps,
+  IconPath,
+  Image,
+  ImageProps,
+  ItemsArea,
+  ItemsAreaProps,
+  Md,
+  MdProps,
+  NavBar,
+  NavBarProps,
+  Profile,
+  ProfileProps,
+  Item,
+  ItemProps,
+  Contract,
+  ContractProps,
+  ResponseDiv,
+  ResponseDivProps,
+} from "./HTML/React/classes";
 
-// console.log(BaseNoiz);
+//// NEXT Library
+export * as Next from "./HTML/Next";
+
+// COLOR
 export * as Colors from "./Colors";
 
-//// CLI
+// CLI
 export * from "./CLI";

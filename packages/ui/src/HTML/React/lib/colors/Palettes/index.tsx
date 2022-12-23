@@ -21,6 +21,31 @@
 //   fluid_colors3_a as f3a,
 //   fluid_colors3_c as f3b,
 // } from "./Fluid3";
+export {
+  fluid_colors1_a,
+  fluid_colors1_b,
+  fluid_colors1_c,
+  fluid_colors1_d,
+} from "./Fluid1";
+export {
+  fluid_colors2_a,
+  fluid_colors2_b,
+} from "./Fluid2";
+export {
+  fluid_colors3_a,
+  fluid_colors3_c,
+} from "./Fluid3";
+export {
+  cym1Palette1,
+  cym1Palette2,
+  cym1Palette3,
+  rgbPalette1,
+  rgbPalette2,
+  rgbPalette3,
+  ryb1Palette1,
+  ryb1Palette2,
+  ryb1Palette3,
+} from "./newPalette1";
 export { fluid_7 } from "./fluid_7";
 
 // export class Google extends Palette {

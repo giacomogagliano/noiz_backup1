@@ -1,12 +1,1 @@
-import {
-  DefaultTheme,
-  StyledComponent,
-} from "styled-components";
-import { BooleanDisplay } from "../../global";
-
-export type LoadingIconType = StyledComponent<
-  "div",
-  DefaultTheme,
-  BooleanDisplay,
-  never
->;
+export type { LoadingIconType } from "../../global/types/styledComponents/LoadingIconType";
