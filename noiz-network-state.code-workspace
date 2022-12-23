@@ -1,6 +1,7 @@
 {
   "folders": [
     { "path": "." },
+    { "path": "apps/" },
     { "path": "packages/ui/" },
     { "path": "packages/ui/src/HTML/React/classes" },
     { "path": "packages/ui/src/HTML/React/classes/_app" },
