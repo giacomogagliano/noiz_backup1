@@ -1,11 +1,13 @@
 import { EVMweb } from "@zionstate/database/EVM";
+import { types } from "@zionstate/database/Blockchain";
 import { BigNumber } from "ethers";
 import React, { MouseEvent } from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import { Label, LabelProps } from "../Basic";
 import { Form } from "../Form";
-
+import { dataGuard } from "@zionstate/zionbase/utils";
+type USDC = types.contracts.USDC;
 enum layouts {
   main = "main",
 }
@@ -41,6 +43,7 @@ export interface Contract_v3State
   signer_address: string;
   signer_allowance: number;
   isAllowance?: boolean | null;
+  usdc: USDC | null;
 }
 export class Contract_v3State extends BaseNoizState<Contract_v3Props> {}
 
@@ -78,6 +81,7 @@ export class Contract_v3 extends BaseNoiz<
     state.price = props.price;
     state.signer_address = "";
     state.isAllowance = null;
+    state.usdc = null;
     this.state = state;
   }
   setMax_supply = (max_supply: number) =>
@@ -99,6 +103,8 @@ export class Contract_v3 extends BaseNoiz<
   setIsAllowance = (isAllowance: boolean) =>
     this.setState({ isAllowance });
 
+  setUsdc = (usdc: USDC) => this.setState({ usdc });
+
   useForm() {
     const [form, setForm] = useState({
       input1: { value: "string" },
@@ -117,11 +123,11 @@ export class Contract_v3 extends BaseNoiz<
   }
 
   udsc_address =
-    "0xcc8617d881530b57e9da52051a3df41c2a07c13a";
+    "0x338f4f701bf4d4175ace7d79c27d71cd998f12dc";
   user1 = "0x215872786B467B23E788F482461382bd3047731e";
   user2 = "0x152A530E4B9a76ba83fb2Ec1992187329E16a30A";
   propa_presale =
-    "0x80dc46ca414f83898f5c243f0b8caf88bf2123f2";
+    "0x5D559137CCA57D0FcB2Cbd9802f87f855FB1562e";
 
   formatUsdc = (big: BigNumber) => {
     return new Number(big._hex).valueOf() / 1000000;
@@ -129,6 +135,61 @@ export class Contract_v3 extends BaseNoiz<
 
   formatPropa = (big: BigNumber) =>
     new Number(big._hex).valueOf();
+
+  handleDeployUscd =
+    (evm?: EVMweb) =>
+    (e: MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      if (!evm) throw new Error("no evm");
+      const Usdc = evm.contractFactories.USDC;
+      Usdc.deploy().then(usdc => {
+        this.setUsdc(usdc);
+      });
+    };
+
+  handleMintUsdc =
+    (recipient: string, amount: number) =>
+    (e: MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      const usdc = this.state.usdc;
+      if (usdc === null)
+        throw new Error("no usdc contract");
+      usdc.on("Transfer", e => {
+        console.log("trasnferred:", e);
+      });
+      usdc
+        .mint(recipient, BigNumber.from(amount))
+        .then(e => {
+          console.log("transaction", e);
+        });
+    };
+
+  handleAttachUsdc =
+    (evm?: EVMweb) =>
+    (e: MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      evm = dataGuard(evm, "no evm");
+      const Usdc = evm.contractFactories.USDC;
+      const res = Usdc.attach(this.udsc_address);
+      console.log(res);
+      this.setUsdc(res);
+    };
+
+  handleDeployProps =
+    (evm?: EVMweb) =>
+    (e: MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+      evm = dataGuard(evm, "no evm");
+      const Propa =
+        evm.contractFactories.Propaganda_presale;
+      Propa.deploy(
+        this.udsc_address,
+        this.user1,
+        BigNumber.from(700_000)
+      ).then(e => {
+        console.log(e);
+      });
+    };
 
   script = async () => {
     const evm = this.props.evm;
@@ -140,8 +201,8 @@ export class Contract_v3 extends BaseNoiz<
       const Usdc = factories.USDC;
       const Propag = factories.Propaganda_presale;
       const usdc = Usdc.attach(this.udsc_address);
-      const balance = await usdc.balanceOf(this.user2);
-      const balance2 = await usdc.balanceOf(this.user1);
+      const balance = await usdc.balanceOf(this.user1);
+      const balance2 = await usdc.balanceOf(this.user2);
       console.log(
         this.formatUsdc(balance),
         this.formatUsdc(balance2)
@@ -159,11 +220,12 @@ export class Contract_v3 extends BaseNoiz<
       this.setSigner_address(signerAddres);
       const signerAllowance = await usdc.allowance(
         signerAddres,
-        this.udsc_address
+        this.propa_presale
       );
       this.setSigner_allowance(
         this.formatUsdc(signerAllowance)
       );
+      console.log(signerAllowance);
     }
   };
 
@@ -226,6 +288,33 @@ export class Contract_v3 extends BaseNoiz<
 
     return (
       <div className={props.className}>
+        <div id="overlay">
+          <button
+            onClick={this.handleDeployUscd(this.props.evm)}
+          >
+            deploy usdc
+          </button>
+          <button
+            onClick={this.handleAttachUsdc(this.props.evm)}
+          >
+            attach usdc
+          </button>
+          <button
+            onClick={this.handleMintUsdc(
+              this.user2,
+              100_000_000
+            )}
+          >
+            mint to user2
+          </button>
+          <button
+            onClick={this.handleDeployProps(
+              this.props.evm
+            )}
+          >
+            deploy propa
+          </button>
+        </div>
         <p>welcome to my contract</p>
         <h2>this is contract n°: {this.propa_presale}</h2>
         <div id="description">
@@ -317,6 +406,20 @@ export class Contract_v3 extends BaseNoiz<
     text-align: center;
     display: grid;
     width: fit-content;
+    #overlay {
+      margin-top: 1rem;
+      display: grid;
+      position: fixed;
+      right: 5px;
+      > *:not(:last-child) {
+        margin-bottom: 0.3rem;
+      }
+      button {
+        padding: 0.5rem;
+        border: none;
+        border-radius: 1rem;
+      }
+    }
     #container {
       /* height: 100%; */
       > *:not(:last-child) {
@@ -421,6 +524,7 @@ export class Contract_v3 extends BaseNoiz<
     const curr = this.props.evm;
     const prev = p.evm;
     const cond = curr !== prev;
+    const cond2 = this.state.usdc !== null;
     if (cond) this.script();
   };
 }
