@@ -1,4 +1,4 @@
-export { Moon_v2 as Moon } from "./Moon_v1";
+export { Moon_v2 as Moon, moon } from "./Moon_v1";
 
 export type {
   Moon_v1Data as MoonData,

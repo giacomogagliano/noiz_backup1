@@ -1,4 +1,4 @@
-export { Queue_v2 as Queue } from "./Queue_v1";
+export { Queue_v2 as Queue, queue } from "./Queue_v1";
 
 export type {
   Queue_v1Data as QueueData,

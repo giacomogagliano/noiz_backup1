@@ -1,4 +1,7 @@
-export { FilterAlt_v2 as FilterAlt } from "./FilterAlt_v1";
+export {
+  FilterAlt_v2 as FilterAlt,
+  filterAlt,
+} from "./FilterAlt_v1";
 
 export type {
   FilterAlt_v1Data as FilterAltData,

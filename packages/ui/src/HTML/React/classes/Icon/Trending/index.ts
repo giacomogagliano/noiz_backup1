@@ -1,4 +1,7 @@
-export { Trending_v2 as Trending } from "./Trending_v1";
+export {
+  Trending_v2 as Trending,
+  trending,
+} from "./Trending_v1";
 
 export type {
   Trending_v1Data as TrendingData,

@@ -1,5 +1,8 @@
+export { Icon_v4 as Icon } from "./Icon_v4";
+
+export type { Icon_v4Props } from "./Icon_v4";
 export {
-  Icon_v3 as Icon,
+  Icon_v3,
   Icon_v3Props as IconProps,
   Icon_v3State as IconState,
 } from "./Icon_v3";

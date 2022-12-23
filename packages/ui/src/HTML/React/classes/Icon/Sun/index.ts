@@ -1,4 +1,4 @@
-export { Sun_v2 as Sun } from "./Sun_v1";
+export { Sun_v2 as Sun, sun } from "./Sun_v1";
 
 export type {
   Sun_v1Data as SunData,

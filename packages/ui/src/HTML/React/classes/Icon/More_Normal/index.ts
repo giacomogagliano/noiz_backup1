@@ -1,4 +1,7 @@
-export { More_Normal_v2 as More_Normal } from "./More_Normal_v1";
+export {
+  More_Normal_v2 as More_Normal,
+  more_normal,
+} from "./More_Normal_v1";
 
 export type {
   More_Normal_v1Data as More_NormalData,

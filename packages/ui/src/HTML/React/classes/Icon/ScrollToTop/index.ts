@@ -1,4 +1,7 @@
-export { ScrollToTop_v2 as ScrollToTop } from "./ScrollToTop_v1";
+export {
+  ScrollToTop_v2 as ScrollToTop,
+  scrollToTop,
+} from "./ScrollToTop_v1";
 
 export type {
   ScrollToTop_v1Data as ScrollToTopData,

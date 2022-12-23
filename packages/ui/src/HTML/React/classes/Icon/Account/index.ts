@@ -1,4 +1,7 @@
-export { Account_v2 as Account } from "./Account_v1";
+export {
+  Account_v2 as Account,
+  account,
+} from "./Account_v1";
 
 export type {
   Account_v1Data as AccountData,

@@ -15,8 +15,9 @@ export const ArrowLeft_v2 = (
 );
 
 const arrowLeft_ = new IconPath();
-arrowLeft_.name = Icons.album;
+arrowLeft_.name = Icons.arrowLeft;
 arrowLeft_.JsxPath = ArrowLeft_v2;
 arrowLeft_.filled = true;
 
+export const arrowleft = arrowLeft_;
 export const Arrowleft = arrowLeft_;

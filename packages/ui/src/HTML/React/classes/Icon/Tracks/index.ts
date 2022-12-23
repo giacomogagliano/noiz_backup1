@@ -1,4 +1,4 @@
-export { Tracks_v2 as Tracks } from "./Tracks_v1";
+export { Tracks_v2 as Tracks, tracks } from "./Tracks_v1";
 
 export type {
   Tracks_v1Data as TracksData,
