@@ -11,9 +11,9 @@ SOLIDITY
   - [x] pulsante attach usdc
   - [x] pulsante mina usdc
   - [x] pulsante dispiega propaganda
-  - [ ] setup listeners
-    - [ ] listen purchase
-    - [ ] listen usdc allowance
+  - [x] setup listeners
+    - [x] listen purchase
+    - [x] listen usdc allowance
   - [ ] dispiegare su goerli network
     - [ ] far fare test a
       - [ ] alieno
