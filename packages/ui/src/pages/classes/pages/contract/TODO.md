@@ -7,8 +7,10 @@ SOLIDITY
   - [x] compile
   - [x] aggiungere Propaganda presale a NoizContractFactories
   - [x] dispiegare su hardhat network
-  - [ ] pulsante dispiega usdc
-  - [ ] pulsante dispiega propaganda
+  - [x] pulsante dispiega usdc
+  - [x] pulsante attach usdc
+  - [x] pulsante mina usdc
+  - [x] pulsante dispiega propaganda
   - [ ] setup listeners
     - [ ] listen purchase
     - [ ] listen usdc allowance
