@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-interface IP {
+export interface IP {
   bold?: boolean;
   dimmed?: boolean;
 }

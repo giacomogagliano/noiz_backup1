@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-interface IImg {
+export interface IImg {
   maxWidth?: string;
   display?: string;
 }

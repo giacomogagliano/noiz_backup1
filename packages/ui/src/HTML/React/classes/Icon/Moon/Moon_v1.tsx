@@ -1,4 +1,3 @@
-import React from "react";
 import { IconPath, Icons } from "../../IconPath";
 
 export type Moon_v1Data = "Moon_v1Data";

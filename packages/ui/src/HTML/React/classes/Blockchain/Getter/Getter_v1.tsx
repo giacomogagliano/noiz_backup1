@@ -8,7 +8,7 @@ import {
   CallOverrides,
   Contract,
 } from "ethers";
-import React, {
+import {
   Component,
   lazy,
   MouseEvent,

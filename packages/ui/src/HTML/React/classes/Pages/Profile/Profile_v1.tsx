@@ -1,6 +1,12 @@
 // @ts-nocheck
 import { Dispatch, SetStateAction, useState } from "react";
 import styled, { css } from "styled-components";
+import {
+  MakeAsChild,
+  NoizDatas,
+  NoizProps,
+} from "../../../lib/types";
+import { Flatten } from "../../../lib/utility";
 import { Badge } from "../../Badge";
 import { Card } from "../../Card";
 import { Icon } from "../../Icon";
@@ -27,7 +33,7 @@ export type Profile_v1Props = NoizProps<
 
 export type Profile_v1ClassBooleans = {};
 
-export type Profile_v1ClassProps = utility.Flatten<
+export type Profile_v1ClassProps = Flatten<
   NoizDatas<Profile_v1Props> & Profile_v1ClassBooleans
 >;
 

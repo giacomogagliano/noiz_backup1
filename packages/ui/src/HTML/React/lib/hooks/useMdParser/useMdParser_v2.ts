@@ -14,7 +14,7 @@ import { unified } from "unified";
 import dockerfile from "highlight.js/lib/languages/dockerfile";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
-import { visit } from "unist-util-visit";
+// import { visit } from "unist-util-visit";
 
 type ProcessorTypes =
   | "html-react"
@@ -48,7 +48,7 @@ class Processor {
         });
     };
     this.md_react = () => {
-      let substitution: string;
+      // let substitution: string;
       unified()
         .use(remarkParse)
         .use(remarkGfm)

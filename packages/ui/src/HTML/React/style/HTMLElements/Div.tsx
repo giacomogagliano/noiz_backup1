@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 const emptyDiv = css<IDiv>``;
 
-interface IDiv {
+export interface IDiv {
   empty?: boolean;
 }
 

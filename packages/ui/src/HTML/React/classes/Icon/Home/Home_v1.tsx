@@ -1,4 +1,3 @@
-import React from "react";
 import { IconPath, Icons } from "../../IconPath";
 
 export type Home_v1Data = "Home_v1Data";

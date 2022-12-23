@@ -41,11 +41,11 @@ export async function mdParser_v2(
     .use(() => {
       return (tree: any) => {
         visit(tree, undefined, pre => {
-          // console.log(
-          //   pre.type,
-          //   pre.tagName,
-          //   pre.properties
-          // );
+          console.log(
+            pre.type,
+            pre.tagName,
+            pre.properties
+          );
         });
       };
     })

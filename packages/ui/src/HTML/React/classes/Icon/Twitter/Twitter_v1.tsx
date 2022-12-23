@@ -1,4 +1,3 @@
-import React from "react";
 import { IconPath, Icons } from "../../IconPath";
 
 export type Twitter_v1Data = "Twitter_v1Data";

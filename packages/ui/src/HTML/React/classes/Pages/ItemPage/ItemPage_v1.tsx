@@ -2,6 +2,12 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import {
+  MakeAsChild,
+  NoizDatas,
+  NoizProps,
+} from "../../../lib/types";
+import { Flatten } from "../../../lib/utility";
 import { Image } from "../../Image";
 
 // TODO @giacomogagliano mettere apposto
@@ -32,7 +38,7 @@ export type ItemPage_v1Props = NoizProps<
 
 export type ItemPage_v1ClassBooleans = {};
 
-export type ItemPage_v1ClassProps = utility.Flatten<
+export type ItemPage_v1ClassProps = Flatten<
   NoizDatas<ItemPage_v1Props> & ItemPage_v1ClassBooleans
 >;
 

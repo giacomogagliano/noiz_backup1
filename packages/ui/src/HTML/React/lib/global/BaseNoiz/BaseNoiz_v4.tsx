@@ -1,5 +1,5 @@
 import { styles } from "../../../style/common/CommonStyles";
-import React, { Component } from "react";
+import { Component } from "react";
 import styled from "styled-components";
 import { ReactNode } from "react";
 import { ComponentDecorator } from "./ComponentDecorator";

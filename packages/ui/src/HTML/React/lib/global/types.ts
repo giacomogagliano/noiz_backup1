@@ -13,8 +13,7 @@ import {
   // CSSProp,
   // CSSObject
 } from "styled-components";
-export { BaseNoizProps } from "./global/BaseNoiz";
-import { BooleanizeUnions } from "./utility";
+import { BooleanizeUnions } from "../utility";
 
 export {};
 /////////////////////////////

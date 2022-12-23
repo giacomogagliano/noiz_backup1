@@ -7,11 +7,7 @@ export type FactoryMethod_v1AsChild =
   "FactoryMethod_v1AsChild";
 
 import { EVMweb } from "@zionstate/database/dist/EVM";
-import React, {
-  ChangeEvent,
-  Component,
-  MouseEvent,
-} from "react";
+import { ChangeEvent, Component, MouseEvent } from "react";
 
 interface FactoryMethod_v1Props {
   id: number;

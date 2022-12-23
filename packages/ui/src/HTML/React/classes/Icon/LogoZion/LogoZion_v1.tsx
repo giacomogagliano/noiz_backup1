@@ -1,5 +1,4 @@
 import { IconPath, Icons } from "../../IconPath";
-import React from "react";
 
 export type LogoZion_v1Props = "LogoZion_v1Props";
 

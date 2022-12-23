@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { Chart as ChartJS, ArcElement } from "chart.js";
 import { Tooltip, Legend } from "chart.js";
@@ -19,6 +18,7 @@ type layoutTypes = keyof typeof layouts;
 type styleTypes = keyof typeof styles;
 
 // TODO #6 @giacomogagliano sistemare il delirio
+// @ts-ignore
 export interface Chart_v2Props
   extends BaseNoizProps<layoutTypes, styleTypes>,
     ChartProps {

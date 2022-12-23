@@ -1,8 +1,8 @@
 import { RYB } from "../../../Colors/classes";
 import { FluidTheme } from "../lib/types/theme";
 
-const black_ = "hsl(185, 3%, 6%)";
-const white_ = "hsl(0, 0%, 93%)";
+// const black_ = "hsl(185, 3%, 6%)";
+// const white_ = "hsl(0, 0%, 93%)";
 const darkgrey_ = "hsl(0, 0%, 53%)";
 const grey_ = "hsl(0, 0%, 76%)";
 

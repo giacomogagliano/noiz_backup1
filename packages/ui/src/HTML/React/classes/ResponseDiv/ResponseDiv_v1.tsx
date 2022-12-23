@@ -6,7 +6,6 @@ export type ResponseDiv_v1ClassProps =
 export type ResponseDiv_v1AsChild =
   "ResponseDiv_v1AsChild";
 
-import React from "react";
 import { Component } from "react";
 import styled from "styled-components";
 
@@ -53,7 +52,8 @@ export class ResponseDiv_v1 extends Component<ResponseDiv_v1Props> {
         const greenborder = props.theme.palette.purple;
 
         let bg: string;
-        let border: string;
+        let border: string = "";
+        border;
 
         switch (props.validation) {
           case "confirmed":
@@ -71,6 +71,7 @@ export class ResponseDiv_v1 extends Component<ResponseDiv_v1Props> {
 
           default:
             bg = props.theme.backgroundColor;
+            border = "yellow";
             break;
         }
 

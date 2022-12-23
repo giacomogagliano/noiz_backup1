@@ -290,7 +290,7 @@ export class Contract_v3 extends BaseNoiz<
   };
 
   main = (props: Contract_v3Props) => {
-    const { price } = props;
+    // const { price } = props;
     const { currency } = props;
     const { amountToPay, setAmountToPay } = this.useForm();
 
@@ -585,7 +585,7 @@ export class Contract_v3 extends BaseNoiz<
       console.log("i will do what you want", res);
       res
         ?.balanceOf(this.user1)
-        .then(e => {
+        .then(() => {
           // in questo caso far partire lo script
           this.script();
         })
@@ -610,7 +610,7 @@ export class Contract_v3 extends BaseNoiz<
         console.log("i will do what you want", res);
         res
           ?.balanceOf(this.user1)
-          .then(e => {
+          .then(() => {
             // in questo caso far partire lo script
             this.script();
           })

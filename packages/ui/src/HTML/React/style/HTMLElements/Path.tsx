@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-interface IPath {
+export interface IPath {
   options?: { fill?: boolean; stroke?: boolean };
 }
 

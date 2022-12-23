@@ -1,4 +1,3 @@
-import React from "react";
 import { ChangeEvent } from "react";
 import styled from "styled-components";
 import { InputType } from "../../../lib/global";

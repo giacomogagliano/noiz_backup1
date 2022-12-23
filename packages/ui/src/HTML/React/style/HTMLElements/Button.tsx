@@ -19,7 +19,7 @@ export type ButtonStyle = NoizProps<
   true
 >;
 
-interface IButton extends ButtonStyle {}
+export interface IButton extends ButtonStyle {}
 
 export const Button = styled.button<IButton>`
   line-height: 1.2;

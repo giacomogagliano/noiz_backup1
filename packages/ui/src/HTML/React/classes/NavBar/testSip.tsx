@@ -1,4 +1,6 @@
+// @ts-nocheck
 import styled from "styled-components";
+import { BaseNoiz, BaseNoizProps } from "../../lib";
 
 interface Layout<L, P> {
   name: L;

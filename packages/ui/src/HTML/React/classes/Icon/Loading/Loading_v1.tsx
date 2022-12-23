@@ -1,4 +1,3 @@
-import React from "react";
 import styled, { keyframes } from "styled-components";
 import {
   MakeAsChild,
@@ -7,7 +6,6 @@ import {
 } from "../../../lib/types";
 import { CssStyled, Flatten } from "../../../lib/utility";
 ///TODO #38 questa classe non riesco a capire bene come farla
-
 /////// TYPES
 export type Loading_v1Data = {};
 
