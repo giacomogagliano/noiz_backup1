@@ -1,3 +1,4 @@
+import React from "react";
 import { IconPath, Icons } from "../../IconPath";
 
 export type Trending_v1Data = "Trending_v1Data";

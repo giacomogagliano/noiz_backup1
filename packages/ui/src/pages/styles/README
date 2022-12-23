@@ -1,0 +1,34 @@
+Stavo pensando che potresti fare una lista dei candidati
+"container"
+Intendo dire una lista di elementi html che possono essere
+usati come candidati per essere dei container
+
+Cosa essenzialie:
+
+- i container devono poters contenere altri elementi html
+
+Fai una cosa, riempi questa tabella con gli elementi che hai
+già fatto cosi possiamo avere un idea di chi possono essere
+i vari elementi `container`
+
+| nome     | puo contenere | non puo contenere |
+| -------- | ------------- | ----------------- |
+| div      | x             |                   |
+| form     | x             |                   |
+| section  | x             |                   |
+| article  | x             |                   |
+| a        |               | x                 |
+| area/map | x             |                   |
+| aside    | x             |                   |
+| audio    |               | x                 |
+| canvas   | x             |                   |
+| circle   | x             |                   |
+| code     |               | x                 |
+| h1       |               | x                 |
+| h2       |               | x                 |
+| h3       |               | x                 |
+| img      |               | x                 |
+| path     |               | x                 |
+| text     | x             |                   |
+| p        |               | x                 |
+| input    | x             |                   |

@@ -1,0 +1,57 @@
+# Simple storage
+
+// TODO
+
+## Cosa fare
+
+Ho aggiunto la cartella script perche bisogna prendere
+spunto per creare il codice per React per dipigare un
+contratto ed interagirvi.
+
+- sulla rete hardhat
+- sulla rete goerli
+- su polygon
+- su quorum di consensys/microsoft
+
+- [x] mettere i factory methods nella sezione in alto
+- [x] far funzionare i metodi dell'istanza
+
+- [x] lanciare hardhat network
+- [x] testare il dispiegameno di simple storage
+
+## miglioramenti
+
+- [ ] aggiungere errore se non si è connesso il contratto
+
+## next steps
+
+- [ ] creare dei componenti che rappresentino la chiamata ad una funzione in particolare di un contratto
+  - [ ] getter
+    - [x] esportare funzione
+    - [x] rendere del tutto generico
+    - [ ] sistemare il lazy loader
+      - [x] creare un elemto che non aspetta
+      - [ ] fare in modo che non rirenderizzi ad ogni cambiamento
+            della pagina principale
+  - [ ] setter
+    - [x] esportare funzione
+    - [ ] rendere del tutto generico
+- [ ] aggiungere metodi per quando cambia il signer
+  - [x] testare se necessario
+  - controllare se è necessario
+  - [ ] è necessario => operare
+  - [ ] non è necessario => non fare nulla
+  - [x] situazione non chiara, cè un errore nella console
+        della blockchain che puo essere dovuto al fatto del mancato
+        switch in un qualche momento della tx
+
+## problemi
+
+- cè un problema con la blockchain, viene effettuata una chiamata con il signer iniziale, o almeno sembra, e la console riporta
+  questo errore.
+  ```
+  Error: Transaction reverted without a reason string
+      at <UnrecognizedContract>.<unknown> (0x338f4f701bf4d4175ace7d79c27d71cd998f12dc)
+      at runMicrotasks (<anonymous>)
+      at processTicksAndRejections (node:internal/process/task_queues:96:5)
+  ```

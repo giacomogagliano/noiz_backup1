@@ -1,3 +1,4 @@
+import React from "react";
 import { IconPath, Icons } from "../../IconPath";
 
 export type Repost_v1Data = "Repost_v1Data";

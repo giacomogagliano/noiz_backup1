@@ -1,3 +1,4 @@
+import React from "react";
 import { IconPath, Icons } from "../../IconPath";
 
 export type ArrowLeft_v1Data = "ArrowLeft_v1Data";
