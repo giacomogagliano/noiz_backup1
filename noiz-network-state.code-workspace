@@ -5,6 +5,7 @@
     { "path": "packages/ui/src/HTML/React/classes" },
     { "path": "packages/ui/src/HTML/React/classes/_app" },
     { "path": "packages/ui/src/HTML/React/classes/Blockchain" },
+    { "path": "packages/ui/src/HTML/React/classes/contract" },
     { "path": "packages/ui/src/pages/simple-storage" },
     { "path": "packages/ui/src/pages/smart-contract" },
     { "path": "packages/ui/src/pages/classes/pages/contract" }
