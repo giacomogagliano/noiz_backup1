@@ -49,6 +49,8 @@ export interface Contract_v3State
   isAllowance?: boolean | null;
   usdc: USDC | null;
   propaganda_presale: Propaganda_presale | null;
+  txLogMess: string;
+  isTxLoading: boolean;
 }
 export class Contract_v3State extends BaseNoizState<Contract_v3Props> {}
 
@@ -88,6 +90,8 @@ export class Contract_v3 extends BaseNoiz<
     state.isAllowance = null;
     state.usdc = null;
     state.propaganda_presale = null;
+    state.txLogMess = "not for sale";
+    state.isTxLoading = false;
     this.state = state;
   }
   setMax_supply = (max_supply: number) =>
@@ -114,6 +118,12 @@ export class Contract_v3 extends BaseNoiz<
   setPropa = (propaganda_presale: Propaganda_presale) =>
     this.setState({ propaganda_presale });
 
+  setTxLogMess = (txLogMess: string) =>
+    this.setState({ txLogMess });
+
+  setIsTxLoading = (isTxLoading: boolean) =>
+    this.setState({ isTxLoading });
+
   useForm() {
     const [form, setForm] = useState({
       input1: { value: "string" },
@@ -131,12 +141,12 @@ export class Contract_v3 extends BaseNoiz<
     };
   }
 
-  udsc_address =
+  usdc_address =
     "0x338f4f701bf4d4175ace7d79c27d71cd998f12dc";
   user1 = "0x215872786B467B23E788F482461382bd3047731e";
   user2 = "0x152A530E4B9a76ba83fb2Ec1992187329E16a30A";
   propa_presale =
-    "0x5D559137CCA57D0FcB2Cbd9802f87f855FB1562e";
+    "0xb78663a2fD1Ed91e6df2a06910508d2b1F1A1AC5";
 
   formatUsdc = (big: BigNumber) => {
     return new Number(big._hex).valueOf() / 1000000;
@@ -148,10 +158,21 @@ export class Contract_v3 extends BaseNoiz<
   handleDeployUscd =
     (evm?: EVMweb) =>
     (e: MouseEvent<HTMLButtonElement>) => {
+      this.setIsTxLoading(true);
+      this.setTxLogMess("loading the usdc contract");
       e.preventDefault();
       if (!evm) throw new Error("no evm");
       const Usdc = evm.contractFactories.USDC;
       Usdc.deploy().then(usdc => {
+        const tx = usdc.deployTransaction;
+        if (tx) {
+          console.log(tx);
+          this.setIsTxLoading(false);
+          this.setTxLogMess(tx.confirmations.toString());
+          setTimeout(() => {
+            this.setTxLogMess("not for sale");
+          }, 5000);
+        }
         this.setUsdc(usdc);
       });
     };
@@ -170,7 +191,8 @@ export class Contract_v3 extends BaseNoiz<
         .mint(recipient, BigNumber.from(amount))
         .then(e => {
           console.log("transaction", e);
-        });
+        })
+        .catch(() => this.setTxLogMess("tx rejected"));
     };
 
   handleAttachUsdc =
@@ -179,7 +201,7 @@ export class Contract_v3 extends BaseNoiz<
       e.preventDefault();
       evm = dataGuard(evm, "no evm");
       const Usdc = evm.contractFactories.USDC;
-      const res = Usdc.attach(this.udsc_address);
+      const res = Usdc.attach(this.usdc_address);
       console.log(res);
       this.setUsdc(res);
     };
@@ -192,7 +214,7 @@ export class Contract_v3 extends BaseNoiz<
       const Propa =
         evm.contractFactories.Propaganda_presale;
       Propa.deploy(
-        this.udsc_address,
+        this.usdc_address,
         this.user1,
         BigNumber.from(700_000)
       ).then(e => {
@@ -209,7 +231,7 @@ export class Contract_v3 extends BaseNoiz<
       const factories = evm.contractFactories;
       const Usdc = factories.USDC;
       const Propag = factories.Propaganda_presale;
-      const usdc = Usdc.attach(this.udsc_address);
+      const usdc = Usdc.attach(this.usdc_address);
       this.setUsdc(usdc);
       usdc.on("Transfer", e => console.log(e));
       const balance = await usdc.balanceOf(this.user1);
@@ -247,7 +269,7 @@ export class Contract_v3 extends BaseNoiz<
     const evm = this.props.evm;
     if (evm) {
       const Usdc = evm.contractFactories.USDC;
-      const usdc = Usdc.attach(this.udsc_address);
+      const usdc = Usdc.attach(this.usdc_address);
       usdc.approve(
         this.propa_presale,
         BigNumber.from(100_000_000)
@@ -301,14 +323,21 @@ export class Contract_v3 extends BaseNoiz<
 
     return (
       <div className={props.className}>
+        <div id="tx">
+          <p>{this.state.txLogMess}</p>
+        </div>
         <div id="overlay">
           <button
             onClick={this.handleDeployUscd(this.props.evm)}
+            id="dep-usdc"
+            disabled={this.state.usdc ? true : false}
           >
             deploy usdc
           </button>
           <button
             onClick={this.handleAttachUsdc(this.props.evm)}
+            id="attach-usdc"
+            disabled={this.state.usdc ? true : false}
           >
             attach usdc
           </button>
@@ -419,6 +448,16 @@ export class Contract_v3 extends BaseNoiz<
     text-align: center;
     display: grid;
     width: fit-content;
+    #tx {
+      width: 7rem;
+      padding: 0.5rem;
+      background-color: ${props => {
+        return this.state.isTxLoading
+          ? props.theme.palette_ryb.orange[60]
+          : props.theme.palette_ryb.blue_green[60];
+      }};
+      position: absolute;
+    }
     #overlay {
       margin-top: 1rem;
       display: grid;
@@ -427,10 +466,16 @@ export class Contract_v3 extends BaseNoiz<
       > *:not(:last-child) {
         margin-bottom: 0.3rem;
       }
+      #dep-usdc:disabled,
+      #attach-usdc:disabled {
+        background-color: red;
+        cursor: default;
+      }
       button {
         padding: 0.5rem;
         border: none;
         border-radius: 1rem;
+        cursor: pointer;
       }
     }
     #container {
@@ -531,13 +576,48 @@ export class Contract_v3 extends BaseNoiz<
   ];
 
   didMount = () => {
-    this.script();
+    if (this.state.usdc) this.script();
+    if (!this.state.usdc) {
+      const storedAdd = this.usdc_address;
+      const evm = this.props.evm;
+      const Usdc = evm?.contractFactories.USDC;
+      const res = Usdc?.attach(storedAdd);
+      console.log("i will do what you want", res);
+      res
+        ?.balanceOf(this.user1)
+        .then(e => {
+          // in questo caso far partire lo script
+          this.script();
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    }
   };
   didUpdate = (p: Contract_v3Props) => {
     const curr = this.props.evm;
     const prev = p.evm;
     const cond = curr !== prev;
     const cond2 = this.state.usdc !== null;
-    if (cond) this.script();
+    if (cond) {
+      if (cond2) this.script();
+      else {
+        // check if contract exists at stored address
+        const storedAdd = this.usdc_address;
+        const evm = this.props.evm;
+        const Usdc = evm?.contractFactories.USDC;
+        const res = Usdc?.attach(storedAdd);
+        console.log("i will do what you want", res);
+        res
+          ?.balanceOf(this.user1)
+          .then(e => {
+            // in questo caso far partire lo script
+            this.script();
+          })
+          .catch(e => {
+            console.log(e);
+          });
+      }
+    }
   };
 }
