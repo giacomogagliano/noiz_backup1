@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
   Html,
   Head,
@@ -8,7 +9,6 @@ import styled from "styled-components";
 import LoadingPage from "../components/LoadingPage";
 
 function Document_v1() {
-  // TODO #2 l'import crea una richiesta ad una pagina /& che
   // ritorna un errore. capire da dove proviene il bug.
   return (
     <Html>
