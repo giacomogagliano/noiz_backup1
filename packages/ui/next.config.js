@@ -13,6 +13,9 @@
 //   // env: { infura: process.env.INFURA },
 // };
 module.exports = {
+  typescript: {
+    tsconfigPath: "./src/pages/tsconfig.app.json",
+  },
   webpack: config => {
     config.resolve.fallback = {
       fs: false,
