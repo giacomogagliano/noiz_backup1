@@ -1,7 +1,13 @@
 import { ParsedUrlQuery } from "querystring";
-import { handleFetchWithoutPaths, handleFetchWithPaths } from "./handleFetch/";
+import {
+  handleFetchWithoutPaths,
+  handleFetchWithPaths,
+} from "./handleFetch/";
 import { ramWithoutPaths, ramWithPaths } from "./ram/";
-import { withoutPathsReturn, withPathsReturn } from "./Types";
+import {
+  withoutPathsReturn,
+  withPathsReturn,
+} from "./Types";
 
 /**
  * This is an helper function which goal is to break down
@@ -119,7 +125,9 @@ import { withoutPathsReturn, withPathsReturn } from "./Types";
  */
 export function getStatic<
   Data extends { [key: string]: any },
-  PageData extends { [key: string]: Data[] } = { [key: string]: Data[] },
+  PageData extends { [key: string]: Data[] } = {
+    [key: string]: Data[];
+  },
   Field extends keyof PageData = keyof PageData
 >(
   type: "RAM",
@@ -130,14 +138,22 @@ export function getStatic<
 
 export function getStatic<
   Data extends { [key: string]: any },
-  PageData extends { [key: string]: Data[] } = { [key: string]: Data[] },
+  PageData extends { [key: string]: Data[] } = {
+    [key: string]: Data[];
+  },
   Field extends keyof PageData = keyof PageData
->(type: "fetch", origin: string, field: Field): withoutPathsReturn<PageData>;
+>(
+  type: "fetch",
+  origin: string,
+  field: Field
+): withoutPathsReturn<PageData>;
 
 export function getStatic<
   Data extends { [key: string]: any },
   Query extends ParsedUrlQuery = ParsedUrlQuery,
-  PageData extends { [key: string]: Data } = { [key: string]: Data },
+  PageData extends { [key: string]: Data } = {
+    [key: string]: Data;
+  },
   Field extends keyof PageData = keyof PageData,
   QueryKey extends keyof Query = keyof Query,
   Paths extends { params: Query }[] = { params: Query }[]
@@ -162,7 +178,9 @@ export function getStatic<
 export function getStatic<
   Data extends { [key: string]: any },
   Query extends ParsedUrlQuery = ParsedUrlQuery,
-  PageData extends { [key: string]: Data } = { [key: string]: Data },
+  PageData extends { [key: string]: Data } = {
+    [key: string]: Data;
+  },
   Field extends keyof PageData = keyof PageData,
   QueryKey extends keyof Query = keyof Query,
   Paths extends { params: Query }[] = { params: Query }[]
@@ -178,7 +196,9 @@ export function getStatic<
 export function getStatic<
   Data extends { [key: string]: any },
   Query extends ParsedUrlQuery = ParsedUrlQuery,
-  PageData extends { [key: string]: Data[] } | { [key: string]: Data } = {
+  PageData extends
+    | { [key: string]: Data[] }
+    | { [key: string]: Data } = {
     [key: string]: Data[];
   },
   Field extends keyof PageData = keyof PageData,
@@ -192,12 +212,19 @@ export function getStatic<
   query_origin?: Query,
   query?: QueryKey,
   paths?: Paths
-): withoutPathsReturn<PageData> | withPathsReturn<PageData, Query> | undefined {
+):
+  | withoutPathsReturn<PageData>
+  | withPathsReturn<PageData, Query>
+  | undefined {
   query_origin;
 
   if (type === "RAM" && typeof origin !== "string") {
     if (!query && field && origin && Array.isArray(data)) {
-      return ramWithoutPaths<Data, PageData>(origin, field, data);
+      return ramWithoutPaths<Data, PageData>(
+        origin,
+        field,
+        data
+      );
     }
     if (query && origin && field && data && paths) {
       console.log("called getStatic in rAM and query");
@@ -211,10 +238,13 @@ export function getStatic<
     }
   }
   if (type === "fetch" && typeof origin === "string") {
-    // TODO sistemare il problema ts
     if (!query)
-      // @ts-expect-error
-      return handleFetchWithoutPaths<Data, PageData, Field>(origin, field);
+      return handleFetchWithoutPaths<
+        Data,
+        // @ts-expect-error
+        PageData,
+        Field
+      >(origin, field);
     if (query && typeof origin === "string")
       return handleFetchWithPaths<
         Data,

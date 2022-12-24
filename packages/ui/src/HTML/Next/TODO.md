@@ -1,0 +1,1 @@
+- [ ] rifare getStaticProps con decorator

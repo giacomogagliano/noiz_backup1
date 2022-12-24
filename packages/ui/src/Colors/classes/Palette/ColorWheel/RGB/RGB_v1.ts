@@ -1,11 +1,13 @@
+// TODO deprecare questa classe in favore di quelle nuove
+// create
+
 import {
   PrimaryColors,
   SecondaryColors,
   TertiaryColors,
   ColorWheel,
 } from "..";
-// TODO trovare un modo per nominare i colori in base alle
-// color wheels di provenienza.
+
 export class RGBPrimary_v1 extends PrimaryColors {
   constructor(
     public red: string,
