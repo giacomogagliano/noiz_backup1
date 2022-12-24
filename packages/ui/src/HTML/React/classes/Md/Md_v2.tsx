@@ -4,16 +4,10 @@ import { parseISO, format } from "date-fns";
 import { Fragment } from "ethers/lib/utils";
 import { GrayMatterFile } from "gray-matter";
 import styled from "styled-components";
-import {
-  Processor,
-  ProcessorTypes,
-  useProcessor,
-} from "../../lib/hooks";
-import {
-  JSXElementConstructor,
-  ReactElement,
-  ReactNode,
-} from "react";
+import { ProcessorTypes } from "../../lib/hooks";
+import { Processor } from "../../lib/hooks";
+import { JSXElementConstructor } from "react";
+import { ReactElement, ReactNode } from "react";
 
 enum layouts {
   main = "main",
@@ -54,20 +48,25 @@ export class Md_v2Props extends BaseNoizProps<
   styleTypes
 > {}
 
-export interface Md_v2State
-  extends BaseNoizState<Md_v2Props> {
+export interface Md_v2State<
+  T extends GrayMatterFile<string>["data"]
+> extends BaseNoizState<Md_v2Props> {
   Content: Content;
+  data: T;
   Element: () => JSX.Element;
   processorArgs: ProcessorArgs;
 }
-export class Md_v2State extends BaseNoizState<Md_v2Props> {}
+export class Md_v2State<
+  T extends GrayMatterFile<string>["data"]
+> extends BaseNoizState<Md_v2Props> {}
 
-export interface Md_v2
-  extends BaseNoiz<
+export interface Md_v2<
+  T extends GrayMatterFile<string>["data"]
+> extends BaseNoiz<
     layoutTypes,
     styleTypes,
     Md_v2Props,
-    Md_v2State
+    Md_v2State<T>
   > {
   Processor: typeof Processor;
   makeProcessor(
@@ -84,11 +83,13 @@ export interface Md_v2
   >;
 }
 
-export class Md_v2 extends BaseNoiz<
+export class Md_v2<
+  T extends GrayMatterFile<string>["data"]
+> extends BaseNoiz<
   layoutTypes,
   styleTypes,
   Md_v2Props,
-  Md_v2State
+  Md_v2State<T>
 > {
   ERR1 = "No data array was given";
   ERR2 = "No content string was given";
@@ -96,12 +97,10 @@ export class Md_v2 extends BaseNoiz<
   ProcessorArgs = ProcessorArgs;
   Processor = Processor;
 
-  useProcessor = useProcessor;
-
   constructor(props: Md_v2Props) {
     super(props);
 
-    let state = new Md_v2State();
+    let state = new Md_v2State<T>();
     state.Content = Fragment as unknown as Content;
     state.Element = () => <p>load it</p>;
     let procArgs = new ProcessorArgs();
@@ -116,6 +115,8 @@ export class Md_v2 extends BaseNoiz<
 
   setElement = (Element: () => JSX.Element) =>
     this.setState({ Element: Element });
+
+  setData = (data: T) => this.setState({ data });
 
   checkType(type: ProcessorTypes): ProcessorTypes {
     type = "html-react";
@@ -153,10 +154,25 @@ export class Md_v2 extends BaseNoiz<
     const text = this.state.processorArgs.text;
     const type = this.state.processorArgs.type;
     const processor = new this.Processor({ text, type });
+    this.setData(processor.data as T);
+    console.log(processor.data);
+
     const parser = this.makeParser(type, processor);
-    parser.then(e =>
-      this.setElement(() => <>{e.result as ReactNode}</>)
-    );
+    parser.then(e => {
+      let result = e.result;
+      let Element = () => <>{result}</>;
+      if (this.props.md_string) {
+        result = e.value;
+        Element = () => (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: result as string,
+            }}
+          ></div>
+        );
+      }
+      return this.setElement(Element);
+    });
   }
 
   Date(props: { dateString: string }) {

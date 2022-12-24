@@ -5,6 +5,8 @@ import { html_react } from "./html_react";
 import { md_react } from "./md_react";
 import { md_string } from "./md_string";
 import { md_raw_react } from "./md_raw_react";
+import { GrayMatterFile } from "gray-matter";
+import { processMatter } from "../../../../../../library";
 
 export interface Iprocessor {
   (text: string): () => Promise<
@@ -35,6 +37,9 @@ export interface IProcessor_v2 {
 export interface Processor_v2 {
   type: ProcessorTypes_v2;
   text: string;
+  file: GrayMatterFile<string>;
+  data: GrayMatterFile<string>["data"];
+  content: GrayMatterFile<string>["content"];
   html_react: ReturnType<Iprocessor>;
   md_react: ReturnType<Iprocessor>;
   md_string: ReturnType<Iprocessor>;
@@ -52,10 +57,13 @@ export class Processor_v2 implements IProcessor_v2 {
     const { text, type } = props;
     this.text = text;
     this.type = type;
-    this.html_react = html_react(text);
-    this.md_react = md_react(text);
-    this.md_string = md_string(text);
-    this.md_raw_react = md_raw_react(text);
+    this.file = processMatter(text);
+    this.data = this.file.data;
+    this.content = this.file.content;
+    this.html_react = html_react(this.content);
+    this.md_react = md_react(this.content);
+    this.md_string = md_string(this.content);
+    this.md_raw_react = md_raw_react(this.content);
   }
 }
 
