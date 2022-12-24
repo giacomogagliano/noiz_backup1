@@ -1,1 +1,2 @@
 - test the new guard function
+- [ ] TODO #199 @giacomogagliano creare funzione shortenString
