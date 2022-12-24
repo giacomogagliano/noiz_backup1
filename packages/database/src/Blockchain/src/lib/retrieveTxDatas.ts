@@ -1,6 +1,6 @@
 import { TransactionResponse } from "@ethersproject/abstract-provider";
 import { BigNumber } from "ethers";
-// TODO usata variabile per zittare ts, importarlo nel file
+// FIXME #174 @giacomogagliano usata variabile per zittare ts, importarlo nel file
 BigNumber;
 
 export type retrieveDataReturn = {
