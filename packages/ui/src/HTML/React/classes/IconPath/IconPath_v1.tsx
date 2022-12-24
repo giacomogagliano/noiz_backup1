@@ -59,4 +59,3 @@ export class IconPath_v1 {
     this.JsxPath = JsxPath;
   }
 }
-//TODO #35 non capisco se devo aggiungere la nuova basenoiz

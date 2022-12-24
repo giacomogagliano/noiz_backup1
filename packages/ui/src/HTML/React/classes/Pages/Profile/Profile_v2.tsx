@@ -74,7 +74,6 @@ export interface Profile_v2
   >;
   Card: ComponentClass<CardProps, CardState>;
 }
-///TODO #37 @giacomogagliano, icons da problemi qui sotto
 
 export class Profile_v2 extends BaseNoiz<
   layoutTypes,
@@ -92,8 +91,8 @@ export class Profile_v2 extends BaseNoiz<
     style: styles.defaultStyle,
     layout: layouts.main,
   };
-
-  // FIX ts error
+  // FIXME #135 @giacomogagliano @ariannatnl
+  // FIXME #136 @giacomogagliano ts error
   // @ts-ignore
   Icon: ComponentClass<IconProps, IconState> = Icon;
   StyledTwitter = styled(this.Icon)`

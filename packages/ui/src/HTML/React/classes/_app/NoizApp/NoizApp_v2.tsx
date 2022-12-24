@@ -490,7 +490,7 @@ export class NoizApp_v2 extends BaseNoiz<
     return prev !== curr;
   }
 
-  // TODO aggiungere questa in BaseNoiz
+  // TODO #137 @giacomogagliano aggiungere questa in BaseNoiz
   UpdateHandler = class<T> {
     current?: T;
     previous?: T;

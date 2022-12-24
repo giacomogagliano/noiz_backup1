@@ -40,7 +40,7 @@ export class Loading_v2 extends BaseNoiz<
   Loading_v2Props,
   Loading_v2State
 > {
-  // TODO #39 @ariannatnl provare loading
+  // TODO #134 testare @giacomogagliano @ariannatnl
   static defaultProps: Loading_v2Props = {
     layout: layouts.wavesLayout,
     style: styles.wavesStyle,

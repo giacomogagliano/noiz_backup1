@@ -6,8 +6,11 @@ export function emptyString(el: string) {
 
 export class Condizioni_v1 {
   constructor() {}
-  // TODO creare strategie di riconoscimento classe
-  oggettoUgualeCostruttore(object: object, constructor: Function) {
+  // TODO #147 @giacomogagliano creare strategie di riconoscimento classe
+  oggettoUgualeCostruttore(
+    object: object,
+    constructor: Function
+  ) {
     return object.constructor === constructor;
   }
   proprietàName<T>(
@@ -34,14 +37,6 @@ export class Condizionatore {
   set value(value) {
     this.#value = value;
   }
-  // TODO eliminare - [ ] si /  - [ ] no
-  // #result;
-  // get result() {
-  //   return this.#result;
-  // }
-  // set result(result) {
-  //   this.#result = result;
-  // }
   #servedArray = [];
   get servedArray() {
     return this.#servedArray;
@@ -50,7 +45,10 @@ export class Condizionatore {
     this.#servedArray = servedArray;
   }
   id;
-  constructor(value: string | number | boolean, property?: string) {
+  constructor(
+    value: string | number | boolean,
+    property?: string
+  ) {
     this.#property = property;
     this.#value = value;
     Condizionatore.#condizionatori.push(this);
@@ -60,7 +58,9 @@ export class Condizionatore {
     if (!this.property) throw Error();
     return oggetto[this.property] === this.value;
   };
-  condizioneForEach = (oggetto: { [key: string]: string }) => {
+  condizioneForEach = (oggetto: {
+    [key: string]: string;
+  }) => {
     let servedArray: object[] = this.servedArray;
     if (!this.property) throw Error();
     if (oggetto[this.property] === this.value) {

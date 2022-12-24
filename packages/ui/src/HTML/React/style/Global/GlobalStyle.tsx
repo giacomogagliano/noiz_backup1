@@ -15,7 +15,6 @@ const roboto = new GoogleFonts({
 export const robotoGoogleQuery = roboto.googleQuery;
 const robotoCssValue = roboto.cssValue;
 
-// FIXME global style props
 export const GlobalStyle = createGlobalStyle<{
   theme: DefaultTheme;
 }>`

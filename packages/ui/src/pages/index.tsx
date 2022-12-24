@@ -30,11 +30,13 @@ export function getStaticProps() {
 }
 
 export default function index({ data }: { data: string }) {
-  // TODO #67 @ariannatnl ho aggiunto UaParser che ci permette
+  // TODO #146 @ariannatnl ho aggiunto UaParser che ci permette
   // di analizzar lo user agent. Ora recura il valore che ti
   // da quando lo apri su edge e scrivilo qui... : Edge
   // 108.0.1462.46
   // 108
+  // last update, avevmo fatto il test ma non abbiamo messo
+  // il valore
   const name = new UAParser().getBrowser().name;
   const version = new UAParser().getBrowser().version;
   const major = new UAParser().getBrowser().major;

@@ -13,7 +13,6 @@ import { Icon } from "../../Icon";
 import { Image } from "../../Image";
 import { ItemsArea } from "../../ItemsArea";
 import { NavBar } from "../../NavBar";
-// TODO @giacomogagliano mettere apposto
 
 /////// TYPES
 export type Profile_v1Data = {

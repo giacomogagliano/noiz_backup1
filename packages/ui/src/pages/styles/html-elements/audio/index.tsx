@@ -1,6 +1,5 @@
 import React from "react";
 import { Audio } from "../../../../HTML";
-/// TODO Aggiungere un src audio funzionante
 
 export default function index() {
   return (

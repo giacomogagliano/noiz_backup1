@@ -140,10 +140,6 @@ export const Step_v1 = (config: StepConfiguration_v1) =>
         const cursor = props.active
           ? this.cursorSelect
           : "  ";
-        // TODO #21 @ariannatnl aggiungere frammento vuoto
-        // (`<></>`) e inserire 3 Text (provare), il primo
-        // deve essere `dimmed` (grigio), il secondo
-        // colorato acceso, e il terzo bianco.
         return (
           <>
             <Text color="dimmed">{cursor}</Text>

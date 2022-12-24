@@ -14,12 +14,3 @@ export const Img = styled.img<IImg>`
     props.height ? props.height : "auto"};
   ${props => props.width && `width: ${props.width};`};
 `;
-
-/** 
- * #TODO NON SONO SICURA DI AVER CREATO LA GIUSTA INTERFACCIA
- * questi sono i type che erano nel file di origine
-export type ImageCss = utility.ZionCss<
-  undefined,
-  true,
-  "display" | "maxWidth"
->; */

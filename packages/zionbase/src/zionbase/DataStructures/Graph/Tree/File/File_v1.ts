@@ -32,7 +32,7 @@ export class File_v1 extends TreeNode implements TreeNode {
     this.fileSize = fileSize; // MB size of file
   }
 }
-// TODO #1 estendere file a immagine
+// TODO #158 @giacomogagliano estendere file a immagine
 // class Image extends File {
 //   constructor(name, path, type, width, height) {
 //     super(name, path, type);

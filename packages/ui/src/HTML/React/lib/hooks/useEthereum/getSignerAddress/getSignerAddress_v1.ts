@@ -2,9 +2,9 @@ import { Dispatch, SetStateAction } from "react";
 
 export interface GetSignerAddress {
   (
-    // TODO add definition
+    // TODO #138 @giacomogagliano add definition
     signer: any,
-    // TODO add definition
+    // TODO #139 @giacomogagliano add definition
     callbacks: ((...args: any[]) => void)[],
     setIsConnected?: Dispatch<SetStateAction<boolean>>
   ): Promise<string>;

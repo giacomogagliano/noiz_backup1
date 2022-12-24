@@ -1,7 +1,7 @@
 import { Algo } from "../../Algo";
 import type { BasicNode } from "../../Algo";
 
-// TODO capire come integrare diversi tipi di id
+// TODO #160 @giacomogagliano capire come integrare diversi tipi di id
 // type EncodedId = string;
 
 interface Node<NodeId = number, V = {}> {

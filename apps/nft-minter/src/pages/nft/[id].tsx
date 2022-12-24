@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { StaticImageData } from "next/image";
 import Link from "next/link";
 import React, {
@@ -129,7 +130,6 @@ export const Nft: (
   };
 
   return (
-    // TODO import the profile layout from /packages/ui/src/HTML/React/components/Pages/Item.tsx
     <Layout {...layout} nft>
       <Divdiv id="page">
         <Item

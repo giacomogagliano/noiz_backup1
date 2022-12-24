@@ -3,7 +3,7 @@ export interface IcheckObjectConstructor_v1 {
 }
 
 /**
- * // TODO #24 controllare se tutte le funzioni in questa
+ * // TODO #150 @ariannatnl @giacomogagliano controllare se tutte le funzioni in questa
  * cartella hanno una descrizione @giacomogagliano @ariannatnl
  * @param object
  * @param constructor
@@ -14,6 +14,7 @@ export const checkObjectConstructor_v1: IcheckObjectConstructor_v1 =
     object: object,
     constructor: Function
   ): boolean {
-    const oggettoUgualeConstructor = object.constructor === constructor;
+    const oggettoUgualeConstructor =
+      object.constructor === constructor;
     return oggettoUgualeConstructor;
   };

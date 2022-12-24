@@ -41,7 +41,7 @@ export class TreeNode_v2<T = any>
   static get types() {
     return this.#types;
   }
-  // TODO move this function somewhere in database
+  // TODO #159 @giacomogagliano move this function somewhere in database
   // was a Reader but had to put any cause it would make
   // this package import from database
   static makeNodes(res: any, data: Folder | File) {

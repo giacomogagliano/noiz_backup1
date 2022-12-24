@@ -16,9 +16,6 @@ enum TreeErrors {
   NOTHIN_TO_FD = "Non è stato fornito alcun nodo da cercare",
 }
 
-// TODO aggiunto per zittare ts
-export type TTTT = TreeNode;
-
 export interface Tree {
   id: number;
   add(node: TreeNode): Tree;

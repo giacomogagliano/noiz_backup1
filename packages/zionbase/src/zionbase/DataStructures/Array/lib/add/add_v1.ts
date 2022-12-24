@@ -38,13 +38,12 @@ export function add_v1<T>(
   path?: string[]
 ): T {
   if (!map && !path) {
-    // TODO solito errore ts index
     //@ts-expect-error
     obj1[key] = obj[parameter];
   } else if (!map) {
-    // TODO solito errore ts index
     //@ts-expect-error
     if (obj[parameter]) obj1[key] = obj[path[0]][path[1]];
   }
   return obj1;
 }
+// TODO #157 @giacomogagliano cancellare e rifare

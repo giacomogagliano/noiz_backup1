@@ -6,7 +6,9 @@ pragma solidity ^0.8.0;
 import "./APrivatezGovernorSettings.sol";
 
 // zGovernor,
-abstract contract PrivatezGovernorSettings is APrivatezGovernorSettings {
+abstract contract PrivatezGovernorSettings is
+    APrivatezGovernorSettings
+{
     uint256 private __votingDelay;
     uint256 private __votingPeriod;
     uint256 private __proposalThreshold;
@@ -28,7 +30,7 @@ abstract contract PrivatezGovernorSettings is APrivatezGovernorSettings {
         returns (uint256)
     {
         return __votingDelay;
-        // TODO check who sets the voting period
+        // TODO #167 @giacomogagliano check who sets the voting period
     }
 
     function _votingPeriod()
@@ -55,9 +57,7 @@ abstract contract PrivatezGovernorSettings is APrivatezGovernorSettings {
         override(APrivatezGovernorSettings)
     {
         emit VotingDelaySet(__votingDelay, newVotingDelay);
-        // TODO check who sets the voting period
         __votingDelay = newVotingDelay;
-        // TODO check who sets the voting period
     }
 
     function _setVotingPeriod(uint256 newVotingPeriod)
@@ -66,17 +66,28 @@ abstract contract PrivatezGovernorSettings is APrivatezGovernorSettings {
         override(APrivatezGovernorSettings)
     {
         // voting period must be at least one block long
-        require(newVotingPeriod > 0, "GovernorSettings: voting period too low");
-        emit VotingPeriodSet(__votingPeriod, newVotingPeriod);
+        require(
+            newVotingPeriod > 0,
+            "GovernorSettings: voting period too low"
+        );
+        emit VotingPeriodSet(
+            __votingPeriod,
+            newVotingPeriod
+        );
         __votingPeriod = newVotingPeriod;
     }
 
-    function _setProposalThreshold(uint256 newProposalThreshold)
+    function _setProposalThreshold(
+        uint256 newProposalThreshold
+    )
         internal
         virtual
         override(APrivatezGovernorSettings)
     {
-        emit ProposalThresholdSet(__proposalThreshold, newProposalThreshold);
+        emit ProposalThresholdSet(
+            __proposalThreshold,
+            newProposalThreshold
+        );
         __proposalThreshold = newProposalThreshold;
     }
 }
