@@ -9,13 +9,16 @@ export interface IcheckArraysContent_v1 {
  * @returns
  */
 export const checkArraysContent_v1: IcheckArraysContent_v1 =
-  function checkArraysContent<T>(array: T[], nextArray: T[]): boolean {
+  function checkArraysContent<T>(
+    array: T[],
+    nextArray: T[]
+  ): boolean {
     if (array.length !== nextArray.length) {
       return false;
     }
     let results: boolean[] = [];
     for (let index = 0; index < array.length; index++) {
-      // TODO errore TS
+      // TODO #149 @giacomogagliano errore TS
       // @ts-expect-error
       const element: T = array[index];
       // @ts-expect-error
