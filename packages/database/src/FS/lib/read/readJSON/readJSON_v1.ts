@@ -4,7 +4,7 @@ import { js } from "@zionstate/zionbase/utils";
 
 const { ZionRegExp } = js;
 const regexp = ZionRegExp.allTsComments;
-// TODO integrare la regexp qui sopra
+// TODO #184 @giacomogagliano integrare la regexp qui sopra
 regexp;
 
 const regexpdasubs = /(\/\*)\s.*(\*\/)|(\/\/)\s.*()/g;
