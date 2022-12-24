@@ -14,11 +14,6 @@ import {
   TreeNode,
 } from "@zionstate/zionbase/zionbase";
 
-// TODO @ariannatnl fare una piccola card per mostrare i
-// dati relativi ai file mostrati in questa pagina di index.
-// mi immaginavo una semplice card rettangolare con un po di
-// spazio, che possa mostrare i dati che ora sono presenti
-// in una sola riga, all'interno dello spazio della card
 const Reader = FS.Reader;
 
 const maker = IndexPage.maker;
@@ -63,7 +58,7 @@ export function getStaticProps() {
     const path = data.path + "/" + data.name;
     const res = foldersInDir(path);
     // @ts-expect-error
-    // TODO @giacomogagliano
+    // FIXME #143 @giacomogagliano ts error
     TreeNode.makeNodes(res, data);
     return data;
   });
