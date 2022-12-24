@@ -59,7 +59,7 @@ export const guard_v1: Iguard_v1 = function <
     return dataGuard(data, errOption);
   if (Array.isArray(errOption))
     return optionGuard(data, errOption);
-  // TODO sistemare ts error
+  // TODO #155 @giacomogagliano sistemare ts error
   // @ts-expect-error
   if (errOption in data)
     return keyInObjGuard(data, errOption);
