@@ -160,7 +160,7 @@ export class BaseNoiz_v4<
 
   chooseChild() {
     let Style: StyledGComponent<P> = this.state.style;
-    let El: () => JSX.Element = () => <div>ciao</div>;
+    let El: (p: P) => JSX.Element = () => <div>ciao</div>;
     this.children.forEach(child => {
       // TODO #7 @giacomogagliano chooseChild ts
       // capire come fare per permettere a ts di sapere
@@ -169,9 +169,8 @@ export class BaseNoiz_v4<
       // essere un unione di valori, in questo caso dobbiamo
       // usare un membro per child di tipo boolean, che deve
       // essere aggiunto alla lista delle props
-      // @ts-expect-error
-      if (this.props[child.name] === true)
-        // @ts-expect-error
+      if (this.props[child.name as keyof P] === true)
+        // @ts-ignore
         El = () => <Style>{child.JsxPath}</Style>;
     });
     return El;
