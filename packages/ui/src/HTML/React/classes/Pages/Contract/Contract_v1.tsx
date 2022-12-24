@@ -12,7 +12,7 @@ import {
   // LabelData,
   LabelProps,
 } from "../Basic";
-import { Form } from "../Form";
+import { Form } from "../../Form";
 
 function useForm() {
   const [form, setForm] = useState({
