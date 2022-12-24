@@ -1,8 +1,3 @@
-export type Setter_v1Data = "Setter_v1Data";
-export type Setter_v1Booleans = "Setter_v1Booleans";
-export type Setter_v1ClassProps = "Setter_v1ClassProps";
-export type Setter_v1AsChild = "Setter_v1AsChild";
-
 import {
   BigNumber,
   BigNumberish,
@@ -18,7 +13,7 @@ import React, {
 
 export type PromiseOrValue<T> = T | Promise<T>;
 
-interface Setter_v1Props<C extends Contract> {
+export interface Setter_v1Props<C extends Contract> {
   instance: C;
   methods: Map<number, (value: string | number) => void>;
   instanceMethodsInputValue: Map<number, string | number>;
@@ -30,6 +25,7 @@ interface Setter_v1Props<C extends Contract> {
   ) => void;
   methodName: keyof C;
 }
+export class Setter_v1Props<C extends Contract> {}
 
 export class Setter_v1<
   C extends Contract

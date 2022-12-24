@@ -1,8 +1,3 @@
-export type Getter_v1Data = "Getter_v1Data";
-export type Getter_v1Booleans = "Getter_v1Booleans";
-export type Getter_v1ClassProps = "Getter_v1ClassProps";
-export type Getter_v1AsChild = "Getter_v1AsChild";
-
 import {
   BigNumber,
   CallOverrides,
@@ -25,6 +20,8 @@ export interface Getter_v1Props<C extends Contract> {
   methods: Map<number, (value: string | number) => void>;
   methodName: keyof C;
 }
+
+export class Getter_v1Props<C extends Contract> {}
 
 function wait(time: number) {
   return new Promise<void>(resolve => {

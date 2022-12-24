@@ -1,4 +1,2 @@
-export {};
-
 //// StyledDefault
-export * from "./StyledDefault";
+export * from "../../global/types/utility/StyledDefault";

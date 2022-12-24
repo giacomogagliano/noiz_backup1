@@ -1,14 +1,8 @@
-export * from "./checkCss";
-//
-export * from "./calculate";
-export * from "./checkBorderColor";
-export * from "./defaultTheme";
-export * from "./handleChange";
-export * from "./handleSubmit";
-export * from "./callbackifyUseState";
-
 //// calculate
 export * from "./calculate";
+
+//// callbackifyUseState
+export * from "./callbackifyUseState";
 
 //// checkBorderColor
 export * from "./checkBorderColor";
@@ -24,6 +18,12 @@ export * from "./checkProps";
 
 //// defaultTheme
 export * from "./defaultTheme";
+
+//// handleChange
+export * from "./handleChange";
+
+//// handleSubmit
+export * from "./handleSubmit";
 
 //// mapper
 export * from "./mapper";

@@ -1,4 +1,4 @@
-export type Palette1 = {
+export type Palette1_v1 = {
   white: string;
   grey: string;
   darkgrey: string;

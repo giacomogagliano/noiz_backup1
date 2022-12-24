@@ -1,13 +1,6 @@
 import React from "react";
 import { BooleanizeUnions } from "../../lib/utility";
 
-export type IconPath_v1Data = "IconPath_v1Data";
-export type IconPath_v1Booleans = "IconPath_v1Booleans";
-export type IconPath_v1Props = "IconPath_v1Props";
-export type IconPath_v1ClassProps =
-  "IconPath_v1ClassProps";
-export type IconPath_v1AsChild = "IconPath_v1AsChild";
-
 export enum Icons_v1 {
   account = "account",
   album = "album",

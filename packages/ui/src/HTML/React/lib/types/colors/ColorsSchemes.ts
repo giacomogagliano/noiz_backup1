@@ -1,8 +1,1 @@
-export enum ColorShemes {
-  acromatic,
-  monocromatic,
-  analogous,
-  complementary,
-  triadic,
-  compound,
-}
+export { ColorShemes } from "../../global/types/colors/ColorsSchemes";

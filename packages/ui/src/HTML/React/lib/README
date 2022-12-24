@@ -1,0 +1,46 @@
+# Content
+
+## Colors
+
+libreria di colori contiene delle palette
+di colori
+
+## Constants
+
+contiene dei valori di default, al
+momento contiene un solo valore
+
+## global
+
+### types
+
+**global**
+contiente Noiz types .. forse meglio
+spostarlo in util essendo tutti questi type gia in
+una cartlla global
+
+**styledComponents**
+al momento contiene 1 solo type
+
+**theme**
+contiene le definizioni di default themes.
+
+**utility**
+type che sono praticamente delle formule
+
+## hooks
+
+questa cartella dovrebbe essere inutilizzata
+in quanto per gestire componenti con stato usiamo le
+classi.
+ho gia scommentato gli elementi che sono già stati
+utilizzati nelle classi
+
+## types
+
+questi elementi dovrebbero essere esportati
+da /React ma non da HTML o ui
+
+al momento fa re export di /lib/global/
+
+## util

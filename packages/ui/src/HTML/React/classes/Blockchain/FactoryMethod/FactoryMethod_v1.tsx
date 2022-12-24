@@ -1,15 +1,7 @@
-export type FactoryMethod_v1Data = "FactoryMethod_v1Data";
-export type FactoryMethod_v1Booleans =
-  "FactoryMethod_v1Booleans";
-export type FactoryMethod_v1ClassProps =
-  "FactoryMethod_v1ClassProps";
-export type FactoryMethod_v1AsChild =
-  "FactoryMethod_v1AsChild";
-
 import { EVMweb } from "@zionstate/database/dist/EVM";
 import { ChangeEvent, Component, MouseEvent } from "react";
 
-interface FactoryMethod_v1Props {
+export interface FactoryMethod_v1Props {
   id: number;
   title: string;
   type: "text" | "number";
@@ -31,6 +23,7 @@ interface FactoryMethod_v1Props {
     connectedContractAddress: string
   ) => void;
 }
+export class FactoryMethod_v1Props {}
 
 export class FactoryMethod_v1 extends Component<FactoryMethod_v1Props> {
   handleFMChange =
