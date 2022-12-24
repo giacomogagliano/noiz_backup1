@@ -9,9 +9,6 @@ import React, {
 import styled from "styled-components";
 import { Icon } from "../../HTML/React/classes";
 
-// TODO ricevere da smart contract
-// TODO risolvere problema styled chiamato in component
-
 enum StateMutabilities {
   view = "view",
   nonpayable = "nonpayable",
