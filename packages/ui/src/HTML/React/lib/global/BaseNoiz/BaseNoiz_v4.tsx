@@ -102,6 +102,10 @@ export class BaseNoiz_v4<
 
   constructor(props: P) {
     super(props);
+    let state = new BaseNoizState<S>();
+    state.layout = () => <>layout</>;
+    state.style = styled(state.layout)``;
+    this.state = state as unknown as Readonly<S>;
     this.debugLog("ctor", this.styledlayouts[0]);
   }
 
@@ -157,24 +161,6 @@ export class BaseNoiz_v4<
 
   Child = Child;
   children: Child<CT, LT>[] = [];
-
-  chooseChild() {
-    let Style: StyledGComponent<P> = this.state.style;
-    let El: (p: P) => JSX.Element = () => <div>ciao</div>;
-    this.children.forEach(child => {
-      // TODO #7 @giacomogagliano chooseChild ts
-      // capire come fare per permettere a ts di sapere
-      // quali saranno i nomi dei child che ricevera. Nel
-      // caso del layout e style usiamo un membro che può
-      // essere un unione di valori, in questo caso dobbiamo
-      // usare un membro per child di tipo boolean, che deve
-      // essere aggiunto alla lista delle props
-      if (this.props[child.name as keyof P] === true)
-        // @ts-ignore
-        El = () => <Style>{child.JsxPath}</Style>;
-    });
-    return El;
-  }
 
   render(): ReactNode {
     let Layout: GComponent<P> = this.state.layout;
