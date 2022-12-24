@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import "../../../../HTML";
+import { BaseNoiz_v5 } from "../../../../HTML/React/lib/global/BaseNoiz";
 
 enum layouts {
   main = "main",
@@ -30,13 +30,13 @@ export interface BaseTestState
 export class BaseTestState extends BaseNoizState<BaseTestProps> {}
 
 export interface BaseTest
-  extends BaseNoiz<
+  extends BaseNoiz_v5<
     layoutTypes,
     styleTypes,
     BaseTestProps,
     BaseTestState
   > {}
-export class BaseTest extends BaseNoiz<
+export class BaseTest extends BaseNoiz_v5<
   layoutTypes,
   styleTypes,
   BaseTestProps,
