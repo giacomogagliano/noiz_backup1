@@ -14,7 +14,7 @@ abstract contract PrivatezERC1155Master is
     APrivatezERC1155Master,
     Ownable
 {
-    // TODO use secret link
+    // TODO #172 @giacomogagliano use secret link
     string private __secretLink;
     mapping(TokensId => uint256) private __supply;
     Counters.Counter private __copiesSupply;
@@ -46,7 +46,11 @@ abstract contract PrivatezERC1155Master is
         _;
     }
 
-    function _supply(TokensId tokensId) internal view returns (uint256) {
+    function _supply(TokensId tokensId)
+        internal
+        view
+        returns (uint256)
+    {
         return __supply[tokensId];
     }
 
@@ -54,13 +58,25 @@ abstract contract PrivatezERC1155Master is
         return __tokenShop;
     }
 
-    function _setTokenShop(address tokenShop_) internal returns (bool) {
+    function _setTokenShop(address tokenShop_)
+        internal
+        returns (bool)
+    {
         __tokenShop = tokenShop_;
         return true;
     }
 
-    function _mintMaster() internal virtual returns (string memory) {
-        _mint(address(this), uint256(TokensId.MASTER), 1, "0x00");
+    function _mintMaster()
+        internal
+        virtual
+        returns (string memory)
+    {
+        _mint(
+            address(this),
+            uint256(TokensId.MASTER),
+            1,
+            "0x00"
+        );
 
         emit MasterDeposited(1);
 
@@ -68,12 +84,24 @@ abstract contract PrivatezERC1155Master is
     }
 
     function _mintShares(uint256 amount) internal {
-        _mint(_msgSender(), uint256(TokensId.SHARES), amount, "0x00");
+        _mint(
+            _msgSender(),
+            uint256(TokensId.SHARES),
+            amount,
+            "0x00"
+        );
         __supply[TokensId.SHARES] += amount;
     }
 
-    function _mintCopies(address to, uint256 amount) internal {
-        _mint(to, uint256(TokensId.COPIES), amount, "0x00");
+    function _mintCopies(address to, uint256 amount)
+        internal
+    {
+        _mint(
+            to,
+            uint256(TokensId.COPIES),
+            amount,
+            "0x00"
+        );
         __supply[TokensId.COPIES] = __copiesSupply._value;
     }
 
@@ -83,17 +111,20 @@ abstract contract PrivatezERC1155Master is
         returns (bool, bytes memory)
     {
         // _snapshot();
-        (bool success, bytes memory data) = __tokenShop.call(
-            abi.encodeWithSignature(
-                "dividendOnSharesTransfer()",
-                "call dividendOnSharesTransfer"
-            )
-        );
+        (bool success, bytes memory data) = __tokenShop
+            .call(
+                abi.encodeWithSignature(
+                    "dividendOnSharesTransfer()",
+                    "call dividendOnSharesTransfer"
+                )
+            );
         // console.log("ERC1155Master:: snapshotOnTransfer(): success",success);
         return (success, data);
     }
 
-    function _beforeTokenTransfer(ZionLib.TokenTransfer memory newTransfer)
+    function _beforeTokenTransfer(
+        ZionLib.TokenTransfer memory newTransfer
+    )
         internal
         virtual
         override(PrivatezERC1155, PrivatezERC1155Snapshot)
