@@ -32,6 +32,7 @@ import { WindowEthRequired } from "../../../lib/hooks/useEthereum/useEthereum_v2
 import { dataGuard } from "@zionstate/zionbase/utils";
 import Router from "next/router";
 import Link from "next/link";
+import { BaseNoizProps } from "../../../lib";
 React;
 ////////ETH
 
