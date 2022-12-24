@@ -1,4 +1,3 @@
-import React from "react";
 import { BooleanizeUnions } from "../../lib/utility";
 
 export enum Icons_v1 {

@@ -1,4 +1,3 @@
-import React from "react";
 import { ComponentClass } from "react";
 import styled from "styled-components";
 import { StyledDefault } from "../../../lib/types/utility";

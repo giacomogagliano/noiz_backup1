@@ -267,7 +267,7 @@ declare global {
   /**
    * Usage:
    * ```tsx
-   * import React from "react";
+   *
    *
    * import {
    *   BaseNoiz,

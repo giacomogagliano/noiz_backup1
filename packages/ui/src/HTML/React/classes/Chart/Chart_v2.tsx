@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { Chart as ChartJS, ArcElement } from "chart.js";
 import { Tooltip, Legend } from "chart.js";

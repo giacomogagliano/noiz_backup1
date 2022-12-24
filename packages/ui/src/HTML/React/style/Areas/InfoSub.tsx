@@ -3,6 +3,8 @@ import { ZionCss } from "../../lib/utility";
 
 type InfoSubStyle = {
   css?: ZionCss<
+    // FIX ts error
+    // @ts-ignore
     "display" | "gridTemplateRows" | "width" | "zIndex",
     true
   >;

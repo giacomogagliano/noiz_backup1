@@ -1,4 +1,3 @@
-import React from "react";
 import {
   ComponentClass,
   Dispatch,
@@ -94,6 +93,8 @@ export class Profile_v2 extends BaseNoiz<
     layout: layouts.main,
   };
 
+  // FIX ts error
+  // @ts-ignore
   Icon: ComponentClass<IconProps, IconState> = Icon;
   StyledTwitter = styled(this.Icon)`
     place-self: end;
