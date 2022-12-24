@@ -8,8 +8,11 @@ export interface IremoveSpaceFromString_v1 {
  * @returns
  */
 export const removeSpaceFromString_v1: IremoveSpaceFromString_v1 =
-  function removeSpaceFromString(type: number, string: string): string {
-    // TODO Migliorare inizializzazione
+  function removeSpaceFromString(
+    type: number,
+    string: string
+  ): string {
+    // TODO #152  @giacomogagliano Migliorare inizializzazione
     let newString: string = "";
     switch (type) {
       case 1:
