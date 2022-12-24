@@ -3,6 +3,8 @@ export {
   BaseNoiz_v4Props as BaseNoizProps,
 } from "./BaseNoiz_v4";
 
+export { BaseNoiz_v5 } from "./BaseNoiz_v5.1";
+
 //// ComponentDecorator
 export * from "./ComponentDecorator";
 
