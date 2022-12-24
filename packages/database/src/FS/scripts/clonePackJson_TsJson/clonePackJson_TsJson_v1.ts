@@ -50,7 +50,7 @@ export async function main() {
     await getKnownData<tsconfigJSON.DataType>(
       datas.source.json
     );
-  // TODO added this just to make ts shut ... fix it
+  // TODO #189 @giacomogagliano added this just to make ts shut ... fix it
   sourceTs;
   targetTs;
   changePackJson;

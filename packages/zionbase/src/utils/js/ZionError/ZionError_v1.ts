@@ -1,5 +1,4 @@
 // import mongoose from "mongoose";
-// TODO create a mixin which makes a class mongoosable
 
 export interface ZionError_v1 extends Error {
   name: string;

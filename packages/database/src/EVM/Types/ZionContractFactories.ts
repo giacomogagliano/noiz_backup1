@@ -29,7 +29,7 @@
 
 // export type ContractFactory = ethers.ContractFactory;
 
-// // TODO #38 mettere questi codici nelle cartelle delle classi non nei tipi
+// // TODO #176 @giacomogagliano delete
 // export class ZionContractFactories {
 //   newContractFactories: {
 //     ERC1155IndividualURI: ERC1155IndividualURI_Factory;

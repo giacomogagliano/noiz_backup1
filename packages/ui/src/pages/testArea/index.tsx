@@ -3,7 +3,8 @@ import styled, {
   css,
   DefaultTheme,
 } from "styled-components";
-import { BasicColorStyle } from "../HTML/React/lib/global";
+import "../../HTML";
+import { BasicColorStyle } from "../../HTML/React/lib/global";
 
 const ContentArea = styled.div`
   place-self: center;
@@ -15,7 +16,7 @@ interface ContainerProps {
   border?: "thin" | "normal" | "thick";
 }
 
-// TODO questa puo essere utile =)
+// TODO #166 @giacomogagliano questa puo essere utile =)
 const prop: (
   member: keyof BasicColorStyle
 ) => (

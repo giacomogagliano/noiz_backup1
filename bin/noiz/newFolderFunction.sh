@@ -1,5 +1,4 @@
 #!/bin/bash
-# // TODO Sistemare percorso perche proviene da WAW
 noiz="$(cd -- "$(dirname "$0")" >/dev/null 2>&1 && pwd -P)"
 zionConfig="$noiz/new.noiz.sh"
 noiz_root="$(cd $noiz && cd .. && cd .. && echo $PWD)"

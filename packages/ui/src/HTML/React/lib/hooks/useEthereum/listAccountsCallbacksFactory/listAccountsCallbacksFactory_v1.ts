@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from "react";
 
 export interface ListAccountsCallbacksFactory {
   (setIsConnected: Dispatch<SetStateAction<boolean>>): (
-    // TODO definire meglio
+    // TODO #141 @giacomogagliano definire meglio
     accounts: any[]
   ) => void;
 }

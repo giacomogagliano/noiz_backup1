@@ -154,7 +154,7 @@ export class System_v1 {
     let typeNumber = system.getTreeNodeType(rootPath);
     let name;
     if (TreeNode.types[typeNumber])
-      // TODO resolve type error due to mismatch of types in
+      // TODO #179 @giacomogagliano resolve type error due to mismatch of types in
       // tree node and function build tress
       name = this.setNameForTreeNode(
         rootPath,

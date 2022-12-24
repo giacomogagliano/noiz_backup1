@@ -63,7 +63,7 @@ export interface Algo_v1<
   use(p: processor<N>): this;
   treat: (p: processor<N>) => void;
   pushInStack: (id: I) => void;
-  // TODO #55 @giacomogagliano finire implementazioni e togliere
+  // TODO #156 @giacomogagliano finire implementazioni e togliere
   // il void return
   process(
     graph?: GraphTypes<I, T, N>

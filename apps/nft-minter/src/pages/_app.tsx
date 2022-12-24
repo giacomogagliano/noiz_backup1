@@ -1,3 +1,4 @@
+// @ts-nocheck
 import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "../components/GlobalStyle";
 import React, { useEffect, useRef, useState } from "react";
@@ -130,7 +131,6 @@ function Application(props: ApplicationProps) {
         footer.current.clientHeight +
         navbar.current.clientHeight
     );
-    // TODO add event listener on resize and on device
     // orientation change
     window.addEventListener("resize", () =>
       console.log("resized")

@@ -218,7 +218,8 @@ export class NavBar_v4 extends BaseNoiz<
     }),
   ];
 
-  // @ts-expect-error // TODO @giacomogagliano sistemare
+  // FIXME #131 @giacomogagliano fix ts error in NavBar
+  // @ts-expect-error
   NavInput: ComponentClass<
     StyledDefault<{
       inputId: string;

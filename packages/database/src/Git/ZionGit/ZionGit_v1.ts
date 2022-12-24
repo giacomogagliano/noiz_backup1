@@ -9,7 +9,7 @@ import {
   Options,
   StatusResult,
 } from "simple-git";
-// BUG also here it give the import but, but only from one entry point
+// BUG #194 @giacomogagliano also here it give the import but, but only from one entry point
 // import {} from "@zionstate/database/EVM";
 import { InitResult } from "simple-git";
 import { ZionGit } from ".";

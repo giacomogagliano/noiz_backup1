@@ -10,7 +10,7 @@ import { OpenSeaMetadata } from "../../lib/types";
 const { ZionRegExp } = js;
 
 const check = ZionRegExp.fileExtensionWithPoint;
-// TODO integrare il check da ZionRegeExp
+// TODO #190 @giacomogagliano integrare il check da ZionRegeExp
 check;
 
 const source1 =

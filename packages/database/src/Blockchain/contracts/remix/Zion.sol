@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import "../token/ERC20/ERC20.sol";
 import "../access/Ownable.sol";
-///TODO importare la versione zERC20Pausable
+///TODO #169 @giacomogagliano importare la versione zERC20Pausable
 import "../token/ERC20/extensions/ERC20Pausable.sol";
 import "../token/ERC20/extensions/ERC20Snapshot.sol";
 
@@ -16,14 +16,20 @@ import "../token/ERC20/extensions/ERC20Snapshot.sol";
  */
 
 contract Zion is ERC20, Ownable, Pausable, ERC20Snapshot {
-    constructor() ERC20("ZION - Power to Creators", "ZION") {}
+    constructor()
+        ERC20("ZION - Power to Creators", "ZION")
+    {}
 
     /// @dev Snapshot calling function
     function snapshot() public onlyOwner {
         _snapshot();
     }
 
-    function getCurrentSnapshotId() public view returns (uint256) {
+    function getCurrentSnapshotId()
+        public
+        view
+        returns (uint256)
+    {
         uint256 currentID = _getCurrentSnapshotId();
         return currentID;
     }
@@ -39,7 +45,10 @@ contract Zion is ERC20, Ownable, Pausable, ERC20Snapshot {
     }
 
     /// @dev Mint calling function
-    function mint(address to, uint256 amount) public onlyOwner {
+    function mint(address to, uint256 amount)
+        public
+        onlyOwner
+    {
         _mint(to, amount);
     }
 
@@ -47,7 +56,11 @@ contract Zion is ERC20, Ownable, Pausable, ERC20Snapshot {
         address from,
         address to,
         uint256 amount
-    ) internal override(ERC20, ERC20Snapshot) whenNotPaused {
+    )
+        internal
+        override(ERC20, ERC20Snapshot)
+        whenNotPaused
+    {
         super._beforeTokenTransfer(from, to, amount);
     }
 

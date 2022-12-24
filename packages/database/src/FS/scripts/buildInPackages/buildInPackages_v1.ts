@@ -19,12 +19,27 @@ const appsPath = join(path, apps);
 ////
 
 export function run() {
-  const joint = getZionAppsAndPacks(packagesPath, appsPath, {
-    separated: true,
-  });
-  const appsPackageJson = getFileFromPath(joint.apps, file);
-  const appsTsConfigJson = getFileFromPath(joint.apps, tsconfig, true, true);
-  const packsPackageJson = getFileFromPath(joint.packages, file);
+  const joint = getZionAppsAndPacks(
+    packagesPath,
+    appsPath,
+    {
+      separated: true,
+    }
+  );
+  const appsPackageJson = getFileFromPath(
+    joint.apps,
+    file
+  );
+  const appsTsConfigJson = getFileFromPath(
+    joint.apps,
+    tsconfig,
+    true,
+    true
+  );
+  const packsPackageJson = getFileFromPath(
+    joint.packages,
+    file
+  );
   const packsTsConfigJson = getFileFromPath(
     joint.packages,
     tsconfig,
@@ -35,25 +50,36 @@ export function run() {
   if (!packsPackageJson) throw new Error("");
   if (!appsTsConfigJson) throw new Error("");
   if (!packsTsConfigJson) throw new Error("");
-  const mappedApps = mapObject(appsPackageJson, "scripts", { perPack: true });
-  const mapdpackscr = mapObject(packsPackageJson, "scripts", { perPack: true });
+  const mappedApps = mapObject(
+    appsPackageJson,
+    "scripts",
+    { perPack: true }
+  );
+  const mapdpackscr = mapObject(
+    packsPackageJson,
+    "scripts",
+    { perPack: true }
+  );
   // make backup
-  appsTsConfigJson.forEach((_tsconfig) => {
+  appsTsConfigJson.forEach(_tsconfig => {
     backup([_tsconfig[0], _tsconfig[1], tsconfig]);
   });
-  packsTsConfigJson.forEach((_tsconfig) => {
+  packsTsConfigJson.forEach(_tsconfig => {
     backup([_tsconfig[0], _tsconfig[1], tsconfig]);
   });
   // CREATES MAPS WITH PACK name, path and build folder name
-  const mappedAppJson = appsPackageJson.map((pack) => {
+  const mappedAppJson = appsPackageJson.map(pack => {
     const BUILD = "build";
     const BUILT = "built";
     const DIST = "dist";
     const regexp = /(@.*\/)/g;
     if (!regexp.exec(pack.name)) throw new Error("");
-    // TODO trovare solution typescript
-    // @ts-expect-error
-    const name = pack.name.replace(regexp.exec(pack.name)[0], "");
+    // TODO #188 @giacomogagliano trovare solution typescript
+    const name = pack.name.replace(
+      // @ts-expect-error
+      regexp.exec(pack.name)[0],
+      ""
+    );
     const apppath = join(appsPath, name);
     const oldPack = {};
     Object.assign(oldPack, pack);
@@ -63,77 +89,101 @@ export function run() {
     if (existsSync(join(apppath, BUILT))) outdir = BUILT;
     if (existsSync(join(apppath, DIST))) outdir = DIST;
     else outdir = "no outdir";
-    if (existsSync(join(apppath, "node_modules"))) hasModules = true;
+    if (existsSync(join(apppath, "node_modules")))
+      hasModules = true;
     backup([name, pack, "package.json"]);
-    return [[name, apppath, outdir, hasModules], pack, oldPack];
+    return [
+      [name, apppath, outdir, hasModules],
+      pack,
+      oldPack,
+    ];
   });
-  const mappedPackJson = packsPackageJson.map((pack) => {
+  const mappedPackJson = packsPackageJson.map(pack => {
     const packagePath = join(packagesPath, pack.name);
     const BUILD = "build";
     const BUILT = "built";
     const DIST = "dist";
     const regexp = /(@.*\/)/g;
     // TODO trovare solution typescript
-    // @ts-expect-error
-    const name = pack.name.replace(regexp.exec(pack.name)[0], "");
+    const name = pack.name.replace(
+      // @ts-expect-error
+      regexp.exec(pack.name)[0],
+      ""
+    );
     // const packpath = join(appsPath, name);
     let outdir: string;
     let hasModules: boolean = false;
-    if (existsSync(join(packagePath, BUILD))) outdir = BUILD;
-    if (existsSync(join(packagePath, BUILT))) outdir = BUILT;
+    if (existsSync(join(packagePath, BUILD)))
+      outdir = BUILD;
+    if (existsSync(join(packagePath, BUILT)))
+      outdir = BUILT;
     if (existsSync(join(packagePath, DIST))) outdir = DIST;
     else outdir = "no outdir specified";
-    if (existsSync(join(packagePath, "node_modules"))) hasModules = true;
+    if (existsSync(join(packagePath, "node_modules")))
+      hasModules = true;
     // console.log(pack.name);
 
     backup([name, pack, "package.json"]);
-    return [[pack.name, packagePath, outdir, hasModules], pack];
+    return [
+      [pack.name, packagePath, outdir, hasModules],
+      pack,
+    ];
   });
   // EDIT SCRIPTS APPS
-  mappedApps.map((obj) => {
+  mappedApps.map(obj => {
     if (!obj[1].build) obj[1].build = "next dev";
     if (!obj[1].dev) obj[1].dev = "next dev";
     if (!obj[1].prod) obj[1].prod = "next start";
-    if (!obj[1].typecheck) obj[1].typecheck = "tsc --noEmit";
+    if (!obj[1].typecheck)
+      obj[1].typecheck = "tsc --noEmit";
     return [obj[0], { scripts: obj[1] }];
   });
   // EDIT SCRIPTS PACKAGES
   mapdpackscr
-    .map((pack) => {
+    .map(pack => {
       if (!pack[1]) pack = [pack[0], {}];
       return pack;
     })
-    .map((pack) => {
+    .map(pack => {
       let outdir = "dist";
       if (pack[0] !== "@zionstate/ui") {
-        if (!pack[1].clean) pack[1].clean = "rm -rf " + outdir;
-        if (!pack[1].build) pack[1].build = "run-p build:*";
+        if (!pack[1].clean)
+          pack[1].clean = "rm -rf " + outdir;
+        if (!pack[1].build)
+          pack[1].build = "run-p build:*";
         // TODO trovare solution typescript
         // @ts-expect-error
-        if (!pack[1]["build:types"]) pack[1]["build:types"] = "tsc";
-        if (!pack[1].typecheck) pack[1].typecheck = "tsc --noEmit";
+        if (!pack[1]["build:types"])
+          // @ts-expect-error
+          pack[1]["build:types"] = "tsc";
+        if (!pack[1].typecheck)
+          pack[1].typecheck = "tsc --noEmit";
       }
       return pack;
     });
   // EDIT ROOT PACKAGE JSON
-  mappedAppJson.map((pack) => {
+  mappedAppJson.map(pack => {
     if (!pack[1].type) pack[1].type = "module";
     if (!pack[1].source) pack[1].source = "src/index.ts";
-    if (existsSync(join(pack[0][1], "node_modules"))) pack[0].push(true);
-    if (pack[0][2]) pack[1].scripts.clean = `rm -rf ${pack[0][2]}`;
+    if (existsSync(join(pack[0][1], "node_modules")))
+      pack[0].push(true);
+    if (pack[0][2])
+      pack[1].scripts.clean = `rm -rf ${pack[0][2]}`;
     return pack;
   });
-  mappedPackJson.map((pack) => {
+  mappedPackJson.map(pack => {
     if (!pack[1].type) pack[1].type = "module";
     if (!pack[1].source) pack[1].source = "src/index.ts";
-    if (pack[0][0] !== "@zionstate/ui") pack[1].main = `${pack[0][2]}/index.js`;
+    if (pack[0][0] !== "@zionstate/ui")
+      pack[1].main = `${pack[0][2]}/index.js`;
     if (!pack[1].files) pack[1].files = [pack[0][2]];
-    if (!pack[1].types) pack[1].types = `${pack[0][2]}/index.d.ts`;
+    if (!pack[1].types)
+      pack[1].types = `${pack[0][2]}/index.d.ts`;
     return pack;
   });
 
   const all = mappedAppJson.concat(mappedPackJson);
-  all.forEach((appOrPack) => {
+  all.forEach(appOrPack => {
     const path = appOrPack[0][1];
     const json = appOrPack[1];
     writeFileSync(join(path, file), JSON.stringify(json));

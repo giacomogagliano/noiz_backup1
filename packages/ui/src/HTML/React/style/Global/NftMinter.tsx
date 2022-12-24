@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
+// TODO #142 @ariannatnl @giacomogagliano capire a cosa serve
 export const NftMinterGlobalStyle = createGlobalStyle`
   body {
     font-family: 'Epilogue', sans-serif;
@@ -16,7 +17,6 @@ export const NftMinterGlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
-  // TODO #5 toglierlo dal cazzo?? ti ricordi cos'era?
   #cazzo {
   width: 100%;
   height: 100%;

@@ -4,9 +4,6 @@ import { Icon } from "../../../HTML/React/classes";
 import { node } from "@zionstate/zionbase/utils";
 
 const upperCase = node.util.zionUtil.upperCaseFirst;
-// TODO if useless for a while, delete
-// const joinPaths = node.util.zionUtil.joinPaths;
-// const buildPathTuple = node.util.zionUtil.buildPathTuple;
 const buildPaths = node.util.zionUtil.buildPaths;
 
 /**
