@@ -1,4 +1,3 @@
-import React from "react";
 import { IconPath, Icons } from "../../IconPath";
 
 export type Share_v1Data = "Share_v1Data";

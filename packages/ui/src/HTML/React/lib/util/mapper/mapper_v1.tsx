@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 
 type mapper_v1Props<P> = { datas: P[] };
 

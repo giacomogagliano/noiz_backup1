@@ -1,4 +1,4 @@
-import React, { ComponentClass } from "react";
+import { ComponentClass } from "react";
 import styled, { css } from "styled-components";
 import { StyledDefault } from "../../lib/types/utility";
 import { BooleanizeUnions } from "../../lib/utility";

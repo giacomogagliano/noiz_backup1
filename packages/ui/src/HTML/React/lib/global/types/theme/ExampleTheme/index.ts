@@ -1,3 +1,3 @@
 ///// EXPORT
-export type { ExampleTheme_v1 as ExampleTheme } from "./ExampleTheme_v1";
+export type { exampleTheme_v1 as ExampleTheme } from "./ExampleTheme_v1";
 //////
