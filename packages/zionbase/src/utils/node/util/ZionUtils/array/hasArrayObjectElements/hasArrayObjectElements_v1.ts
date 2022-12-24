@@ -21,7 +21,7 @@ export const hasArrayObjectElements_v1: IhasArrayObjectElements_v1 =
     else return true;
   };
 
-// TODO descrizione metodo
+// TODO #151 @giacomogagliano descrizione metodo
 /**
  *
  * @param array
