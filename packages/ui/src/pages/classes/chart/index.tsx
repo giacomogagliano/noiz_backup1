@@ -198,5 +198,9 @@ const datasets2 = [dataset2];
 const data2 = new Data(labels, datasets2);
 
 export default function index() {
-  return <Chart type="doughnut" data={data2}></Chart>;
+  return (
+    <Chart
+      chartJs={{ type: "doughnut", data: data2 }}
+    ></Chart>
+  );
 }
