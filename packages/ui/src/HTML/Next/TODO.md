@@ -1,1 +1,1 @@
-- [ ] rifare getStaticProps con decorator
+- [ ] TODO #133 rifare getStaticProps con decorator
