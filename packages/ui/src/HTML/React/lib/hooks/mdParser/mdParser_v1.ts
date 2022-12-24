@@ -16,10 +16,7 @@ export async function mdParser_v1(
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkRehype)
-    // TODO do a little research about this value.
     .data("settings", { fragment: true })
-    // TODO create an argument to set this value (coding
-    // language target for the <code> html element)
     .use(rehypeHighlight, { languages: { dockerfile } })
     .use(rehypeStringify)
     // log the html created by the script
