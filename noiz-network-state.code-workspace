@@ -1,8 +1,4 @@
 {
-  "folders": [
-    { "path": "." },
-    { "path": "packages/ui/" },
-    { "path": "packages/database" }
-  ],
+  "folders": [{ "path": "." }, { "path": "proposals" }],
   "settings": {}
 }
