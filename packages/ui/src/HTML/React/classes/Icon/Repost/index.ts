@@ -1,4 +1,4 @@
-export { Repost_v2 as Repost } from "./Repost_v1";
+export { Repost_v2 as Repost, repost } from "./Repost_v1";
 
 export type {
   Repost_v1Data as RepostData,

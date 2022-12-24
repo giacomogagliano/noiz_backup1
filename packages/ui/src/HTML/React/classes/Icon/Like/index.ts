@@ -1,1 +1,1 @@
-export { Like_v2 as Like } from "./Like_v1";
+export { Like_v2 as Like, like } from "./Like_v1";

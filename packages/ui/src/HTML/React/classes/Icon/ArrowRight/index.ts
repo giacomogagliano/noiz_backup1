@@ -1,4 +1,7 @@
-export { ArrowRight_v2 as ArrowRight } from "./ArrowRight_v1";
+export {
+  ArrowRight_v2 as ArrowRight,
+  arrowRight,
+} from "./ArrowRight_v1";
 
 export type {
   ArrowRight_v1Data as ArrowRightData,

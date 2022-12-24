@@ -1,4 +1,7 @@
-export { ArrowBack_v2 as ArrowBack } from "./ArrowBack_v1";
+export {
+  ArrowBack_v2 as ArrowBack,
+  arrowBack,
+} from "./ArrowBack_v1";
 
 export type {
   ArrowBack_v1Data as ArrowBackData,

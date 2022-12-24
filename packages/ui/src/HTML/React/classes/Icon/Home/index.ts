@@ -1,4 +1,4 @@
-export { Home_v2 as Home } from "./Home_v1";
+export { Home_v2 as Home, home } from "./Home_v1";
 
 export type {
   Home_v1Data as HomeData,

@@ -1,4 +1,4 @@
-export { Search_v2 as Search } from "./Search_v1";
+export { Search_v2 as Search, search } from "./Search_v1";
 
 export type {
   Search_v1Data as SearchData,

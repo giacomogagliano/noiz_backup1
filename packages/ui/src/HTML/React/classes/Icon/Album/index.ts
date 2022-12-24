@@ -1,4 +1,4 @@
-export { Album_v2 as Album } from "./Album_v1";
+export { Album_v2 as Album, album } from "./Album_v1";
 
 export type {
   Album_v1Data as AlbumData,

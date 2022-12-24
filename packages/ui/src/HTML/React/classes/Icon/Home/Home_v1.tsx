@@ -14,7 +14,7 @@ export const Home_v2 = (
 );
 
 const home_ = new IconPath();
-home_.name = Icons.album;
+home_.name = Icons.home;
 home_.JsxPath = Home_v2;
 home_.filled = true;
 

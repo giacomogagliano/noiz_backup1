@@ -1,4 +1,7 @@
-export { Twitter_v2 as Twitter } from "./Twitter_v1";
+export {
+  Twitter_v2 as Twitter,
+  twitter,
+} from "./Twitter_v1";
 
 export type {
   Twitter_v1Data as TwitterData,
