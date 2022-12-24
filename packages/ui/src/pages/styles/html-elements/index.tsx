@@ -48,7 +48,7 @@ export function getStaticProps() {
     const path = data.path + "/" + data.name;
     const res = foldersInDir(path);
     // @ts-expect-error
-    // TODO @giacomogagliano
+    // FIXME #145 @giacomogagliano ts error
     TreeNode.makeNodes(res, data);
     return data;
   });
