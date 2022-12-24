@@ -1,4 +1,4 @@
-- [ ] TODO understand why the `fs` module doesn't work when
+- [x] TODO understand why the `fs` module doesn't work when
       imported in `ui`.
   - [ ] move the `readAndParse` method in `database/FS` package
 - [ ] TODO find a way to embed a `Chart` element in an `md`
@@ -58,3 +58,11 @@
 - [ ] TODO #25 @ariannatnl trovare un modo per fare restare al
       centro l'immagine, e che prenda sempre le propozioni che
       la rendano sempre visibile.
+- [ ] TODO #198 @giacomogagliano update BaseNoiz
+  - [ ] create a version which doesnt use the state
+  - [ ] create a version which uses state
+- [ ] TODO #200 @giacomogagliano @ariannatnl creare menu
+  - [ ] menu
+  - [ ] dropdown
+- [ ] TODO @giacomogagliano creare una classe theme che contenga
+      entrambi i theme selezionabili
