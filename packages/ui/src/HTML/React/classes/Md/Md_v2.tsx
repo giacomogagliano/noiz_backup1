@@ -158,9 +158,21 @@ export class Md_v2<
     console.log(processor.data);
 
     const parser = this.makeParser(type, processor);
-    parser.then(e =>
-      this.setElement(() => <>{e.result as ReactNode}</>)
-    );
+    parser.then(e => {
+      let result = e.result;
+      let Element = () => <>{result}</>;
+      if (this.props.md_string) {
+        result = e.value;
+        Element = () => (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: result as string,
+            }}
+          ></div>
+        );
+      }
+      return this.setElement(Element);
+    });
   }
 
   Date(props: { dateString: string }) {
