@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 
 import "./APrivatezDelegateable.sol";
 
-// TODO unabstract this
+// TODO #171 @giacomogagliano unabstract this
 abstract contract PrivatezDelegateable is
     zCheckpointable,
     APrivatezDelegateable
@@ -13,7 +13,9 @@ abstract contract PrivatezDelegateable is
     IERC20 baseContract;
     mapping(address => address) private __delegates;
     bytes32 private constant __DELEGATION_TYPEHASH =
-        keccak256("Delegation(address delegatee,uint256 nonce,uint256 expiry)");
+        keccak256(
+            "Delegation(address delegatee,uint256 nonce,uint256 expiry)"
+        );
 
     function __moveVotingPower(
         address src,
@@ -22,44 +24,82 @@ abstract contract PrivatezDelegateable is
     ) private {
         if (src != dst && amount > 0) {
             if (src != address(0)) {
-                (uint256 oldWeight, uint256 newWeight) = _writeCheckpoint(
-                    _checkpoints(src),
-                    zMaths._subtract,
-                    amount
+                (
+                    uint256 oldWeight,
+                    uint256 newWeight
+                ) = _writeCheckpoint(
+                        _checkpoints(src),
+                        zMaths._subtract,
+                        amount
+                    );
+                emit DelegateVotesChanged(
+                    src,
+                    oldWeight,
+                    newWeight
                 );
-                emit DelegateVotesChanged(src, oldWeight, newWeight);
             }
 
             if (dst != address(0)) {
-                (uint256 oldWeight, uint256 newWeight) = _writeCheckpoint(
-                    _checkpoints(dst),
-                    zMaths._add,
-                    amount
+                (
+                    uint256 oldWeight,
+                    uint256 newWeight
+                ) = _writeCheckpoint(
+                        _checkpoints(dst),
+                        zMaths._add,
+                        amount
+                    );
+                emit DelegateVotesChanged(
+                    dst,
+                    oldWeight,
+                    newWeight
                 );
-                emit DelegateVotesChanged(dst, oldWeight, newWeight);
             }
         }
     }
 
-    function _delegates(address account) internal view returns (address) {
+    function _delegates(address account)
+        internal
+        view
+        returns (address)
+    {
         return __delegates[account];
     }
 
-    function _setDelegates(address delegator, address delegatee) internal {
+    function _setDelegates(
+        address delegator,
+        address delegatee
+    ) internal {
         __delegates[delegator] = delegatee;
     }
 
-    function _DELEGATION_TYPEHASH() internal pure returns (bytes32) {
+    function _DELEGATION_TYPEHASH()
+        internal
+        pure
+        returns (bytes32)
+    {
         return __DELEGATION_TYPEHASH;
     }
 
-    function _delegate(address delegator, address delegatee) internal virtual {
+    function _delegate(
+        address delegator,
+        address delegatee
+    ) internal virtual {
         address currentDelegate = _delegates(delegator);
-        uint256 delegatorBalance = baseContract.balanceOf(delegator);
+        uint256 delegatorBalance = baseContract.balanceOf(
+            delegator
+        );
         _setDelegates(delegator, delegatee);
 
-        emit DelegateChanged(delegator, currentDelegate, delegatee);
+        emit DelegateChanged(
+            delegator,
+            currentDelegate,
+            delegatee
+        );
 
-        __moveVotingPower(currentDelegate, delegatee, delegatorBalance);
+        __moveVotingPower(
+            currentDelegate,
+            delegatee,
+            delegatorBalance
+        );
     }
 }
