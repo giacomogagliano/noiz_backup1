@@ -3,7 +3,9 @@ import { withPathsReturn } from "../Types";
 
 export function ramWithPaths<
   Data extends { [key: string]: any },
-  PageData extends { [key: string]: Data[] } | { [key: string]: Data } = {
+  PageData extends
+    | { [key: string]: Data[] }
+    | { [key: string]: Data } = {
     [key: string]: Data;
   },
   Query extends ParsedUrlQuery = ParsedUrlQuery,
@@ -22,12 +24,10 @@ export function ramWithPaths<
     getStaticPaths: async () => {
       return { paths, fallback: false };
     },
-    // TODO sistemare
     // @ts-expect-error
     getStaticProps: async ({ params }) => {
       if (!params) throw new Error("");
       const index = Number(params[query]);
-      // TODO sistemare
       // @ts-expect-error
       origin[field] = data[index];
       return {

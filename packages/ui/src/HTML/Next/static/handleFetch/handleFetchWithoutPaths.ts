@@ -14,7 +14,6 @@ export function handleFetchWithoutPaths<
   field: Field
 ): withoutPathsReturn<PageData> {
   return {
-    // TODO sistemare
     // @ts-expect-error
     getStaticProps: async () => {
       const res = await handleFetch<{
@@ -22,8 +21,9 @@ export function handleFetchWithoutPaths<
       }>(origin);
       let array: Data[] = [];
       for (let key in res) {
-        // @ts-expect-error
-        array.push(res[key]);
+        const data = res[key];
+        if (!data) return;
+        array.push(data);
       }
       return { props: { [field]: array } };
     },

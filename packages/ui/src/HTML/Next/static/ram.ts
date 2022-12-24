@@ -1,6 +1,9 @@
 import { ParsedUrlQuery } from "querystring";
 import { ramWithPaths, ramWithoutPaths } from "./ram/";
-import { withoutPathsReturn, withPathsReturn } from "./Types";
+import {
+  withoutPathsReturn,
+  withPathsReturn,
+} from "./Types";
 
 export function ram<Data extends { [key: string]: any }>(
   type: "without",
@@ -14,10 +17,10 @@ export function ram<Data, Query extends ParsedUrlQuery>(
   type: "with" | "without",
   data: Data[]
 ) {
-  // TODO probabilmente conviene fare una sola funziona ram
   // con overloads
   // @ts-expect-error
   if (type === "with") return ramWithPaths<Data, Query>();
-  // @ts-expect-error
-  if (type === "without") return ramWithoutPaths<Data>(data);
+  if (type === "without")
+    // @ts-expect-error
+    return ramWithoutPaths<Data>(data);
 }
