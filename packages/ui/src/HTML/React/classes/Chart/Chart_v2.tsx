@@ -17,11 +17,13 @@ enum styles {
 type layoutTypes = keyof typeof layouts;
 type styleTypes = keyof typeof styles;
 
-// TODO #6 @giacomogagliano sistemare il delirio
-// @ts-ignore
+interface ChartJsProps {
+  chartJs: ChartProps;
+}
+
 export interface Chart_v2Props
   extends BaseNoizProps<layoutTypes, styleTypes>,
-    ChartProps {
+    ChartJsProps {
   pie?: boolean;
   donut?: boolean;
   bar?: boolean;
@@ -65,8 +67,10 @@ export class Chart_v2 extends BaseNoiz<
   static defaultProps: Chart_v2Props = {
     layout: layouts.main,
     style: styles.defaultStyle,
-    data: { datasets: [] },
-    type: "doughnut",
+    chartJs: {
+      type: "doughnut",
+      data: { datasets: [] },
+    },
   };
   Bar = Bar;
   Bubble = Bubble;
@@ -92,7 +96,10 @@ export class Chart_v2 extends BaseNoiz<
     Chart = this.Doughnut;
     return (
       <div className={props.className}>
-        <Chart data={props.data} options={props.options} />
+        <Chart
+          data={props.chartJs.data}
+          options={props.chartJs.options}
+        />
       </div>
     );
   };
