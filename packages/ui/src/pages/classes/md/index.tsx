@@ -11,7 +11,7 @@ const maker = IndexPage.maker;
 const filterDs = IndexPage.filter(".DS_Store");
 const filterIndex = IndexPage.filter("index.tsx");
 
-const md_react = maker("md-react", "notter ⛔️");
+// const md_react = maker("md-react", "notter ⛔️");
 const md_rawReact = maker("md-raw_react", "notter ⛔️");
 const md_string = maker("md-string", "notter ⛔️");
 const newreader = new Reader("./src/pages/classes/md");
@@ -25,7 +25,7 @@ export function getStaticProps() {
     .filter(filterIndex);
   const neww = filtered
     .map(IndexPage.makeDati)
-    .map(md_react)
+    // .map(md_react)
     .map(md_string)
     .map(md_rawReact);
   return { props: { data: JSON.stringify(neww) } };
