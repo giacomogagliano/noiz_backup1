@@ -1,6 +1,5 @@
 import React from "react";
 import fs from "fs";
-import "./tesx";
 import IndexPage from "./components/IndexPage";
 import { UAParser } from "ua-parser-js";
 
