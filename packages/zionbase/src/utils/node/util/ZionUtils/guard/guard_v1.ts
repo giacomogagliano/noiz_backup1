@@ -41,9 +41,10 @@ export interface Iguard_v1 {
  * @param errOption
  * @returns
  */
+// FIXME #223 @giacomogagliano fix the interface
 // @ts-expect-error
 export const guard_v1: Iguard_v1 = function <
-  T,
+  T extends Object,
   O,
   Out extends {},
   Key extends keyof T
@@ -59,8 +60,6 @@ export const guard_v1: Iguard_v1 = function <
     return dataGuard(data, errOption);
   if (Array.isArray(errOption))
     return optionGuard(data, errOption);
-  // TODO #155 @giacomogagliano sistemare ts error
-  // @ts-expect-error
   if (errOption in data)
     return keyInObjGuard(data, errOption);
   if (!data) throw new Error("no data");
