@@ -1,9 +1,9 @@
+import { Signer } from "ethers";
 import { Dispatch, SetStateAction } from "react";
 
 export interface GetSignerAddress {
   (
-    // TODO #138 @giacomogagliano add definition
-    signer: any,
+    signer: Signer,
     callbacks: ((...args: any[]) => void)[],
     setIsConnected?: Dispatch<SetStateAction<boolean>>
   ): Promise<string>;
