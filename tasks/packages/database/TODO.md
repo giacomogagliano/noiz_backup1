@@ -1,5 +1,6 @@
 - database
-  - [ ] TODO #205 @giacomogagliano togliere test dal root della cartella /test
+  - FIXME #226 fix node_modules:
+    some modules are not linked to the root node_modules folder
   - blockchain
     - [ ] [#201](https://github.com/Zion-PTC/noiz-network-state/issues/201)
     - src

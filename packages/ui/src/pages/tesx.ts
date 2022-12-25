@@ -2,6 +2,8 @@ export {};
 interface Aaa {
   a: string;
 }
+
+// TODO #214 @giacomogagliano creare stringifyBase64
 class Aaa {
   stringify() {
     return Buffer.from(JSON.stringify(this)).toString(

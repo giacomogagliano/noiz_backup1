@@ -17,7 +17,7 @@
   - guard
     - [ ] makeErrGuard [#153](https://github.com/Zion-PTC/noiz-network-state/issues/153)
     - [ ] optionGuard [#154](https://github.com/Zion-PTC/noiz-network-state/issues/154)
-    - [ ] guard [#155](https://github.com/Zion-PTC/noiz-network-state/issues/155)
+    - [ ] guard [#223](https://github.com/Zion-PTC/noiz-network-state/issues/223)
   - Algo
     - [ ] [#156](https://github.com/Zion-PTC/noiz-network-state/issues/156)
   - DataStructures
