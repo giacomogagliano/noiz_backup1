@@ -57,9 +57,7 @@ export function getStaticProps() {
   const nodes = data.map(data => {
     const path = data.path + "/" + data.name;
     const res = foldersInDir(path);
-    // @ts-expect-error
-    // FIXME #143 @giacomogagliano ts error
-    TreeNode.makeNodes(res, data);
+    TreeNode.makeNodes(res, data as Folder);
     return data;
   });
   const indexes = nodes.filter(e => e.type === "index");
