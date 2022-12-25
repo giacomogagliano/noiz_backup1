@@ -9,18 +9,26 @@ log;
 
 const access =
   process.env.GIT_ACCESS_TOKEN_GiacomoGagliano;
+const github = new ZionGitHub(access!);
 
-describe("if ZionGitHub function is correctly exported", () => {
+describe("if ZionGitHub function is correctly exported", async () => {
   const regex = /ZionGitHub/g;
   const name = ZionGitHub.name;
   const res = regex.test(name);
-
-  const github = new ZionGitHub(access!);
-  // github.closeIssue();
-
-  log("", github);
-
   it("shall confirm the existance of a function named ZionGitHub", () => {
     expect(res).to.be.true;
   });
+});
+
+describe("closeIssue", async () => {
+  const issueN = 151;
+  const repo = "noiz-network-state";
+  // const close = await github.closeIssue(
+  //   issueN,
+  //   // @ts-expect-error
+  //   "Zion-PTC",
+  //   repo
+  // );
+  // log("", close);
+  it("should delete an issue", () => {});
 });
