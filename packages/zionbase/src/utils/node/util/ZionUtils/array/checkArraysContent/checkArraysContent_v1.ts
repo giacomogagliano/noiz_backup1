@@ -18,11 +18,10 @@ export const checkArraysContent_v1: IcheckArraysContent_v1 =
     }
     let results: boolean[] = [];
     for (let index = 0; index < array.length; index++) {
-      // TODO #149 @giacomogagliano errore TS
-      // @ts-expect-error
-      const element: T = array[index];
-      // @ts-expect-error
-      const elementOfNextArray: T = nextArray[index];
+      const uncertain_element = nextArray[index];
+      if (!uncertain_element) throw new Error("");
+      const element: T = uncertain_element;
+      const elementOfNextArray: T = uncertain_element;
       if (element === elementOfNextArray) {
         results.push(true);
       } else {
