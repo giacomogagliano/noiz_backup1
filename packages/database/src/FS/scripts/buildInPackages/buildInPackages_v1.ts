@@ -74,12 +74,9 @@ export function run() {
     const DIST = "dist";
     const regexp = /(@.*\/)/g;
     if (!regexp.exec(pack.name)) throw new Error("");
-    // TODO #188 @giacomogagliano trovare solution typescript
-    const name = pack.name.replace(
-      // @ts-expect-error
-      regexp.exec(pack.name)[0],
-      ""
-    );
+    const res = regexp.exec(pack.name);
+    if (!res) throw new Error("");
+    const name = pack.name.replace(res[0], "");
     const apppath = join(appsPath, name);
     const oldPack = {};
     Object.assign(oldPack, pack);
@@ -104,12 +101,9 @@ export function run() {
     const BUILT = "built";
     const DIST = "dist";
     const regexp = /(@.*\/)/g;
-    // TODO trovare solution typescript
-    const name = pack.name.replace(
-      // @ts-expect-error
-      regexp.exec(pack.name)[0],
-      ""
-    );
+    const res = regexp.exec(pack.name);
+    if (!res) throw new Error("");
+    const name = pack.name.replace(res[0], "");
     // const packpath = join(appsPath, name);
     let outdir: string;
     let hasModules: boolean = false;
@@ -151,11 +145,7 @@ export function run() {
           pack[1].clean = "rm -rf " + outdir;
         if (!pack[1].build)
           pack[1].build = "run-p build:*";
-        // TODO trovare solution typescript
-        // @ts-expect-error
-        if (!pack[1]["build:types"])
-          // @ts-expect-error
-          pack[1]["build:types"] = "tsc";
+        if (!pack[1]["build"]) pack[1]["build"] = "tsc";
         if (!pack[1].typecheck)
           pack[1].typecheck = "tsc --noEmit";
       }
