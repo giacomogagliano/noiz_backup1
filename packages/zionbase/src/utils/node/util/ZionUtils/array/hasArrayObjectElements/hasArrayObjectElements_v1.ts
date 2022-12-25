@@ -4,6 +4,12 @@ export interface IhasArrayObjectElements_v1 {
   (this: IZionUtils, array: object[]): boolean | string;
 }
 
+/**
+ *  checks if the array contains at least one element which
+ *  is of type object
+ * @param array
+ * @returns
+ */
 export const hasArrayObjectElements_v1: IhasArrayObjectElements_v1 =
   function hasArrayObjectElements(
     this: IZionUtils,
@@ -20,10 +26,3 @@ export const hasArrayObjectElements_v1: IhasArrayObjectElements_v1 =
     if (!result.includes(true)) return false;
     else return true;
   };
-
-// TODO #151 @giacomogagliano descrizione metodo
-/**
- *
- * @param array
- * @returns
- */
