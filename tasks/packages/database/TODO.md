@@ -1,38 +1,74 @@
-# Database
-
-- [ ] TODO #205 @giacomogagliano togliere test dal root della cartella /test
-
-# Blockchain
-
-- [ ] TODO #201 @giacomogagliano Cancellare i contratti non necessari
-      e fare dei branch di sviluppo in modo da svutare il dev
-
-# IPFS
-
-- [ ] TODO #202 @giacomogagliano preparare il package per pubblicazione su npm
-  - [ ] fare i test di tutti i moduli
-    - [ ] EVM
-    - [ ] Blockchain
-    - [ ] IPFS
-    - [ ] FS
-    - [ ] Git
-
-# EVM
-
-- [ ] TODO #204 @giacomogagliano fare test di tutti i moduli di EVM
-  - [ ] aggiungere test per moduli in `/lib`
-  - [ ] aggiungere qualche altro test a `/Types`
-
-# FS
-
-- [ ] TODO #203 @giacomogagliano fare test di tutti i moduli di FS
-
-# Test
-
-## mongo-db
-
-- [ ] mettere altrove test
-
-## neo-4j
-
-- [ ] mettere altrove questi test
+- database
+  - [ ] TODO #205 @giacomogagliano togliere test dal root della cartella /test
+  - blockchain
+    - [ ] [#201](https://github.com/Zion-PTC/noiz-network-state/issues/201)
+    - src
+      - class
+        - 1155 [#173](https://github.com/Zion-PTC/noiz-network-state/issues/173)
+      - lib
+        - retrieveTxDatas [#174](https://github.com/Zion-PTC/noiz-network-state/issues/174)
+    - contracts
+      - token
+        - ERC1155
+          - PrivatezERC1155Master [#172](https://github.com/Zion-PTC/noiz-network-state/issues/172)
+      - governance
+        - PrivatezGorvernorSettings [#167](https://github.com/Zion-PTC/noiz-network-state/issues/167)
+          - [#168](https://github.com/Zion-PTC/noiz-network-state/issues/168)
+      - remix
+        - Zion [#169](https://github.com/Zion-PTC/noiz-network-state/issues/169)
+      - security
+        - ZCheckpointable [#171](https://github.com/Zion-PTC/noiz-network-state/issues/171)
+    - [ ] TODO #201 @giacomogagliano Cancellare i contratti non necessari
+          e fare dei branch di sviluppo in modo da svutare il dev
+  - IPFS
+    - [ ] TODO #202 @giacomogagliano preparare il package per pubblicazione su npm
+      - [ ] fare i test di tutti i moduli
+        - [ ] EVM
+        - [ ] Blockchain
+        - [ ] IPFS
+        - [ ] FS
+        - [ ] Git
+  - EVM
+    - [ ] TODO #204 @giacomogagliano fare test di tutti i moduli di EVM
+      - [ ] aggiungere test per moduli in `/lib`
+      - [ ] aggiungere qualche altro test a `/Types`
+    - types
+      - ZionContractFactories [#176](https://github.com/Zion-PTC/noiz-network-state/issues/176)
+    - classes
+      - EVMweb
+        - [ ] RequireOnlyOne [#177](https://github.com/Zion-PTC/noiz-network-state/issues/177)
+  - FS
+    - [ ] TODO #203 @giacomogagliano fare test di tutti i moduli di FS
+    - classes
+      - NoizPath [#178](https://github.com/Zion-PTC/noiz-network-state/issues/178)
+      - System [#179](https://github.com/Zion-PTC/noiz-network-state/issues/179)
+    - lib
+      - create
+        - combimeJson [#180](https://github.com/Zion-PTC/noiz-network-state/issues/180)
+        - writeFile [#181](https://github.com/Zion-PTC/noiz-network-state/issues/181)
+      - read
+        - getFileFromPath [#182](https://github.com/Zion-PTC/noiz-network-state/issues/182)
+        - mapObject [#183](https://github.com/Zion-PTC/noiz-network-state/issues/183)
+        - readJson [#184](https://github.com/Zion-PTC/noiz-network-state/issues/184)
+      - search
+        - filterThirdParties [#185](https://github.com/Zion-PTC/noiz-network-state/issues/185)
+        - filterZion [#186](https://github.com/Zion-PTC/noiz-network-state/issues/186)
+      - update
+        - edit [#187](https://github.com/Zion-PTC/noiz-network-state/issues/187)
+    - script
+      - buildingPackages [#188](https://github.com/Zion-PTC/noiz-network-state/issues/188)
+      - clonePackjson [#189](https://github.com/Zion-PTC/noiz-network-state/issues/189)
+      - combineJson [#190](https://github.com/Zion-PTC/noiz-network-state/issues/190)
+      - migrateBuildFolder [#191](https://github.com/Zion-PTC/noiz-network-state/issues/191)
+      - repoDeps [#192](https://github.com/Zion-PTC/noiz-network-state/issues/192)
+      - zionDependencies [#193](https://github.com/Zion-PTC/noiz-network-state/issues/193)
+  - Git
+    - ZionGit [#194](https://github.com/Zion-PTC/noiz-network-state/issues/194)
+  - test
+    - [#205](https://github.com/Zion-PTC/noiz-network-state/issues/205)
+    - FS
+      - System.test [#195](https://github.com/Zion-PTC/noiz-network-state/issues/195)
+    - mongodb
+      - [ ] mettere altrove test
+    - neo4j
+      - [ ] mettere altrove questi test

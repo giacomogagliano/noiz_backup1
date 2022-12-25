@@ -1,0 +1,1 @@
+- build.sh [#196](https://github.com/Zion-PTC/noiz-network-state/issues/196)
