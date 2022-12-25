@@ -20,9 +20,9 @@ export const changePosition_v1: IchangePosition_v1 =
     ) {
       return "not";
     }
-    // TODO #148 @giacomogagliano errore TS
-    // @ts-expect-error
-    array.splice(new_pos, 0, array.splice(old, 1)[0]);
+    const res = array.splice(old, 1)[0];
+    if (!res) throw new Error("something went wrong");
+    array.splice(new_pos, 0, res);
     return array;
   };
 
