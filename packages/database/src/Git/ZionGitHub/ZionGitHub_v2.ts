@@ -171,6 +171,7 @@ export class ZionGitHub implements IZionGitHub {
       issue_number,
       owner,
       repo,
+      state: "closed",
     });
     return res;
   }
