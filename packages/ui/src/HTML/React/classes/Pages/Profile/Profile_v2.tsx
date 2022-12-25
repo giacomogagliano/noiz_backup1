@@ -92,9 +92,11 @@ export class Profile_v2 extends BaseNoiz<
     layout: layouts.main,
   };
   // FIXME #135 @giacomogagliano @ariannatnl
-  // FIXME #136 @giacomogagliano ts error
-  // @ts-ignore
-  Icon: ComponentClass<IconProps, IconState> = Icon;
+  Icon: ComponentClass<IconProps, IconState> =
+    Icon as unknown as ComponentClass<
+      IconProps,
+      IconState
+    >;
   StyledTwitter = styled(this.Icon)`
     place-self: end;
   `;
