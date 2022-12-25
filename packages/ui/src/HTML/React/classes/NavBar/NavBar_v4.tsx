@@ -8,6 +8,20 @@ import {
   NavInputState,
 } from "./NavInput";
 
+type NavInput_ = ComponentClass<
+  StyledDefault<{
+    inputId: string;
+    inputName: string;
+    IconComponent?: () => JSX.Element;
+    value?: string;
+    checked?: boolean;
+    iconInput?: boolean;
+    keyValueInput?: boolean;
+    textInput?: boolean;
+  }>,
+  NavInputState
+>;
+
 export type Direction = BooleanizeUnions<
   "horizontal" | "vertical"
 >;
@@ -218,21 +232,7 @@ export class NavBar_v4 extends BaseNoiz<
     }),
   ];
 
-  // FIXME #131 @giacomogagliano fix ts error in NavBar
-  // @ts-expect-error
-  NavInput: ComponentClass<
-    StyledDefault<{
-      inputId: string;
-      inputName: string;
-      IconComponent?: () => JSX.Element;
-      value?: string;
-      checked?: boolean;
-      iconInput?: boolean;
-      keyValueInput?: boolean;
-      textInput?: boolean;
-    }>,
-    NavInputState
-  > = NavInput;
+  NavInput: NavInput_ = NavInput as unknown as NavInput_;
 
   defineType(data: NavInputProps) {
     if (this.props.text) data.layout = "text";
