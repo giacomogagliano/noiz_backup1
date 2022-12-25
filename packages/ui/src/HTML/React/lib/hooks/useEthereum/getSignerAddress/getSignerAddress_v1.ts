@@ -4,7 +4,6 @@ export interface GetSignerAddress {
   (
     // TODO #138 @giacomogagliano add definition
     signer: any,
-    // TODO #139 @giacomogagliano add definition
     callbacks: ((...args: any[]) => void)[],
     setIsConnected?: Dispatch<SetStateAction<boolean>>
   ): Promise<string>;
