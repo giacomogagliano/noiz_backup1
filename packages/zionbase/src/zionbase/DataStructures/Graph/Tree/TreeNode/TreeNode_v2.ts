@@ -41,10 +41,10 @@ export class TreeNode_v2<T = any>
   static get types() {
     return this.#types;
   }
-  // TODO #159 @giacomogagliano move this function somewhere in database
-  // was a Reader but had to put any cause it would make
-  // this package import from database
-  static makeNodes(res: any, data: Folder | File) {
+  static makeNodes(
+    res: { targetResult: (File | Folder)[] },
+    data: Folder | File
+  ) {
     if (res.targetResult.length) {
       this.makeIndex(data);
     } else {
