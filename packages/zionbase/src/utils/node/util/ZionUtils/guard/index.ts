@@ -1,4 +1,4 @@
-export {};
+export { guard_v1 as guard } from "./guard_v1";
 
 ///////// dataGuard
 export * from "./dataGuard";
