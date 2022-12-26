@@ -28,7 +28,6 @@ export interface Mix_v2 {}
 
 /**
  * Second type of pattern for the Mix class.
- * // TODO #161 @giacomogagliano add example
  */
 export class Mix_v2 implements IMix_v2 {
   constructor(public superclass: Mix_v2Constructor) {}
