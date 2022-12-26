@@ -3,3 +3,4 @@ import { create } from "ipfs-http-client";
 
 testEnvironment;
 create;
+console.log(create);
