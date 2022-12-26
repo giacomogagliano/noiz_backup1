@@ -10,23 +10,5 @@
     "src/Blockchain/scripts",
     "src/Blockchain/tasks",
     "src/Blockchain/test"
-  ],
-  "ts-node": {
-    "compilerOptions": {
-      "lib": ["es2021"],
-      "module": "ES2022",
-      "target": "es2021",
-      "strict": true,
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "forceConsistentCasingInFileNames": true,
-      "types": ["node"],
-      "sourceMap": true,
-      "inlineSourceMap": false,
-      "inlineSources": true,
-      "declaration": false,
-      "noEmit": false,
-      "outDir": "./.ts-node"
-    }
-  }
+  ]
 }
