@@ -21,14 +21,14 @@ describe("if ZionGitHub function is correctly exported", async () => {
 });
 
 describe("closeIssue", async () => {
-  const issueN = 151;
+  const issueN = 161;
   const repo = "noiz-network-state";
-  // const close = await github.closeIssue(
-  //   issueN,
-  //   // @ts-expect-error
-  //   "Zion-PTC",
-  //   repo
-  // );
-  // log("", close);
+  const close = await github.closeIssue(
+    issueN,
+    // @ts-expect-error
+    "Zion-PTC",
+    repo
+  );
+  log("", close);
   it("should delete an issue", () => {});
 });
