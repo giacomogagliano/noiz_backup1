@@ -55,7 +55,12 @@ export { ItemsArea, ItemsAreaProps } from "./ItemsArea";
 export { Md, MdProps } from "./Md";
 
 //// NavBar
-export { NavBar, NavBarProps } from "./NavBar";
+export {
+  NavBar,
+  NavBarProps,
+  NavInputProps,
+  NavInput,
+} from "./NavBar";
 
 export * as Pages from "./Pages";
 export {
