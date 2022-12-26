@@ -10,6 +10,7 @@ import { unified } from "unified";
 import rehypeReact from "rehype-react";
 import { Iprocessor } from "../Processor_v2";
 import { visit } from "unist-util-visit";
+import { Code } from "../../../../../style";
 
 // export const md_raw_react_v2: Imd_raw_react_v2 = function () {};
 
@@ -78,7 +79,9 @@ export const md_raw_react_v1: Iprocessor =
         components: {
           // p: props => <p {...props} id="unified"></p>,
           // chart: () => <div>ola</div>,
-          // div: props => <div {...props}>I am so cool</div>,
+          // div: props => <div {...props}>I am so
+          // cool</div>,
+          code: Code,
         },
       })
       .process(text);
