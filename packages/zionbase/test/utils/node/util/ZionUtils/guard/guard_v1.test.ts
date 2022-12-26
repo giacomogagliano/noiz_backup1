@@ -5,7 +5,6 @@ const { expect, log } = testEnvironment();
 expect;
 log;
 
-// TODO #229 @giacomogagliano make tests
 describe("if guard function is correctly exported", () => {
   const regex = /guard/g;
   const name = guard.name;
