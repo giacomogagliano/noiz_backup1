@@ -9,6 +9,7 @@ export const makeErrGuard_v1: ImakeErrGuard_v1 = function (
   // identificare il nome del paramentro, o ad esempio
   // convertire il tipo che arriva dal dato passato in
   // string per il messaggio di errore
-  if (!data) throw new Error("no options given");
+  if (!data)
+    throw new Error(`the passed data is: ${data}`);
   return data;
 };

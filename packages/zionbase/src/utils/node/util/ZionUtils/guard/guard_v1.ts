@@ -13,7 +13,7 @@ export interface Iguard_v1 {
   //   Exclude<T, Key>;
   // makeErrGuard
   <
-    T extends Object,
+    T extends Object | undefined | null,
     O,
     Out extends {},
     Key extends keyof T
@@ -22,17 +22,17 @@ export interface Iguard_v1 {
   ): NonNullable<T>;
   // dataGuard
   <
-    T extends Object,
+    T extends string | undefined | null,
     O,
     Out extends {},
     Key extends keyof T
   >(
     data: T,
     error: string
-  ): [T, NonNullable<Out>];
+  ): NonNullable<T>;
   // optionGuard
   <
-    T extends Object,
+    T extends Object | undefined | null,
     O,
     Out extends {},
     Key extends keyof T
@@ -42,7 +42,7 @@ export interface Iguard_v1 {
   ): [T, NonNullable<Out>];
   // keyInObjGuard
   <
-    T extends Object,
+    T extends Object | undefined | null,
     O,
     Out extends {},
     Key extends keyof T
@@ -51,10 +51,12 @@ export interface Iguard_v1 {
     key: Key
   ):
     | NonNullable<T>
-    | (Required<Pick<T, Key>> & Exclude<T, Key>);
+    | NonNullable<
+        Required<Pick<T, Key>> & Exclude<T, Key>
+      >;
   //////// MERGED
   <
-    T extends Object,
+    T extends Object | undefined | null,
     O,
     Out extends {},
     Key extends keyof T
@@ -64,7 +66,9 @@ export interface Iguard_v1 {
   ):
     | [T, NonNullable<Out>]
     | NonNullable<T>
-    | (Required<Pick<T, Key>> & Exclude<T, Key>);
+    | NonNullable<
+        Required<Pick<T, Key>> & Exclude<T, Key>
+      >;
 }
 
 /**
@@ -74,29 +78,71 @@ export interface Iguard_v1 {
  * - boolean with error
  * - evaluate some conditions and return the provided output
  * @param data
- * @param errOption
+ * @param errOrOptionOrKey
  * @returns
  */
-// FIXME #223 @giacomogagliano fix the interface
+// FIXME #229 @giacomogagliano fix the interface
 export const guard_v1: Iguard_v1 = function <
-  T extends Object,
-  O,
+  T extends
+    | Object
+    | string
+    | number
+    | boolean
+    | undefined
+    | null,
+  O extends unknown,
   Out extends {},
   Key extends keyof T
 >(
   data: T,
-  errOption?: string | [O, Out][] | Key
+  errOrOptionOrKey?: string | [O, Out][] | Key
 ):
   | [T, NonNullable<Out>]
   | NonNullable<T>
-  | (Required<Pick<T, Key>> & Exclude<T, Key>) {
-  if (!errOption) return makeErrGuard(data);
-  if (typeof errOption === "string")
-    return dataGuard(data, errOption);
-  if (Array.isArray(errOption))
-    return optionGuard(data, errOption);
-  if (errOption in data)
-    return keyInObjGuard(data, errOption);
+  | NonNullable<Required<Pick<T, Key>> & Exclude<T, Key>> {
+  // data
+  const variable = data as string | number | boolean;
+  const object = data as Object;
+  // errOrOptionOrKey
+  const errorMess = errOrOptionOrKey as string;
+  // HACK make a map version
+  const options = errOrOptionOrKey as [O, Out][];
+  const key = errOrOptionOrKey as Key;
+  const noErrOrOptOrKey =
+    errOrOptionOrKey === undefined ||
+    errOrOptionOrKey === null;
+  if (noErrOrOptOrKey) {
+    const result = makeErrGuard(variable);
+    return result as NonNullable<T>;
+  } else {
+    const isOption = Array.isArray(errOrOptionOrKey);
+    if (isOption) {
+      const result = optionGuard<T, O, Out>(data, options);
+      return result;
+    } else {
+      console.log("string");
+      const isString =
+        typeof errOrOptionOrKey === "string";
+      if (isString) {
+        const isObj = typeof data === "object";
+        if (isObj) {
+          const hasKey = Object.getOwnPropertyNames(
+            data
+          ).includes(errOrOptionOrKey);
+          if (hasKey) {
+            const result = keyInObjGuard(object as T, key);
+            return result;
+          } else {
+            const result = dataGuard(data as T, errorMess);
+            return result;
+          }
+        } else {
+          const result = dataGuard(data as T, errorMess);
+          return result;
+        }
+      }
+    }
+  }
   if (!data) throw new Error("no data");
   return data;
 };
