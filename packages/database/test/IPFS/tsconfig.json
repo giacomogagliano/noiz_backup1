@@ -1,0 +1,21 @@
+{
+  "ts-node": {
+    "compilerOptions": {
+      "lib": ["es2021"],
+      "module": "ES2022",
+      "target": "es2021",
+      "moduleResolution": "node",
+      "strict": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "types": ["node", "mocha"],
+      "sourceMap": true,
+      "inlineSourceMap": false,
+      "inlineSources": true,
+      "declaration": false,
+      "noEmit": false,
+      "outDir": "./.ts-node"
+    }
+  }
+}
