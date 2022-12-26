@@ -27,4 +27,7 @@ module.exports = {
 
     return config;
   },
+  experimental: {
+    reactRoot: true,
+  },
 };
