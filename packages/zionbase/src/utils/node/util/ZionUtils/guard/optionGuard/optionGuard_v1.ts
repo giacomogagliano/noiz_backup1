@@ -2,7 +2,7 @@ export interface IoptionGuard_v1 {
   <T, Option, Output extends {}>(
     data: T,
     errOption: [Option, Output][]
-  ): [T, Output];
+  ): [T, NonNullable<Output>];
 }
 
 export const optionGuard_v1: IoptionGuard_v1 = function (
