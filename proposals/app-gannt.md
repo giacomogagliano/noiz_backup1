@@ -1,0 +1,3 @@
+- creare una task
+- creare sotto task
+- creare relazione fra le task

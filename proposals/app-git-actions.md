@@ -1,3 +1,12 @@
 - make a page on the app to control the codebase
   - manage pr
+    - get local repos
+      - perform checks
+    - get remote repos
   - close issues
+  - selezionare un area in cui agire
+  - creare un todo
+  - creare un issue
+  - assegnare milestone
+  - assegnare user
+  - rebase all local repos
