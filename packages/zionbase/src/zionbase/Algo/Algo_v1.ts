@@ -1,3 +1,4 @@
+import { guard } from "../../utils";
 import { FluidGraph } from "../DataStructures/Graph/Graph_v3";
 import type { BasicNode, graph, processor } from "./Types";
 
@@ -63,11 +64,9 @@ export interface Algo_v1<
   use(p: processor<N>): this;
   treat: (p: processor<N>) => void;
   pushInStack: (id: I) => void;
-  // TODO #156 @giacomogagliano finire implementazioni e togliere
-  // il void return
   process(
     graph?: GraphTypes<I, T, N>
-  ): GraphTypes<I, T, N> | void;
+  ): GraphTypes<I, T, N>;
 }
 
 export class Algo_v1<
@@ -125,7 +124,9 @@ export class Algo_v1<
     this.stack_or_queue.push(node as N);
   };
 
-  process(graph?: GraphTypes<I, T, N>) {
+  process(
+    graph?: GraphTypes<I, T, N>
+  ): GraphTypes<I, T, N> {
     if (graph) this.graph = graph;
     let root;
     switch (graph?.type) {
@@ -144,7 +145,7 @@ export class Algo_v1<
         root = arrayroot;
         break;
     }
-    if (!root) return;
+    if (!root) throw new Error("no root");
     this.stack_or_queue = [root];
     while (this.stack_or_queue.length) {
       let curr: BasicNode<I, T>;
@@ -159,7 +160,7 @@ export class Algo_v1<
           curr = this.stack_or_queue.shift()!;
           break;
       }
-      if (!curr) return;
+      if (!curr) break;
       this.curr = curr as N;
       const children = curr.children as I[];
       children.forEach(this.pushInStack);
@@ -168,7 +169,7 @@ export class Algo_v1<
         this.processors.forEach(this.treat);
       }
     }
-    return graph;
+    return guard(graph);
   }
 }
 
