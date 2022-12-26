@@ -7,24 +7,60 @@ import { keyInObjGuard } from "./keyInObjGuard";
  * Overload interface fot the guard function.
  */
 export interface Iguard_v1 {
+  // <T extends Object, O, Key extends keyof T>(obj: T, key: Key): Required<
+  //   Pick<T, Key>
+  // > &
+  //   Exclude<T, Key>;
   // makeErrGuard
-  <T>(data: T): NonNullable<T>;
+  <
+    T extends Object,
+    O,
+    Out extends {},
+    Key extends keyof T
+  >(
+    data: T
+  ): NonNullable<T>;
   // dataGuard
-  <T>(data: T, err: string): NonNullable<T>;
-  // optionGuard
-  <T, O, Out extends {}>(data: T, options: [O, Out][]): [
-    T,
-    NonNullable<Out>
-  ];
-  // keyInObjGuard
-  <T, O, Key extends keyof T>(obj: T, key: Key): Required<
-    Pick<T, Key>
-  > &
-    Exclude<T, Key>;
-  //////// MERGED
-  <T, O, Out extends {}, Key extends keyof T>(
+  <
+    T extends Object,
+    O,
+    Out extends {},
+    Key extends keyof T
+  >(
     data: T,
-    errOption?: string | [O, Out][] | Key
+    error: string
+  ): [T, NonNullable<Out>];
+  // optionGuard
+  <
+    T extends Object,
+    O,
+    Out extends {},
+    Key extends keyof T
+  >(
+    data: T,
+    options: [O, Out][]
+  ): [T, NonNullable<Out>];
+  // keyInObjGuard
+  <
+    T extends Object,
+    O,
+    Out extends {},
+    Key extends keyof T
+  >(
+    data: T,
+    key: Key
+  ):
+    | NonNullable<T>
+    | (Required<Pick<T, Key>> & Exclude<T, Key>);
+  //////// MERGED
+  <
+    T extends Object,
+    O,
+    Out extends {},
+    Key extends keyof T
+  >(
+    data: T,
+    errOrOptionOrKey?: string | [O, Out][] | Key
   ):
     | [T, NonNullable<Out>]
     | NonNullable<T>
@@ -42,7 +78,6 @@ export interface Iguard_v1 {
  * @returns
  */
 // FIXME #223 @giacomogagliano fix the interface
-// @ts-expect-error
 export const guard_v1: Iguard_v1 = function <
   T extends Object,
   O,
