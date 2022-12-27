@@ -29,6 +29,13 @@ export class ZionRegExp_v1
     const flag = "g";
     return string.match(new RegExp(stringPattern, flag));
   };
+  static captureBeggininAndEnd = /^(.{3}).*(.{3})$/;
+  static dynCaptureBeginningAndEnd = (
+    start: number,
+    end: number
+  ) => {
+    return new RegExp(`^(.{${start}}).*(.{${end}})$`);
+  };
   static everythingBetweenDyn = (
     symbolA: string,
     symbolB: string
