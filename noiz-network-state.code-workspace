@@ -3,7 +3,9 @@
     { "path": "." },
     { "path": "tasks" },
     { "path": "apps" },
-    { "path": "packages" }
+    { "path": "packages/zionbase/src/zionbase" },
+    { "path": "packages/zionbase/src/zionbase/DataStructures" },
+    { "path": "packages/zionbase/src/zionbase/DataStructures/Graph" }
   ],
   "settings": {}
 }

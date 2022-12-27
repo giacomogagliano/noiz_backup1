@@ -38,3 +38,5 @@ export * from "./Tree";
 
 //// Dag
 export * from "./DAG";
+
+export * as extensions from "./extensions";
