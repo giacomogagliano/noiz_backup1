@@ -26,6 +26,8 @@ import { like } from "./Like/Like_v1";
 import { moon } from "./Moon/Moon_v1";
 import { more_normal } from "./More_Normal/More_Normal_v1";
 
+// TODO #35 @giacomogagliano styled called in component
+
 enum layouts {
   main = "main",
 }
