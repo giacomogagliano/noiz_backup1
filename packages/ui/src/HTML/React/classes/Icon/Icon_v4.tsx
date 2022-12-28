@@ -102,7 +102,6 @@ export class Icon_v4 extends Component<Icon_v4Props> {
     Icon_v4.IconPaths.push(trending);
     Icon_v4.IconPaths.push(twitter);
 
-    console.log(home);
     Icon_v4.IconPaths.forEach(path => {
       if (this.props[path.name] === true) {
         this.Layout = this[path.layout];
