@@ -1,4 +1,4 @@
-import { Graph, GraphProps, IGraph } from "..";
+import { Graph, GraphProps, IGraph } from "../..";
 
 type isConnectedProps = {
   nodeA: EncodedId;

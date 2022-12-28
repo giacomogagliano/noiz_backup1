@@ -21,22 +21,31 @@ export type {
   Graph_v1Props as GraphProps,
 } from "./Graph_v1";
 
-//// ListGraph
-export * from "./ListGraph";
-
-//// MatrixGraph
-export * from "./MatrixGraph";
-
 //// Node
 export * from "./Node";
 
-//// AppGraph
-export * from "./AppGraph";
-
-//// Tree
-export * from "./Tree";
-
-//// Dag
-export * from "./DAG";
-
 export * as extensions from "./extensions";
+export {
+  AppGraph,
+  AppGraphCtor,
+  AppNode,
+  AppNodeCtor,
+  File,
+  FileSystemTree,
+  FileSystemTreeCtor,
+  Folder,
+  Folder_v2,
+  LeafNode_v2,
+  ListGraph,
+  ListGraphCtor,
+  MatrixGraph,
+  MatrixGraphCtor,
+  Root,
+  Root_v2,
+  Tree,
+  TreeNode,
+  TreeNode_v2,
+} from "./extensions";
+
+//// Edge
+export * from "./Edge";

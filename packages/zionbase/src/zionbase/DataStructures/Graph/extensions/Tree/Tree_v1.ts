@@ -2,7 +2,7 @@ import { File } from "./File";
 import { Folder } from "./Folder";
 import { Root } from "./Root";
 import { TreeNode } from "./TreeNode";
-import { node } from "../../../../utils";
+import { node } from "../../../../../utils";
 
 const zionUtil = node.util.zionUtil;
 
