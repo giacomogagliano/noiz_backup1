@@ -27,6 +27,11 @@ import {
   NavBarState,
 } from "../../NavBar";
 
+const LANDSCAPE_IMG =
+  "https://tse2.mm.bing.net/th?id=OIP.WgFkpDjrYDRCr0JSS_R70QHaE7";
+
+const PORTRAIT_IMG =
+  "https://tse4.mm.bing.net/th?id=OIP.lxfZkt-h3tDIUMZdFDlCYQAAAA";
 enum layouts {
   main = "main",
 }
@@ -151,7 +156,7 @@ export class Profile_v2 extends BaseNoiz<
       >
         <div id="bg-upper"></div>
         <div id="profile-avatar">
-          <Image src="https://ipfs.io/ipfs/QmPGGowQG4oPoRf884Hz9WXivACoDni1GsdDYkRdXVLfJc?filename=QmPGGowQG4oPoRf884Hz9WXivACoDni1GsdDYkRdXVLfJc"></Image>
+          <Image src={LANDSCAPE_IMG}></Image>
         </div>
         <div id="infos">
           <p id="account">{"<account name>"}</p>
