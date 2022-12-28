@@ -1,3 +1,4 @@
+import { createRef, ReactNode, RefObject } from "react";
 import styled, { keyframes } from "styled-components";
 
 enum layouts {
@@ -22,6 +23,7 @@ export interface Image_v2Props
   // handleisLoading: Dispatch<SetStateAction<boolean>>;
   src: string;
   fullBorder?: boolean;
+  aspectRatio?: "landscape" | "portrait" | null;
   // imageLoaded: boolean;
   image?: {
     width?: string;
@@ -38,6 +40,8 @@ export interface Image_v2State
   extends BaseNoizState<Image_v2Props> {
   isLoading: boolean;
   src: string;
+  aspectRatio: "landscape" | "portrait" | null;
+  img: RefObject<HTMLImageElement>;
 }
 
 export class Image_v2State extends BaseNoizState<Image_v2Props> {}
@@ -48,6 +52,8 @@ export class Image_v2 extends BaseNoiz<
   Image_v2Props,
   Image_v2State
 > {
+  img: RefObject<HTMLImageElement>;
+
   static defaultProps: Image_v2Props = {
     layout: layouts.main,
     style: styles.defaultStyle,
@@ -56,13 +62,20 @@ export class Image_v2 extends BaseNoiz<
 
   constructor(props: Image_v2Props) {
     super(props);
+    this.img = createRef<HTMLImageElement>();
     let state = new Image_v2State();
     state.isLoading = true;
     state.layout = () => <></>;
     state.src = "";
     state.style = styled(this.Html)``;
+    state.aspectRatio = null;
+    state.img = this.img;
     this.state = state;
   }
+
+  setAspectRatio = (
+    aspectRatio: "landscape" | "portrait"
+  ) => this.setState({ aspectRatio });
 
   handleIsLoading = (isLoading: boolean) => {
     this.setState({ isLoading });
@@ -95,9 +108,8 @@ export class Image_v2 extends BaseNoiz<
   `;
 
   main = (props: Image_v2Props) => {
+    console.log(props.aspectRatio);
     const handleOnLoad = () => {
-      console.log("loaded");
-
       this.handleIsLoading(false);
     };
     return (
@@ -109,7 +121,9 @@ export class Image_v2 extends BaseNoiz<
           onLoad={handleOnLoad}
           src={props.src}
           id="image"
+          ref={this.state.img}
         ></img>
+
         <div id="loading-waves-container">
           <div id="loading-waves">
             <span></span>
@@ -157,20 +171,28 @@ export class Image_v2 extends BaseNoiz<
     border-top: ${props =>
       props.fullBorder ? "1px" : undefined};
     display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 100%;
+    container-type: size;
     #image {
+      object-fit: contain;
+      object-position: center;
       border-image: none;
       place-self: center;
       display: ${() =>
         !this.state.isLoading ? "block" : "none"};
       max-width: ${props => props.image?.maxWidth};
-      width: ${props => props.image?.width};
-      height: ${props => props.image?.height};
-      max-width: ${props =>
-        props.maxWidth ? props.maxWidth : "100%"};
-      max-height: ${props =>
-        props.maxHeight ? props.maxHeight : "100%"};
+      ${props => {
+        const isLandscape =
+          props.aspectRatio === "landscape";
+        if (isLandscape) {
+          return `height: 100cqh`;
+        } else {
+          return `width: 100cqw`;
+        }
+      }};
+      /* max-width: ${props =>
+        props.maxWidth ? props.maxWidth : "100%"}; */
+      /* max-height: ${props =>
+        props.maxHeight ? props.maxHeight : "100cqh"}; */
       display: ${props =>
         props.display ? props.display : "block"};
       height: ${props =>
@@ -179,13 +201,9 @@ export class Image_v2 extends BaseNoiz<
     }
     #loading-waves-container {
       place-self: center;
-      grid-area: content;
-      position: absolute;
-      #loading-waves {
-        place-self: center;
-        display: ${() => {
-          console.log("state", this.state.isLoading);
 
+      #loading-waves {
+        display: ${() => {
           return !this.state.isLoading ? "none" : "block";
         }};
         position: relative;
@@ -225,4 +243,39 @@ export class Image_v2 extends BaseNoiz<
       style: this.defaultStyle,
     }),
   ];
+
+  render(): ReactNode {
+    let Layout: GComponent<Image_v2Props> =
+      this.state.layout;
+    let Style = this.state.style;
+    Layout = Style;
+    return (
+      <Layout
+        {...this.props}
+        aspectRatio={this.state.aspectRatio}
+      >
+        {this.props.children}
+      </Layout>
+    );
+  }
+
+  didUpdate: (
+    prevProps: Readonly<Image_v2Props>,
+    prevState: Readonly<Image_v2State>,
+    snapshot?: any
+  ) => void = (p, s, _) => {
+    const currImage = this.state.img;
+    if (currImage.current) {
+      if (this.state.aspectRatio === null) {
+        const rect =
+          currImage.current.getBoundingClientRect();
+        const imgw = rect.width;
+        const imgh = rect.height;
+        const ratio = imgw / imgh;
+        const aspectRatio: "landscape" | "portrait" =
+          ratio >= 1 ? "landscape" : "portrait";
+        this.setAspectRatio(aspectRatio);
+      }
+    }
+  };
 }
