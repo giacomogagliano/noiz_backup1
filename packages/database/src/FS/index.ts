@@ -9,6 +9,7 @@ export { ZionCsv } from "./classes/";
 export type { IZionCsv } from "./classes/";
 export { ZionYaml, ZionYamlToFile } from "./classes";
 export { NoizPath } from "./classes";
+export { NoizBabel } from "./classes";
 export * from "../FS/classes/System";
 // lib
 // export * from "./lib/CRUD.js";
