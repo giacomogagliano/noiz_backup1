@@ -25,6 +25,7 @@ import {
   NavBar,
   NavBarProps,
   NavBarState,
+  NavInput,
 } from "../../NavBar";
 
 const LANDSCAPE_IMG =
@@ -108,7 +109,9 @@ export class Profile_v2 extends BaseNoiz<
 
   NavBar: ComponentClass<NavBarProps, NavBarState> =
     NavBar;
-  NavBarStyled = styled(this.NavBar)``;
+  NavBarStyled = styled(this.NavBar)`
+    grid-area: navbar;
+  `;
 
   Badge: ComponentClass<BadgeProps, BadgeState> = Badge;
   BadgeStyled = styled(Badge)``;
@@ -200,7 +203,24 @@ export class Profile_v2 extends BaseNoiz<
             </div>
           </div>
         </div>
-        <NavBarStyled />
+        <NavBarStyled layout="main" style="borderOnTop">
+          <NavInput
+            layout="text"
+            inputId="rhrhhrhrhr"
+            inputName="inputname"
+            checked
+          ></NavInput>
+          <NavInput
+            layout="text"
+            inputId="blblbl"
+            inputName="inputname"
+          ></NavInput>
+          <NavInput
+            layout="text"
+            inputId="ahahhah"
+            inputName="inputname"
+          ></NavInput>
+        </NavBarStyled>
         <ItemsArea avatarSize={4} height={100}>
           <Card
             layout="main"
@@ -359,11 +379,6 @@ export class Profile_v2 extends BaseNoiz<
           }
         }
       }
-    }
-    ${this.NavBarStyled} {
-      width: 100%;
-      display: grid;
-      grid-area: navbar;
     }
   `;
 
