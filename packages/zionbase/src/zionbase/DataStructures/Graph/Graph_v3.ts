@@ -70,7 +70,16 @@ export interface Graph_v3<Id, NodeId, N, Value> {
   type: "map" | "array" | "object";
   nodes: { [props in NodeId]: N } | N[] | Map<NodeId, N>;
 }
-
+/**
+ * Graph_v3 is a class that represents a graph data structure. It implements the IGraph_v3 interface and
+ * contains properties and methods for traversing the graph using breadth-first search (bfs) and depth-first
+ * search (dfs).
+ *
+ * @template Id The type of the graph's identifier.
+ * @template NodeId The type of the nodes' identifiers.
+ * @template N The type of the nodes in the graph.
+ * @template Value The type of the values stored in the nodes.
+ */
 export class Graph_v3<
   Id,
   NodeId extends string | number | symbol,
@@ -80,6 +89,16 @@ export class Graph_v3<
 {
   bfs;
   dfs;
+  /**
+   * Constructs a new instance of the Graph_v3 class.
+   *
+   * @param props An object containing the properties for the new graph.
+   * @param props.id The identifier for the new graph.
+   * @param props.type The type of the new graph.
+   * @param props.nodes An array of nodes to include in the new graph.
+   *
+   * @throws {Error} If the nodes array is empty or does not contain any elements.
+   */
   constructor(props: FluidGraph<Id, NodeId, N, Value>) {
     const self = this;
     this.id = props.id;
