@@ -54,5 +54,10 @@ export default function index() {
     iconpaths
   );
   const mappedPaths = builtPaths.map(createLinks);
-  return <div>{mappedPaths}</div>;
+  return (
+    <div>
+      {mappedPaths}
+      {createLinks(["./icon/loading", "loading"], 0)}
+    </div>
+  );
 }
