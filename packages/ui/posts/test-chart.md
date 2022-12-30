@@ -2,16 +2,26 @@
 title: "test chart in md"
 date: "2022-12-26"
 chart:
-  id: 1
-  label: "Tokenomics"
-  labels:
-    [
-      ["Promozione", 10],
-      ["Investors", 5],
-      ["Programmazione", 10],
-      ["Stampa", 20],
-      ["Artisti", 55],
-    ]
+  - id: 1
+    label: "Tokenomics"
+    labels:
+      [
+        ["Promozione", 10],
+        ["Investors", 5],
+        ["Programmazione", 10],
+        ["Stampa", 20],
+        ["Artisti", 55],
+      ]
+  - id: 2
+    label: "Suppl"
+    labels:
+      [
+        ["Promozione", 1],
+        ["Testimonials", 1],
+        ["Progettazione", 1],
+        ["Delivery", 2],
+        ["Artisti", 4],
+      ]
 ---
 
 # Scopo
@@ -57,7 +67,18 @@ pagine di tipo `tokenomics`, ovvero, all'interno della quale
 
 # Div con id="chart"
 
-Possiamo ad esempio creare un div con `id=chart`
+Possiamo ad esempio creare un div con `id=chart-<id>`
+in questo modo
+
+```md
+...
+
+<div id=chart-<id>></div>
+...
+```
+
+> è importante che il tag del div venga chiuso perchè altrimenti
+> il rendere del contenuto del file `.md` si blocca
 
 ed al suo interno renderizzarci qualche cosa manipolando il
 `dom` all'interno del metodo `componentDidUpdate`.
@@ -66,4 +87,33 @@ ed al suo interno renderizzarci qualche cosa manipolando il
 > che il dom sia 'montato', quindi possiamo accedere agli
 > elementi presenti
 
-<div id="chart">
+<div id="chart-1"></div>
+
+## Oggetto data di una pagina MdTokenomics
+
+Una pagina come quella che stiamo renderizzando in questo esempio devono avere
+questo aspetto:
+
+```ts
+interface MdTokenomicGreyMatterData {
+  title: string;
+  date: string;
+  chart: {
+    id: number;
+    label: string;
+    labels: [string, number][];
+  }[];
+}
+```
+
+Ovvero puo contenere piu chart. Ogni chart per essere renderizzata ha bisogno di un
+corrispettivo `<div id=chart-<id>>`, dove id deve corrispondere all'id della chart inserita
+nella parte "`yaml`" del file md.
+
+> Qui sotto nel file `.md` ho inserito questo codice:
+>
+> ```html
+> <div id="chart-2"></div>
+> ```
+
+<div id="chart-2"></div>
