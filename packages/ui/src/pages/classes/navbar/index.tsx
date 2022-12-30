@@ -9,19 +9,19 @@ import {
 
 export default function index() {
   const input1 = new NavInputProps();
-  input1.inputId = "biu";
+  input1.inputId = "lol";
   input1.inputName = "ok";
 
   const input2 = new NavInputProps();
-  input2.inputId = "bello";
+  input2.inputId = "olo";
   input2.inputName = "ok";
 
   const input3 = new NavInputProps();
-  input3.inputId = "Arianna";
+  input3.inputId = "ool";
   input3.inputName = "ok";
 
   const input4 = new NavInputProps();
-  input4.inputId = "wow";
+  input4.inputId = "oool";
   input4.inputName = "ok";
   let NavArea = styled.div`
     width: inherit;
@@ -30,10 +30,12 @@ export default function index() {
   return (
     <NavArea>
       <NavBar text layout="main" style="borderOnTop">
-        <NavInput {...input3} layout="icon" checked>
-          <Icon arrowLeft />
-        </NavInput>
-        <NavInput {...input1} layout="text" />
+        <NavInput
+          {...input3}
+          layout="icon"
+          checked
+        ></NavInput>
+        <NavInput {...input1} layout="icon" />
         <NavInput {...input4} layout="icon" />
       </NavBar>
     </NavArea>
