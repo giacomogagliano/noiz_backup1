@@ -23,6 +23,7 @@ export default function index() {
   const input4 = new NavInputProps();
   input4.inputId = "wow";
   input4.inputName = "ok";
+
   let NavArea = styled.div`
     width: inherit;
   `;

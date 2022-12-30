@@ -24,15 +24,16 @@ import {
 import {
   NavBar,
   NavBarProps,
-  NavBarState,
   NavInput,
-} from "../../NavBar";
+  NavInputProps,
+} from "../../../classes";
 
 const LANDSCAPE_IMG =
   "https://tse2.mm.bing.net/th?id=OIP.WgFkpDjrYDRCr0JSS_R70QHaE7";
 
 const PORTRAIT_IMG =
   "https://tse4.mm.bing.net/th?id=OIP.lxfZkt-h3tDIUMZdFDlCYQAAAA";
+
 enum layouts {
   main = "main",
 }
@@ -71,7 +72,6 @@ export interface Profile_v2
     Profile_v2State
   > {
   Icon: ComponentClass<IconProps, IconState>;
-  NavBar: ComponentClass<NavBarProps, NavBarState>;
   Badge: ComponentClass<BadgeProps, BadgeState>;
   Image: ComponentClass<ImageProps, ImageState>;
   ItemsArea: ComponentClass<
@@ -103,13 +103,20 @@ export class Profile_v2 extends BaseNoiz<
       IconProps,
       IconState
     >;
+
   StyledTwitter = styled(this.Icon)`
     place-self: end;
   `;
 
-  NavBar: ComponentClass<NavBarProps, NavBarState> =
-    NavBar;
-  NavBarStyled = styled(this.NavBar)`
+  NavBarStyled = styled(
+    (() => {
+      NavBar.defaultProps = {
+        layout: "main",
+        style: "borderOnBottom",
+      };
+      return NavBar;
+    })()
+  )`
     grid-area: navbar;
   `;
 
@@ -149,6 +156,16 @@ export class Profile_v2 extends BaseNoiz<
     const StyledTwitter = this.StyledTwitter;
     const NavBarStyled = this.NavBarStyled;
 
+    let input1 = new NavInputProps();
+    input1.inputId = "on Sale";
+    input1.inputName = "profile-menu";
+    let input2 = new NavInputProps();
+    input2.inputId = "Owned";
+    input2.inputName = "profile-menu";
+    let input3 = new NavInputProps();
+    input3.inputId = "Created";
+    input3.inputName = "profile-menu";
+
     function handleClick() {
       props.setIsShowMore(!props.isShowMore);
     }
@@ -166,16 +183,16 @@ export class Profile_v2 extends BaseNoiz<
           <p id="handle">{"@handle"}</p>
           <div id="details">
             <div id="text-area">
-              <p id="bold">{props.tracks}</p>
               <p>Tracks</p>
+              <p id="bold">{props.tracks}</p>
             </div>
             <div id="text-area">
-              <p id="bold">{props.followers}</p>
               <p>Followers</p>
+              <p id="bold">{props.followers}</p>
             </div>
             <div id="text-area">
-              <p id="bold">{props.following}</p>
               <p>Following</p>
+              <p id="bold">{props.following}</p>
             </div>
           </div>
           <div id="social">
@@ -203,23 +220,14 @@ export class Profile_v2 extends BaseNoiz<
             </div>
           </div>
         </div>
-        <NavBarStyled layout="main" style="borderOnTop">
+        <NavBarStyled>
           <NavInput
-            layout="text"
-            inputId="rhrhhrhrhr"
-            inputName="inputname"
+            {...input1}
+            layout="key-value"
             checked
           ></NavInput>
-          <NavInput
-            layout="text"
-            inputId="blblbl"
-            inputName="inputname"
-          ></NavInput>
-          <NavInput
-            layout="text"
-            inputId="ahahhah"
-            inputName="inputname"
-          ></NavInput>
+          <NavInput {...input2} layout="key-value" />
+          <NavInput {...input3} layout="key-value" />
         </NavBarStyled>
         <ItemsArea avatarSize={4} height={100}>
           <Card
@@ -248,12 +256,15 @@ export class Profile_v2 extends BaseNoiz<
   defaultStyle = styled(this.Html)`
     display: grid;
     grid-template-columns: 2rem 1fr 2rem;
-    grid-template-rows: 2rem 15rem auto 3rem auto;
+    grid-template-rows: 2rem 15rem auto 2rem auto;
     transition: 0.3s ease;
+    > *:not(:last-child) {
+      margin-bottom: 1rem;
+    }
     ${props => {
       if (props.isShowMore)
         return css`
-          grid-template-rows: 2rem 15rem auto 3rem auto;
+          grid-template-rows: 2rem 15rem auto 2rem auto;
         `;
       return "";
     }}
@@ -261,7 +272,7 @@ export class Profile_v2 extends BaseNoiz<
   "bg bg bg"
   ". circle ."
   ". infos ."
-  "navbar navbar navbar"
+  ". navbar ."
   ". content .";
     width: 100%;
     height: 100%;

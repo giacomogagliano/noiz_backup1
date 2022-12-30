@@ -117,6 +117,7 @@ export class ItemsArea_v2 extends BaseNoiz<
   ];
 
   defaultStyle = styled(this.Html)`
+    margin-top: 1rem;
     display: grid;
     background-color: ${props =>
       props.theme.backgroundColor};
