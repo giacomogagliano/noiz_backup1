@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  Icon,
-  Loading,
-} from "../../../../HTML/React/classes";
+import { Loading } from "../../../../HTML/React/classes/Icon";
 
 export default function index() {
   return <Loading display></Loading>;
