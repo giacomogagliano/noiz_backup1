@@ -38,6 +38,7 @@ export interface Icon_v4Props extends IconPathOptions {
     stroked?: boolean | undefined;
     secondary?: boolean | undefined;
   };
+  isFillContainer?: boolean;
 }
 
 export class Icon_v4 extends Component<Icon_v4Props> {
@@ -148,13 +149,9 @@ export class Icon_v4 extends Component<Icon_v4Props> {
   Layout = (props: Icon_v4Props) => <>{props.account}</>;
 
   Style = styled(this.Layout)`
-    // #10 aggiungere qui
-    width: 100%;
-    height: 100%;
     ${props => {
-      if (props.like)
-        console.log(props.theme.primary.color);
-      return "";
+      if (props.isFillContainer)
+        return "width:100%; height:100%;";
     }}
     path {
       fill: ${props =>
@@ -191,6 +188,7 @@ export class Icon_v4 extends Component<Icon_v4Props> {
         filled={this.filled}
         stroked={this.stroked}
         secondary={this.secondary}
+        isFillContainer={this.props.isFillContainer}
       >
         {this.Icon}
       </this.Style>
