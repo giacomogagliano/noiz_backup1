@@ -1,9 +1,13 @@
 import { ZionError } from "@zionstate/zionbase/utils";
-import { FS } from "../..";
+import { system, reader, lib } from "../../../FileSystem";
+ZionError;
+system;
+reader;
+lib;
 import { ZionGit } from "../ZionGit";
+ZionGit;
 import { ZionGitHub } from "../ZionGitHub";
-
-const { reader, system } = FS;
+ZionGitHub;
 
 const { joinPaths, existsSync } = system;
 const PACKAGESTRINGERROR =
@@ -12,12 +16,11 @@ const NOPACKAGEJSONERROR =
   "No package.json is present in the repo folder";
 const NOPATHERROR = "No path was set for the repo";
 
-type package_json = FS.lib.types.packageJSON.DataType2;
-type tsconfig_json = FS.lib.types.tsconfigJSON.DataType;
-type jsconfig_json = FS.lib.types.jsconfigJSON.DataType;
-type prettierrc_json =
-  FS.lib.types.prettierrcJSON.DataType;
-type dependency = FS.lib.types.packageJSON.Dependency;
+type package_json = lib.types.packageJSON.DataType2;
+type tsconfig_json = lib.types.tsconfigJSON.DataType;
+type jsconfig_json = lib.types.jsconfigJSON.DataType;
+type prettierrc_json = lib.types.prettierrcJSON.DataType;
+type dependency = lib.types.packageJSON.Dependency;
 
 export enum PackagesSubFolders {
   "@zionstate" = "@zionstate",
