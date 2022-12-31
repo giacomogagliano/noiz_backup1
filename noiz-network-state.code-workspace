@@ -3,6 +3,9 @@
     { "path": "." },
     { "path": "tasks" },
     { "path": "apps" },
+    { "path": "packages/database/src/" },
+    { "path": "packages/database/src/Git" },
+    { "path": "packages/database/test/Git/ZionGit" },
     { "path": "packages/zionbase/src/zionbase" },
     { "path": "packages/zionbase/src/zionbase/DataStructures" },
     { "path": "packages/zionbase/src/zionbase/DataStructures/Graph" }
