@@ -1,23 +1,23 @@
-export * from "./getDeps.js";
-export * from "./hasSrcDir.js";
+export * from "./getDeps";
+export * from "./hasSrcDir";
 
 ///////// Types
 export * from "./Types";
 
 //// Status
-export * from './Status';
+export * from "./Status";
 
 //// RepoFile
-export * from './RepoFile';
+export * from "./RepoFile";
 
 //// RepoFolder
-export * from './RepoFolder';
+export * from "./RepoFolder";
 
 //// RepoRoot
-export * from './RepoRoot';
+export * from "./RepoRoot";
 
 //// App
-export * from './App';
+export * from "./App";
 
 //// Package
-export * from './Package';
+export * from "./Package";

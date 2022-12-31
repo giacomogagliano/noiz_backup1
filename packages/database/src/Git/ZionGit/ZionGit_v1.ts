@@ -13,9 +13,7 @@ import {
 // import {} from "@zionstate/database/EVM";
 import { InitResult } from "simple-git";
 import { ZionGit } from ".";
-import { FS } from "../..";
-
-const { system } = FS;
+import { system } from "../../../FS";
 
 export interface IZionGit_v1 {}
 
