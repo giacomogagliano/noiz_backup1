@@ -174,8 +174,6 @@ export interface IZionGit {
  */
 export function testRepo(path: string[] | string) {
   if (!Array.isArray(path)) path = splitPath(path);
-  console.log("________________PATH: " + path);
-
   const git = new ZionGit(path);
   return git.isRepo();
 }
