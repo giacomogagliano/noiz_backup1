@@ -8,3 +8,6 @@ export * from "./buildPathTuple";
 
 ///////// buildPaths
 export * from "./buildPaths";
+
+///////// removeDirectoryLevels
+export * from "./removeDirectoryLevels";
