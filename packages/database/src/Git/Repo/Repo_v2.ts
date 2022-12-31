@@ -1,5 +1,5 @@
 import { Tree } from "@zionstate/zionbase/zionbase";
-import { FS } from "../..";
+import { lib } from "../../../FS";
 import { ZionGit } from "../ZionGit";
 import { ZionGitHub } from "../ZionGitHub";
 
@@ -7,12 +7,11 @@ import { ZionGitHub } from "../ZionGitHub";
 
 // const { joinPaths, existsSync } = system;
 
-type package_json = FS.lib.types.packageJSON.DataType2;
-type tsconfig_json = FS.lib.types.tsconfigJSON.DataType;
-type jsconfig_json = FS.lib.types.jsconfigJSON.DataType;
-type prettierrc_json =
-  FS.lib.types.prettierrcJSON.DataType;
-type dependency = FS.lib.types.packageJSON.Dependency;
+type package_json = lib.types.packageJSON.DataType2;
+type tsconfig_json = lib.types.tsconfigJSON.DataType;
+type jsconfig_json = lib.types.jsconfigJSON.DataType;
+type prettierrc_json = lib.types.prettierrcJSON.DataType;
+type dependency = lib.types.packageJSON.Dependency;
 
 export type RepoTypes = "app" | "package";
 
