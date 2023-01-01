@@ -1,8 +1,7 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { MouseEventHandler } from "react";
 import { NoizProps } from "../../lib/types";
 import { Position, Sizes } from "../../lib/global";
-import { checkCss } from "../../lib/util";
 
 export type ButtonStyle = NoizProps<
   {
@@ -22,52 +21,50 @@ export type ButtonStyle = NoizProps<
 export interface IButton extends ButtonStyle {}
 
 export const Button = styled.button<IButton>`
-  line-height: 1.2;
   font-size: 70%;
   place-self: center;
   border: 0;
-  border-radius: 10px;
-  text-align: center;
-  overflow: hidden;
-  padding: 0;
+  border-radius: 1rem;
+  padding: 0.23rem 1.5rem;
   margin: 0;
   cursor: pointer;
-  display: grid;
-  ${props => checkCss("gridArea", props)}
-  ${props => checkCss("zIndex", props)}
-  border: 1px solid ${props => {
-    return props.theme.primary.borderColor;
+  ${props => {
+    const isPrimary = props.primary;
+    if (isPrimary) {
+      return css`
+        background-color: ${props.theme.palette_ryb.blue_green.setBrightness(
+          48
+        ).value};
+        border: 0.1rem solid
+          ${props.theme.palette_ryb.blue_green.setColor(5)
+            .value};
+        color: ${props.theme.secondary.color};
+      `;
+    } else return null;
   }};
-  position: ${props =>
-    props.position ? "fixed" : "static"};
-  bottom: ${props => {
-    if (!props.position) return;
-    return props.position.bottom
-      ? props.position.bottom
-      : "10%";
-  }};
-  right: ${props => {
-    if (!props.position) return;
-    return props.position.right
-      ? props.position.right
-      : "7%";
-  }};
-  &:first-child {
-    display: grid;
-    justify-content: center;
-    justify-items: center;
-    justify-self: ${props => {
-      if (!props.child || !props.child.justifySelf)
-        return "center";
-      return props.child.justifySelf;
-    }};
-  }
+
   &:hover {
     cursor: pointer;
+    ${props => {
+      const isPrimary = props.primary;
+      if (isPrimary) {
+        return css`
+          background-color: ${props.theme.palette_ryb.blue_green.setBrightness(
+            52
+          ).value};
+          border: 0.1rem solid
+            ${props.theme.palette_ryb.blue_green.setBrightness(
+              65
+            ).value};
+          color: ${props.theme.secondary.color};
+        `;
+      } else return null;
+    }};
   }
-  text {
-    margin: 0;
-    place-self: center;
-    font-size: x-small;
+
+  &:active {
+    position: relative;
+    top: 1px;
+    left: 1px;
   }
 `;
