@@ -8,4 +8,5 @@ export interface IP {
 export const P = styled.p<IP>`
   ${props => (props.bold ? "font-weight: bold;" : "")}
   ${props => (props.dimmed ? "color: grey;" : "")}
+  margin: 0;
 `;
