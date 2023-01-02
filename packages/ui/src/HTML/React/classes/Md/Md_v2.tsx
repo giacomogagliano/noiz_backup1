@@ -9,8 +9,19 @@ import { Processor } from "../../lib/hooks";
 import { JSXElementConstructor } from "react";
 import { ReactElement, ReactNode } from "react";
 import { Chart } from "../Chart";
+import { dataGuard } from "@zionstate/zionbase/utils";
 
 type RgbaString = string;
+
+export interface MdTokenomicGreyMatterData {
+  title: string;
+  date: string;
+  chart: {
+    id: number;
+    label: string;
+    labels: [string, number][];
+  }[];
+}
 
 export interface Labels {
   color: RgbaString;
@@ -107,7 +118,8 @@ const color1 = "rgba(23, 58, 51, 1)";
 const color2 = "rgba(52, 131, 115, 1)";
 const color3 = "rgba(21, 191, 157, 1)";
 const color4 = "rgba(106, 178, 248, 1)";
-const bkgColor = [color1, color2, color3, color4];
+const color5 = "rgba(78, 68, 191, 1)";
+const bkgColor = [color1, color2, color3, color4, color5];
 const borCol = bkgColor;
 const borWidth = 1;
 
@@ -120,7 +132,7 @@ const labels = [
 ];
 
 const chart2title = "Tokenomics";
-const data2_1 = [10, 5, 10, 55, 20];
+const data2_1: number[] = [];
 const dataset2 = new Dataset(
   chart2title,
   data2_1,
@@ -130,8 +142,6 @@ const dataset2 = new Dataset(
 );
 const datasets2 = [dataset2];
 const data2 = new Data(labels, datasets2);
-
-console.log(ReactDOM);
 
 type value =
   | VFile
@@ -190,7 +200,7 @@ export class Md_v2Props extends BaseNoizProps<
 > {}
 
 export interface Md_v2State<
-  T extends GrayMatterFile<string>["data"]
+  T extends MdTokenomicGreyMatterData
 > extends BaseNoizState<Md_v2Props> {
   Content: Content;
   data: T;
@@ -198,12 +208,11 @@ export interface Md_v2State<
   processorArgs: ProcessorArgs;
 }
 export class Md_v2State<
-  T extends GrayMatterFile<string>["data"]
+  T extends MdTokenomicGreyMatterData
 > extends BaseNoizState<Md_v2Props> {}
 
-export interface Md_v2<
-  T extends GrayMatterFile<string>["data"]
-> extends BaseNoiz<
+export interface Md_v2<T extends MdTokenomicGreyMatterData>
+  extends BaseNoiz<
     layoutTypes,
     styleTypes,
     Md_v2Props,
@@ -225,7 +234,7 @@ export interface Md_v2<
 }
 
 export class Md_v2<
-  T extends GrayMatterFile<string>["data"]
+  T extends MdTokenomicGreyMatterData
 > extends BaseNoiz<
   layoutTypes,
   styleTypes,
@@ -299,15 +308,30 @@ export class Md_v2<
 
   handle_md_rawReact = () => {
     if (this.props.md_raw_react) {
-      const domeNode =
-        window.document.getElementById("chart");
-      console.log("el", domeNode);
-      const root = ReactDOM.createRoot(domeNode!);
-      root.render(
-        <Chart
-          chartJs={{ type: "doughnut", data: data2 }}
-        ></Chart>
-      );
+      const cond = true;
+      if (cond) {
+        this.state.data.chart.forEach(chart => {
+          const id = chart.id;
+          const domeNode = window.document.getElementById(
+            `chart-${id}`
+          );
+          const root = ReactDOM.createRoot(domeNode!);
+          let labels: string[] = [];
+          let data: number[] = [];
+          chart.labels.forEach(l => {
+            labels.push(l[0]);
+            data.push(l[1]);
+          });
+          const dataset = dataGuard(data2.datasets[0], "");
+          data2.labels = labels;
+          dataset.data = data;
+          root.render(
+            <Chart
+              chartJs={{ type: "doughnut", data: data2 }}
+            ></Chart>
+          );
+        });
+      }
     }
   };
 
@@ -323,8 +347,8 @@ export class Md_v2<
     const text = this.state.processorArgs.text;
     const type = this.state.processorArgs.type;
     const processor = new this.Processor({ text, type });
+
     this.setData(processor.data as T);
-    console.log(processor.data);
 
     const parser = this.makeParser(type, processor);
     parser.then(this.handleParsedData);
@@ -408,14 +432,49 @@ export class Md_v2<
   ];
 
   defaultStyle = styled(this.Html)`
+    margin: 1rem;
+    > *:not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
     /* img {
       width: 100vw;
     } */
     blockquote {
+      padding: 0.3rem;
+      > *:not(:last-child) {
+        margin-bottom: 0.3rem;
+      }
+      border-radius: 0.3rem 0 0 0.3rem;
       background-color: ${props =>
-        props.theme.palette_ryb.red_purple[20]};
+        props.theme.palette_ryb.red_purple
+          .setSaturation(4)
+          .setBrightness(20).value};
       border-left: 1rem solid
-        ${props => props.theme.palette_ryb.red_purple[30]};
+        ${props =>
+          props.theme.palette_ryb.red_purple
+            .setBrightness(30)
+            .setSaturation(10).value};
+    }
+    pre {
+      padding: 1rem;
+      background-color: ${props =>
+        props.theme.palette_ryb.red_purple
+          .setSaturation(2)
+          .setBrightness(45).value};
+      width: max-content;
+      border-top: 0.5rem solid
+        ${props =>
+          props.theme.palette_ryb.red_purple
+            .setSaturation(22)
+            .setBrightness(45).value};
+      border-radius: 0.3rem;
+      code {
+        margin: 0.3rem;
+        font-family: "Courier New", Courier, monospace;
+        * {
+          font-family: "Courier New", Courier, monospace;
+        }
+      }
     }
   `;
 

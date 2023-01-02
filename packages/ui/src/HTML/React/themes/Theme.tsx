@@ -6,6 +6,8 @@ import { FluidTheme } from "../lib/types/theme";
 const darkgrey_ = "hsl(0, 0%, 53%)";
 const grey_ = "hsl(0, 0%, 76%)";
 
+const ryp_palett = new RYB(-8);
+
 const palette = {
   grey: grey_,
   darkgrey: darkgrey_,
@@ -15,7 +17,9 @@ const palette = {
   green: "hsl(102, 18%, 56%)",
   blue: "hsl(203, 74%, 29%)",
   purple: "hsl(317, 39%, 30%)",
-  black: "hsl(114, 72%, 6%)",
+  black: ryp_palett.green
+    .setBrightness(7)
+    .setSaturation(15).value,
   white: "hsl(300, 100%, 99%)",
   smoke: "hsl(317,1%,29%)",
 };
@@ -37,7 +41,7 @@ export const darkTheme: FluidTheme = {
     color: palette.black,
   },
   palette,
-  palette_ryb: new RYB(-8),
+  palette_ryb: ryp_palett,
 };
 
 export const lightTheme: FluidTheme = {
@@ -57,5 +61,5 @@ export const lightTheme: FluidTheme = {
     color: palette.white,
   },
   palette,
-  palette_ryb: new RYB(-8),
+  palette_ryb: ryp_palett,
 };

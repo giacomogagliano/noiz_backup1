@@ -275,7 +275,10 @@ export class NoizApp_v2 extends BaseNoiz<
       width: 100%;
       display: flex;
       justify-content: space-between;
-      background-color: ${this.bgcolor};
+      background-color: ${props =>
+        props.theme.palette_ryb.blue_green
+          .setSaturation(10)
+          .setBrightness(9).value};
       * {
         align-self: center;
       }
@@ -302,7 +305,10 @@ export class NoizApp_v2 extends BaseNoiz<
         this.state.theme.backgroundColor};
     }
     footer {
-      background-color: ${this.bgcolor};
+      background-color: ${props =>
+        props.theme.palette_ryb.blue_green
+          .setSaturation(10)
+          .setBrightness(9).value};
     }
   `;
 
