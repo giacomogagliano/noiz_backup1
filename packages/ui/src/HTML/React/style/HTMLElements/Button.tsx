@@ -82,7 +82,21 @@ const primary_hover = (
   return css`
     background-color: ${bg_color};
     border: 0.1rem solid ${border_color};
-    color: ${props.theme.primary.color};
+    color: ${props.theme.palette.white};
+  `;
+};
+const secondary_hover = (
+  props: ButtonStyleSecondary & { theme: DefaultTheme }
+) => {
+  let palette_ryb = props.theme.palette_ryb;
+  let blue_green = palette_ryb.blue_green;
+  let bg_color = props.theme.primary.backgroundColor;
+  let border_color = blue_green.setBrightness(80).value;
+  let color = blue_green.setBrightness(75).value;
+  return css`
+    background-color: ${bg_color};
+    border: 0.1rem solid ${border_color};
+    color: ${color};
   `;
 };
 
@@ -111,8 +125,11 @@ export const Button = styled.button<IButton>`
     cursor: pointer;
     ${props => {
       const isPrimary = props.primary;
+      const isSecondary = props.secondary;
       if (isPrimary) {
         return primary_hover(props);
+      } else if (isSecondary) {
+        return secondary_hover(props);
       } else return null;
     }};
   }
