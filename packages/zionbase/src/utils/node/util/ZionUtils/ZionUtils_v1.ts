@@ -21,6 +21,7 @@ import {
   subtractArrays,
   sortDescending,
   stringifyBase64,
+  removeDirectoryLevels,
   // joinPaths,
   // buildPathTuple,
   // buildPaths,
@@ -104,6 +105,10 @@ export interface IZionUtils_v1 {
   modulo(a: number, b: number): number;
   convertDecimalToFractionString(decimale: number): string; //////////FATTO
   // PATHS
+  removeDirectoryLevels(
+    filePath: string,
+    levels: number
+  ): string;
   joinPaths(...paths: string[]): string;
   buildPathTuple(
     paths: string[],
@@ -155,6 +160,7 @@ export class ZionUtils_v1 implements IZionUtils_v1 {
   convertDecimalToFractionString =
     convertDecimalToFractionString;
   // paths
+  removeDirectoryLevels = removeDirectoryLevels;
   joinPaths(...paths: string[]) {
     return join(...paths);
   }
