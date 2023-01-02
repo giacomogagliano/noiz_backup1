@@ -439,6 +439,7 @@ export class Md_v2<
     /* img {
       width: 100vw;
     } */
+    // TODO #288 @ariannatnl mettere questo css negli style
     blockquote {
       padding: 0.3rem;
       > *:not(:last-child) {
@@ -455,6 +456,7 @@ export class Md_v2<
             .setBrightness(30)
             .setSaturation(10).value};
     }
+    // TODO #287 @ariannatnl mettere questi css negli style
     pre {
       padding: 1rem;
       background-color: ${props =>
