@@ -8,7 +8,7 @@
   "scripts": {
     "build": "yarn preconstruct build",
     "server": "node dist/noizapps-gun-server.esm.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_DEBUG=log mocha"
   },
   "author": "Gagliano Giacomo",
   "license": "MIT",
@@ -18,7 +18,9 @@
   "devDependencies": {
     "@preconstruct/cli": "^2.2.2",
     "@zionstate/test": "0.0.1",
-    "dotenv": "^16.0.3"
+    "dotenv": "^16.0.3",
+    "mocha": "^10.2.0",
+    "ts-node": "^10.9.1"
   },
   "peerDependencies": {
     "@zionstate/test": "0.0.1",
