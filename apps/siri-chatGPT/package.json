@@ -1,0 +1,33 @@
+{
+  "name": "@noizapps/siri-chatgpt",
+  "version": "0.0.1",
+  "description": "endpoint per siri shortcuts",
+  "main": "dist/noizapps-siri-chatgpt.cjs.js",
+  "module": "dist/noizapps-siri-chatgpt.esm.js",
+  "type": "module",
+  "scripts": {
+    "test": "\"mocha\"",
+    "server": "node dist/noizapps-siri-chatgpt.esm.js",
+    "build": "yarn preconstruct build"
+  },
+  "author": "Arianna Minucci",
+  "license": "MIT",
+  "dependencies": {
+    "@zionstate/test": "0.0.1",
+    "openai": "^3.1.0"
+  },
+  "devDependencies": {
+    "@preconstruct/cli": "^2.2.2",
+    "body-parser": "^1.20.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "ts-node": "^10.9.1"
+  },
+  "peerDependencies": {
+    "@preconstruct/cli": "^2.2.2",
+    "body-parser": "^1.20.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "ts-node": "^10.9.1"
+  }
+}
