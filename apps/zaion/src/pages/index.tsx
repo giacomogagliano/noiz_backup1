@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { project } from "../index";
 
 const COLOR = 196;
@@ -35,7 +35,7 @@ const Area = styled.div`
   }
 `;
 
-const Product = styled.div`
+export const Product = styled.div`
   background-color: hsl(${COLOR}, 60%, 98%);
   border-bottom: 0.1rem solid hsl(${COLOR}, 100%, 50%);
   padding: 0.5rem;
@@ -78,7 +78,7 @@ const Product = styled.div`
     }
   }
 `;
-const Key = styled.p`
+const ResponsiveKey = css`
   @media (max-aspect-ratio: 4/3) {
     display: inline;
     margin: 0;
@@ -92,7 +92,24 @@ const Key = styled.p`
     display: none;
   }
 `;
-const Value = styled.p<{ num?: string }>`
+const FixedKey = css`
+  display: inline;
+  margin: 0;
+  padding-right: 0.5rem;
+  place-self: end;
+  font-weight: bold;
+  color: gray;
+`;
+export const Key = styled.p<{ isResponsive?: boolean }>`
+  ${props => {
+    if (props.isResponsive) {
+      return ResponsiveKey;
+    } else {
+      return FixedKey;
+    }
+  }}
+`;
+export const Value = styled.p<{ num?: string }>`
   display: inline;
   margin: 0;
 `;
@@ -135,28 +152,28 @@ export default function index() {
           let Elements = [];
           for (let entity of budgetEntities) {
             Elements.push(
-              <Product>
+              <Product key={entity[1].title}>
                 <h4 id="table-title">{entity[1].title}</h4>
                 <div>
-                  <Key>Product</Key>
+                  <Key isResponsive>Product</Key>
                   <Value>{entity[1].product.name} </Value>
                 </div>
                 <div>
-                  <Key>Title</Key>
+                  <Key isResponsive>Title</Key>
                   <Value>{entity[1].title} </Value>
                 </div>
                 <div id="num">
-                  <Key>Amount</Key>
+                  <Key isResponsive>Amount</Key>
                   <Value>{entity[1].amount.toLocaleString()} </Value>
                 </div>
                 <div id="num">
-                  <Key>Unit Price</Key>
+                  <Key isResponsive>Unit Price</Key>
                   <Value>
                     {entity[1].product.unit_price.toLocaleString()}$
                   </Value>
                 </div>
                 <div id="num">
-                  <Key>Sub-total</Key>
+                  <Key isResponsive>Sub-total</Key>
                   <Value>
                     {(
                       entity[1].product.unit_price * entity[1].amount
@@ -165,7 +182,7 @@ export default function index() {
                   </Value>
                 </div>
                 <div>
-                  <Key>Scope</Key>
+                  <Key isResponsive>Scope</Key>
                   <Value>{entity[1].scope}</Value>
                 </div>
               </Product>
@@ -194,29 +211,31 @@ export default function index() {
           let Elements = [];
           for (let prod of productsonsale) {
             Elements.push(
-              <Product>
+              <Product key={prod[1].budgetEntity.title}>
                 <h4 id="table-title">{prod[1].product.name}</h4>
                 <div>
-                  <Key>Product</Key>
+                  <Key isResponsive>Product</Key>
                   <Value>{prod[1].product.name} </Value>
                 </div>
                 <div>
                   <p></p>
                 </div>
                 <div id="num">
-                  <Key>Stock</Key>
-                  <Value>{prod[1].stock}</Value>
+                  <Key isResponsive>Stock</Key>
+                  <Value>{prod[1].stock.toLocaleString()}</Value>
                 </div>
                 <div id="num">
-                  <Key>Sale Price</Key>
-                  <Value>{prod[1].sale_price}$</Value>
+                  <Key isResponsive>Sale Price</Key>
+                  <Value>{prod[1].sale_price.toLocaleString()}$</Value>
                 </div>
                 <div id="num">
-                  <Key>Sub-total</Key>
-                  <Value>{prod[1].sale_price * prod[1].stock}$</Value>
+                  <Key isResponsive>Sub-total</Key>
+                  <Value>
+                    {(prod[1].sale_price * prod[1].stock).toLocaleString()}$
+                  </Value>
                 </div>
                 <div>
-                  <Key>MarkUp</Key>
+                  <Key isResponsive>MarkUp</Key>
                   <Value>{prod[1].markup_perc}</Value>
                 </div>
               </Product>

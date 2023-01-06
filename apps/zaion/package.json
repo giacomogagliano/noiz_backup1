@@ -9,6 +9,7 @@
     "dev": "next dev"
   },
   "dependencies": {
+    "@zionstate/ui": "0.0.1",
     "next": "^12.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
