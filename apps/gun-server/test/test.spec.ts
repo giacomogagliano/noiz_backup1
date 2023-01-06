@@ -14,14 +14,8 @@ describe("first", () => {
     database.open(e => {
       log("database", e);
     });
-    database.get("users").set({ name: "giacomo" });
-    database.get("users").set({ name: "arianna" });
-    database
-      .get("users")
-      .map()
-      .once(user => {
-        log(user);
-      });
+    let users = database.get("users");
+    users.set({ name: "ddd" });
   });
 });
 
