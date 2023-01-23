@@ -1,0 +1,4 @@
+{
+  "main": "dist/zionstate-ui-HTML-React-style.cjs.js",
+  "module": "dist/zionstate-ui-HTML-React-style.esm.js"
+}

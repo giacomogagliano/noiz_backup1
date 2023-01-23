@@ -23,7 +23,7 @@ import {
 } from "../../ItemsArea";
 import {
   NavBar,
-  NavBarProps,
+  // NavBarProps,
   NavInput,
   NavInputProps,
 } from "../../../classes";
@@ -31,8 +31,8 @@ import {
 const LANDSCAPE_IMG =
   "https://tse2.mm.bing.net/th?id=OIP.WgFkpDjrYDRCr0JSS_R70QHaE7";
 
-const PORTRAIT_IMG =
-  "https://tse4.mm.bing.net/th?id=OIP.lxfZkt-h3tDIUMZdFDlCYQAAAA";
+// const PORTRAIT_IMG =
+//   "https://tse4.mm.bing.net/th?id=OIP.lxfZkt-h3tDIUMZdFDlCYQAAAA";
 
 enum layouts {
   main = "main",
