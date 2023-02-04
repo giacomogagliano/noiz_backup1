@@ -5,15 +5,32 @@
   "source": "src/index.ts",
   "main": "dist/zionstate-ui.cjs.js",
   "module": "dist/zionstate-ui.esm.js",
+  "exports": {
+    ".": {
+      "module": "./dist/zionstate-ui.esm.js",
+      "default": "./dist/zionstate-ui.cjs.js"
+    },
+    "./style": {
+      "module": "./style/dist/zionstate-ui-style.esm.js",
+      "default": "./style/dist/zionstate-ui-style.cjs.js"
+    },
+    "./components": {
+      "module": "./style/dist/zionstate-ui-components.esm.js",
+      "default": "./style/dist/zionstate-ui-components.cjs.js"
+    }
+  },
   "types": "dist/index.d.ts",
   "files": [
     "dist",
-    "HTML/React/style"
+    "style",
+    "components"
   ],
   "preconstruct": {
+    "exports": true,
     "entrypoints": [
       "index.ts",
-      "HTML/React/style/index.ts"
+      "style.ts",
+      "components.ts"
     ]
   },
   "scripts": {
