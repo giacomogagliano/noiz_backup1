@@ -1,7 +1,9 @@
-import { hslToHex } from "../../built/src/lib/Color/hslToHex.js";
+import { lib } from "../../../src/Colors";
 import { testEnvironment } from "@zionstate/test";
 
+const hslToHex = lib.hsl2hex;
 const { expect, log } = testEnvironment();
+log;
 
 describe(`Method hslToHex`, () => {
   it(`it should convert the provided hsl values into an hex string`, () => {
