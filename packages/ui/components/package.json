@@ -1,0 +1,4 @@
+{
+  "main": "dist/zionstate-ui-components.cjs.js",
+  "module": "dist/zionstate-ui-components.esm.js"
+}
