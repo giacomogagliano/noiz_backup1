@@ -1,4 +1,0 @@
-{
-  "main": "dist/zionstate-ui-colors-entrypoint.cjs.js",
-  "module": "dist/zionstate-ui-colors-entrypoint.esm.js"
-}
