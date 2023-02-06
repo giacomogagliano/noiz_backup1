@@ -1,0 +1,4 @@
+{
+  "main": "dist/zionstate-ui-next.cjs.js",
+  "module": "dist/zionstate-ui-next.esm.js"
+}

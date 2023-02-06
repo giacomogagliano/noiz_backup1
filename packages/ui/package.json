@@ -21,6 +21,10 @@
     "./colors": {
       "module": "./style/dist/zionstate-ui-colors.esm.js",
       "default": "./style/dist/zionstate-ui-colors.cjs.js"
+    },
+    "./next": {
+      "module": "./style/dist/zionstate-ui-next.esm.js",
+      "default": "./style/dist/zionstate-ui-next.cjs.js"
     }
   },
   "types": "dist/index.d.ts",
@@ -28,7 +32,8 @@
     "dist",
     "style",
     "components",
-    "colors-entrypoint"
+    "colors-entrypoint",
+    "next"
   ],
   "preconstruct": {
     "exports": true,
@@ -36,7 +41,8 @@
       "index.ts",
       "style.ts",
       "components.ts",
-      "colors-entrypoint.ts"
+      "colors-entrypoint.ts",
+      "next.ts"
     ]
   },
   "scripts": {
