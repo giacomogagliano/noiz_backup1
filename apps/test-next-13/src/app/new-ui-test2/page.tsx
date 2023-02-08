@@ -295,6 +295,53 @@ const Body = styled.body`
       line-height: 70px;
     }
   }
+  .sub-heading.text-center.mb-80 {
+    margin-bottom: 80px;
+    font-family: Inter, sans-serif;
+    font-weight: 600;
+  }
+  .sub-heading {
+    margin-bottom: 0px;
+    color: #9f9fa5;
+    font-size: 40px;
+    line-height: 50px;
+    @media screen and (max-width: 479px) {
+      margin-bottom: 10px;
+      font-size: 30px;
+      line-height: 36px;
+    }
+  }
+  ///////////////////////////// GRID ///////////////////////////////////////////////////////////
+  .grid-5 {
+    grid-column-gap: 50px;
+    grid-row-gap: 50px;
+    grid-template-areas: "Area Area-2";
+    -ms-grid-rows: auto;
+    grid-template-rows: auto;
+    @media screen and (max-width: 991px) {
+      justify-items: center;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      grid-template-areas:
+        "Area Area"
+        "Area-3 Area-3";
+      -ms-grid-rows: auto auto;
+      grid-template-rows: auto auto;
+    }
+  }
+  .w-layout-grid {
+    display: -ms-grid;
+    display: grid;
+    grid-auto-columns: 1fr;
+    -ms-grid-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    -ms-grid-rows: auto auto;
+    grid-template-rows: auto auto;
+    grid-row-gap: 16px;
+    grid-column-gap: 16px;
+  }
   //////////////////////////// TESTI ////////////////////////////////////////////////////////
   .text-span {
     background-image: linear-gradient(86deg, #f86339, #fdc945);
@@ -335,6 +382,23 @@ const Body = styled.body`
       font-size: 20px;
       line-height: 26px;
     }
+  }
+  .paragraph.text-left {
+    text-align: left;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  .paragraph.text-left.text-white {
+    color: #fff;
+  }
+  .paragraph.text-left.text-white {
+    color: #fff;
+  }
+
+  .paragraph.text-left {
+    text-align: left;
   }
   .text-center.text-white.text-hero {
     margin-bottom: 20px;
@@ -697,6 +761,166 @@ const Body = styled.body`
     filter: brightness(0.9);
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
   }
+  ///////////////////////////CARD/////////////////////////////////////////////////////////////////
+  .feature-card {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: visible;
+    padding-top: 50px;
+    padding-right: 50px;
+    padding-left: 50px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e9ebee;
+    border-radius: 40px;
+    background-color: #fff;
+    box-shadow: 1px 1px 60px 0 rgb(0 0 0 / 15%);
+    @media screen and (max-width: 479px) {
+      margin-bottom: 0px;
+      padding: 40px 30px;
+      border-radius: 30px;
+    }
+
+    @media screen and (max-width: 991px) {
+      max-width: 600px;
+    }
+  }
+
+  .feature-header {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 0px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    @media screen and (max-width: 991px) {
+      top: -80px;
+    }
+  }
+  .feature-heading.feature-heading-nextcloud {
+    color: #0082c9;
+  }
+
+  .feature-image {
+    position: static;
+    width: 100%;
+    max-width: 500px;
+    margin-top: 40px;
+    -webkit-align-self: flex-end;
+    -ms-flex-item-align: end;
+    align-self: flex-end;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.1);
+    border-top-left-radius: 6px;
+    box-shadow: 1px 1px 30px 0 rgb(0 0 0 / 15%);
+    @media screen and (max-width: 479px) {
+      margin-top: 40px;
+    }
+    @media screen and (max-width: 767px) {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+  }
+  .feature-heading {
+    display: block;
+    margin-top: 0px;
+    margin-right: 20px;
+    margin-bottom: 40px;
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: 600;
+    @media screen and (max-width: 479px) {
+      margin-right: 30px;
+      margin-bottom: 30px;
+      font-size: 20px;
+      line-height: 26px;
+    }
+  }
+  .feature-heading.feature-heading-photoprism {
+    color: #c2fde4;
+  }
+  .feature-icon {
+    width: 100%;
+    max-width: 120px;
+    border-radius: 22%;
+    box-shadow: 3px 3px 20px 0 rgb(0 0 0 / 20%);
+    -webkit-transform: translate(0px, -70%);
+    -ms-transform: translate(0px, -70%);
+    transform: translate(0px, -70%);
+    @media screen and (max-width: 479px) {
+      max-width: 80px;
+      margin-right: -10px;
+      margin-left: -20px;
+      -webkit-transform: translate(0px, -80%);
+      -ms-transform: translate(0px, -80%);
+      transform: translate(0px, -80%);
+    }
+  }
+  .feature-icon.feature-icon-nextcloud {
+    box-shadow: 3px 3px 20px 0 rgb(46 120 230 / 47%);
+  }
+  .feature-icon.feature-icon-photoprism {
+    box-shadow: 3px 3px 20px 0 rgb(97 16 126 / 32%);
+  }
+  .feature-content {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+    margin-right: -51px;
+    margin-bottom: -1px;
+    margin-left: -50px;
+    padding-left: 50px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: end;
+    -webkit-align-items: flex-end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    @media screen and (max-width: 479px) {
+      margin-right: -31px;
+      margin-bottom: -43px;
+      margin-left: -30px;
+      padding-left: 30px;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+    }
+  }
+
   ///////////////////////////CONTAINER/////////////////////////////////////////////////////////////////
 
   .w-container {
@@ -710,6 +934,71 @@ const Body = styled.body`
     @media screen and (max-width: 991px) {
       max-width: 728px;
     }
+  }
+  .w-container .w-row {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+
+  .w-row,
+  .w-container .w-row {
+    @media screen and (max-width: 767px) {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+  .w-row:after {
+    clear: both;
+  }
+  .w-row:before,
+  .w-row:after {
+    content: " ";
+    display: table;
+    grid-column-start: 1;
+    grid-row-start: 1;
+    grid-column-end: 2;
+    grid-row-end: 2;
+  }
+
+  .columns-3 {
+    @media screen and (max-width: 479px) {
+      padding-right: 0px;
+      padding-left: 0px;
+    }
+
+    @media screen and (max-width: 767px) {
+      padding-right: 10px;
+    }
+  }
+
+  .column-12 {
+    @media screen and (max-width: 479px) {
+      padding-right: 0px;
+      padding-left: 0px;
+    }
+  }
+
+  .w-col-10 {
+    width: 83.33333333%;
+  }
+  .w-col {
+    position: relative;
+    float: left;
+    width: 100%;
+    min-height: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    @media screen and (max-width: 767px) {
+      width: 100%;
+      left: auto;
+      right: auto;
+    }
+    @media screen and (max-width: 479px) {
+      width: 100%;
+    }
+  }
+  .w-col-2 {
+    width: 16.66666667%;
   }
 `;
 
@@ -911,10 +1200,44 @@ function index() {
             </h3>
             <div className="w-layout-grid grid-5">
               <div className="feature-card">
-                <div></div>
+                <div className="feature-header">
+                  <h3 className="feature-heading feature-heading-nextcloud">
+                    Run your private cloud with Nextcloud.
+                  </h3>
+                  <img
+                    src=""
+                    loading="lazy"
+                    className="feature-icon feature-icon-nextcloud"
+                  ></img>
+                </div>
+                <div className="feature-content">
+                  <div className="columns-3 w-row">
+                    <div className="column-12 w-col w-col-10">
+                      <p className="paragraph text-left">
+                        An entirely self-hosted Google Drive replacement — store
+                        your documents, calendar, contacts, photos and videos on
+                        your Umbrel with Nextcloud instead of Google’s servers.
+                      </p>
+                    </div>
+                    <div className="w-col w-col-2"></div>
+                  </div>
+                  <img src="" loading="eager" className="feature-image"></img>
+                </div>
                 <div></div>
               </div>
-              <div className="feature-card feature-card-photoprism"></div>
+              <div className="feature-card feature-card-photoprism">
+                <div className="feature-header">
+                  <h3 className="feature-heading feature-heading-photoprism">
+                    Store your photos and videos with PhotoPrism.
+                  </h3>
+                  <img
+                    className="feature-icon feature-icon-photoprism"
+                    src=""
+                    loading="lazy"
+                  ></img>
+                </div>
+                <div className="feature-content"></div>
+              </div>
             </div>
           </div>
         </div>
