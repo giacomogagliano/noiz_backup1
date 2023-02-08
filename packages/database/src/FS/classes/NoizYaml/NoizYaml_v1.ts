@@ -1,5 +1,8 @@
 import yaml from "yaml";
+import util from "util";
 import { Dirent, system } from "../System";
+
+const deprecate = util.deprecate;
 
 export interface INoizYaml_v1<T> {
   string: string;
@@ -28,7 +31,9 @@ export class NoizYamlToFile_v1 {
   tree;
   constructor(path: string, configYaml: string) {
     this.result = system.getDirent(path);
-    this.configYaml = yaml.parse(system.stringifyFile(configYaml));
+    this.configYaml = yaml.parse(
+      system.stringifyFile(configYaml)
+    );
     this.tree = system.buildTree(path);
   }
 }
@@ -37,4 +42,5 @@ export type NoizYaml_v1Ctor<T> = {
   new (name: string): NoizYaml_v1<T>;
 };
 
-export const NoizYaml_v1Ctor: NoizYaml_v1Ctor<any> = NoizYaml_v1;
+export const NoizYaml_v1Ctor: NoizYaml_v1Ctor<any> =
+  deprecate(NoizYaml_v1);
