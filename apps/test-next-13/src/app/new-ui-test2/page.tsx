@@ -5,6 +5,13 @@ import { Div } from "@zionstate/ui/style";
 
 const Body = styled.body`
   ////////GLOBAL////////////////////////////////////////////////
+  audio,
+  canvas,
+  progress,
+  video {
+    display: inline-block;
+    vertical-align: baseline;
+  }
   * {
     box-sizing: border-box;
   }
@@ -251,12 +258,6 @@ const Body = styled.body`
     background-color: #5351fb;
     color: #fff;
   }
-  h1 {
-    font-size: 2em;
-    margin: 0.67em 0;
-    color: #fff;
-  }
-
   .heading.heading-hero {
     max-width: 1000px;
     margin-right: 1.6rem;
@@ -276,6 +277,25 @@ const Body = styled.body`
     font-weight: 600;
     text-align: center;
   }
+
+  .big-heading {
+    margin-bottom: 40px;
+    font-size: 70px;
+    line-height: 86px;
+    font-weight: 600;
+    text-align: center;
+    @media screen and (max-width: 479px) {
+      font-size: 48px;
+      line-height: 48px;
+    }
+    @media screen and (max-width: 767px) {
+      margin-top: 10px;
+      margin-bottom: 20px;
+      font-size: 70px;
+      line-height: 70px;
+    }
+  }
+  //////////////////////////// TESTI ////////////////////////////////////////////////////////
   .text-span {
     background-image: linear-gradient(86deg, #f86339, #fdc945);
     -webkit-background-clip: text;
@@ -290,12 +310,31 @@ const Body = styled.body`
     -o-box-decoration-break: clone;
     box-decoration-break: clone;
   }
+  h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+    color: #fff;
+  }
+  h2 {
+    font-size: 32px;
+    line-height: 36px;
+    margin-top: 20px;
+  }
   p {
     color: #fff;
     transform: translate3d(0px, 14px, 0px) scale3d(1, 1, 1) rotateX(0deg)
       rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
     opacity: 1;
     transform-style: preserve-3d;
+  }
+
+  .paragraph {
+    color: black;
+    text-align: center;
+    @media screen and (max-width: 479px) {
+      font-size: 20px;
+      line-height: 26px;
+    }
   }
   .text-center.text-white.text-hero {
     margin-bottom: 20px;
@@ -619,11 +658,58 @@ const Body = styled.body`
   .hero-image.floating.d-none {
     display: none;
   }
+  .image-18 {
+    display: block;
+    margin-top: 60px;
+    margin-right: auto;
+    margin-left: auto;
+  }
   ///////////////////////ELEMENTI PAGINA
   .content-wrapper {
     overflow: hidden;
     flex-wrap: wrap;
     filter: blur(0px);
+  }
+  ////////////////////////////////////////YOUTUBE VIDEO///////////////////////////////////////////////
+
+  .autoplay-video-container {
+    position: relative;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 50px;
+  }
+  .youtube-play-icon {
+    width: 70px;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+  .autoplay-video {
+    display: block;
+    margin: auto;
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 10px;
+    filter: brightness(0.9);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  }
+  ///////////////////////////CONTAINER/////////////////////////////////////////////////////////////////
+
+  .w-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 940px;
+    @media screen and (max-width: 479px) {
+      max-width: none;
+    }
+
+    @media screen and (max-width: 991px) {
+      max-width: 728px;
+    }
   }
 `;
 
@@ -777,8 +863,61 @@ function index() {
         </div>
       </div>
       <div className="content-wrapper">
-        <div id="why" className="section dark wf-section"></div>
-        <div id="what" className="section wf-section"></div>
+        <div id="why" className="section dark wf-section">
+          <div className="container w-container">
+            <h2 className="big-heading">De-google yourself.</h2>
+            <div className="w-embed">
+              <a
+                className="autoplay-video-container"
+                href="https://www.youtube.com/watch?v=Uu1TuE6RdKM"
+                target="_blank"
+              >
+                <img
+                  className="youtube-play-icon"
+                  src="https://i.imgur.com/trXdlO5.png"
+                ></img>
+                <video className="autoplay-video">
+                  {" "}
+                  /////// autoplay="" loop="" muted="" //////////
+                  <source
+                    src="https://i.imgur.com/JFknZrb.mp4"
+                    type="video/mp4"
+                  />
+                </video>
+              </a>
+            </div>
+            <p className="paragraph">
+              All of our interactions on the internet today are mediated by a
+              few companies who offer “free” services in exchange for storing
+              our data on their servers to spy on us.
+              <br></br>
+              <br></br>
+              Running a personal server fundamentally changes that. You and your
+              family’s photos, videos, files, notes, passwords — everything,
+              have nothing to do with someone else’s computer. They’re a part of
+              your private life, and now they can all be stored by you, on your
+              personal server.
+            </p>
+            <img className="image-18"></img>
+          </div>
+        </div>
+        <div id="what" className="section wf-section">
+          <div className="container w-container">
+            <h2 className="big-heading mb-20">
+              Welcome to the <span className="text-span-2">new internet.</span>
+            </h2>
+            <h3 className="sub-heading text-center mb-80">
+              One that's powered by you. <span className="text-span-2"></span>
+            </h3>
+            <div className="w-layout-grid grid-5">
+              <div className="feature-card">
+                <div></div>
+                <div></div>
+              </div>
+              <div className="feature-card feature-card-photoprism"></div>
+            </div>
+          </div>
+        </div>
         <div id="what" className="section dark wf-section"></div>
         <div id="what" className="section wf-section"></div>
         <div id="app-store" className="section wf-section"></div>
