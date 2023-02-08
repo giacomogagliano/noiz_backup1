@@ -1,0 +1,21 @@
+{
+  "name": "@zaionapps/zaion-server",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "NODE_DEBUG=log nodemon --exec ts-node src/app.js",
+    "start": "node src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@zionstate/database": "^0.0.1",
+    "@zionstate/zionbase": "^0.0.1",
+    "express": "^4.18.1",
+    "gun": "^0.2020.1239"
+  }
+}
