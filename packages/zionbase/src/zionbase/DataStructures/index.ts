@@ -1,5 +1,5 @@
 // export * as Graph from "./Graph";
-export * as Trees from "./Graph/Tree";
+export * as Trees from "./Graph/extensions/Tree";
 export {
   File,
   Folder,
@@ -7,7 +7,7 @@ export {
   Root,
   Tree,
   TreeNode,
-} from "./Graph/Tree";
+} from "./Graph/extensions/Tree";
 
 //// Array
 export * from "./Array";
