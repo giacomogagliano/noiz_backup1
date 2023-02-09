@@ -4,9 +4,11 @@ import { reduce } from "../Mix/lib";
  *
  */
 export type withTypeInClass<ctor extends AnyAbstractCtor> =
-  <T extends ComplexAbstractMixin<any>[]>(
+  <T extends ComplexMixin<any>[]>(
     mixins: T
-  ) => abstract new () => AbstractIntersectionOfMixinArray<T> &
+  ) => abstract new (
+    ...args: any[]
+  ) => IntersectionOfMixinArray<T> &
     InferAbstractInstance<ctor>;
 
 /////////////////////METHODS//////////////////////////////
@@ -111,12 +113,16 @@ export class MixAbstract_v1<ctor extends AnyAbstractCtor>
   constructor(ctor: ctor) {
     this.ctor = ctor;
   }
-  with<T extends ComplexAbstractMixin<any>[]>(
+  with<T extends ComplexMixin<any>[]>(
     mixins: T
-  ): abstract new () => AbstractIntersectionOfMixinArray<T> &
+  ): abstract new (
+    ...args: any[]
+  ) => IntersectionOfMixinArray<T> &
     InferAbstractInstance<ctor> {
     const ctor = this.ctor;
-    let res: abstract new () => AbstractIntersectionOfMixinArray<T> &
+    let res: abstract new (
+      ...args: any[]
+    ) => IntersectionOfMixinArray<T> &
       InferAbstractInstance<ctor> = mixins.reduce(
       reduce,
       ctor
