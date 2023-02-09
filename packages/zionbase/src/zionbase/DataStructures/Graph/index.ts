@@ -1,3 +1,4 @@
+import { Graph_v4 as v4, Graph_v4Props as v4Props } from './Graph_v4';
 export {
   Graph_v3,
   ArrayGraph_v3Ctor as ArrayGraph,
@@ -49,3 +50,6 @@ export {
 
 //// Edge
 export * from "./Edge";
+
+export const Graph_v4 = v4;
+export type Graph_v4Props = v4Props;
