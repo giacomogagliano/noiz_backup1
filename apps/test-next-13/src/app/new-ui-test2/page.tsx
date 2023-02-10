@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Div } from "@zionstate/ui/style";
 import { Header } from "../../components/Header";
 import { FullPage } from "../../components/FullPage";
 
@@ -26,7 +25,6 @@ const Body = styled.body`
   font-size: 22px;
   line-height: 28px;
   @media screen and (max-width: 479px) {
-    padding-top: 40px;
     padding-bottom: 40px;
     font-size: 20px;
     line-height: 26px;
@@ -47,7 +45,7 @@ const Body = styled.body`
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    &.text-span-2 {
+    text-span-2 {
       box-decoration-break: clone;
       -webkit-box-decoration-break: clone;
       -ms-box-decoration-break: clone;
@@ -152,83 +150,7 @@ const Body = styled.body`
     border: 0;
   }
 
-  .w-inline-block {
-    max-width: 100%;
-    display: inline-block;
-  }
-  .header-link {
-    position: relative;
-    margin-right: 9px;
-    margin-left: 9px;
-    text-decoration: none;
-    margin-top: 0px;
-    color: #fff;
-    font-size: 17px;
-    line-height: 20px;
-    font-weight: 400;
-    @media screen and (max-width: 479px) {
-      font-size: 14px;
-    }
-    @media screen and (max-width: 479px) {
-      margin-right: 0px;
-      margin-left: 14px;
-    }
-
-    @media screen and (max-width: 767px) {
-      font-size: 14px;
-    }
-  }
-  .header-link.header-sticky-link {
-    color: #1d1d1f;
-  }
-  .header-link.d-xs-none {
-    @media screen and (max-width: 479px) {
-      display: none;
-    }
-  }
-  .header-link.header-link-primary {
-    padding: 7px 20px;
-    border-radius: 16px;
-    background-color: #fff;
-    color: #1d1d1f;
-    @media screen and (max-width: 479px) {
-      padding: 5px 16px;
-    }
-  }
-  .header-link.header-link-primary.header-sticky-link {
-    background-color: #5351fb;
-    color: #fff;
-  }
-
-  ///////////////////////////// GRID ///////////////////////////////////////////////////////////
-
   //////////////////////////// TESTI ////////////////////////////////////////////////////////
-
-  .html-embed-2 {
-    a:-webkit-any-link {
-      color: -webkit-link;
-      cursor: pointer;
-    }
-    @media screen and (max-width: 991px) {
-      display: none;
-    }
-  }
-  .w-embed:before,
-  .w-embed:after {
-    content: " ";
-    display: table;
-    grid-column-start: 1;
-    grid-row-start: 1;
-    grid-column-end: 2;
-    grid-row-end: 2;
-  }
-  .w-embed:after {
-    clear: both;
-  }
-  .github-stars {
-    width: 84px;
-    height: auto;
-  }
 
   .image-18 {
     display: block;
@@ -470,18 +392,44 @@ const Body = styled.body`
 `;
 
 function index() {
-  const [scrollY, setScrollY] = useState(0);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [halfwbreakpoint, setHalfwbreakpoint] = useState(0);
+  const [trigger1Top, setTrigger1Top] = useState(0);
+  const [trigger1pos, setTrigger1pos] = useState(0);
+  const [trigger1, setTrigger1] = useState("-100vw");
+  const [isNavbarVisible, setIsNavbarVisible] = useState(false);
   useEffect(() => {
-    window.onscroll = () => {
-      setScrollY(window.pageYOffset);
-    };
-    return () => {
-      window.onscroll = null;
-    };
+    const triggerElement1 = document.getElementById("trigger-1");
+    const trigger1Top = triggerElement1.offsetTop;
+    const trigger1 = trigger1Top - 500;
+    const halfwbreakpoint = window.innerHeight / 2;
+    setTrigger1Top(trigger1Top);
+    setTrigger1pos(trigger1);
+    setHalfwbreakpoint(halfwbreakpoint);
+    window.addEventListener("scroll", () => {
+      setScrollPosition(window.pageYOffset);
+    });
+    window.addEventListener("resize", () => {
+      const halfwbreakpoint = window.innerHeight / 2;
+      setHalfwbreakpoint(halfwbreakpoint);
+    });
   }, []);
+  useEffect(() => {
+    const delta1 = -trigger1pos + scrollPosition;
+    const condizione = delta1 > 0;
+    const navbarTrigger = scrollPosition > 450;
+    if (condizione) {
+      setTrigger1("0");
+    }
+    if (navbarTrigger) {
+      setIsNavbarVisible(true);
+    } else setIsNavbarVisible(false);
+  }, [scrollPosition]);
+  console.log(isNavbarVisible);
+
   return (
     <Body>
-      <Header></Header>
+      <Header trigger1={trigger1} isNavbarVisible={isNavbarVisible}></Header>
       <FullPage></FullPage>
     </Body>
   );

@@ -98,42 +98,11 @@ const Body = styled.body`
   }
 
   .div-block-18 {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    width: 100%;
-    max-width: 990px;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
     img {
       max-width: 100%;
       vertical-align: middle;
       display: inline-block;
       border: 0;
-    }
-    .header-logo {
-      height: 30px;
-      margin-top: 18px;
-      margin-bottom: 18px;
-    }
-    .div-block-19 {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
-      align-items: center;
-      grid-column-gap: 16px;
-      grid-row-gap: 16px;
-    }
-    a {
-      background-color: transparent;
-      text-decoration: underline;
     }
     .w-inline-block {
       max-width: 100%;
