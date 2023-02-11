@@ -25,7 +25,7 @@ const LinuxCommandComponent = styled.div`
 export const LinuxCommand = () => (
   <LinuxCommandComponent>
     <div className="linux-command-container">
-      <div className="linux-command">curl -L https://umbrel.sh | bash</div>
+      <div className="linux-command">curl -L https://zion.sh | bash</div>
     </div>
   </LinuxCommandComponent>
 );

@@ -7,6 +7,8 @@ import { Navbar } from "./Navbar";
 const HeaderComponent = styled.div<{
   trigger1: string;
   isNavbarVisible: boolean;
+  triggerButtonToTop: string;
+  triggerButtonTransform: string;
 }>`
   .header {
     display: flex;
@@ -75,34 +77,25 @@ const HeaderComponent = styled.div<{
     -ms-flex-align: center;
     align-items: center;
     background-image: url(assets/hero-bg_1.jpg);
+    background-attachment: fixed;
     background-position: 50% 0%;
     background-size: cover;
   }
   .gradient-button {
     display: grid;
     padding: 10px 20px;
-    -webkit-justify-content: space-around;
-    -ms-flex-pack: distribute;
     justify-content: space-around;
     grid-auto-columns: 1fr;
     grid-column-gap: 16px;
     grid-row-gap: 16px;
-    -ms-grid-columns: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
-    -ms-grid-rows: auto auto;
     grid-template-rows: auto auto;
     border-radius: 4px;
     background-image: linear-gradient(190deg, #8584ff, #5351fb);
     box-shadow: 0 1px 15px 0 #e2e3e4;
-    -webkit-transition: box-shadow 500ms cubic-bezier(0.23, 1, 0.32, 1),
-      -webkit-transform 500ms cubic-bezier(0.23, 1, 0.32, 1);
-    transition: box-shadow 500ms cubic-bezier(0.23, 1, 0.32, 1),
-      -webkit-transform 500ms cubic-bezier(0.23, 1, 0.32, 1);
-    transition: transform 500ms cubic-bezier(0.23, 1, 0.32, 1),
-      box-shadow 500ms cubic-bezier(0.23, 1, 0.32, 1);
-    transition: transform 500ms cubic-bezier(0.23, 1, 0.32, 1),
-      box-shadow 500ms cubic-bezier(0.23, 1, 0.32, 1),
-      -webkit-transform 500ms cubic-bezier(0.23, 1, 0.32, 1);
+    opacity: ${props => props.triggerButtonToTop};
+    transition: opacity 500ms, transform 500ms;
+    transform: translateY(${props => props.triggerButtonTransform});
     text-decoration: none;
   }
   .heading {
@@ -180,8 +173,18 @@ const HeaderComponent = styled.div<{
   }
 `;
 
-export const Header = ({ trigger1, isNavbarVisible }) => (
-  <HeaderComponent trigger1={trigger1} isNavbarVisible={isNavbarVisible}>
+export const Header = ({
+  trigger1,
+  isNavbarVisible,
+  triggerButtonToTop,
+  triggerButtonTransform,
+}) => (
+  <HeaderComponent
+    trigger1={trigger1}
+    isNavbarVisible={isNavbarVisible}
+    triggerButtonToTop={triggerButtonToTop}
+    triggerButtonTransform={triggerButtonTransform}
+  >
     <div className=" header-sticky-container">
       <Navbar></Navbar>
     </div>
@@ -195,19 +198,22 @@ export const Header = ({ trigger1, isNavbarVisible }) => (
       <h1 id="trigger-1" className="heading heading-hero">
         Goodbye, big tech.
         <br />
-        Hello, <span className="text-span">server in your home.</span>
+        Welcome, <span className="text-span">your data at your own home.</span>
         <span className="text-span"></span>
         <span className="text-span"></span>
       </h1>
-      <p className="© text-center text-white text-hero">
-        Umbrel is an OS for running a personal server in your home. Self-host
-        open source apps like Nextcloud, Bitcoin node, and more.
+      <p className="text-center text-white text-hero">
+        Zion is an OS for running a personal mini computer in your home.
+        Self-host open source apps Bitcoin node, and more.
         <br></br>
         <br></br>
         Get the convenience of cloud, without giving up your data.
       </p>
-      <a className=" gradient-button link-block button-hero ">
-        <div className="button-text">INSTALL ON A RASPBERRY PI 4</div>
+      <a
+        id="button-effect"
+        className=" gradient-button link-block button-hero "
+      >
+        <div className="button-text">INSTALL ON MINI PC</div>
         <img
           src="assets/long-arrow.svg"
           loading="lazy"
@@ -215,7 +221,7 @@ export const Header = ({ trigger1, isNavbarVisible }) => (
           className="button-arrow"
         ></img>
       </a>
-      <p className="© text-center text-white text-hero text-muted text-small">
+      <p className="text-center text-white text-hero text-muted text-small">
         Or install on any Ubuntu or Debian system:
       </p>
       <LinuxCommand></LinuxCommand>
