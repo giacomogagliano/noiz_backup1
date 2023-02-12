@@ -17,18 +17,18 @@ deleteFile() {
     if test -f $1; then
       echo something wrong
     else
-      echo --- ✓ $basename file deleted
+      echo " ├── ✓ $basename file deleted"
     fi
 }
 
 logDoesnExists() {
   # $1 = template
   basename=$(basename $1)
-  echo --- ✗ "$basename file doesn't exists"
+  echo " ├── ✗ $basename file doesn't exists"
 }
 
 if [ -d $source ]; then
-  echo - ✓ deleting environment files..
+  echo ─┬ ✓ deleting environment files..
 
   # check template repl
   if test -f $source_repl_path; then
