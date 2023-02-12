@@ -17,30 +17,30 @@ copyTemplate() {
   basename=$(basename $1)
   cp $1 $source &&
     if test -f $1; then
-      echo --- ✓ $basename file created
+      echo " ├── ✓ $basename file created"
     fi
 }
 
 logExists() {
   # $1 = template
   basename=$(basename $1)
-  echo --- ✓ $basename file exists
+  echo " ├── ✓ $basename file exists"
 }
 
 if [ -d "$TEMPLATE_FOLDER_PATH" ]; then
-  echo - ✓ template folder exists
+  echo ── ✓ template folder exists
 else
   exit
 fi
 
 if test -f "$TEMPLATE_FILE_PATH"; then
-  echo - ✓ template files exists
+  echo ── ✓ template files exists
 else
   exit
 fi
 
 if [ -d $source ]; then
-  echo - ✓ setting up the environment
+  echo ─┬ ✓ setting up the environment
 
   # check template repl
   if test -f $source_repl_path; then
