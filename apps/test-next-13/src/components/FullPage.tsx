@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { VideoBox } from "./VideoBox";
 
 const FullPageComponent = styled.div`
   .content-wrapper {
@@ -127,26 +128,7 @@ export const FullPage = () => (
       <div id="why" className="section dark ">
         <div className="container w-container">
           <h2 className="big-heading">De-google yourself.</h2>
-          <div className="w-embed">
-            <a
-              className="autoplay-video-container"
-              href="https://www.youtube.com/watch?v=Uu1TuE6RdKM"
-              target="_blank"
-            >
-              <img
-                className="youtube-play-icon"
-                src="https://i.imgur.com/trXdlO5.png"
-              ></img>
-              <video className="autoplay-video">
-                {" "}
-                /////// autoplay="" loop="" muted="" //////////
-                <source
-                  src="https://i.imgur.com/JFknZrb.mp4"
-                  type="video/mp4"
-                />
-              </video>
-            </a>
-          </div>
+          <VideoBox></VideoBox>
           <p className="paragraph">
             All of our interactions on the internet today are mediated by a few
             companies who offer “free” services in exchange for storing our data

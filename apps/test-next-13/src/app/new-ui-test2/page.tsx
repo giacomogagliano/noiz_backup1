@@ -33,8 +33,7 @@ const Body = styled.body`
   .section.hero {
     padding-top: 0px;
     padding-bottom: 100px;
-    background-image: url(assets/hero-bg_1.jpg),
-      -webkit-gradient(linear, left top, left bottom, from(#e1583b), color-stop(40%, #4d2d47), color-stop(74%, #20122d));
+    background-image: url(assets/hero-bg_1.jpg);
     background-image: url(assets/hero-bg_1.jpg),
       linear-gradient(180deg, #e1583b, #4d2d47 40%, #20122d 74%);
     background-position: 50% 0%, 0px 0px;
@@ -141,31 +140,6 @@ const Body = styled.body`
 
   ////////////////////////////////////////YOUTUBE VIDEO///////////////////////////////////////////////
 
-  .autoplay-video-container {
-    position: relative;
-    display: block;
-    margin-top: 20px;
-    margin-bottom: 50px;
-  }
-  .youtube-play-icon {
-    width: 70px;
-    height: auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-  }
-  .autoplay-video {
-    display: block;
-    margin: auto;
-    width: 100%;
-    max-width: 800px;
-    height: auto;
-    border-radius: 10px;
-    filter: brightness(0.9);
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-  }
   ///////////////////////////CARD/////////////////////////////////////////////////////////////////
   .feature-card {
     display: -webkit-box;
@@ -463,9 +437,8 @@ function index() {
      * RASPBERRY BUTTON ANIMATION
      */
     const padding = scrollPosition + halfwbreakpoint;
-    const deltaButton = -trigger2pos + padding; /// parseFloat(triggerButtonTransform)
+    const deltaButton = -trigger2pos + padding;
     const condizioneButton = deltaButton < 0;
-    console.log(scrollPosition);
 
     /**
      * CONDIZIONI SCATENANTE TRIGGER
