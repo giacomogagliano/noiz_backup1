@@ -21,80 +21,77 @@ const FullPageComponent = styled.div`
       &.dark {
         background-color: #f8f9fc;
       }
-      .container {
+      #container {
         position: relative;
         width: 90vw;
-        max-width: 1100px;
-        &.w-container {
-          margin-left: auto;
-          margin-right: auto;
-          max-width: 940px;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 940px;
+        @media screen and (max-width: 479px) {
+          max-width: none;
+        }
+        @media screen and (max-width: 991px) {
+          max-width: 728px;
+        }
+        #big-heading {
+          margin-bottom: 40px;
+          font-size: 70px;
+          line-height: 86px;
+          font-weight: 600;
+          text-align: center;
           @media screen and (max-width: 479px) {
-            max-width: none;
+            font-size: 48px;
+            line-height: 48px;
           }
-          @media screen and (max-width: 991px) {
-            max-width: 728px;
-          }
-          .big-heading {
-            margin-bottom: 40px;
+          @media screen and (max-width: 767px) {
+            margin-top: 10px;
+            margin-bottom: 20px;
             font-size: 70px;
-            line-height: 86px;
-            font-weight: 600;
-            text-align: center;
-            @media screen and (max-width: 479px) {
-              font-size: 48px;
-              line-height: 48px;
-            }
-            @media screen and (max-width: 767px) {
-              margin-top: 10px;
-              margin-bottom: 20px;
-              font-size: 70px;
-              line-height: 70px;
-            }
+            line-height: 70px;
           }
-          .sub-heading {
+        }
+        .sub-heading {
+          margin-bottom: 70px;
+          color: #9f9fa5;
+          font-size: 40px;
+          line-height: 50px;
+          @media screen and (max-width: 479px) {
             margin-bottom: 70px;
-            color: #9f9fa5;
-            font-size: 40px;
-            line-height: 50px;
-            @media screen and (max-width: 479px) {
-              margin-bottom: 70px;
-              font-size: 30px;
-              line-height: 36px;
-            }
+            font-size: 30px;
+            line-height: 36px;
           }
+        }
 
-          .w-layout-grid {
-            display: -ms-grid;
-            display: grid;
-            grid-auto-columns: 1fr;
-            -ms-grid-columns: 1fr 1fr;
-            grid-template-columns: 1fr 1fr;
-            -ms-grid-rows: auto auto;
-            grid-template-rows: auto auto;
-            grid-row-gap: 16px;
-            grid-column-gap: 16px;
-            @media screen and (max-width: 767px) {
-              display: block;
-            }
-            .grid-5 {
-              grid-column-gap: 50px;
-              grid-row-gap: 50px;
-              grid-template-areas: "Area Area-2";
-              -ms-grid-rows: auto;
-              grid-template-rows: auto;
-              @media screen and (max-width: 991px) {
-                justify-items: center;
-                -webkit-box-align: center;
-                -webkit-align-items: center;
-                -ms-flex-align: center;
-                align-items: center;
-                grid-template-areas:
-                  "Area Area"
-                  "Area-3 Area-3";
-                -ms-grid-rows: auto auto;
-                grid-template-rows: auto auto;
-              }
+        .w-layout-grid {
+          display: -ms-grid;
+          display: grid;
+          grid-auto-columns: 1fr;
+          -ms-grid-columns: 1fr 1fr;
+          grid-template-columns: 1fr 1fr;
+          -ms-grid-rows: auto auto;
+          grid-template-rows: auto auto;
+          grid-row-gap: 16px;
+          grid-column-gap: 16px;
+          @media screen and (max-width: 767px) {
+            display: block;
+          }
+          .grid-5 {
+            grid-column-gap: 50px;
+            grid-row-gap: 50px;
+            grid-template-areas: "Area Area-2";
+            -ms-grid-rows: auto;
+            grid-template-rows: auto;
+            @media screen and (max-width: 991px) {
+              justify-items: center;
+              -webkit-box-align: center;
+              -webkit-align-items: center;
+              -ms-flex-align: center;
+              align-items: center;
+              grid-template-areas:
+                "Area Area"
+                "Area-3 Area-3";
+              -ms-grid-rows: auto auto;
+              grid-template-rows: auto auto;
             }
           }
         }
@@ -112,8 +109,8 @@ export const FullPage = () => {
     <FullPageComponent>
       <div className="content-wrapper">
         <div id="why" className="section dark ">
-          <div className="container w-container">
-            <h2 className="big-heading">De-google yourself.</h2>
+          <div id="container">
+            <h2 id="big-heading">De-google yourself.</h2>
             <VideoBox
               href={videoHref}
               icon={{ src: iconSrc }}
@@ -136,8 +133,8 @@ export const FullPage = () => {
           </div>
         </div>
         <div id="what" className="section ">
-          <div className="container w-container">
-            <h2 className="big-heading mb-20">
+          <div id="container">
+            <h2 id="big-heading">
               Welcome to the <span className="text-span-2">new internet.</span>
             </h2>
             <h3 className="sub-heading text-center mb-80">

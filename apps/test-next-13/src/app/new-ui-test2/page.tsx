@@ -46,10 +46,6 @@ const Body = styled.body`
     -webkit-text-fill-color: transparent;
     text-span-2 {
       box-decoration-break: clone;
-      -webkit-box-decoration-break: clone;
-      -ms-box-decoration-break: clone;
-      -o-box-decoration-break: clone;
-      box-decoration-break: clone;
     }
   }
 
