@@ -122,95 +122,106 @@ const FullPageComponent = styled.div`
   }
 `;
 
-export const FullPage = () => (
-  <FullPageComponent>
-    <div className="content-wrapper">
-      <div id="why" className="section dark ">
-        <div className="container w-container">
-          <h2 className="big-heading">De-google yourself.</h2>
-          <VideoBox></VideoBox>
-          <p className="paragraph">
-            All of our interactions on the internet today are mediated by a few
-            companies who offer “free” services in exchange for storing our data
-            on their servers to spy on us.
-            <br></br>
-            <br></br>
-            Running a personal server fundamentally changes that. You and your
-            family’s photos, videos, files, notes, passwords — everything, have
-            nothing to do with someone else’s computer. They’re a part of your
-            private life, and now they can all be stored by you, on your
-            personal server.
-          </p>
-          <img className="image-18"></img>
+export const FullPage = () => {
+  const videoHref = "https://www.youtube.com/watch?v=kmSs2YLChng&t=11s";
+  const iconSrc = "https://i.imgur.com/trXdlO5.png";
+  const videoSrc = "https://i.imgur.com/JFknZrb.mp4";
+
+  return (
+    <FullPageComponent>
+      <div className="content-wrapper">
+        <div id="why" className="section dark ">
+          <div className="container w-container">
+            <h2 className="big-heading">De-google yourself.</h2>
+            <VideoBox
+              href={videoHref}
+              icon={{ src: iconSrc }}
+              video={{ src: videoSrc }}
+            ></VideoBox>
+            {/* href={videoHref} */}
+            <p className="paragraph">
+              All of our interactions on the internet today are mediated by a
+              few companies who offer “free” services in exchange for storing
+              our data on their servers to spy on us.
+              <br></br>
+              <br></br>
+              Running a personal server fundamentally changes that. You and your
+              family’s photos, videos, files, notes, passwords — everything,
+              have nothing to do with someone else’s computer. They’re a part of
+              your private life, and now they can all be stored by you, on your
+              personal server.
+            </p>
+            <img className="image-18"></img>
+          </div>
         </div>
-      </div>
-      <div id="what" className="section ">
-        <div className="container w-container">
-          <h2 className="big-heading mb-20">
-            Welcome to the <span className="text-span-2">new internet.</span>
-          </h2>
-          <h3 className="sub-heading text-center mb-80">
-            One that's powered by you. <span className="text-span-2"></span>
-          </h3>
-          <div className="w-layout-grid grid-5">
-            <div className="feature-card">
-              <div className="feature-header">
-                <h3 className="feature-heading feature-heading-nextcloud">
-                  Run your private cloud with Nextcloud.
-                </h3>
-                <img
-                  src="./assets/icon_4.svg"
-                  loading="lazy"
-                  className="feature-icon feature-icon-nextcloud"
-                ></img>
-              </div>
-              <div className="feature-content">
-                <div className="columns-3 w-row">
-                  <div className="column-12 w-col w-col-10">
-                    <p className="paragraph text-left">
-                      An entirely self-hosted Google Drive replacement — store
-                      your documents, calendar, contacts, photos and videos on
-                      your Umbrel with Nextcloud instead of Google’s servers.
-                    </p>
-                  </div>
-                  <div className="w-col w-col-2"></div>
+        <div id="what" className="section ">
+          <div className="container w-container">
+            <h2 className="big-heading mb-20">
+              Welcome to the <span className="text-span-2">new internet.</span>
+            </h2>
+            <h3 className="sub-heading text-center mb-80">
+              One that's powered by you. <span className="text-span-2"></span>
+            </h3>
+            <div className="w-layout-grid grid-5">
+              <div className="feature-card">
+                <div className="feature-header">
+                  <h3 className="feature-heading feature-heading-nextcloud">
+                    Run your private cloud with Nextcloud.
+                  </h3>
+                  <img
+                    src="./assets/icon_4.svg"
+                    loading="lazy"
+                    className="feature-icon feature-icon-nextcloud"
+                  ></img>
                 </div>
-                <img
-                  src="./assets/Group-1601.jpg"
-                  loading="eager"
-                  className="feature-image"
-                ></img>
+                <div className="feature-content">
+                  <div className="columns-3 w-row">
+                    <div className="column-12 w-col w-col-10">
+                      <p className="paragraph text-left">
+                        An entirely self-hosted Google Drive replacement — store
+                        your documents, calendar, contacts, photos and videos on
+                        your Umbrel with Nextcloud instead of Google’s servers.
+                      </p>
+                    </div>
+                    <div className="w-col w-col-2"></div>
+                  </div>
+                  <img
+                    src="./assets/Group-1601.jpg"
+                    loading="eager"
+                    className="feature-image"
+                  ></img>
+                </div>
+                <div></div>
               </div>
-              <div></div>
-            </div>
-            <div className="feature-card feature-card-photoprism">
-              <div className="feature-header">
-                <h3 className="feature-heading feature-heading-photoprism">
-                  Store your photos and videos with PhotoPrism.
-                </h3>
-                <img
-                  className="feature-icon feature-icon-photoprism"
-                  src=""
-                  loading="lazy"
-                ></img>
+              <div className="feature-card feature-card-photoprism">
+                <div className="feature-header">
+                  <h3 className="feature-heading feature-heading-photoprism">
+                    Store your photos and videos with PhotoPrism.
+                  </h3>
+                  <img
+                    className="feature-icon feature-icon-photoprism"
+                    src=""
+                    loading="lazy"
+                  ></img>
+                </div>
+                <div className="feature-content"></div>
               </div>
-              <div className="feature-content"></div>
             </div>
           </div>
         </div>
+        <div id="what" className="section dark "></div>
+        <div id="what" className="section "></div>
+        <div id="app-store" className="section "></div>
+        <div id="apps" className=""></div>
+        <div id="develop" className="section dark  "></div>
+        <div id="start" className="section "></div>
+        <div id="features" className="section dark "></div>
+        <div id="community" className="section "></div>
+        <div id="signup" className="section dark section-2 "></div>
+        <div className="section dark social-section"></div>
+        <div id="faq" className="section hidden "></div>
+        <div id="footer" className="footer "></div>
       </div>
-      <div id="what" className="section dark "></div>
-      <div id="what" className="section "></div>
-      <div id="app-store" className="section "></div>
-      <div id="apps" className=""></div>
-      <div id="develop" className="section dark develop-apps-section "></div>
-      <div id="start" className="section "></div>
-      <div id="features" className="section dark "></div>
-      <div id="community" className="section "></div>
-      <div id="signup" className="section dark section-2 "></div>
-      <div className="section dark social-section"></div>
-      <div id="faq" className="section hidden "></div>
-      <div id="footer" className="footer "></div>
-    </div>
-  </FullPageComponent>
-);
+    </FullPageComponent>
+  );
+};
