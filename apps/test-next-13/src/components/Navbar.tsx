@@ -86,6 +86,7 @@ const LinkNav = css`
 `;
 
 const NavbarComponent = styled.div`
+  width: 100%;
   #div-block-18 {
     ${DivBlock18}
   }
