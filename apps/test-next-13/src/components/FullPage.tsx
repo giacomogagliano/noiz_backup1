@@ -141,7 +141,7 @@ const FullPageComponent = styled.div`
     ${Grid5}
   }
   #SubsHeading {
-    ${SudingbHea}
+    ${SubHeading}
   }
 `;
 
@@ -161,7 +161,7 @@ export const FullPage = () => {
               icon={{ src: iconSrc }}
               video={{ src: videoSrc }}
             ></VideoBox>
-            <p className="paragraph">
+            <p id="paragraph">
               All of our interactions on the internet today are mediated by a
               few companies who offer “free” services in exchange for storing
               our data on their servers to spy on us.

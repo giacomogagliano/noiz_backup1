@@ -7,7 +7,6 @@ import { FullPage } from "../../components/FullPage";
 export const SectionHero = css`
   padding-top: 0px;
   padding-bottom: 100px;
-  background-image: url(assets/hero-bg_1.jpg);
   background-image: url(assets/hero-bg_1.jpg),
     linear-gradient(180deg, #e1583b, #4d2d47 40%, #20122d 74%);
   background-position: 50% 0%, 0px 0px;
@@ -57,13 +56,6 @@ export const TextCenter = css`
   text-align: center;
 `;
 
-export const SudingbHea = css`
-  .sub-heading.text-center.mb-80 {
-    margin-bottom: 80px;
-    font-family: Inter, sans-serif;
-    font-weight: 600;
-  }
-`;
 export const Image18 = css`
   .image-18 {
     display: block;
@@ -231,7 +223,7 @@ function index() {
 
   useEffect(() => {
     /**
-     * GET ELEMENT BY CLASSNAME
+     * GET ELEMENT BY id
      */
     const triggerElement1 = document.getElementById("trigger-1");
     const triggerButton = document.getElementById("button-effect");
