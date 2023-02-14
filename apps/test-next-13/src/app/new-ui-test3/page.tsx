@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Loader } from "../../components/Loader";
+import { CardLoader } from "../../components/CardLoader";
 
 function Index() {
   let cards: JSX.Element[] = [];
@@ -19,13 +19,14 @@ function Index() {
   };
 
   return (
-    <Loader
+    <CardLoader
       cards={cards}
       visibleCards={20}
       addOnLoad={15}
       cb={toggleShow}
       classname=".card"
-    ></Loader>
+      threshold={1}
+    ></CardLoader>
   );
 }
 
