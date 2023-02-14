@@ -72,9 +72,11 @@
   "peerDependencies": {
     "@babel/cli": "^7.18.6",
     "@babel/core": "^7.18.6",
+    "@babel/parser": "^7.20.7",
     "@babel/preset-env": "^7.18.6",
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.18.6",
+    "@babel/traverse": "^7.20.10",
     "@elastic/elasticsearch": "^8.2.1",
     "@fastify/mongodb": "^6.0.1",
     "@fastify/mysql": "^4.0.0",
