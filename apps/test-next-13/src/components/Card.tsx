@@ -1,11 +1,7 @@
 "use client";
 import React from "react";
 import styled, { css } from "styled-components";
-import {
-  Paragraph,
-  ParagraphTextLeft,
-  TextWhite,
-} from "../app/new-ui-test2/page";
+import { Paragraph, ParagraphTextLeft } from "../app/layout";
 
 // const Paragraph = css`
 //   color: black;

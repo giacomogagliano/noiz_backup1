@@ -1,4 +1,4 @@
-import React, { HTMLAttributeAnchorTarget } from "react";
+import React from "react";
 import styled, { css } from "styled-components";
 
 const DivBlock18 = css`

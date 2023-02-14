@@ -3,13 +3,13 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import {
-  TextWhite,
   TextCenter,
   TextHero,
   TextMuted,
   TextSmall,
   TextSpan,
-} from "../app/new-ui-test2/page";
+  TextWhite,
+} from "../app/layout";
 import { Browser } from "./Browser";
 import { LinuxCommand } from "./LinuxCommand";
 import { Navbar } from "./Navbar";

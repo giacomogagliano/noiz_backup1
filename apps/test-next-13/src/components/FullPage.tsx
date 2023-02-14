@@ -2,13 +2,7 @@
 
 import React from "react";
 import styled, { css } from "styled-components";
-import {
-  Image18,
-  SudingbHea,
-  TextCenter,
-  TextSpan,
-  TextSpan2,
-} from "../app/new-ui-test2/page";
+import { Image18, TextSpan2 } from "../app/layout";
 import { Card } from "./Card";
 import { VideoBox } from "./VideoBox";
 
