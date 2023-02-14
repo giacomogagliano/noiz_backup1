@@ -1,5 +1,15 @@
+"use client";
+
 import React from "react";
 import styled, { css } from "styled-components";
+import {
+  TextWhite,
+  TextCenter,
+  TextHero,
+  TextMuted,
+  TextSmall,
+  TextSpan,
+} from "../app/new-ui-test2/page";
 import { Browser } from "./Browser";
 import { LinuxCommand } from "./LinuxCommand";
 import { Navbar } from "./Navbar";
@@ -165,9 +175,24 @@ const HeaderComponent = styled.div<{
     ${linkBlock}
     ${buttonHero}
   }
+  #paragraph-header {
+    ${TextWhite}
+    ${TextCenter}
+    ${TextHero}
+  }
 
   #button-text {
     ${buttonText}
+  }
+  #text-span {
+    ${TextSpan}
+  }
+  #header-last-line {
+    ${TextCenter}
+    ${TextWhite}
+    ${TextHero}
+    ${TextMuted}
+    ${TextSmall}
   }
 `;
 
@@ -196,11 +221,11 @@ export const Header = ({
       <h1 id="trigger-1">
         Goodbye, big tech.
         <br />
-        Welcome, <span className="text-span">your data at your own home.</span>
-        <span className="text-span"></span>
-        <span className="text-span"></span>
+        Welcome, <span id="text-span">your data at your own home.</span>
+        <span id="text-span"></span>
+        <span id="text-span"></span>
       </h1>
-      <p className="text-center text-white text-hero">
+      <p id="paragraph-header">
         Zion is an OS for running a personal mini computer in your home.
         Self-host open source apps Bitcoin node, and more.
         <br></br>
@@ -211,9 +236,7 @@ export const Header = ({
         <div id="button-text">INSTALL ON MINI PC</div>
         <img src="assets/long-arrow.svg" loading="lazy" alt=""></img>
       </a>
-      <p className="text-center text-white text-hero text-muted text-small">
-        Or install on any Ubuntu or Debian system:
-      </p>
+      <p id="header-last-line">Or install on any Ubuntu or Debian system:</p>
       <LinuxCommand></LinuxCommand>
     </div>
   </HeaderComponent>
