@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component, FC } from "react";
 import styled from "styled-components";
 
 const CardContainerStyled = styled.div`
@@ -23,33 +23,26 @@ const CardContainerStyled = styled.div`
   }
 `;
 interface State {
-  cards: JSX.Element[];
-  visibleCards: number;
-  loadedCards: number;
-  addOnLoad: number;
+  elements: JSX.Element[] | FC[];
 }
 interface Props {
-  cards: JSX.Element[];
+  elements: JSX.Element[] | FC[];
   cb: (entry: IntersectionObserverEntry) => void;
-  visibleCards?: number;
-  addOnLoad?: number;
-  classname: string;
   threshold?: number;
   rootMargin?: string;
+  unobserve?: boolean;
+  triggerkey?: string;
 }
 
 export class Loader extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      cards: props.cards,
-      visibleCards: props.visibleCards ? props.visibleCards : 20,
-      loadedCards: 0,
-      addOnLoad: props.addOnLoad ? props.addOnLoad : 20,
+      elements: props.elements,
     };
 
-    this.observeCards = this.configureObserver(
-      props.classname,
+    this.observeElements = this.configureObserver(
+      props.triggerkey,
       this.observerCb(props.cb),
       props.threshold,
       props.rootMargin
@@ -57,17 +50,12 @@ export class Loader extends Component<Props, State> {
   }
 
   render() {
-    const { cards, loadedCards, visibleCards } = this.state;
-    const Cards = this.Cards;
+    const { elements } = this.state;
+    const Elements = this.Elements;
     return (
       <CardContainerStyled>
-        <div className="card-container">
-          <Cards
-            cards={cards}
-            loadedCards={loadedCards}
-            visibleCards={visibleCards}
-          ></Cards>
-          <button onClick={this.handleLoadMore}>Load more</button>
+        <div id="elements-container">
+          <Elements elements={elements}></Elements>
         </div>
       </CardContainerStyled>
     );
@@ -78,53 +66,36 @@ export class Loader extends Component<Props, State> {
     prevState: Readonly<State>,
     __?: any
   ): void {
-    if (prevState.cards.length !== this.state.cards.length)
-      this.observeCards(document);
-    if (prevState.loadedCards !== this.state.loadedCards)
-      this.observeCards(document);
+    if (prevState.elements.length !== this.state.elements.length)
+      this.observeElements(document);
   }
 
   componentDidMount() {
-    this.observeCards(document);
+    this.observeElements(document);
   }
 
   observerCb = toggleShow => entries => {
     entries.forEach(toggleShow);
   };
 
-  observeCard = observer => card => {
-    observer.observe(card);
+  observeElement = observer => element => {
+    observer.observe(element);
   };
 
-  configureObserver =
-    (classname, observerCb, threshold, rootMargin) => document => {
-      const cards = document.querySelectorAll(classname);
-      let observer = new IntersectionObserver(observerCb, {
-        threshold,
-        rootMargin,
-      });
-      cards.forEach(this.observeCard(observer));
-    };
+  configureObserver = (key, observerCb, threshold, rootMargin) => document => {
+    const elements = document.querySelectorAll(key);
+    let observer = new IntersectionObserver(observerCb, {
+      threshold,
+      rootMargin,
+    });
+    elements.forEach(this.observeElement(observer));
+  };
 
-  observeCards;
+  observeElements;
 
-  Cards = ({
-    cards,
-    loadedCards,
-    visibleCards,
-  }: {
-    cards: JSX.Element[];
-    loadedCards: number;
-    visibleCards: number;
-  }) => (
+  Elements = ({ elements }: { elements: JSX.Element[] | FC[] }) => (
     <>
-      <>{cards.slice(0, loadedCards + visibleCards)}</>
+      <>{elements}</>
     </>
   );
-
-  handleLoadMore = () => {
-    this.setState({
-      loadedCards: this.state.loadedCards + this.state.addOnLoad,
-    });
-  };
 }
