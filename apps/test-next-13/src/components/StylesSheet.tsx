@@ -296,38 +296,9 @@ export const Grid5 = css`
 `;
 
 export const FullPageComponent = styled.div`
-  /* #content-wrapper {
+  #content-wrapper {
     ${ContentWrapper}
-  } */
-  /* #container {
-    ${Container}
-  } */
-  /* #section {
-    ${Section}
-  } */
-  /* #Dark {
-    ${Dark}
-  } */
-  /* #big-heading {
-    ${BigHeading}
-  } */
-  /* #why {
-    ${Section}
-    ${Dark}
-  } */
-  /* #image- {
-    ${Image18}
-  } */
-  /* #text-span- {
-    ${TextSpan2}
-  } */
-  /* #grid-card {
-    ${WlayoutGrid}
-    ${Grid5}
-  } */
-  /* #SubsHeading {
-    ${SubHeading}
-  } */
+  }
 `;
 
 ///////////////////
@@ -469,6 +440,8 @@ export const StyledCard = styled.div`
   }
   @media screen and (max-width: 991px) {
     max-width: 600px;
+  }
+  #container {
   }
   #feature-header {
     ${FeatureHeader}

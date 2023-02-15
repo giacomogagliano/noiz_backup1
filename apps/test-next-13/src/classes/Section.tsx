@@ -3,10 +3,31 @@
 import React from "react";
 import styled from "styled-components";
 import { Card } from "../components/Card";
-import { Section as Sec } from "../components/StylesSheet";
+import {
+  BigHeading,
+  Container,
+  Grid5,
+  Section as Sec,
+  SubHeading,
+  WlayoutGrid,
+} from "../components/StylesSheet";
 
 const Area = styled.div`
+  /* padding: 20px; */
   ${Sec}
+  #container {
+    ${Container}
+  }
+  #big-heading {
+    ${BigHeading}
+  }
+  #SubsHeading {
+    ${SubHeading}
+  }
+  #grid-card {
+    ${WlayoutGrid}
+    ${Grid5}
+  }
 `;
 
 export function Section() {

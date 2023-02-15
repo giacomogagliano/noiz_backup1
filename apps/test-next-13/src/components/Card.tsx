@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { StyledCard } from "./StylesSheet";
 
@@ -7,7 +5,7 @@ export const Card = () => (
   <StyledCard>
     <div id="feature-header">
       <h3 id="feature-heading">Run your private cloud with Nextcloud.</h3>
-      <img src="./assets/icon_4.svg" loading="lazy" id="feature-icon"></img>
+      <img src="../../assets/icon_4.svg" loading="lazy" id="feature-icon"></img>
     </div>
     <div id="feature-content">
       <div>
@@ -21,7 +19,7 @@ export const Card = () => (
         <div id="space-area-card"></div>
       </div>
       <img
-        src="./assets/Group-1601.jpg"
+        src="../../assets/Group-1601.jpg"
         loading="eager"
         id="feature-image"
       ></img>
