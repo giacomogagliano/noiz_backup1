@@ -1,18 +1,9 @@
 import React from "react";
 import { GradientButton } from "../classes/GradientButton";
 import { HeroText } from "../classes/HeroText";
-import { Browser } from "./Browser";
 import { LinuxCommand } from "./LinuxCommand";
 import { Navbar } from "./Navbar";
-import {
-  HeaderComponent,
-  TextCenter,
-  TextHero,
-  TextMuted,
-  TextSmall,
-  TextSpan,
-  TextWhite,
-} from "./StylesSheet";
+import { HeaderComponent } from "./StylesSheet";
 
 export const Header = ({
   trigger1,
