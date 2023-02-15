@@ -731,7 +731,7 @@ export const NavbarComponent = styled.div<CssProps>`
     ${LinkNav}
     ${DXsNone}
   }
-  #install-now {
+  #action-btn {
     ${HeaderLink}
     ${HeaderLinkPrimary}
   }
