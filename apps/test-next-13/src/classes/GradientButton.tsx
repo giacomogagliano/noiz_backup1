@@ -5,6 +5,7 @@ import styled, { css } from "styled-components";
 import { Loader } from "./Loader";
 
 const buttonHero = css`
+  color: black;
   margin-top: 40px;
   margin-bottom: 40px;
   padding-top: 12px;
@@ -36,8 +37,8 @@ const linkBlock = css`
   }
 `;
 type gradientButtonType = {
-  triggerButtonToTop: string;
-  triggerButtonTransform: string;
+  opacity: string;
+  transform: string;
 };
 const gradientButton = css<gradientButtonType>`
   display: grid;
@@ -51,22 +52,45 @@ const gradientButton = css<gradientButtonType>`
   border-radius: 4px;
   background-image: linear-gradient(190deg, #8584ff, #5351fb);
   box-shadow: 0 1px 15px 0 #e2e3e4;
-  opacity: ${props => props.triggerButtonToTop};
-  transition: opacity 500ms, transform 500ms;
-  transform: translateY(${props => props.triggerButtonTransform});
+  opacity: ${props => props.opacity};
+  transition: all cubic-bezier(0.46, 0.35, 0.59, 0.85) 500ms;
+  transform: translateY(${props => props.transform});
   text-decoration: none;
 `;
+const buttonText = css`
+  display: inline-block;
+  padding-right: 60px;
+  color: #1d1d1f;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  text-transform: uppercase;
+  @media screen and (max-width: 479px) {
+    padding-right: 0px;
+    font-size: 14px;
+    line-height: 22px;
+  }
+`;
 
-const Trigger = styled.div`
+const Trigger = styled.div<gradientButtonType>`
   ${gradientButton}
   ${linkBlock}
   ${buttonHero}
+
+  /* #button-effect {
+  } */
+
+  #button-text {
+    ${buttonText}
+  }
 `;
 
 interface Props {}
 interface State {
   opacity: string;
-  transform: Function;
+  transform: string;
 }
 
 export class GradientButton extends Component<Props, State> {
@@ -74,7 +98,7 @@ export class GradientButton extends Component<Props, State> {
     super(props);
     this.state = {
       opacity: "0",
-      transform: tarnslateY(),
+      transform: "30px",
     };
   }
 
@@ -82,7 +106,7 @@ export class GradientButton extends Component<Props, State> {
     const Element = (
       <Trigger
         key={0}
-        id="hero-text"
+        id="trigger-btn"
         opacity={this.state.opacity}
         transform={this.state.transform}
       >
@@ -95,19 +119,25 @@ export class GradientButton extends Component<Props, State> {
     return (
       <>
         <Loader
-          triggerkey="#button-effect"
+          triggerkey="#trigger-btn"
           elements={[Element]}
           cb={this.cb}
-          threshold={0}
+          threshold={1}
         ></Loader>
       </>
     );
   }
   cb = (entry: IntersectionObserverEntry) => {
-    this.setAttributes({
-      opacity: "1",
-      transform: translateY(),
-    });
+    if (entry.isIntersecting)
+      this.setAttributes({
+        opacity: "1",
+        transform: "0",
+      });
+    else
+      this.setAttributes({
+        opacity: "0",
+        transform: "30px",
+      });
   };
   setAttributes = ({ opacity, transform }: State) =>
     this.setState({ opacity, transform });
