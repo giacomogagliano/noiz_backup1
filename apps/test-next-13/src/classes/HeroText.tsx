@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 import styled, { css } from "styled-components";
-import { Loader } from "../components/Loader";
+import { Loader } from "./Loader";
 
 const Heading = css`
   margin-bottom: 40px;
@@ -18,8 +18,7 @@ const HeadingHero = css<{ top: string; opacity: string }>`
     return props.top;
   }};
   opacity: ${props => props.opacity};
-  /* right: ${props => props.trigger1}; */
-  /* transition: right 1s; */
+  transition: opacity top 1s;
   max-width: 1000px;
   margin-right: 1.6rem;
   margin-left: 1.6rem;
@@ -47,18 +46,13 @@ export class HeroText extends Component<Props, State> {
     super(props);
     this.state = {
       opacity: "1",
-      top: "30px",
+      top: "0px",
     };
   }
 
   render(): React.ReactNode {
     const Element = (
-      <Trigger
-        id="hero-text"
-        key={1}
-        opacity={this.state.opacity}
-        top={this.state.top}
-      >
+      <Trigger id="hero-text" opacity={this.state.opacity} top={this.state.top}>
         Goodbye, big tech.
         <br />
         Welcome, <span id="text-span">your data at your own home.</span>
@@ -66,7 +60,6 @@ export class HeroText extends Component<Props, State> {
         <span id="text-span"></span>
       </Trigger>
     );
-    console.log(Element.props);
 
     return (
       <>
@@ -80,7 +73,7 @@ export class HeroText extends Component<Props, State> {
     );
   }
   cb = (entry: IntersectionObserverEntry) => {
-    this.setAttributes({ opacity: "1", top: "0" });
+    this.setAttributes({ opacity: "0", top: "30px" });
   };
   setAttributes = ({ opacity, top }: State) => this.setState({ opacity, top });
 }
