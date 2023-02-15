@@ -2,6 +2,7 @@
 
 import React from "react";
 import styled, { css } from "styled-components";
+import { GradientButton } from "../classes/GradientButton";
 import { HeroText } from "../classes/HeroText";
 import { Browser } from "./Browser";
 import { LinuxCommand } from "./LinuxCommand";
@@ -119,22 +120,6 @@ const buttonHero = css`
     display: block;
   }
 `;
-const buttonText = css`
-  display: inline-block;
-  padding-right: 60px;
-  color: #1d1d1f;
-  font-size: 18px;
-  line-height: 18px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  text-decoration: none;
-  text-transform: uppercase;
-  @media screen and (max-width: 479px) {
-    padding-right: 0px;
-    font-size: 14px;
-    line-height: 22px;
-  }
-`;
 type HeaderComponentType = {
   trigger1: string;
   triggerButtonToTop: string;
@@ -144,24 +129,13 @@ const HeaderComponent = styled.div<HeaderComponentType>`
   #header {
     ${HeaderCss}
   }
-  #header-sticky-container {
-    ${HeaderStickyContainer}
-  }
   #hero {
     ${Hero}
-  }
-  #button-effect {
-    ${gradientButton}
-    ${linkBlock}
-    ${buttonHero}
   }
   #paragraph-header {
     ${TextWhite}
     ${TextCenter}
     ${TextHero}
-  }
-  #button-text {
-    ${buttonText}
   }
   #text-span {
     ${TextSpan}
@@ -211,10 +185,7 @@ export const Header = ({
           <br></br>
           Get the convenience of cloud, without giving up your data.
         </p>
-        <a id="button-effect">
-          <div id="button-text">INSTALL ON MINI PC</div>
-          <img src="assets/long-arrow.svg" loading="lazy" alt=""></img>
-        </a>
+        <GradientButton></GradientButton>
         <p id="header-last-line">Or install on any Ubuntu or Debian system:</p>
         <LinuxCommand></LinuxCommand>
       </div>
