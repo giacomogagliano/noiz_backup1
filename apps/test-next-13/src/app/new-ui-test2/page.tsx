@@ -1,19 +1,14 @@
 "use client";
 
 import React, { use, useEffect, useState } from "react";
-import styled, { css } from "styled-components";
 import { Header } from "../../components/Header";
 import { FullPage } from "../../components/FullPage";
+import { Navbar } from "../../components/Navbar";
+import { Loader } from "../../components/Loader";
+import { FromTop } from "../../components/StylesSheet";
+import Scroller from "../../components/Scroller";
 
-const ENDPOINT = "http://localhost:3001/api/why";
-
-async function getData() {
-  const res = await fetch(ENDPOINT);
-  if (!res.ok) {
-    throw new Error("Failed fetching");
-  }
-  return res.json();
-}
+const DropFromTopBox = Loader;
 
 function calculatePadding() {
   let bkpoint = 0;
@@ -25,10 +20,6 @@ function calculatePadding() {
 
   return bkpoint;
 }
-
-const Sticky = styled.div`
-  background-color: red;
-`;
 
 export default function page() {
   // const data: WhyData = await getData();
@@ -145,15 +136,47 @@ export default function page() {
     }
   }, [scrollPosition, halfwbreakpoint, trigger2pos, triggerButtonTransform]);
 
+  const Bla = () => {
+    const Element = () => (
+      <FromTop>
+        <div className="trigger-class">
+          <Navbar></Navbar>
+        </div>
+      </FromTop>
+    );
+    const cb = (entry: IntersectionObserverEntry) => {
+      entry.target.classList.toggle("show", entry.isIntersecting);
+    };
+    const JSXElement = Element();
+    return (
+      <DropFromTopBox
+        triggerkey={".trigger-class"}
+        elements={[JSXElement]}
+        cb={cb}
+      ></DropFromTopBox>
+    );
+  };
+
   return (
     <>
-      <Sticky>cioa</Sticky>
+      <Scroller
+        initialTopPos="-80px"
+        transition="top 0.5s"
+        Component={() => (
+          <Navbar
+            bgcolor="white"
+            buttonBgColor="#5351fb"
+            color="white"
+          ></Navbar>
+        )}
+      ></Scroller>
       <Header
         trigger1={trigger1}
         isNavbarVisible={isNavbarVisible}
         triggerButtonToTop={trigger2_opacity}
         triggerButtonTransform={triggerButtonTransform}
       ></Header>
+      {/* <Bla></Bla> */}
       <FullPage></FullPage>
     </>
   );

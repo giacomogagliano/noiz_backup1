@@ -189,3 +189,11 @@ export const Body = styled.body`
   margin-left: auto;
 } */
 `;
+
+export const FromTop = styled.div<{ top?: string; transition?: string }>`
+  position: fixed;
+  top: ${props => props.top};
+  transition: top 0.5s;
+  z-index: 1;
+  width: 100%;
+`;
