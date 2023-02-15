@@ -14,7 +14,7 @@ import {
   Section,
 } from "../components/StylesSheet";
 
-const ENDPOINT = "http://localhost:3001/api/why";
+const ENDPOINT = "http://localhost:3000/api/why";
 
 export const Area = styled.div`
   ${Section}
