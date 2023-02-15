@@ -1,22 +1,15 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { FullPageComponent } from "./StylesSheet";
-import { Why } from "./Why";
+import { Why } from "../classes/Why";
 
 export const FullPage = () => {
   return (
     <FullPageComponent>
       <div id="content-wrapper">
-        <p>trailor</p>
-        <p>trailor</p>
-        <p>trailor</p>
-        <p>trailor</p>
-        <p>trailor</p>
-        <p>trailor</p>
-        <p>trailor</p>
-        <p>trailor</p>
-        <p>trailor</p>
-        <p>trailor</p>
-        {/* <Why></Why> */}
+        ciao
+        <Suspense>
+          <Why></Why>
+        </Suspense>
         {/* <Sec></Sec> */}
         {/* <div id="what" className="section dark "></div>
         <div id="what" className="section "></div>

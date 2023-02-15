@@ -329,20 +329,3 @@ export const FullPageComponent = styled.div`
     ${SubHeading}
   } */
 `;
-
-export const Area = styled.div`
-  ${Section}
-  ${Dark}
-#container-why {
-    ${Container}
-    #big-heading-why {
-      ${BigHeading}
-    }
-    #paragraph-why {
-      ${Paragraph}
-    }
-    #image- {
-      ${Image18}
-    }
-  }
-`;
