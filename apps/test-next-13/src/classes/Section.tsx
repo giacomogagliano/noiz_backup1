@@ -1,9 +1,17 @@
+"use client";
+
 import React from "react";
-import { Card } from "./Card";
+import styled from "styled-components";
+import { Card } from "../components/Card";
+import { Section as Sec } from "../components/StylesSheet";
+
+const Area = styled.div`
+  ${Sec}
+`;
 
 export function Section() {
   return (
-    <div id="section ">
+    <Area id="section">
       <div id="container">
         <h2 id="big-heading">
           Welcome to the <span id="text-span-">new internet.</span>
@@ -15,6 +23,6 @@ export function Section() {
           <Card></Card>
         </div>
       </div>
-    </div>
+    </Area>
   );
 }
