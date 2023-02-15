@@ -4,7 +4,8 @@ import React from "react";
 import styled from "styled-components";
 import { Loader } from "../../../components/Loader";
 
-const Style = styled.div`
+export const Style = styled.div`
+  position: fixed;
   color: green;
   .trigger-class {
     transition: background-color 1s;
@@ -16,7 +17,7 @@ const Style = styled.div`
 `;
 export default function page() {
   const Element = ({ id }) => (
-    <Style key="trigger-key">
+    <Style>
       <div id={id} className="trigger-class">
         sono l'elemento
       </div>
@@ -31,15 +32,15 @@ export default function page() {
   const JSXElement = Element({ id: "trigger" });
   return (
     <>
-      <div
-        style={{ width: "100%", height: "1000px", backgroundColor: "orange" }}
-      ></div>
       <Loader
         triggerkey={".trigger-class"}
         elements={[JSXElement]}
         cb={cb}
-        rootMargin={"100px"}
+        rootMargin={"-200px"}
       ></Loader>
+      <div
+        style={{ width: "100%", height: "1000px", backgroundColor: "orange" }}
+      ></div>
       <div
         id="merda"
         style={{ width: "100%", height: "1000px", backgroundColor: "cyan" }}
