@@ -1,6 +1,7 @@
 import React from "react";
 import { GradientButton } from "../classes/GradientButton";
 import { HeroText } from "../classes/HeroText";
+import { Browser } from "./Browser";
 import { LinuxCommand } from "./LinuxCommand";
 import { Navbar } from "./Navbar";
 import { HeaderComponent } from "./StylesSheet";
@@ -20,9 +21,9 @@ export const Header = ({
         <div id="header">
           <Navbar></Navbar>
         </div>
-        {/* <div>
+        <div>
           <Browser></Browser>
-        </div> */}
+        </div>
         <HeroText></HeroText>
         <p id="paragraph-header">
           Zion is an OS for running a personal mini computer in your home.
