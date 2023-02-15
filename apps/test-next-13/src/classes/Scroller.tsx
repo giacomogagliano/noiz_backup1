@@ -1,8 +1,8 @@
 "use client";
 
 import React, { Component, FC } from "react";
-import { Navbar } from "./Navbar";
-import { FromTop } from "./StylesSheet";
+import { Navbar } from "../components/Navbar";
+import { FromTop } from "../components/StylesSheet";
 interface Props {
   Component?: "navbar";
   initialTopPos: string;

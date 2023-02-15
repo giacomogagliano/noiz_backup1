@@ -8,7 +8,7 @@ import { Header } from "../components/Header";
 // import { Navbar } from "../components/Navbar";
 // import { Loader } from "../components/Loader";
 // import { FromTop } from "../components/StylesSheet";
-import Scroller from "../components/Scroller";
+import Scroller from "../classes/Scroller";
 
 // const DropFromTopBox = Loader;
 

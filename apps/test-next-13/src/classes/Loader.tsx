@@ -54,6 +54,8 @@ export class Loader extends Component<Props, State> {
   render() {
     const { elements } = this.state;
     const Elements = this.Elements;
+    console.log(elements);
+
     return (
       <CardContainerStyled>
         <div id="elements-container">
