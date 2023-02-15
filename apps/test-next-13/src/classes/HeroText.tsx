@@ -14,11 +14,9 @@ const Heading = css`
 `;
 const HeadingHero = css<{ top: string; opacity: string }>`
   position: relative;
-  top: ${props => {
-    return props.top;
-  }};
+  top: ${props => props.top};
   opacity: ${props => props.opacity};
-  transition: opacity top 1s;
+  transition: all cubic-bezier(0.46, 0.35, 0.59, 0.85) 600ms;
   max-width: 1000px;
   margin-right: 1.6rem;
   margin-left: 1.6rem;
@@ -39,20 +37,27 @@ interface Props {}
 interface State {
   opacity: string;
   top: string;
+  count: number;
 }
 
 export class HeroText extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      opacity: "1",
-      top: "0px",
+      opacity: "0",
+      top: "50px",
+      count: 0,
     };
   }
 
   render(): React.ReactNode {
     const Element = (
-      <Trigger id="hero-text" opacity={this.state.opacity} top={this.state.top}>
+      <Trigger
+        key={0}
+        id="hero-text"
+        opacity={this.state.opacity}
+        top={this.state.top}
+      >
         Goodbye, big tech.
         <br />
         Welcome, <span id="text-span">your data at your own home.</span>
@@ -60,7 +65,6 @@ export class HeroText extends Component<Props, State> {
         <span id="text-span"></span>
       </Trigger>
     );
-
     return (
       <>
         <Loader
@@ -73,7 +77,12 @@ export class HeroText extends Component<Props, State> {
     );
   }
   cb = (entry: IntersectionObserverEntry) => {
-    this.setAttributes({ opacity: "0", top: "30px" });
+    this.setAttributes({
+      opacity: "1",
+      top: "0px",
+      count: this.state.count + 1,
+    });
   };
-  setAttributes = ({ opacity, top }: State) => this.setState({ opacity, top });
+  setAttributes = ({ opacity, top, count }: State) =>
+    this.setState({ opacity, top, count });
 }
