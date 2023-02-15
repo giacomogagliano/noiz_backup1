@@ -39,11 +39,12 @@ const HeaderStickyLinkP = css`
   color: #fff;
 `;
 
-const HeaderLinkPrimary = css`
+const HeaderLinkPrimary = css<CssProps>`
   padding: 7px 20px;
   border-radius: 16px;
-  background-color: #fff;
-  color: #1d1d1f;
+  background-color: ${props =>
+    props.buttonBgColor ? props.buttonBgColor : "#fff"};
+  color: ${props => (props.color ? props.color : "#1d1d1f")};
   @media screen and (max-width: 479px) {
     padding: 5px 16px;
   }
@@ -85,7 +86,8 @@ const LinkNav = css`
   ${HeaderStickyLink}
 `;
 
-const NavbarComponent = styled.div`
+const NavbarComponent = styled.div<CssProps>`
+  background-color: ${props => (props.bgcolor ? props.bgcolor : "none")};
   width: 100%;
   #div-block-18 {
     ${DivBlock18}
@@ -113,15 +115,18 @@ const NavbarComponent = styled.div`
   #install-now {
     ${HeaderLink}
     ${HeaderLinkPrimary}
-    ${HeaderStickyLinkP}
   }
   #github-stars {
     ${GitHubStars}
   }
 `;
-
-export const Navbar = () => (
-  <NavbarComponent>
+type CssProps = { bgcolor?: string; buttonBgColor?: string; color?: string };
+export const Navbar = ({ bgcolor, buttonBgColor, color }: CssProps) => (
+  <NavbarComponent
+    bgcolor={bgcolor}
+    buttonBgColor={buttonBgColor}
+    color={color}
+  >
     <div id="div-block-18">
       <img
         src="assets/gotek-write.svg"
