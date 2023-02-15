@@ -77,11 +77,12 @@ export class HeroText extends Component<Props, State> {
     );
   }
   cb = (entry: IntersectionObserverEntry) => {
-    this.setAttributes({
-      opacity: "1",
-      top: "0px",
-      count: this.state.count + 1,
-    });
+    if (entry.isIntersecting)
+      this.setAttributes({
+        opacity: "1",
+        top: "0px",
+        count: this.state.count + 1,
+      });
   };
   setAttributes = ({ opacity, top, count }: State) =>
     this.setState({ opacity, top, count });
