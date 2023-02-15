@@ -1,7 +1,7 @@
 // "use client";
 
 import React from "react";
-import Client from "../components/Client";
+import Client from "../classes/Client";
 import { Header } from "../components/Header";
 import Scroller from "../classes/Scroller";
 import { FullPage } from "../components/FullPage";
