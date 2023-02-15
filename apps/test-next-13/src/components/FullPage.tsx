@@ -1,17 +1,19 @@
 import React, { Suspense } from "react";
 import { FullPageComponent } from "./StylesSheet";
 import { Why } from "../classes/Why";
+import { Section } from "../classes/Section";
 
 export const FullPage = () => {
   return (
     <FullPageComponent>
       <div id="content-wrapper">
-        ciao
-        <Suspense>
+        <Suspense fallback={<div>loading</div>}>
           <Why></Why>
         </Suspense>
-        {/* <Sec></Sec> */}
-        {/* <div id="what" className="section dark "></div>
+        <Suspense fallback={<div>loading</div>}>
+          <Section></Section>
+        </Suspense>
+        <div id="what" className="section dark "></div>
         <div id="what" className="section "></div>
         <div id="app-store" className="section "></div>
         <div id="apps" className=""></div>
@@ -22,7 +24,7 @@ export const FullPage = () => {
         <div id="signup" className="section dark section-2 "></div>
         <div className="section dark social-section"></div>
         <div id="faq" className="section hidden "></div>
-        <div id="footer" className="footer "></div> */}
+        <div id="footer" className="footer "></div>
       </div>
     </FullPageComponent>
   );
