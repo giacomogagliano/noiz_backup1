@@ -1,8 +1,19 @@
 "use client";
-import React, { useEffect, useState } from "react";
+
+import React, { use, useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import { Header } from "../../components/Header";
 import { FullPage } from "../../components/FullPage";
+
+const ENDPOINT = "http://localhost:3001/api/why";
+
+async function getData() {
+  const res = await fetch(ENDPOINT);
+  if (!res.ok) {
+    throw new Error("Failed fetching");
+  }
+  return res.json();
+}
 
 function calculatePadding() {
   let bkpoint = 0;
@@ -15,7 +26,14 @@ function calculatePadding() {
   return bkpoint;
 }
 
-function index() {
+const Sticky = styled.div`
+  background-color: red;
+`;
+
+export default function page() {
+  // const data: WhyData = await getData();
+  // const res = use(getData());
+  // console.log(res);
   /**
    * CONTROL
    */
@@ -129,6 +147,7 @@ function index() {
 
   return (
     <>
+      <Sticky>cioa</Sticky>
       <Header
         trigger1={trigger1}
         isNavbarVisible={isNavbarVisible}
@@ -139,5 +158,3 @@ function index() {
     </>
   );
 }
-
-export default index;
