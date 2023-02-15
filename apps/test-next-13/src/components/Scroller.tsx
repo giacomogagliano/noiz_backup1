@@ -1,15 +1,24 @@
 "use client";
 
 import React, { Component, FC } from "react";
+import { Navbar } from "./Navbar";
 import { FromTop } from "./StylesSheet";
 interface Props {
-  Component?: FC;
+  Component?: "navbar";
   initialTopPos: string;
   transition: string;
 }
 interface State {
   scrollPosition: number;
 }
+
+const Nav = () => (
+  <Navbar bgcolor="white" buttonBgColor="#5351fb" color="white"></Navbar>
+);
+
+const components = new Map();
+components.set("navbar", Nav);
+
 export default class Scroller extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
@@ -21,9 +30,10 @@ export default class Scroller extends Component<Props, State> {
     let top: string;
     if (this.state.scrollPosition > 450) top = "0";
     else top = this.props.initialTopPos;
+    const Component = components.get(this.props.Component);
     return (
       <FromTop top={top} transition={this.props.transition}>
-        <this.props.Component></this.props.Component>
+        <Component></Component>
       </FromTop>
     );
   }
