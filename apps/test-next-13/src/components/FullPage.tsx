@@ -2,16 +2,19 @@
 
 import React from "react";
 import styled, { css } from "styled-components";
-import { Image18, TextSpan2 } from "../app/layout";
 import { Card } from "./Card";
 import { VideoBox } from "./VideoBox";
+import { Why } from "./Why";
+import { Section as Sec } from "./Section";
+import { WhyData } from "../pages/api/why";
+import { Image18, TextSpan2 } from "./StylesSheet";
 
 const ContentWrapper = css`
   overflow: hidden;
   flex-wrap: wrap;
   filter: blur(0px);
 `;
-const Section = css`
+export const Section = css`
   position: relative;
   overflow: hidden;
   margin-bottom: 0px;
@@ -22,10 +25,10 @@ const Section = css`
     padding-bottom: 40px;
   }
 `;
-const Dark = css`
+export const Dark = css`
   background-color: #f8f9fc;
 `;
-const Container = css`
+export const Container = css`
   position: relative;
   width: 90vw;
   margin-left: auto;
@@ -39,7 +42,7 @@ const Container = css`
   }
 `;
 
-const BigHeading = css`
+export const BigHeading = css`
   margin-bottom: 40px;
   font-size: 70px;
   line-height: 86px;
@@ -104,85 +107,46 @@ const Grid5 = css`
 `;
 
 const FullPageComponent = styled.div`
-  #content-wrapper {
+  /* #content-wrapper {
     ${ContentWrapper}
-  }
-  #container {
+  } */
+  /* #container {
     ${Container}
-  }
-  #section {
+  } */
+  /* #section {
     ${Section}
-  }
-  #Dark {
+  } */
+  /* #Dark {
     ${Dark}
-  }
-
-  #big-heading {
+  } */
+  /* #big-heading {
     ${BigHeading}
-  }
-  #why {
+  } */
+  /* #why {
     ${Section}
     ${Dark}
-  }
-  #image- {
+  } */
+  /* #image- {
     ${Image18}
-  }
-  #text-span- {
+  } */
+  /* #text-span- {
     ${TextSpan2}
-  }
-  #grid-card {
+  } */
+  /* #grid-card {
     ${WlayoutGrid}
     ${Grid5}
-  }
-  #SubsHeading {
+  } */
+  /* #SubsHeading {
     ${SubHeading}
-  }
+  } */
 `;
 
 export const FullPage = () => {
-  const videoHref = "https://www.youtube.com/watch?v=kmSs2YLChng&t=11s";
-  const iconSrc = "https://i.imgur.com/trXdlO5.png";
-  const videoSrc = "https://i.imgur.com/JFknZrb.mp4";
-
   return (
     <FullPageComponent>
       <div id="content-wrapper">
-        <div id="why">
-          <div id="container">
-            <h2 id="big-heading">De-google yourself.</h2>
-            <VideoBox
-              href={videoHref}
-              icon={{ src: iconSrc }}
-              video={{ src: videoSrc }}
-            ></VideoBox>
-            <p id="paragraph">
-              All of our interactions on the internet today are mediated by a
-              few companies who offer “free” services in exchange for storing
-              our data on their servers to spy on us.
-              <br></br>
-              <br></br>
-              Running a personal server fundamentally changes that. You and your
-              family’s photos, videos, files, notes, passwords — everything,
-              have nothing to do with someone else’s computer. They’re a part of
-              your private life, and now they can all be stored by you, on your
-              personal server.
-            </p>
-            <img id="image-"></img>
-          </div>
-        </div>
-        <div id="section ">
-          <div id="container">
-            <h2 id="big-heading">
-              Welcome to the <span id="text-span-">new internet.</span>
-            </h2>
-            <h3 id="SubsHeading">
-              One that's powered by you. <span id="text-span-"></span>
-            </h3>
-            <div id="grid-card">
-              <Card></Card>
-            </div>
-          </div>
-        </div>
+        {/* <Why data={why}></Why> */}
+        {/* <Sec></Sec> */}
         <div id="what" className="section dark "></div>
         <div id="what" className="section "></div>
         <div id="app-store" className="section "></div>

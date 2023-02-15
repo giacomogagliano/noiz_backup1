@@ -2,6 +2,9 @@
 
 import React from "react";
 import styled, { css } from "styled-components";
+import { Browser } from "./Browser";
+import { LinuxCommand } from "./LinuxCommand";
+import { Navbar } from "./Navbar";
 import {
   TextCenter,
   TextHero,
@@ -9,13 +12,14 @@ import {
   TextSmall,
   TextSpan,
   TextWhite,
-} from "../app/layout";
-import { Browser } from "./Browser";
-import { LinuxCommand } from "./LinuxCommand";
-import { Navbar } from "./Navbar";
+} from "./StylesSheet";
 
-const HeaderStickyContainer = css<{ isNavbarVisible: boolean }>`
-  left: 0%;
+const HeaderStickyContainer = styled.div<{ isNavbarVisible: boolean }>`
+  margin: 0;
+  background-color: red;
+  /* position: fixed; */
+  width: 100%;
+  /* left: 0%;
   top: 0%;
   right: 0%;
   bottom: auto;
@@ -28,8 +32,8 @@ const HeaderStickyContainer = css<{ isNavbarVisible: boolean }>`
   backdrop-filter: saturate(184%) blur(20px);
   transform-style: preserve-3d;
   transition: opacity 100ms ease-in-out, top 300ms ease-in-out;
-  position: fixed;
-  top: ${props => (props.isNavbarVisible ? "0" : "-80px")};
+  position: fixed; */
+  /* top: ${props => (props.isNavbarVisible ? "0" : "-80px")}; */
 `;
 const Hero = css`
   display: flex;
@@ -180,7 +184,6 @@ const HeaderComponent = styled.div<{
     ${TextCenter}
     ${TextHero}
   }
-
   #button-text {
     ${buttonText}
   }
@@ -202,42 +205,46 @@ export const Header = ({
   triggerButtonToTop,
   triggerButtonTransform,
 }) => (
-  <HeaderComponent
-    trigger1={trigger1}
-    isNavbarVisible={isNavbarVisible}
-    triggerButtonToTop={triggerButtonToTop}
-    triggerButtonTransform={triggerButtonTransform}
-  >
-    <div id="header-sticky-container">
+  <>
+    {/* <Navbar></Navbar> */}
+    {/* <HeaderStickyContainer isNavbarVisible={isNavbarVisible}>
+      ciao <br />
+      ciao
+    </HeaderStickyContainer> */}
+    <div id="header">
       <Navbar></Navbar>
     </div>
-    <div id="hero">
-      <div>
-        <div id="header">
-          <Navbar></Navbar>
+    <HeaderComponent
+      trigger1={trigger1}
+      isNavbarVisible={isNavbarVisible}
+      triggerButtonToTop={triggerButtonToTop}
+      triggerButtonTransform={triggerButtonTransform}
+    >
+      <div id="hero">
+        <div>
+          <Browser></Browser>
         </div>
-        <Browser></Browser>
+        <h1 id="trigger-1">
+          Goodbye, big tech.
+          <br />
+          Welcome, <span id="text-span">your data at your own home.</span>
+          <span id="text-span"></span>
+          <span id="text-span"></span>
+        </h1>
+        <p id="paragraph-header">
+          Zion is an OS for running a personal mini computer in your home.
+          Self-host open source apps Bitcoin node, and more.
+          <br></br>
+          <br></br>
+          Get the convenience of cloud, without giving up your data.
+        </p>
+        <a id="button-effect">
+          <div id="button-text">INSTALL ON MINI PC</div>
+          <img src="assets/long-arrow.svg" loading="lazy" alt=""></img>
+        </a>
+        <p id="header-last-line">Or install on any Ubuntu or Debian system:</p>
+        <LinuxCommand></LinuxCommand>
       </div>
-      <h1 id="trigger-1">
-        Goodbye, big tech.
-        <br />
-        Welcome, <span id="text-span">your data at your own home.</span>
-        <span id="text-span"></span>
-        <span id="text-span"></span>
-      </h1>
-      <p id="paragraph-header">
-        Zion is an OS for running a personal mini computer in your home.
-        Self-host open source apps Bitcoin node, and more.
-        <br></br>
-        <br></br>
-        Get the convenience of cloud, without giving up your data.
-      </p>
-      <a id="button-effect">
-        <div id="button-text">INSTALL ON MINI PC</div>
-        <img src="assets/long-arrow.svg" loading="lazy" alt=""></img>
-      </a>
-      <p id="header-last-line">Or install on any Ubuntu or Debian system:</p>
-      <LinuxCommand></LinuxCommand>
-    </div>
-  </HeaderComponent>
+    </HeaderComponent>
+  </>
 );

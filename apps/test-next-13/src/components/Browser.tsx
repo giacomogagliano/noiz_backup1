@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const BrowserComponent = styled.div`
-  .browser {
+  /* .browser {
     position: relative;
     display: -webkit-box;
     display: -webkit-flex;
@@ -170,7 +170,7 @@ const BrowserComponent = styled.div`
 
   .hero-image.floating.d-none {
     display: none;
-  }
+  } */
 `;
 
 export const Browser = () => (
