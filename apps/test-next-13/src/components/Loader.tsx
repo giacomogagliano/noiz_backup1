@@ -1,3 +1,5 @@
+"use client";
+
 import { Component, FC } from "react";
 import styled from "styled-components";
 
