@@ -206,14 +206,6 @@ export const Header = ({
   triggerButtonTransform,
 }) => (
   <>
-    {/* <Navbar></Navbar> */}
-    {/* <HeaderStickyContainer isNavbarVisible={isNavbarVisible}>
-      ciao <br />
-      ciao
-    </HeaderStickyContainer> */}
-    <div id="header">
-      <Navbar></Navbar>
-    </div>
     <HeaderComponent
       trigger1={trigger1}
       isNavbarVisible={isNavbarVisible}
@@ -221,6 +213,9 @@ export const Header = ({
       triggerButtonTransform={triggerButtonTransform}
     >
       <div id="hero">
+        <div id="header">
+          <Navbar></Navbar>
+        </div>
         <div>
           <Browser></Browser>
         </div>
