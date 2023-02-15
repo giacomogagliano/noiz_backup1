@@ -2,6 +2,7 @@
 
 import React from "react";
 import styled, { css } from "styled-components";
+import { HeroText } from "../classes/HeroText";
 import { Browser } from "./Browser";
 import { LinuxCommand } from "./LinuxCommand";
 import { Navbar } from "./Navbar";
@@ -14,7 +15,7 @@ import {
   TextWhite,
 } from "./StylesSheet";
 
-const HeaderStickyContainer = styled.div<{ isNavbarVisible: boolean }>`
+const HeaderStickyContainer = styled.div`
   margin: 0;
   background-color: red;
   /* position: fixed; */
@@ -33,8 +34,8 @@ const HeaderStickyContainer = styled.div<{ isNavbarVisible: boolean }>`
   transform-style: preserve-3d;
   transition: opacity 100ms ease-in-out, top 300ms ease-in-out;
   position: fixed; */
-  /* top: ${props => (props.isNavbarVisible ? "0" : "-80px")}; */
 `;
+/* top: ${props => (props.isNavbarVisible ? "0" : "-80px")}; */
 const Hero = css`
   display: flex;
   min-height: 100vh;
@@ -65,32 +66,12 @@ const HeaderCss = css`
     align-items: center;
   }
 `;
-const Heading = css`
-  margin-bottom: 40px;
-  font-size: 90px;
-  line-height: 96px;
-  font-weight: 600;
-  text-align: center;
-`;
-const HeadingHero = css<{ trigger1: string }>`
-  position: relative;
-  right: ${props => props.trigger1};
-  transition: right 1s;
-  max-width: 1000px;
-  margin-right: 1.6rem;
-  margin-left: 1.6rem;
-  font-size: 70px;
-  line-height: 86px;
-  @media screen and (max-width: 479px) {
-    font-size: 50px;
-    line-height: 54px;
-  }
-`;
 
-const gradientButton = css<{
+type gradientButtonType = {
   triggerButtonToTop: string;
   triggerButtonTransform: string;
-}>`
+};
+const gradientButton = css<gradientButtonType>`
   display: grid;
   padding: 10px 20px;
   justify-content: space-around;
@@ -154,13 +135,12 @@ const buttonText = css`
     line-height: 22px;
   }
 `;
-
-const HeaderComponent = styled.div<{
+type HeaderComponentType = {
   trigger1: string;
-  isNavbarVisible: boolean;
   triggerButtonToTop: string;
   triggerButtonTransform: string;
-}>`
+};
+const HeaderComponent = styled.div<HeaderComponentType>`
   #header {
     ${HeaderCss}
   }
@@ -169,10 +149,6 @@ const HeaderComponent = styled.div<{
   }
   #hero {
     ${Hero}
-  }
-  #trigger-1 {
-    ${Heading}
-    ${HeadingHero}
   }
   #button-effect {
     ${gradientButton}
@@ -199,16 +175,24 @@ const HeaderComponent = styled.div<{
   }
 `;
 
+// const HeroText = () => (
+//   <h1 id="trigger-1">
+//     Goodbye, big tech.
+//     <br />
+//     Welcome, <span id="text-span">your data at your own home.</span>
+//     <span id="text-span"></span>
+//     <span id="text-span"></span>
+//   </h1>
+// );
+
 export const Header = ({
   trigger1,
-  isNavbarVisible,
   triggerButtonToTop,
   triggerButtonTransform,
 }) => (
   <>
     <HeaderComponent
       trigger1={trigger1}
-      isNavbarVisible={isNavbarVisible}
       triggerButtonToTop={triggerButtonToTop}
       triggerButtonTransform={triggerButtonTransform}
     >
@@ -219,13 +203,7 @@ export const Header = ({
         <div>
           <Browser></Browser>
         </div>
-        <h1 id="trigger-1">
-          Goodbye, big tech.
-          <br />
-          Welcome, <span id="text-span">your data at your own home.</span>
-          <span id="text-span"></span>
-          <span id="text-span"></span>
-        </h1>
+        <HeroText></HeroText>
         <p id="paragraph-header">
           Zion is an OS for running a personal mini computer in your home.
           Self-host open source apps Bitcoin node, and more.
