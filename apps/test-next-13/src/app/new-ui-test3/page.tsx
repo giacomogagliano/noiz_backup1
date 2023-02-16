@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 import styled from "styled-components";
-import { CardLoader } from "../../classes/CardLoader";
+import { CardLoader } from "../../lib/client/CardLoader";
 
 function Index() {
   let cards: JSX.Element[] = [];
