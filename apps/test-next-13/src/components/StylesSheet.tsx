@@ -949,3 +949,20 @@ export type CssProps = {
   buttonBgColor?: string;
   color?: string;
 };
+
+export const Area = styled.div`
+  ${Section}
+  ${Dark}
+  #container-why {
+    ${Container}
+    #big-heading-why {
+      ${BigHeading}
+    }
+    #paragraph-why {
+      ${Paragraph}
+    }
+    #image- {
+      ${Image18}
+    }
+  }
+`;
