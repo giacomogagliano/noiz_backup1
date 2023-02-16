@@ -1,4 +1,5 @@
 import React, { use } from "react";
+import { getData } from "../lib/getData";
 import { StyledCard } from "./StylesSheet";
 
 const ENDPOINT = "http://localhost:3000/api/cards";
@@ -14,16 +15,8 @@ export class CardApi {
   }
 }
 
-async function getData() {
-  const res = await fetch(ENDPOINT);
-  if (!res.ok) {
-    throw new Error("Failed fetching");
-  }
-  return res.json();
-}
-
 export const Card = () => {
-  const { featureHeading, paragraph_text } = use<CardApi>(getData());
+  const { featureHeading, paragraph_text } = use<CardApi>(getData(ENDPOINT));
   const FEAT_HEADER_ID = "feature-header";
   const FEAT_HEADING_ID = "feature-heading";
   const IMG_SRC = "../../assets/icon_4.svg";
