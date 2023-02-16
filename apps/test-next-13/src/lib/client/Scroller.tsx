@@ -1,8 +1,9 @@
 "use client";
 
 import React, { Component, FC } from "react";
+import styled from "styled-components";
 import { Navbar } from "../../components/Navbar";
-import { FromTop } from "../style/StylesSheet";
+
 interface Props {
   Component?: "navbar";
   initialTopPos: string;
@@ -18,6 +19,14 @@ const Nav = () => (
 
 const components = new Map();
 components.set("navbar", Nav);
+
+export const FromTop = styled.div<{ top?: string; transition?: string }>`
+  position: fixed;
+  top: ${props => props.top};
+  transition: top 0.5s;
+  z-index: 1;
+  width: 100%;
+`;
 
 export default class Scroller extends Component<Props, State> {
   constructor(props: Props) {

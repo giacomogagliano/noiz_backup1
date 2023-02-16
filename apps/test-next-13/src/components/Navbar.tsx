@@ -1,6 +1,7 @@
 import React from "react";
 import { GitHubLinks } from "./GitHubLink";
-import { CssProps, NavbarComponent } from "../lib/style/StylesSheet";
+import { CssProps } from "../lib/style/StylesSheet";
+import { NavbarComponent } from "../lib/style/Navbar.style";
 interface HreftargetProps {
   href: string;
   target?: string;

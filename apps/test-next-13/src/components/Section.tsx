@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "./Card";
-import { AreaSection } from "../lib/style/StylesSheet";
+import { AreaSection } from "../lib/style/Section.style";
 
 export function Section() {
   return (

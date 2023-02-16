@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserComponent } from "../lib/style/StylesSheet";
+import { BrowserComponent } from "../lib/style/Browser.style";
 
 export const Browser = () => (
   <BrowserComponent>
