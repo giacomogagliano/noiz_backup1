@@ -4,11 +4,7 @@ import {
   SetStateAction,
 } from "react";
 import styled, { css } from "styled-components";
-import {
-  Badge,
-  BadgeProps,
-  BadgeState,
-} from "../../Badge";
+import { Badge } from "../../Badge";
 import { Card, CardProps, CardState } from "../../Card";
 import { Icon, IconProps, IconState } from "../../Icon";
 import {
@@ -27,6 +23,7 @@ import {
   NavInput,
   NavInputProps,
 } from "../../../classes";
+import { BadgeStyle } from "../../../components/Badge/Badge.style";
 
 const LANDSCAPE_IMG =
   "https://tse2.mm.bing.net/th?id=OIP.WgFkpDjrYDRCr0JSS_R70QHaE7";
@@ -72,7 +69,7 @@ export interface Profile_v2
     Profile_v2State
   > {
   Icon: ComponentClass<IconProps, IconState>;
-  Badge: ComponentClass<BadgeProps, BadgeState>;
+  Badge: ({ size }: BadgeStyle) => JSX.Element;
   Image: ComponentClass<ImageProps, ImageState>;
   ItemsArea: ComponentClass<
     ItemsAreaProps,
@@ -120,7 +117,7 @@ export class Profile_v2 extends BaseNoiz<
     grid-area: navbar;
   `;
 
-  Badge: ComponentClass<BadgeProps, BadgeState> = Badge;
+  Badge: ({ size }: BadgeStyle) => JSX.Element = Badge;
   BadgeStyled = styled(Badge)``;
 
   Image: ComponentClass<ImageProps, ImageState> = Image;
