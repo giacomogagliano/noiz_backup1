@@ -1,0 +1,209 @@
+database:
+  - Blockchain:
+    tested: false
+    sub-modules:
+      - src:
+        sub-modules:
+          - Class:
+              - NoizContractFactory:
+                tested: false
+                exported: true
+          - Factories:
+              - ERC1155IndividualUri:
+                tested: true
+                exported: true
+              - ERC1155IndividualTokenShop:
+                tested: true
+                exported: true
+              - Membership:
+                tested: true
+                exported: true
+              - Lock:
+                tested: true
+                exported: false
+              - Propaganda_presale:
+                tested: true
+                exported: true
+              - ProvaMaster:
+                tested: true
+                exported: true
+              - SimpleStorage:
+                tested: true
+                exported: true
+              - USDC:
+                tested: true
+                exported: true
+          - lib
+            - calculateTxCost
+            - digestSigner
+            - messageSigner
+            - printDeployLog
+            - retrieveTxDatas
+          - Models
+            - classes
+            - NFT
+            - NFT Metadatas
+            - Application
+            - Audius
+            - ...
+          - types
+            - contracts
+            - contracts
+            - Factories
+            - oz
+          - utils
+            - combineJSON
+  - EVM:
+    tested: partially
+    sub-modules:
+      - classes:
+          - EVM:
+            test:
+              done: true
+              full: false
+              frompkg: false
+            module: true
+          - EVMWeb:
+            test:
+              done: true
+              full: false
+              frompkg: true
+          - NoizContractFactories:
+            test:
+              done: true
+              full: false
+              frompkg: false
+          - ZionContractFactories:
+            test: true
+            module: false
+            todo: delete test
+      - lib:
+          - addContractFactory
+          - blbal
+          - buildProviders
+          - calculateTxCosts
+          - deployContract
+          - detect
+          - detectEthereumProvider
+          - formatEthers
+          - formatUnits
+          - getBalance
+          - getContract
+          - getContractFactory
+          - getGasPrice
+          - getJsonRpc
+          - getProvider
+          - printTxLog
+          - requestAccounts
+          - retrieveTxDatas
+      - Types:
+          - Abi
+          - HardhatContractJson
+          - Networks
+          - Providers
+          - ZionContractFactories
+  - FileSystem:
+    tested: partially
+    sub-modules:
+      - classes:
+          - NoizBabel:
+            test:
+              done: true
+              full: false
+              frompkg: false
+          - NoizCsv
+          - NoizPath
+          - NoizYaml
+          - Reader
+          - System
+          - Watcher
+          - Writer
+      - lib
+        - chokidar
+        - create
+        - delete
+        - read
+        - schemas
+        - search
+        - types
+        - update
+      - scripts
+        - buildInPackages
+        - clonePackageJson_TsJson
+        - combineJson
+        - migrateBuiltFolder
+        - repoDeps
+        - zionDependencies
+  - FS:
+  - Git:
+    tested: partially
+    sub-modules:
+      - lib
+        - App
+        - json
+        - Package
+        - RepoFile
+        - RepoFolder
+        - RepoRoot
+        - Status
+        - Types
+      - Monorepo
+      - Repo
+      - RepoManager
+        - Dati
+      - Types
+        - Oktokit
+      - ZionGit:
+        tests:
+          done: true
+          full: false
+          frompkg: false
+      - ZionGitHub
+  - IPFS:
+    tested: not possible
+    sub-modules:
+      - class
+        - Core
+        - Http
+        - Types
+      - lib
+        - addAndPrintLog
+      - scripts
+  - mongodb:
+    tested: partially
+    sub-modules:
+      - connectionk8stest
+      - mongodg
+  - neo4j:
+    tested: partially
+    sub-modules:
+      - lib:
+          - createPerson
+          - createRelationQuery
+          - deleteQuery
+          - readQuery
+          - updateQuery
+ui:
+  - colors-endpoint:
+    sub-modules:
+      - classes:
+          - ColorGenerator
+          - Hsl
+          - Palette
+  - components
+  - next
+  - style
+
+structure:
+  repo:
+    - apps:
+        - entrypoints
+        - sub-modules
+        - tests
+    - packages
+
+node:
+  type: app
+  name: gun-server
+  entrypoints:
+    - main

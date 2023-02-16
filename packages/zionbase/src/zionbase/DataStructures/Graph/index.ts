@@ -1,3 +1,4 @@
+import { Graph_v4 as v4, Graph_v4Props as v4Props } from './Graph_v4';
 export {
   Graph_v3,
   ArrayGraph_v3Ctor as ArrayGraph,
@@ -21,20 +22,34 @@ export type {
   Graph_v1Props as GraphProps,
 } from "./Graph_v1";
 
-//// ListGraph
-export * from "./ListGraph";
-
-//// MatrixGraph
-export * from "./MatrixGraph";
-
 //// Node
 export * from "./Node";
 
-//// AppGraph
-export * from "./AppGraph";
+export * as extensions from "./extensions";
+export {
+  AppGraph,
+  AppGraphCtor,
+  AppNode,
+  AppNodeCtor,
+  File,
+  FileSystemTree,
+  FileSystemTreeCtor,
+  Folder,
+  Folder_v2,
+  LeafNode_v2,
+  ListGraph,
+  ListGraphCtor,
+  MatrixGraph,
+  MatrixGraphCtor,
+  Root,
+  Root_v2,
+  Tree,
+  TreeNode,
+  TreeNode_v2,
+} from "./extensions";
 
-//// Tree
-export * from "./Tree";
+//// Edge
+export * from "./Edge";
 
-//// Dag
-export * from "./DAG";
+export const Graph_v4 = v4;
+export type Graph_v4Props = v4Props;

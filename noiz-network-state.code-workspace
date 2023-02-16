@@ -1,9 +1,20 @@
 {
   "folders": [
-    { "path": "." },
-    { "path": "tasks" },
-    { "path": "apps" },
-    { "path": "packages" }
+    {
+      "path": "."
+    },
+    {
+      "path": "tasks"
+    },
+    {
+      "path": "apps"
+    },
+    {
+      "path": "packages"
+    },
+    {
+      "path": "node_modules/gun"
+    }
   ],
   "settings": {}
 }

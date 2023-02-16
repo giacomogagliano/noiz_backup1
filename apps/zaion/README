@@ -1,0 +1,57 @@
+# Zaion - Decentralized OS
+
+# Introduction
+
+# Idea
+
+We want to build a system which focuses the visualization of complex datas
+with quick and simple to use tools which can traverse and display
+datas in form of complex graphs. The goal is to build a native os built on top of linux/unix
+systems. The system will be based on the IPFS protocol, not on a "usual" filesystem,
+delivering built-in tools for data encryption and distribution.
+
+## Hardware server for local-first applications
+
+##
+
+# Roadmap
+
+- build distributed system on raspberry
+- design a case for the raspberries
+- release apps
+  - presale token
+  - nft-pfp mint
+  - digital-content gate
+    - album
+    - single
+- release a white paper for peer to peer stock management
+- release a white paper for peer to peer distribution
+
+# Investment
+
+| product           | quantity | description                             | price unit | price tot |
+| ----------------- | -------- | --------------------------------------- | ---------- | --------- |
+| raspberry         | 20       | test machines to be spread around peers | 150        | 3000      |
+| harddrives        | 5        | dual disk raid systems                  | 600        | 3000      |
+| printing material | unknwon  | material to print 30/50 covers          | 20         | 500/1000  |
+| macpro            | 1        | main machine to code                    | 4000       | 4000      |
+| wide screen       | 1        | widescreens                             | 600        | 600       |
+| wide screen       | 1        | vertical use                            | 600        | 600       |
+| iphone            | 1        | test purposes                           | 800        | 800       |
+| android phone     | 1        | test purposes                           | 700        | 700       |
+| small phone       | 1        | test purposes                           | 300        | 300       |
+| ipad              | 1        | test purposes                           | 500        | 500       |
+| galaxy tab        | 1        | test purpose                            | 400        | 400       |
+| dev team budget   | 1        | budget for external help to speed prod  |            | 10000     |
+| ----------------- | -------- | --------------------------------------- | ---------- | --------- |
+|                   |          |                                         |            | 22200     |
+
+# Sale stock
+
+| product    | quantity | description            | price unit | price tot | sale price unit | sale revenue gross |
+| ---------- | -------- | ---------------------- | ---------- | --------- | --------------- | ------------------ |
+| raspberry  | 100      | to sell                | 100        | 10000     | 200             | 20000              |
+| harddrives | 20       | dual disk raid systems | 300        | 6000      | 600             | 12000              |
+| t-shirt    | 1000     | dual disk raid systems | 5          | 5000      | 25              | 25000              |
+| ---------- | -------- | ---------------------- | ---------- | --------- | --------------- | ------------------ |
+|            |          |                        |            | 27000     |                 | 55000              |
