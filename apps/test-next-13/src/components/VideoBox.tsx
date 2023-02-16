@@ -1,5 +1,5 @@
 import React from "react";
-import { VideoBoxComponent } from "./StylesSheet";
+import { VideoBoxComponent } from "../lib/style/StylesSheet";
 
 interface VideoBoxElement {
   src: string;

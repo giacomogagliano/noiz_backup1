@@ -1,6 +1,6 @@
 import React, { use } from "react";
 import { getData } from "../lib/getData";
-import { StyledCard } from "./StylesSheet";
+import { StyledCard } from "../lib/style/StylesSheet";
 
 const ENDPOINT = "http://localhost:3000/api/cards";
 

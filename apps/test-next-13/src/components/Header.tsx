@@ -4,7 +4,7 @@ import { HeroText } from "../classes/HeroText";
 import { Browser } from "./Browser";
 import { LinuxCommand } from "./LinuxCommand";
 import { Navbar } from "./Navbar";
-import { HeaderComponent } from "./StylesSheet";
+import { HeaderComponent } from "../lib/style/StylesSheet";
 
 export const Header = ({
   trigger1,

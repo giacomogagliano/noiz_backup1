@@ -2,7 +2,7 @@
 
 import React, { Component, FC } from "react";
 import { Navbar } from "../../components/Navbar";
-import { FromTop } from "../../components/StylesSheet";
+import { FromTop } from "../style/StylesSheet";
 interface Props {
   Component?: "navbar";
   initialTopPos: string;

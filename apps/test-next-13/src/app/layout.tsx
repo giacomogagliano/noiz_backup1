@@ -1,4 +1,4 @@
-import { Body } from "../components/StylesSheet";
+import { Body } from "../lib/style/StylesSheet";
 import StyledComponentsRegistry from "../lib/registry";
 
 export default function RootLayout({

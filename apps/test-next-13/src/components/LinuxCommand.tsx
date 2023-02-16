@@ -1,5 +1,5 @@
 import React from "react";
-import { LinuxCommandComponent } from "./StylesSheet";
+import { LinuxCommandComponent } from "../lib/style/StylesSheet";
 
 export const LinuxCommand = () => (
   <LinuxCommandComponent>

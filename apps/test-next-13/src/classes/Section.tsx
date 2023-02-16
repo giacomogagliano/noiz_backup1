@@ -10,7 +10,7 @@ import {
   Section as Sec,
   SubHeading,
   WlayoutGrid,
-} from "../components/StylesSheet";
+} from "../lib/style/StylesSheet";
 
 const Area = styled.div`
   /* padding: 20px; */

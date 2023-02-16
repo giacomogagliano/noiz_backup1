@@ -1,7 +1,7 @@
 import React, { use } from "react";
 import { WhyData } from "../pages/api/why";
 import { VideoBox } from "./VideoBox";
-import { Area } from "./StylesSheet";
+import { Area } from "../lib/style/StylesSheet";
 import { getData } from "../lib/getData";
 
 const ENDPOINT = "http://localhost:3000/api/why";
