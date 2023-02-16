@@ -1,7 +1,4 @@
 import { NextApiRequest, NextApiResponse } from "next";
-
-export {};
-
 import { CardApi } from "../../../components/Card";
 
 const card1 = new CardApi({
