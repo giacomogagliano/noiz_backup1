@@ -1,5 +1,5 @@
 import React, { Component, Suspense, use, useState } from "react";
-import { Why } from "../../../classes/Why";
+import { Why } from "../../../components/Why";
 // import { WhyData } from "../../../pages/api/why";
 
 export default function page() {
