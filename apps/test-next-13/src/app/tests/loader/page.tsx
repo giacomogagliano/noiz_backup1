@@ -2,7 +2,7 @@
 
 import React from "react";
 import styled from "styled-components";
-import { Loader } from "../../../classes/Loader";
+import { Loader } from "../../../lib/client/Loader";
 
 export const Style = styled.div`
   /* position: fixed; */

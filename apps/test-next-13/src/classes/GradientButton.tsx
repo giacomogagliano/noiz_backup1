@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 import styled, { css } from "styled-components";
-import { Loader } from "./Loader";
+import { Loader } from "../lib/client/Loader";
 
 const buttonHero = css`
   color: black;
