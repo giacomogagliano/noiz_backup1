@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { FullPageComponent } from "../lib/style/Fullpage.style";
+import { FullPageComponent } from "../lib/style/FullPage.style";
 import { Why } from "./Why";
 import { Section } from "./Section";
 
