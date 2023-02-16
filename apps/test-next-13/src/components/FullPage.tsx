@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { FullPageComponent } from "./StylesSheet";
-import { Why } from "../classes/Why";
+import { Why } from "./Why";
 import { Section } from "../classes/Section";
 
 export const FullPage = () => {
