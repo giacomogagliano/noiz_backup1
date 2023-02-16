@@ -786,6 +786,23 @@ export const HeaderComponent = styled.div<HeaderComponentType>`
     ${TextSmall}
   }
 `;
+export const AreaSection = styled.div`
+  /* padding: 20px; */
+  ${Section}
+  #container {
+    ${Container}
+  }
+  #big-heading {
+    ${BigHeading}
+  }
+  #SubsHeading {
+    ${SubHeading}
+  }
+  #grid-card {
+    ${WlayoutGrid}
+    ${Grid5}
+  }
+`;
 
 // const HeroText = () => (
 //   <h1 id="trigger-1">

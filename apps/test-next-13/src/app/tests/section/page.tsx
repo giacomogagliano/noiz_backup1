@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { Section } from "../../../classes/Section";
+import { Section } from "../../../components/Section";
 
 export default function page() {
   return (
