@@ -4,7 +4,7 @@ import { Root } from "./Root";
 import { TreeNode } from "./TreeNode";
 import { node } from "../../../../../utils";
 
-const zionUtil = node.util.zionUtil;
+const zionUtil = node.zionUtil;
 
 enum TreeErrors {
   NO_NODE = "non è stato fornito alcun nodo da aggiungere",
@@ -22,6 +22,9 @@ export interface Tree {
   remove(nodeToRemove: TreeNode): number;
   isPresent(node2Check: TreeNode): boolean;
   findByLevel(depth: number): TreeNode[];
+}
+export interface Tree_v1Ctor {
+  new (nodes: TreeNode[]): Tree;
 }
 
 export class Tree {

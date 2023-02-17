@@ -6,7 +6,7 @@ import { keyInObjGuard } from "./keyInObjGuard";
 /**
  * Overload interface fot the guard function.
  */
-export interface Iguard_v1 {
+export interface guard_v1 {
   // <T extends Object, O, Key extends keyof T>(obj: T, key: Key): Required<
   //   Pick<T, Key>
   // > &
@@ -82,7 +82,7 @@ export interface Iguard_v1 {
  * @returns
  */
 // FIXME #229 @giacomogagliano fix the interface
-export const guard_v1: Iguard_v1 = function <
+export const guard_v1: guard_v1 = function <
   T extends
     | Object
     | string

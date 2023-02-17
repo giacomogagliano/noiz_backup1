@@ -9,6 +9,7 @@ const UNDEFINED_ERROR =
   "cannot traverse an undefined value";
 
 type value = string | number;
+// @ts-ignore
 function simpleRecurse(obj: object | value, value: value) {
   if (typeof obj !== "object") {
     return obj === value;
@@ -108,6 +109,7 @@ export interface Itraverse_v1 {
 }
 
 export const traverse_v1: Itraverse_v1 = function (data) {
+  // @ts-ignore
   const safedata = checkType(data);
   const isArray = isArrayType(data);
   const isObject = isObjectType(data);
@@ -118,7 +120,7 @@ export const traverse_v1: Itraverse_v1 = function (data) {
     data;
   }
 };
-
+// @ts-ignore
 const testArray = [
   [1, 2, 1],
   [2, 4, 2],

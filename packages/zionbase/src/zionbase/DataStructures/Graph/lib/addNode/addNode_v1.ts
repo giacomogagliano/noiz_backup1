@@ -1,4 +1,4 @@
-import { addNodeType } from "../../../Types/DataStructures/Graph";
+import { addNodeType } from "../../../../Types/DataStructures/Graph";
 
 export const addNode_v1: addNodeType = function (node) {
   const currentMatrixLength = this.adjacencyMatrix.length;

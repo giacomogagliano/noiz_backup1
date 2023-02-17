@@ -31,3 +31,12 @@ export class Folder_v1
     return this.constructor === Folder_v1;
   }
 }
+export interface Folder_v1Ctor {
+  new (
+    name?: string,
+    path?: string,
+    typeNumber?: number,
+    treeId?: unknown,
+    depth?: number
+  ): Folder_v1;
+}

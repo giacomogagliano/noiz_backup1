@@ -1,4 +1,4 @@
-import { isConnectedType } from "../../../Types/DataStructures/Graph";
+import { isConnectedType } from "../../../../Types/DataStructures/Graph";
 
 export const isConnected_v1: isConnectedType = function (
   nodeA,

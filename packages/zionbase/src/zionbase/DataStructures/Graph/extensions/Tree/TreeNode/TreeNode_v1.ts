@@ -64,6 +64,24 @@ export interface TreeNode_v1 {
   trovaGenitore(): TreeNode_v1 | undefined;
 }
 
+export interface TreeNode_v1Ctor {
+  new (
+    name?: string,
+    path?: string,
+    typeNumber?: number,
+    treeId?: unknown,
+    depth?: number,
+    genitore?: TreeNode_v1[],
+    figlio?: TreeNode_v1[],
+    children?: TreeNode_v1[],
+    root: false,
+    type?: string,
+    id?: number,
+    stringedDir?: string,
+    _isLastChild?: boolean
+  ): TreeNode_v1;
+}
+
 export class TreeNode_v1 implements TreeNode_v1 {
   static #types: ("Folder" | "File")[] = [
     "Folder",
