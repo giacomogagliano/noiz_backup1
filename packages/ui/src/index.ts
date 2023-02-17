@@ -68,12 +68,116 @@ import type { NftMinterGlobalStyle } from "./HTML/React/style/Global/NftMinter";
 import type { Footer } from "./HTML/React/style/Layout/Footer";
 import type { NavBar as LayoutNavbar } from "./HTML/React/style/Layout/NavBar";
 
-_React.;
+import type { cym1Palette1 } from "./HTML/React/lib/colors/Palettes/newPalette1";
+import type { cym1Palette2 } from "./HTML/React/lib/colors/Palettes/newPalette1";
+import type { cym1Palette3 } from "./HTML/React/lib/colors/Palettes/newPalette1";
+import type { rgbPalette1 } from "./HTML/React/lib/colors/Palettes/newPalette1";
+import type { rgbPalette2 } from "./HTML/React/lib/colors/Palettes/newPalette1";
+import type { rgbPalette3 } from "./HTML/React/lib/colors/Palettes/newPalette1";
+import type { ryb1Palette1 } from "./HTML/React/lib/colors/Palettes/newPalette1";
+import type { ryb1Palette2 } from "./HTML/React/lib/colors/Palettes/newPalette1";
+import type { ryb1Palette3 } from "./HTML/React/lib/colors/Palettes/newPalette1";
+import type { fluid_colors1_a } from "./HTML/React/lib/colors/Palettes/Fluid1";
+import type { fluid_colors1_b } from "./HTML/React/lib/colors/Palettes/Fluid1";
+import type { fluid_colors1_c } from "./HTML/React/lib/colors/Palettes/Fluid1";
+import type { fluid_colors1_d } from "./HTML/React/lib/colors/Palettes/Fluid1";
+import type { fluid_colors2_a } from "./HTML/React/lib/colors/Palettes/Fluid2";
+import type { fluid_colors2_b } from "./HTML/React/lib/colors/Palettes/Fluid2";
+import type { fluid_colors3_a } from "./HTML/React/lib/colors/Palettes/Fluid3";
+import type { fluid_colors3_c } from "./HTML/React/lib/colors/Palettes/Fluid3";
+import type { fluid_7 } from "./HTML/React/lib/colors/Palettes/fluid_7";
 
-interface ReactType extends areas, buttons {
+const {} = _React.lib.global;
+
+interface util {
+  callbackifyUseState: any;
+  checkBackgroundColor: any;
+  checkBorderColor: any;
+  checkCss: any;
+  checkCss_v1: any;
+  checkGridArea: any;
+  checkGridAreaNoCss: any;
+  checkGridAreaWithCss_: any;
+  checkGridArea_v1: any;
+  checkGridSettings: any;
+  checkGridTemplate: any;
+  checkPlaceContent: any;
+  checkPlaceContent_v2: any;
+  checkPlaceItems: any;
+  checkPlaceItems_v2: any;
+  checkPosition: any;
+  checkPropsAndSetDefault: any;
+  checkSize: any;
+  checkSize_props: any;
+  checkZIndex: any;
+  handleChange: any;
+  handleSubmit: any;
+  mapper: any;
+  paletteDarkGrey: any;
+  roundDecimals: any;
+}
+
+interface hooks {
+  Processor: any;
+  detect: any;
+  fetchMd: any;
+  getSignerAddress: any;
+  handleAccountsChangedCallbackFactory: any;
+  handleAccountsChangedFactory: any;
+  handleNetworkChange: any;
+  html_react: any;
+  listAccounts: any;
+  listAccountsCallbacksFactory: any;
+  mdParser: any;
+  mdParser_v1: any;
+  md_raw_react: any;
+  md_react: any;
+  md_string: any;
+  requestAccounts: any;
+  useCalculateFluidGrid: any;
+  useEthereum_v1: any;
+  useInfiniteScroll: any;
+  useProcessor: any;
+  useToggleTheme: any;
+  v2: any;
+}
+
+interface lib {
+  colors: colors;
+  BaseNoiz: typeof BaseNoiz;
+  ComponentDecorator: IComponentDecorator_v1;
+  global: libglobal;
+  // constants: { defaultIconProps: any };
+  // hooks: any;
+  // types: any;
+  // util: any;
+}
+
+interface libglobal {
+  BaseNoiz: any;
+  BaseNoizProps: any;
+  BaseNoiz_v4: any;
+  BaseNoiz_v5: any;
+  ColorShemes: any;
+  ColorWheels: any;
+  Colors: any;
+  ComponentDecorator: any;
+  Css: any;
+  Layout: any;
+  Props: any;
+  Style: any;
+  Types: any;
+  global: any;
+  styledComponents: any;
+  theme: any;
+  utility: any;
+}
+
+interface ReactType extends areas, buttons, BaseNoiz {
+  lib: lib;
   layout: layout;
-  global: global;
   areas: areas;
+  global: noizGlobal;
   buttons: buttons;
   components: components;
   A: IA;
@@ -83,8 +187,7 @@ interface ReactType extends areas, buttons {
   Audio: IAudio;
   Avatar: typeof Avatar;
   BarsWave: typeof BarsWave;
-  BaseNoiz: typeof BaseNoiz_v4;
-  BaseNoizProps: typeof BaseNoiz_v4Props;
+  BaseNoiz: typeof BaseNoiz;
   Button: typeof Button;
   Canvas: ICanvas;
   Circle: ICircle;
@@ -133,7 +236,7 @@ interface components {
   Card: typeof CompCard;
   Form: typeof Form;
 }
-interface global {
+interface noizGlobal {
   GlobalStyle: typeof GlobalStyle;
   NftMinterGlobalStyle: typeof NftMinterGlobalStyle;
   robotoGoogleQuery: typeof robotoGoogleQuery;
@@ -143,7 +246,46 @@ interface layout {
   NavBar: typeof LayoutNavbar;
   ContentArea: areas["ContentArea"];
 }
+interface newPalettes1 {
+  cym1Palette1: typeof cym1Palette1;
+  cym1Palette2: typeof cym1Palette2;
+  cym1Palette3: typeof cym1Palette3;
+  rgbPalette1: typeof rgbPalette1;
+  rgbPalette2: typeof rgbPalette2;
+  rgbPalette3: typeof rgbPalette3;
+  ryb1Palette1: typeof ryb1Palette1;
+  ryb1Palette2: typeof ryb1Palette2;
+  ryb1Palette3: typeof ryb1Palette3;
+}
+interface Fluid1 {
+  fluid_colors1_a: typeof fluid_colors1_a;
+  fluid_colors1_b: typeof fluid_colors1_b;
+  fluid_colors1_c: typeof fluid_colors1_c;
+  fluid_colors1_d: typeof fluid_colors1_d;
+}
+interface Fluid2 {
+  fluid_colors2_a: typeof fluid_colors2_a;
+  fluid_colors2_b: typeof fluid_colors2_b;
+}
 
+interface Fluid3 {
+  fluid_colors3_a: typeof fluid_colors3_a;
+  fluid_colors3_c: typeof fluid_colors3_c;
+}
+interface Palettes
+  extends newPalettes1,
+    Fluid1,
+    Fluid2,
+    Fluid3 {
+  fluid_7: typeof fluid_7;
+}
+interface colors {
+  Palettes: Palettes;
+}
+interface BaseNoiz {
+  BaseNoiz: typeof BaseNoiz_v4;
+  BaseNoizProps: typeof BaseNoiz_v4Props;
+}
 export {
   themes,
   classes,
@@ -216,3 +358,4 @@ export * from "./CLI";
 import * as x from "./colors";
 import { Card, Card, NavBar } from "./HTML/React/classes";
 import { BadgeStyle } from "./HTML/React/components/Badge/Badge.style";
+import { colors } from "./HTML/React/lib/types";
