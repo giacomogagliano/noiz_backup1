@@ -1,4 +1,4 @@
-export {}
+export {};
 
 ///////// sieveOfEratosthenes
 export * from "./sieveOfEratosthenes";
@@ -8,6 +8,3 @@ export * from "./searchObject";
 
 ///////// dfs
 export * from "./dfs";
-
-///////// bfs
-export * from "./bfs";
