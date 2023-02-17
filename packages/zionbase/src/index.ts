@@ -98,27 +98,53 @@ interface zionbaseType {
     ProcessingNoiz: typeof ProcessingNoiz;
     ProcessingNoizCtor: typeof ProcessingNoizCtor;
   };
-  DataStructure: {
-    Array: Array_v1Ctor;
-    ArrayCtor: Array_v1Ctor;
-    ArrayGraph: ArrayGraph_v3Ctor;
-    Edge: Edge_v1Ctor;
-    Graph: Graph_v1Ctor;
-    GraphCtor: Graph_v1Ctor;
-    Graph_v2: Graph_v2Ctor;
-    Graph_v3: typeof Graph_v3;
-    Graph_v4: Graph_v4;
-    Node: Node_v1Ctor;
-    NodeCtor: Node_v1Ctor;
-    Node_v2: Node_v2Ctor;
-    add: typeof add_v1;
-    addPath: typeof add_v1Path;
-    aggiungi: typeof add_v1;
-    aggiungiPercorso: typeof add_v1Path;
-    extensions: extentions;
-    find: typeof find_v1;
-    Trees: Trees;
-  } & extentions;
+  DataStructure: DataStructure & extentions;
+  Array: DataStructure["Array"];
+  ArrayCtor: DataStructure["ArrayCtor"];
+  Graph: DataStructure["Graph"];
+  Graph_v3: DataStructure["Graph_v3"];
+  GraphCtor: DataStructure["GraphCtor"];
+  ListGraph: DataStructure["extensions"]["ListGraph"];
+  ListGraphCtor: DataStructure["extensions"]["ListGraphCtor"];
+  MatrixGraph: DataStructure["extensions"]["MatrixGraph"];
+  MatrixGraphCtor: DataStructure["extensions"]["MatrixGraphCtor"];
+  Node: DataStructure["Node"];
+  NodeCtor: DataStructure["NodeCtor"];
+  Node_v2: DataStructure["Node_v2"];
+  AppGraph: DataStructure["extensions"]["AppGraph"];
+  AppGraphCtor: DataStructure["extensions"]["AppGraph"];
+  AppNode: DataStructure["extensions"]["AppNode"];
+  AppNodeCtor: DataStructure["extensions"]["AppNodeCtor"];
+  File: DataStructure["extensions"]["File"];
+  Folder: DataStructure["extensions"]["Folder"];
+  Root: DataStructure["extensions"]["Root"];
+  Tree: DataStructure["extensions"]["Tree"];
+  TreeNode: DataStructure["extensions"]["TreeNode"];
+  FileSystemTree: DataStructure["extensions"]["FileSystemTree"];
+  addPath: DataStructure["addPath"];
+  add: DataStructure["add"];
+}
+
+interface DataStructure {
+  Array: Array_v1Ctor;
+  ArrayCtor: Array_v1Ctor;
+  ArrayGraph: ArrayGraph_v3Ctor;
+  Edge: Edge_v1Ctor;
+  Graph: Graph_v1Ctor;
+  GraphCtor: Graph_v1Ctor;
+  Graph_v2: Graph_v2Ctor;
+  Graph_v3: typeof Graph_v3;
+  Graph_v4: Graph_v4;
+  Node: Node_v1Ctor;
+  NodeCtor: Node_v1Ctor;
+  Node_v2: Node_v2Ctor;
+  add: typeof add_v1;
+  addPath: typeof add_v1Path;
+  aggiungi: typeof add_v1;
+  aggiungiPercorso: typeof add_v1Path;
+  extensions: extentions;
+  find: typeof find_v1;
+  Trees: Trees;
 }
 
 interface Trees {
