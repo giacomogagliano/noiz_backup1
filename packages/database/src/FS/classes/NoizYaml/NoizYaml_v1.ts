@@ -43,4 +43,7 @@ export type NoizYaml_v1Ctor<T> = {
 };
 
 export const NoizYaml_v1Ctor: NoizYaml_v1Ctor<any> =
-  deprecate(NoizYaml_v1);
+  deprecate(
+    NoizYaml_v1,
+    "non mi ricordo perchè lho deprecato, quando me lo ricordo ve lo dico!"
+  );
