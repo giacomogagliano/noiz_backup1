@@ -14,5 +14,3 @@ export * from "./Array";
 
 //// Graph
 export * from "./Graph";
-
-export * as lib from "./lib";
