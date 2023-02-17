@@ -23,6 +23,9 @@ export interface Tree {
   isPresent(node2Check: TreeNode): boolean;
   findByLevel(depth: number): TreeNode[];
 }
+export interface Tree_v1Ctor {
+  new (nodes: TreeNode[]): Tree;
+}
 
 export class Tree {
   static #trees: Tree[] = [];

@@ -4,10 +4,7 @@ export interface Root_v1 extends TreeNode {
   root: boolean;
 }
 
-export class Root_v1
-  extends TreeNode
-  implements TreeNode
-{
+export class Root_v1 extends TreeNode implements TreeNode {
   static #roots: TreeNode[] = [];
   #type = "root";
   constructor(
@@ -22,4 +19,14 @@ export class Root_v1
     this.#type;
     Root_v1.#roots.push(this);
   }
+}
+
+export interface Root_v1Ctor {
+  new (
+    name: string,
+    path: string,
+    typeNumber: number,
+    treeId: unknown,
+    depth: number
+  ): Root_v1;
 }

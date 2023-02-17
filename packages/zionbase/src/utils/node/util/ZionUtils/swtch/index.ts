@@ -1,5 +1,4 @@
 export { swtch_v1 as swtch } from "./swtch_v1";
-export type { Iswtch_v1 as Iswtch } from "./swtch_v1";
 
 ///////// swtch2
 export * from "./swtch2";
