@@ -5,16 +5,16 @@ const { existsSync, joinPaths } = system;
 
 interface Node {}
 
-interface GitTreeEntry {
-  // Il nome del file o della directory
-  name: string;
-  // Indica se l'oggetto rappresenta un file o una directory
-  isFile: boolean;
-  // L'hash dell'oggetto
-  hash: string;
-  // Un array di figli, se l'oggetto rappresenta una directory
-  children: Array<GitTreeEntry>;
-}
+// interface GitTreeEntry {
+//   // Il nome del file o della directory
+//   name: string;
+//   // Indica se l'oggetto rappresenta un file o una directory
+//   isFile: boolean;
+//   // L'hash dell'oggetto
+//   hash: string;
+//   // Un array di figli, se l'oggetto rappresenta una directory
+//   children: Array<GitTreeEntry>;
+// }
 
 interface Entity extends Node {
   id: string;
