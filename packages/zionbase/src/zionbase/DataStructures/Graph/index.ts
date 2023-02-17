@@ -1,4 +1,7 @@
-import { Graph_v4 as v4, Graph_v4Props as v4Props } from './Graph_v4';
+import {
+  Graph_v4 as v4,
+  Graph_v4 as v4Props,
+} from "./Graph_v4";
 export {
   Graph_v3,
   ArrayGraph_v3Ctor as ArrayGraph,

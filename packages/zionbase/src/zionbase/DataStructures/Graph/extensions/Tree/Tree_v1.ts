@@ -4,7 +4,7 @@ import { Root } from "./Root";
 import { TreeNode } from "./TreeNode";
 import { node } from "../../../../../utils";
 
-const zionUtil = node.util.zionUtil;
+const zionUtil = node.zionUtil;
 
 enum TreeErrors {
   NO_NODE = "non è stato fornito alcun nodo da aggiungere",

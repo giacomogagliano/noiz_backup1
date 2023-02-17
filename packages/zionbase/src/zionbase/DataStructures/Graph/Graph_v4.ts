@@ -1,3 +1,4 @@
+// @ts-ignore
 import { Mix } from "../../Mixin";
 import { MixAbstract } from "../../Mixin";
 import type { ComplexMixin } from "../../Types";
@@ -15,7 +16,7 @@ const LookUp_able: LookUp_ableType = function (ctor) {
     look_up: unknown;
   };
 };
-
+// @ts-ignore
 class Some {}
 
 abstract class Edge {
@@ -23,6 +24,7 @@ abstract class Edge {
   a: unknown;
   b: unknown;
 }
+// @ts-ignore
 class Children extends Edge {
   type = "children";
   a: string;
@@ -33,10 +35,11 @@ class Children extends Edge {
     this.b = b;
   }
 }
-
+// @ts-ignore
 class Parent extends Edge {
   type = "parent";
 }
+// @ts-ignore
 class OwnerOf extends Edge {
   type = "owner-of";
 }
@@ -45,11 +48,12 @@ abstract class Node {
   abstract type: string;
   abstract edges: Array<unknown> | Map<unknown, unknown>;
 }
-
+// @ts-ignore
 interface Folder {
   type: "folder";
   edges: Edge[];
 }
+// @ts-ignore
 class Folder extends Node {
   type: "folder" = "folder";
 }
@@ -74,6 +78,7 @@ class Neeclass extends new MixAbstract(Graph).with([
     this.name = name;
   }
 }
+// @ts-ignore
 const obj = new Neeclass("ciao");
 
 interface Tree {
@@ -105,5 +110,5 @@ export abstract class Graph_v4 {
     }
   }
 }
-
+// @ts-ignore
 const bla = Graph_v4.createGraph();

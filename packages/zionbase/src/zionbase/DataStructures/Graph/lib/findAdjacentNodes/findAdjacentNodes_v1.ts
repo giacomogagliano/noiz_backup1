@@ -1,7 +1,7 @@
 import {
   findAdjacentNodesType,
   INode,
-} from "../../../Types/DataStructures/Graph";
+} from "../../../../Types/DataStructures/Graph";
 
 export const findAdjacentNodes_v1: findAdjacentNodesType =
   function (node) {
