@@ -11,6 +11,7 @@ class RandomCreationStrategy extends Strategy {
     args;
   };
   name: string = "create-random";
+  // @ts-expect-error
   method(arg1: number): unknown {
     return this.strategy();
   }
