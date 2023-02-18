@@ -54,7 +54,9 @@
   "scripts": {
     "clean": "rm -rf dist",
     "test": "mocha --require ts-node/register ./test/**/*.test.ts",
-    "build": "yarn preconstruct build && run-p build:*",
+    "build:pkg": "yarn preconstruct build",
+    "build:rollup": "rollup -c ./rollup.config.js",
+    "build": "yarn build:pkg && yarn build:rollup ",
     "build:types": "tsc --declaration --emitDeclarationOnly --outDir dist",
     "typecheck": "tsc --noEmit",
     "next_dev": "next dev",
