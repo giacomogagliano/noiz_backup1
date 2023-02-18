@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from "react";
 // import { BlogPost } from "../../../blog";
 
-export interface UseInfiniteScroll_v1<T> {
+export interface useInfiniteScroll_v1<T> {
   isLoading: boolean;
   loadMoreCallback: (el: HTMLDivElement) => void;
   hasDynamicPosts: boolean;
@@ -11,7 +11,7 @@ export interface UseInfiniteScroll_v1<T> {
 
 export const useInfiniteScroll_v1 = <T>(
   posts: T[]
-): UseInfiniteScroll_v1<T> => {
+): useInfiniteScroll_v1<T> => {
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [hasDynamicPosts, setHasDynamicPosts] =

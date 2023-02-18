@@ -1,5 +1,14 @@
 // import {} from "@zionstate/database";
 
+export interface detect_v1 {
+  (
+    window: Window & {
+      ethereum?: any;
+    },
+    detectEthereumProvider: () => Promise<any>
+  ): Promise<any>;
+}
+
 export async function detect_v1(
   window: Window & { ethereum?: any },
   detectEthereumProvider: () => Promise<any>

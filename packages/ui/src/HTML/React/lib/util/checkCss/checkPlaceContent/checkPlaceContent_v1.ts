@@ -1,5 +1,20 @@
 import { CSSProperties } from "react";
-import { css } from "styled-components";
+import {
+  css,
+  FlattenSimpleInterpolation,
+} from "styled-components";
+
+export interface checkPlaceContent_v1 {
+  <
+    T extends {
+      css_?: {
+        placeContent?: CSSProperties["placeContent"];
+      };
+    }
+  >(
+    props: T
+  ): FlattenSimpleInterpolation | undefined;
+}
 
 export const checkPlaceContent_v1 = <
   T extends {

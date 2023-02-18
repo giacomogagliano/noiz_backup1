@@ -1,7 +1,11 @@
 import { Icon } from "../../classes";
 import { BadgeStyle } from "./Badge.style";
 
-export const Badge_v1 = ({ size }: BadgeStyle) => {
+export interface Badge_v1 {
+  ({ size }: BadgeStyle): JSX.Element;
+}
+
+export const Badge_v1: Badge_v1 = ({ size }) => {
   return (
     <BadgeStyle size={size}>
       <div id="logo">
