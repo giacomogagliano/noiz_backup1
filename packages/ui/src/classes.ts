@@ -1,6 +1,5 @@
 import * as _classes from "./HTML/React/classes";
 import type { Badge } from "./HTML/React/classes/Badge/";
-import type { BadgeProps } from "./HTML/React/classes/Badge/";
 import type { Card } from "./HTML/React/classes/Card";
 import type { CardProps } from "./HTML/React/classes/Card";
 import type { Chart } from "./HTML/React/classes/Chart";
@@ -63,7 +62,6 @@ interface Pages {
 }
 interface classes {
   Badge: typeof Badge;
-  BadgeProps: typeof BadgeProps;
   Card: typeof Card;
   CardProps: typeof CardProps;
   Chart: typeof Chart;
