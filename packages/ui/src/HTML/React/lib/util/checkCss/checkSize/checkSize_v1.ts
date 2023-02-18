@@ -1,11 +1,28 @@
-import { css } from "styled-components";
+import {
+  css,
+  FlattenSimpleInterpolation,
+} from "styled-components";
 
 const defaultSize = css`
   width: 5.5vw;
   height: 5.5vw;
 `;
 
-export const checkSize_v1 = <
+export interface checkSize_v1 {
+  <
+    T extends {
+      size?: {
+        auto?: boolean;
+        width?: string;
+        height?: string;
+      };
+    }
+  >(
+    props: T
+  ): FlattenSimpleInterpolation;
+}
+
+export const checkSize_v1: checkSize_v1 = <
   T extends {
     size?: {
       auto?: boolean;

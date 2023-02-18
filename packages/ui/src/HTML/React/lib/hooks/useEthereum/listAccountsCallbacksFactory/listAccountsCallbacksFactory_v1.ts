@@ -1,12 +1,12 @@
 import { Dispatch, SetStateAction } from "react";
 
-export interface ListAccountsCallbacksFactory {
+export interface listAccountsCallbacksFactory_v1 {
   (setIsConnected: Dispatch<SetStateAction<boolean>>): (
     accounts: string[]
   ) => void;
 }
 
-export const listAccountsCallbacksFactory_v1: ListAccountsCallbacksFactory =
+export const listAccountsCallbacksFactory_v1: listAccountsCallbacksFactory_v1 =
   function (
     setIsConnected: Dispatch<SetStateAction<boolean>>
   ) {
