@@ -1,5 +1,0 @@
-{
-  "main": "dist/zionstate-ui-style.cjs.js",
-  "module": "dist/zionstate-ui-style.esm.js",
-  "types": "../dist/style.d.ts"
-}
