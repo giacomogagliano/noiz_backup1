@@ -6,3 +6,6 @@ export { formatTime } from "./formatTime";
 
 ///////// createRandom
 export { createRandom } from "./createRandom";
+
+///////// encode
+export * from "./encode";
