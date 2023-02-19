@@ -2,10 +2,10 @@
   "printWidth": 59,
   "arrowParens": "avoid",
   "singleAttributePerLine": false,
-  "overrides": [
-    {
-      "files": ["./babel.config.json"],
-      "options": { "printWidth": 80 }
-    }
-  ]
+  // "overrides": [
+  //   {
+  //     "files": ["./babel.config.json"],
+  //     "options": { "printWidth": 80 }
+  //   }
+  // ]
 }
