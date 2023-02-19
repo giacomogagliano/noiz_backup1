@@ -36,7 +36,7 @@ const Grid5 = css`
     grid-template-rows: auto auto;
   }
 `;
-const TextSpan2 = css`
+export const TextSpan2 = css`
   box-decoration-break: clone;
 `;
 

@@ -16,7 +16,7 @@ const HeadingHero = css<{ top: string; opacity: string }>`
   position: relative;
   top: ${props => props.top};
   opacity: ${props => props.opacity};
-  transition: all cubic-bezier(0.46, 0.35, 0.59, 0.85) 600ms;
+  transition: cubic-bezier(0.46, 0.35, 0.59, 0.85) 600ms;
   max-width: 1000px;
   margin-right: 1.6rem;
   margin-left: 1.6rem;

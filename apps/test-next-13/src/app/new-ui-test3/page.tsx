@@ -3,6 +3,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { CardLoader } from "../../lib/client/CardLoader";
+import { Div } from "@zionstate/ui/style";
 
 function Index() {
   let cards: JSX.Element[] = [];
