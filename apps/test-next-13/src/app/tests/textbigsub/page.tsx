@@ -59,6 +59,14 @@ export default function page() {
       <h1>lolol</h1>
       <h1>lolol</h1>
       <h1>lolol</h1>
+      <h1>lolol</h1>
+      <h1>lolol</h1>
+      <h1>lolol</h1>
+      <h1>lolol</h1>
+      <h1>lolol</h1>
+      <h1>lolol</h1>
+      <h1>lolol</h1>
+      <h1>lolol</h1>
     </div>
   );
 }
