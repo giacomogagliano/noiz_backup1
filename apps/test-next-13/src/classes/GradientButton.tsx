@@ -1,7 +1,7 @@
 "use client";
 
-import React, { Component } from "react";
-import styled, { css } from "styled-components";
+import React, { Component, FC } from "react";
+import styled, { css, FlattenSimpleInterpolation } from "styled-components";
 import { Loader } from "../lib/client/Loader";
 
 const buttonHero = css`
@@ -39,11 +39,13 @@ const linkBlock = css`
 type gradientButtonType = {
   opacity: string;
   transform: string;
+  colo: string;
 };
 const gradientButton = css<gradientButtonType>`
   display: grid;
   padding: 10px 20px;
   justify-content: space-around;
+  color: ${props => props.colo};
   grid-auto-columns: 1fr;
   grid-column-gap: 16px;
   grid-row-gap: 16px;
@@ -87,58 +89,68 @@ const Trigger = styled.div<gradientButtonType>`
   }
 `;
 
-interface Props {}
-interface State {
-  opacity: string;
-  transform: string;
-}
-
-export class GradientButton extends Component<Props, State> {
-  constructor(props: Props) {
+export class NewLoader<
+  S,
+  E extends (props: S) => JSX.Element = (props: S) => JSX.Element,
+  P = {}
+> extends Component<P, S> {
+  constructor(props: P) {
     super(props);
-    this.state = {
-      opacity: "0",
-      transform: "30px",
-    };
   }
-
   render(): React.ReactNode {
-    const Element = (
-      <Trigger
-        key={0}
-        id="trigger-btn"
-        opacity={this.state.opacity}
-        transform={this.state.transform}
-      >
-        <a id="button-effect">
-          <div id="button-text">INSTALL ON MINI PC</div>
-          <img src="assets/long-arrow.svg" loading="lazy" alt=""></img>
-        </a>
-      </Trigger>
-    );
     return (
       <>
         <Loader
-          triggerkey="#trigger-btn"
-          elements={[Element]}
+          triggerkey={this.triggerKey ? this.triggerKey : ""}
           cb={this.cb}
           threshold={1}
-        ></Loader>
+        >
+          {[
+            this.Element({ ...this.state }),
+            this.Element({ ...this.state }),
+            this.Element({ ...this.state }),
+          ]}
+        </Loader>
       </>
     );
   }
+  triggerKey: string;
+  Element: E;
+  stateA: FlattenSimpleInterpolation;
+  stateB: FlattenSimpleInterpolation;
   cb = (entry: IntersectionObserverEntry) => {
-    if (entry.isIntersecting)
-      this.setAttributes({
-        opacity: "1",
-        transform: "0",
-      });
-    else
-      this.setAttributes({
-        opacity: "0",
-        transform: "30px",
-      });
+    function setValue(value: string) {
+      entry.target.setAttribute("style", value);
+    }
+    if (entry.isIntersecting) setValue(this.stateA as unknown as string);
+    else setValue(this.stateB as unknown as string);
   };
-  setAttributes = ({ opacity, transform }: State) =>
-    this.setState({ opacity, transform });
+  formatId() {
+    return this.triggerKey.replace("#", "");
+  }
+  setAttributes = (state: S) => this.setState(state);
+}
+
+export class GradientButton extends NewLoader<gradientButtonType> {
+  constructor(props: {}) {
+    super(props);
+    this.triggerKey = "#trigger-btn";
+    this.stateA = css`
+      opacity: 1;
+      transform: 0;
+    `;
+    this.stateB = css`
+      opacity: 0;
+      transform: translateY(30px);
+    `;
+  }
+
+  Element = (props: gradientButtonType) => (
+    <Trigger key={"cidi"} id={this.formatId()} {...props}>
+      <a id="button-effect" key={"ooo"}>
+        <div id="button-text">INSTALL ON MINI PC</div>
+        <img src="assets/long-arrow.svg" loading="lazy" alt=""></img>
+      </a>
+    </Trigger>
+  );
 }

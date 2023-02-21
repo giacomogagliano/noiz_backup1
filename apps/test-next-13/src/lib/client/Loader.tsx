@@ -28,19 +28,20 @@ interface State {
   elements: JSX.Element[] | FC[];
 }
 interface Props {
-  elements: JSX.Element[] | FC[];
+  // elements: JSX.Element[] | FC[];
   cb: (entry: IntersectionObserverEntry) => void;
   threshold?: number;
   rootMargin?: string;
   unobserve?: boolean;
   triggerkey?: string;
+  children?: JSX.Element[] | FC[];
 }
 
 export class Loader extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      elements: props.elements,
+      elements: props.children,
     };
 
     this.observeElements = this.configureObserver(
@@ -52,15 +53,16 @@ export class Loader extends Component<Props, State> {
   }
 
   render() {
-    const { elements } = this.props;
-    const Elements = this.Elements;
+    // const { elements } = this.props;
+    // const Elements = this.Elements;
     // console.log("loader", elements[0].props);
     // console.log("loader", this.props.elements[0].props);
 
     return (
       <CardContainerStyled>
         <div id="elements-container">
-          <Elements elements={elements}></Elements>
+          {/* <Elements elements={elements}></Elements> */}
+          <>{this.props.children}</>
         </div>
       </CardContainerStyled>
     );

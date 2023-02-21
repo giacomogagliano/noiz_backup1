@@ -67,12 +67,9 @@ export class HeroText extends Component<Props, State> {
     );
     return (
       <>
-        <Loader
-          triggerkey="#hero-text"
-          elements={[Element]}
-          cb={this.cb}
-          threshold={0}
-        ></Loader>
+        <Loader triggerkey="#hero-text" cb={this.cb} threshold={0}>
+          {[Element]}
+        </Loader>
       </>
     );
   }
