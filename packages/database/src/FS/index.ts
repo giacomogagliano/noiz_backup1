@@ -19,8 +19,7 @@ export * from "../FS/classes/System";
 // export * from "./lib/readPackageJSON.js";
 // export * from "./lib/readTSconfigJSON.js";
 // export * from "./lib/types/index.js";
-// lib/chokidar
-// export * from "./lib/chokidar/stop.js";
+
 export * as classes from "./classes";
 export { reader, Reader } from "./classes";
 export * as lib from "./lib";
