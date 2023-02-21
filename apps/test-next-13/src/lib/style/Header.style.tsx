@@ -68,6 +68,7 @@ type HeaderComponentType = {
   triggerButtonToTop: string;
   triggerButtonTransform: string;
 };
+
 export const HeaderComponent = styled.div<HeaderComponentType>`
   #header {
     ${HeaderCss}
@@ -90,4 +91,30 @@ export const HeaderComponent = styled.div<HeaderComponentType>`
     ${TextMuted}
     ${TextSmall}
   }
+`;
+const Heading = css`
+  margin-bottom: 40px;
+  font-size: 90px;
+  line-height: 96px;
+  font-weight: 600;
+  text-align: center;
+  color: white;
+`;
+const HeadingHero = css`
+  position: relative;
+  max-width: 1000px;
+  transform: translateY(40px);
+  opacity: 0;
+  margin-right: 1.6rem;
+  margin-left: 1.6rem;
+  font-size: 70px;
+  line-height: 86px;
+  @media screen and (max-width: 479px) {
+    font-size: 50px;
+    line-height: 54px;
+  }
+`;
+export const HeroTextStyle = styled.div`
+  ${Heading}
+  ${HeadingHero}
 `;
