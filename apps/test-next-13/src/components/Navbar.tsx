@@ -79,7 +79,11 @@ export const Navbar = ({
   buttonBgColor,
   color,
   src,
-}: { bgcolor: string; buttonBgColor: string; color: string } & NavBarProps) => {
+}: {
+  bgcolor?: string;
+  buttonBgColor?: string;
+  color?: string;
+} & NavBarProps) => {
   const SRC = "assets/gotek-write.svg";
   const LOADING = "lazy";
   const ALT = "";
