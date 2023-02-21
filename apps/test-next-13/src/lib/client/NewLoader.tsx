@@ -31,31 +31,23 @@ class NewLoader_v1 extends Component<Props, {}> {
     observer.observe(element);
   };
   observerCb: IntersectionObserverCallback = entries => {
-    if (this.props.callBack) {
-      if (this.props.callBack === "cb") {
-        entries.forEach(this.cb);
-      } else {
-        entries.forEach(this.cb2);
-      }
-    } else {
-      entries.forEach(this.cb2);
-    }
+    entries.forEach(this.cb);
   };
   cb = (entry: IntersectionObserverEntry) => {
     function setValue(value: string) {
       entry.target.setAttribute("style", value);
     }
-    if (entry.isIntersecting) setValue(this.props.stateA as unknown as string);
-    else setValue(this.props.stateB as unknown as string);
-  };
-  cb2 = (entry: IntersectionObserverEntry) => {
-    function setValue(value: string) {
-      entry.target.setAttribute("style", value);
-    }
-    if (entry.intersectionRect.y)
+    if (this.props.callBack === "cb") {
       if (entry.isIntersecting)
         setValue(this.props.stateA as unknown as string);
       else setValue(this.props.stateB as unknown as string);
+    } else {
+      if (entry.intersectionRect.y) {
+        if (entry.isIntersecting)
+          setValue(this.props.stateA as unknown as string);
+        else setValue(this.props.stateB as unknown as string);
+      }
+    }
   };
 
   triggerKey: string;
