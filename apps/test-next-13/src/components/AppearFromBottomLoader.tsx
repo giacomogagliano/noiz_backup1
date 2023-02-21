@@ -3,7 +3,7 @@ import {
   textBigSubStateA,
   textBigSubStateB,
 } from "../classes/TextBigSub.style";
-import { NewLoader } from "../lib/client/NewLoader";
+import { Loader } from "../lib/client/Loader";
 
 export const AppearFromBottomLoader = ({
   children,
@@ -12,12 +12,12 @@ export const AppearFromBottomLoader = ({
   children?: ReactNode;
   triggerKey: string;
 }) => (
-  <NewLoader
+  <Loader
     stateB={textBigSubStateB as unknown as string}
     stateA={textBigSubStateA as unknown as string}
     triggerKey={triggerKey}
     threshold={1}
   >
     {children}
-  </NewLoader>
+  </Loader>
 );

@@ -1,5 +1,5 @@
 import React from "react";
-import { NewLoader } from "../../../lib/client/NewLoader";
+import { Loader } from "../../../lib/client/Loader";
 
 export default function page() {
   return (
@@ -36,7 +36,7 @@ export default function page() {
       <h1>lolol</h1>
       <h1>lolol</h1>
 
-      <NewLoader
+      <Loader
         stateB="opacity: 0; transform: translateY(40px); transition: transform 400ms ease-in-out, opacity 400ms ease-out;
         "
         stateA="opacity: 1; transform: translateY(0); transition: transform 400ms ease-in-out, opacity 400ms ease-out;
@@ -50,7 +50,7 @@ export default function page() {
         <h3 id="text-big-sub">
           One that's powered by you. <span></span>
         </h3>
-      </NewLoader>
+      </Loader>
       <h1>lolol</h1>
       <h1>lolol</h1>
       <h1>lolol</h1>

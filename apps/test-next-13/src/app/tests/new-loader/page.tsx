@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 
 function dyn(loading: FunctionComponent) {
   return dynamic(
-    () => import("../../../lib/client/NewLoader").then(m => m.NewLoader),
+    () => import("../../../lib/client/Loader").then(m => m.Loader),
     { ssr: false, loading }
   );
 }
