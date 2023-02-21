@@ -1,4 +1,2 @@
-export {}
-
-//// Badge
-export * from './Badge';
+export * from "./Badge";
+export * from "./Card";

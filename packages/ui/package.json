@@ -18,6 +18,10 @@
       "module": "./style/dist/zionstate-ui-components.esm.js",
       "default": "./style/dist/zionstate-ui-components.cjs.js"
     },
+    "./classes": {
+      "module": "./style/dist/zionstate-ui-classes.esm.js",
+      "default": "./style/dist/zionstate-ui-classes.cjs.js"
+    },
     "./colors": {
       "module": "./style/dist/zionstate-ui-colors.esm.js",
       "default": "./style/dist/zionstate-ui-colors.cjs.js"
@@ -32,6 +36,7 @@
     "dist",
     "style",
     "components",
+    "classes",
     "colors-entrypoint",
     "next"
   ],
@@ -41,6 +46,7 @@
       "index.ts",
       "style.ts",
       "components.ts",
+      "classes.ts",
       "colors-entrypoint.ts",
       "next.ts"
     ]
@@ -48,7 +54,9 @@
   "scripts": {
     "clean": "rm -rf dist",
     "test": "mocha --require ts-node/register ./test/**/*.test.ts",
-    "build": "yarn preconstruct build && run-p build:*",
+    "build:pkg": "yarn preconstruct build",
+    "build:rollup": "rollup -c ./rollup.config.js",
+    "build": "yarn build:pkg && yarn build:rollup ",
     "build:types": "tsc --declaration --emitDeclarationOnly --outDir dist",
     "typecheck": "tsc --noEmit",
     "next_dev": "next dev",

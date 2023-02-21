@@ -74,7 +74,7 @@ export type WindowEthRequired = Required<
 > &
   Exclude<typeof window, "ethereum">;
 
-export interface UseEthereum_v2 {
+export interface useEthereum_v2 {
   (
     data: useEthereumData_v2,
     noMetamaskClick: (
@@ -119,7 +119,7 @@ export type useEthereumData_v2 = {
   metamaskNotInstalled: string;
 };
 
-export const useEthereum_v2: UseEthereum_v2 = (
+export const useEthereum_v2: useEthereum_v2 = (
   data,
   noMetamaskClick = function () {
     console.log("clicked");

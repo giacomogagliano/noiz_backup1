@@ -4,7 +4,7 @@ import {
   SetStateAction,
 } from "react";
 
-type callbackifyUseState_v1_type = (
+export type callbackifyUseState_v1_type = (
   useStateDispatch: Dispatch<SetStateAction<string>>
 ) => (e: ChangeEvent<HTMLInputElement>) => void;
 
