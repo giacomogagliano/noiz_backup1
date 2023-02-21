@@ -1,9 +1,12 @@
 import React from "react";
-import { GradientButton } from "../classes/GradientButton";
 import { Browser } from "./Browser";
 import { LinuxCommand } from "./LinuxCommand";
 import { Navbar } from "./Navbar";
-import { HeaderComponent, HeroTextStyle } from "../lib/style/Header.style";
+import {
+  GradientButtonStyle,
+  HeaderComponent,
+  HeroTextStyle,
+} from "../lib/style/Header.style";
 import { AppearFromBottomLoader } from "./AppearFromBottomLoader";
 
 export const Header = ({
@@ -40,7 +43,14 @@ export const Header = ({
           <br></br>
           Get the convenience of cloud, without giving up your data.
         </p>
-        <GradientButton></GradientButton>
+        <AppearFromBottomLoader triggerKey="#gradient-button">
+          <GradientButtonStyle id="gradient-button">
+            <a id="button-effect" key={"ooo"}>
+              <div id="button-text">INSTALL ON MINI PC</div>
+              <img src="assets/long-arrow.svg" loading="lazy" alt=""></img>
+            </a>
+          </GradientButtonStyle>
+        </AppearFromBottomLoader>
         <p id="header-last-line">Or install on any Ubuntu or Debian system:</p>
         <LinuxCommand></LinuxCommand>
       </div>
