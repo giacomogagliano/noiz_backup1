@@ -3,12 +3,12 @@ import * as parser from "@babel/parser";
 import * as _NoizBabel from ".";
 import { AbstractBabelPlugin } from "./plugins/BabelPlugin/BabelPlugin.types";
 
-const NoizBabel: NoizBabel = _NoizBabel;
+const NoizBabelExport: NoizBabelExport = _NoizBabel;
 
 type LoadedPlugins =
   keyof AbstractNoizBabelCtor["plugins"];
 
-interface NoizBabel {
+interface NoizBabelExport {
   NoizBabel: AbstractNoizBabelCtor;
 }
 
