@@ -1,9 +1,9 @@
 import { Visitor } from "@babel/core";
 import * as _BabelPlugin from "./";
 
-const BabelPlugin: BabelPlugin = _BabelPlugin;
+const BabelPlugin: BabelPluginExport = _BabelPlugin;
 
-interface BabelPlugin {
+interface BabelPluginExport {
   BabelPlugin: AbstractBabelPluginCtor;
   getTsPropSigName: any;
 }
@@ -12,6 +12,6 @@ export abstract class AbstractBabelPlugin {
   abstract makeVisitor<T>(visitor: Visitor<T>): this;
 }
 
-interface AbstractBabelPluginCtor {
+export interface AbstractBabelPluginCtor {
   new (): AbstractBabelPlugin;
 }
