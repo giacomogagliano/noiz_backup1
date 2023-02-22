@@ -7,7 +7,7 @@ export function Section() {
   return (
     <AreaSection id="section">
       <div id="container">
-        <TextBigSub parallaxSharedY="50px"></TextBigSub>
+        <TextBigSub></TextBigSub>
         <div id="grid-card">
           <Card></Card>
         </div>

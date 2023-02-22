@@ -47,12 +47,16 @@ export const AreaSection = styled.div`
     ${Container}
   }
   #big-heading {
+    transform: translateY(40px);
+    opacity: 0;
     ${BigHeading}
     #text-span- {
       ${TextSpan2}
     }
   }
   #SubsHeading {
+    transform: translateY(40px);
+    opacity: 0;
     ${SubHeading}
     #text-span- {
       ${TextSpan2}

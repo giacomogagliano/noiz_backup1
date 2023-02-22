@@ -1,5 +1,5 @@
 import React from "react";
-import { Test } from "../../../lib/style/Test.style";
+import { Test } from "../../../../lib/style/Test.style";
 
 async function getData() {
   await new Promise(res => setTimeout(res, 3000));

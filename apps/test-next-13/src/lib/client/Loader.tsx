@@ -1,106 +1,60 @@
 "use client";
-
-import { Component, FC } from "react";
-import styled from "styled-components";
-
-const CardContainerStyled = styled.div`
-  .card-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: flex-start;
-  }
-  .card {
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 0.25rem;
-    padding: 0.5rem;
-    transform: translateX(100px);
-    opacity: 0;
-    transition: 150ms;
-    &.show {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-`;
-interface State {
-  elements: JSX.Element[] | FC[];
-}
-interface Props {
-  elements: JSX.Element[] | FC[];
-  cb: (entry: IntersectionObserverEntry) => void;
+import { Component, ReactNode, use } from "react";
+type Props = {
+  children: ReactNode;
+  triggerKey: string;
+  stateA: string;
+  stateB: string;
   threshold?: number;
   rootMargin?: string;
-  unobserve?: boolean;
-  triggerkey?: string;
-}
+  callBack?: "cb" | "cb2";
+};
 
-export class Loader extends Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      elements: props.elements,
-    };
-
-    this.observeElements = this.configureObserver(
-      props.triggerkey,
-      this.observerCb(props.cb),
-      props.threshold,
-      props.rootMargin
-    );
+class NewLoader_v1 extends Component<Props, {}> {
+  render(): ReactNode {
+    return <>{this.props.children}</>;
   }
-
-  render() {
-    const { elements } = this.props;
-    const Elements = this.Elements;
-    // console.log("loader", elements[0].props);
-    // console.log("loader", this.props.elements[0].props);
-
-    return (
-      <CardContainerStyled>
-        <div id="elements-container">
-          <Elements elements={elements}></Elements>
-        </div>
-      </CardContainerStyled>
-    );
+  componentDidMount(): void {
+    this.configureObserver(document);
   }
-
-  componentDidUpdate(
-    prevProps: Readonly<Props>,
-    prevState: Readonly<State>,
-    __?: any
-  ): void {
-    if (prevState.elements.length !== this.state.elements.length)
-      this.observeElements(document);
-  }
-
-  componentDidMount() {
-    this.observeElements(document);
-  }
-
-  observerCb = cb => entries => {
-    entries.forEach(cb);
-  };
-
-  observeElement = observer => element => {
-    observer.observe(element);
-  };
-
-  configureObserver = (key, observerCb, threshold, rootMargin) => document => {
-    const elements = document.querySelectorAll(key);
-    let observer = new IntersectionObserver(observerCb, {
+  configureObserver = (document: Document) => {
+    const elements = document.querySelectorAll(this.props.triggerKey);
+    let threshold = this.props.threshold;
+    let rootMargin = this.props.rootMargin;
+    let observer = new IntersectionObserver(this.observerCb, {
       threshold,
       rootMargin,
     });
     elements.forEach(this.observeElement(observer));
   };
+  observeElement = (observer: IntersectionObserver) => (element: Element) => {
+    observer.observe(element);
+  };
+  observerCb: IntersectionObserverCallback = entries => {
+    entries.forEach(this.cb);
+  };
+  cb = (entry: IntersectionObserverEntry) => {
+    function setValue(value: string) {
+      entry.target.setAttribute("style", value);
+    }
+    if (this.props.callBack === "cb") {
+      if (entry.isIntersecting)
+        setValue(this.props.stateA as unknown as string);
+      else setValue(this.props.stateB as unknown as string);
+    } else {
+      if (entry.intersectionRect.y) {
+        if (entry.isIntersecting)
+          setValue(this.props.stateA as unknown as string);
+        else setValue(this.props.stateB as unknown as string);
+      }
+    }
+  };
 
-  observeElements;
-
-  Elements = ({ elements }: { elements: JSX.Element[] | FC[] }) => (
-    <>
-      <>{elements}</>
-    </>
-  );
+  triggerKey: string;
+  rootMargin: string;
+  threshold: number;
+  stateA: string;
+  stateB: string;
 }
+
+export const Loader = NewLoader_v1;

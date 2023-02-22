@@ -1,6 +1,5 @@
 import React from "react";
 import { GitHubLinks } from "./GitHubLink";
-import { CssProps } from "../lib/style/StylesSheet";
 import { NavbarComponent } from "../lib/style/Navbar.style";
 interface HreftargetProps {
   href: string;
@@ -80,7 +79,11 @@ export const Navbar = ({
   buttonBgColor,
   color,
   src,
-}: CssProps & NavBarProps) => {
+}: {
+  bgcolor?: string;
+  buttonBgColor?: string;
+  color?: string;
+} & NavBarProps) => {
   const SRC = "assets/gotek-write.svg";
   const LOADING = "lazy";
   const ALT = "";
