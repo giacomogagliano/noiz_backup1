@@ -26,7 +26,8 @@ export class NoizPath_v1 implements INoizPath_v1 {
 }
 
 export type NoizPath_v1Ctor = {
-  new (): NoizPath_v1;
+  joinPaths(...paths: string[]): string;
+  new (paths?: string[]): NoizPath_v1;
 };
 
 export const NoizPath_v1Ctor: NoizPath_v1Ctor =
