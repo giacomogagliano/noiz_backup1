@@ -7,27 +7,27 @@
   "module": "dist/zionstate-ui.esm.js",
   "exports": {
     ".": {
-      "module": "./dist/zionstate-ui.esm.js",
+      "import": "./dist/zionstate-ui.esm.mjs",
       "default": "./dist/zionstate-ui.cjs.js"
     },
     "./style": {
-      "module": "./style/dist/zionstate-ui-style.esm.js",
+      "import": "./style/dist/zionstate-ui-style.esm.mjs",
       "default": "./style/dist/zionstate-ui-style.cjs.js"
     },
     "./components": {
-      "module": "./components/dist/zionstate-ui-components.esm.js",
+      "import": "./components/dist/zionstate-ui-components.esm.mjs",
       "default": "./components/dist/zionstate-ui-components.cjs.js"
     },
     "./classes": {
-      "module": "./classes/dist/zionstate-ui-classes.esm.js",
+      "import": "./classes/dist/zionstate-ui-classes.esm.mjs",
       "default": "./classes/dist/zionstate-ui-classes.cjs.js"
     },
     "./colors": {
-      "module": "./colors-entrypoint/dist/zionstate-ui-colors.esm.js",
-      "default": "./colors-entrypoint/dist/zionstate-ui-colors.cjs.js"
+      "import": "./colors-entrypoint/dist/zionstate-ui-colors-entrypoint.esm.mjs",
+      "default": "./colors-entrypoint/dist/zionstate-ui-colors-entrypoint.cjs.js"
     },
     "./next": {
-      "module": "./next/dist/zionstate-ui-next.esm.js",
+      "import": "./next/dist/zionstate-ui-next.esm.mjs",
       "default": "./next/dist/zionstate-ui-next.cjs.js"
     }
   },
