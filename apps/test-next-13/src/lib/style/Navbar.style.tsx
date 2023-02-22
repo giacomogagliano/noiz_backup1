@@ -1,6 +1,7 @@
 "use client";
 import styled, { css } from "styled-components";
-
+import { classe } from "@zionstate/ui/classes";
+export const LogodiZion = classe.Icon;
 type CssProps = {
   bgcolor?: string;
   buttonBgColor?: string;
@@ -81,6 +82,10 @@ export const NavbarComponent = styled.div<CssProps>`
   width: 100%;
   #div-block-18 {
     ${DivBlock18}
+    svg {
+      width: auto;
+      height: auto;
+    }
   }
   #div-block-19 {
     ${DivBlock19}

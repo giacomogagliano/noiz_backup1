@@ -1,6 +1,7 @@
 import React from "react";
 import { GitHubLinks } from "./GitHubLink";
-import { NavbarComponent } from "../lib/style/Navbar.style";
+import { LogodiZion, NavbarComponent } from "../lib/style/Navbar.style";
+
 interface HreftargetProps {
   href: string;
   target?: string;
@@ -97,7 +98,8 @@ export const Navbar = ({
       color={color}
     >
       <div id={OUTER_CONTAINER_ID}>
-        <img src={SRC} loading={LOADING} alt={ALT} id={IMG_ID} />
+        {/* <img src={SRC} loading={LOADING} alt={ALT} id={IMG_ID}></img> */}
+        <LogodiZion logoZion isFillContainer></LogodiZion>
         <div id={LINKS_CONTAINER_ID}>
           <Links></Links>
         </div>
