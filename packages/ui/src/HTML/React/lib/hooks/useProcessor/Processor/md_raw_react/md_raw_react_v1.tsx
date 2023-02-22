@@ -1,7 +1,7 @@
 // import { Data } from "../../../../../../../../../../node_modules/vfile";
 import { createElement, Fragment } from "react";
-import rehypeHighlight from "rehype-highlight";
-import dockerfile from "highlight.js/lib/languages/dockerfile";
+// import rehypeHighlight from "rehype-highlight";
+// import dockerfile from "highlight.js/lib/languages/dockerfile";
 import remarkParse from "remark-parse";
 import remarkGfm from "remark-gfm";
 import remarkRehype from "remark-rehype";
@@ -70,9 +70,9 @@ export const md_raw_react_v1: Iprocessor =
           return tree;
         };
       })
-      .use(rehypeHighlight, {
-        languages: { dockerfile },
-      })
+      // .use(rehypeHighlight, {
+      //   languages: { dockerfile },
+      // })
       .use(rehypeReact, {
         createElement,
         Fragment,
