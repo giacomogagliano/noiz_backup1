@@ -11,6 +11,6 @@ abstract class AbtractNoizCsv {
   abstract records: any[];
 }
 
-interface AbtractNoizCsvCtor {
+export interface AbtractNoizCsvCtor {
   new (path: string): AbtractNoizCsv;
 }
