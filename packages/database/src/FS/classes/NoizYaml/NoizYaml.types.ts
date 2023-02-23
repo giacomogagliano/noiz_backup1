@@ -19,7 +19,7 @@ abstract class AbstractNoizYaml_v1<T> {
   abstract parsed: T;
 }
 
-interface AbstractNoizYaml_v1Ctor<T> {
+export interface AbstractNoizYaml_v1Ctor<T> {
   new (
     path: string,
     configYaml: string
@@ -43,7 +43,7 @@ abstract class AbstractNoizYamlToFile_v1 {
   abstract tree: Tree;
 }
 
-interface AbstractNoizYamlToFile_v1Ctor {
+export interface AbstractNoizYamlToFile_v1Ctor {
   getDirent(path: PathLike): Dirent[];
   joinPaths(paths: string[]): string;
   new (
