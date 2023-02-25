@@ -263,7 +263,7 @@ export class Image_v2 extends BaseNoiz<
     prevProps: Readonly<Image_v2Props>,
     prevState: Readonly<Image_v2State>,
     snapshot?: any
-  ) => void = (p, s, _) => {
+  ) => void = (_, __, ___) => {
     const currImage = this.state.img;
     if (currImage.current) {
       if (this.state.aspectRatio === null) {

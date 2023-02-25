@@ -5,13 +5,13 @@ import {
   createElement,
   Dispatch,
 } from "react";
-import rehypeHighlight from "rehype-highlight";
+// import rehypeHighlight from "rehype-highlight";
 import rehypeParse from "rehype-parse";
 import rehypeReact from "rehype-react";
 import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import { unified } from "unified";
-import dockerfile from "highlight.js/lib/languages/dockerfile";
+// import dockerfile from "highlight.js/lib/languages/dockerfile";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 // import { visit } from "unist-util-visit";
@@ -61,9 +61,9 @@ class Processor {
             return tree;
           };
         })
-        .use(rehypeHighlight, {
-          languages: { dockerfile },
-        })
+        // .use(rehypeHighlight, {
+        //   languages: { dockerfile },
+        // })
         .use(rehypeReact, {
           createElement,
           Fragment,
@@ -82,9 +82,9 @@ class Processor {
         .use(remarkGfm)
         .use(remarkRehype)
         .data("settings", { fragment: true })
-        .use(rehypeHighlight, {
-          languages: { dockerfile },
-        })
+        // .use(rehypeHighlight, {
+        //   languages: { dockerfile },
+        // })
         .use(rehypeStringify)
         .process(this.text)
         .then(file =>

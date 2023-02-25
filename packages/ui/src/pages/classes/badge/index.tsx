@@ -1,6 +1,6 @@
 import React from "react";
-import { Badge } from "../../../HTML/React/classes";
+import { Badge, Icon } from "../../../HTML/React/classes";
 
 export default function index() {
-  return <Badge></Badge>;
+  return <Badge size="big"></Badge>;
 }

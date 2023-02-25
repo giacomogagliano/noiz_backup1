@@ -11,3 +11,6 @@ export type {
 
 //// Mix
 export * from "./Mix";
+
+//// MixAbstract
+export * from './MixAbstract';

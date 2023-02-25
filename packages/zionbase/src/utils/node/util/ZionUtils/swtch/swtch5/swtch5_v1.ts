@@ -1,10 +1,6 @@
-import { Iswtch } from "..";
+import { swtch } from "..";
 
-export const swtch5_v1: Iswtch = function (
-  arr,
-  opt,
-  test
-) {
+export const swtch5_v1: swtch = function (arr, opt, test) {
   if (!opt[0]) throw new Error("");
   if (!opt[1]) throw new Error("");
   if (!opt[2]) throw new Error("");

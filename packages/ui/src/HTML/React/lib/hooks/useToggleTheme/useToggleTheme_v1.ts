@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
 
+export interface useToggleTheme_v1 {
+  (prop: [string, string]): void;
+}
+
 export function useToggleTheme_v1(prop: [string, string]) {
   () => {
     const theme1 = prop[0];

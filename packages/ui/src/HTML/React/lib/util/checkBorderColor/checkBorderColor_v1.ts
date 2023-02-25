@@ -1,3 +1,6 @@
+export interface checkBorderColor_v1 {
+  <T extends { borderColor?: string }>(props: T): string;
+}
 export const checkBorderColor_v1 = <
   T extends { borderColor?: string }
 >(

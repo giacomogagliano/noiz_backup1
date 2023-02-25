@@ -11,10 +11,27 @@ export type Constructor = new (...arg: any[]) => {};
 export type GConstructor<T> = new (...arg: any[]) => T;
 
 /**
+ * Generic type constructor. It accepts only one type
+ * parameters which describe the interface of the returned
+ * instance.
+ */
+export type GAbstractConstructor<T> = abstract new (
+  ...arg: any[]
+) => T;
+
+/**
  * Type which can describe any class. It can be used as type
  * for inputs which expect a constructor.
  */
 export type AnyCtor_v1 = new (...args: any[]) => any;
+
+/**
+ * Type which can describe any class. It can be used as type
+ * for inputs which expect a constructor.
+ */
+export type AnyAbstractCtor_v1 = abstract new (
+  ...args: any[]
+) => any;
 
 /**
  * Type which can take 2 arguments to describe a constructor
@@ -30,6 +47,18 @@ export type NCtor<T, R> = new (...args: T[]) => R;
  */
 export type InferInstance<
   t extends new (...args: any) => any
+> = InstanceType<t> extends {}
+  ? {
+      [k in keyof InstanceType<t>]: InstanceType<t>[k];
+    }
+  : never;
+
+/**
+ * Utility type which retrieves the type of the instance of
+ * a given abstract class
+ */
+export type InferAbstractInstance<
+  t extends abstract new (...args: any) => any
 > = InstanceType<t> extends {}
   ? {
       [k in keyof InstanceType<t>]: InstanceType<t>[k];

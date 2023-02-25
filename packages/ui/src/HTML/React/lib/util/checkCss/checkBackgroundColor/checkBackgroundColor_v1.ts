@@ -1,5 +1,20 @@
 import { CSSProperties } from "react";
-import { css } from "styled-components";
+import {
+  css,
+  FlattenSimpleInterpolation,
+} from "styled-components";
+
+export interface checkBackgroundColor_v1 {
+  <
+    T extends {
+      css_?: {
+        backgroundColor?: CSSProperties["backgroundColor"];
+      };
+    }
+  >(
+    props: T
+  ): FlattenSimpleInterpolation;
+}
 
 export const checkBackgroundColor_v1 = <
   T extends {
