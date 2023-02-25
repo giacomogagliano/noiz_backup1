@@ -6,7 +6,7 @@ export function TextBigSub() {
     <>
       <AppearFromBottomLoader triggerKey="#big-heading">
         <h2 id="big-heading">
-          Welcome to the <span id="text-span-">new Era of internet.</span>
+          Welcome to the new<span id="text-span-"> Era of internet.</span>
         </h2>
       </AppearFromBottomLoader>
       <AppearFromBottomLoader triggerKey="#SubsHeading">

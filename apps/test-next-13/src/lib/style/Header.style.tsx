@@ -26,6 +26,12 @@ export const TextSpan = css`
   background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
+export const TextColorGreen = css`
+  background-image: linear-gradient(113deg, #93bc1d, #32e5c5);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+`;
 
 export const TextHero = css`
   margin-bottom: 20px;
