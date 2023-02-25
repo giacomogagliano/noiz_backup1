@@ -31,4 +31,8 @@ class V1 {
   }
 }
 
+export interface GoogleFonts_v1Ctor {
+  new (props: { fontFamily: FluidFontFamilies }): V1;
+}
+
 export const GoogleFonts_v1 = V1;

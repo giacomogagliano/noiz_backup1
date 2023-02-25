@@ -1,0 +1,18 @@
+{
+  "name": "@zaionapps/startup",
+  "version": "0.0.1",
+  "description": "site which presents the zaion os business",
+  "main": "src/index.ts",
+  "author": "Gagliano Giacomo",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev"
+  },
+  "dependencies": {
+    "@zionstate/ui": "0.0.1",
+    "next": "^13.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^5.3.5"
+  }
+}

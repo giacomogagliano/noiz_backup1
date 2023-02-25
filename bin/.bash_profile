@@ -1,2 +1,0 @@
-PATH=$PATH:$PWD
-export PATH

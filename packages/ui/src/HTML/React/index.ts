@@ -16,3 +16,4 @@ export * as themes from "./themes";
 export * from "./style";
 
 export * from "./lib/utility";
+export * as components from './components'

@@ -1,0 +1,20 @@
+phases:
+  - name: create your own repl
+  - name: create a repl in zaion folder
+  - name: export files in zaion package
+
+file:
+  states:
+    - name: incompleted
+    - name: unstable
+    - name: stable
+
+functions:
+  types:
+    - name: simple
+      hasDependencies: false
+      positions:
+        - utils
+        - zionbase
+    - name: composite
+      hasDependencies: true

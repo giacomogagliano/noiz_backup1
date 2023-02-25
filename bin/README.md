@@ -1,3 +1,17 @@
+# Installation
+
+In your machine `.bash_profile` in this folder
+(`/noiz-network-state/bin`), copy this lines:
+
+```sh
+BIN_PATH=bin/
+NOIZ_FOLDER_PATH=<path-to-your-noiz-folder>/noiz-network-state
+BUILT_PATH=$NOIZ_FOLDER_PATH/$BIN_PATH
+PATH=$PATH:$BUILT_PATH
+export PATH
+
+```
+
 folders can be of these types:
 
 - With a version file

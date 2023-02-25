@@ -1,5 +1,9 @@
 import { ZionError } from "@zionstate/zionbase/utils";
-import { system, reader, lib } from "../../../FileSystem";
+import {
+  system,
+  reader,
+  lib,
+} from "../../../src/FileSystem";
 ZionError;
 system;
 reader;

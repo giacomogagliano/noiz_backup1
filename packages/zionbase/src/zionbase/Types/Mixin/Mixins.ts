@@ -124,3 +124,16 @@ export type IntersectionOfMixinArray<
     ? I
     : never
   : never;
+
+/**
+ * Abstract
+ */
+export type AbstractIntersectionOfMixinArray<
+  T extends ComplexAbstractMixin<any>[]
+> = T extends ComplexAbstractMixin<infer X>[]
+  ? (X extends any ? (k: X) => void : never) extends (
+      k: infer I
+    ) => void
+    ? I
+    : never
+  : never;

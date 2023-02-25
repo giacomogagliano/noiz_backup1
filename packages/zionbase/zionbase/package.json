@@ -1,5 +1,5 @@
 {
   "main": "dist/zionstate-zionbase-zionbase.cjs.js",
   "module": "dist/zionstate-zionbase-zionbase.esm.js",
-  "types": "../dist/zionbase/index.d.ts"
+  "types": "./dist/zionstate-zionbase-zionbase.cjs.d.ts"
 }

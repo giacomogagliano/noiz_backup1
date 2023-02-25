@@ -1,0 +1,44 @@
+###
+
+POST http://localhost:5000/signup
+content-type: application/json
+
+{
+    "name":"bob"
+}
+###
+
+POST http://localhost:5000/create/repo
+content-type: application/json
+
+{
+    "user":"giacomo",
+    "name":"zion-network-state",
+    "url":"https://github.com/Zion-PTC/noiz-network-state.git",
+    "commit":"3244d99"
+}
+
+###
+
+POST http://localhost:5000/edit/repo
+content-type: application/json
+
+{
+    "user":"bob",
+    "name":"zion-network-state",
+    "url":"https://github.com/Zion-PTC/noiz-network-state.git",
+    "commit":"3244d99",
+    "action": "ls-apps"
+}
+
+###
+
+GET http://localhost:5000/
+
+###
+
+GET http://localhost:5000/users/ELFL1oJ4m_UWbxZCKqcw5J8PG_3I9f_1xR6M5qQBELk.ta4b-jgBlFdW2ob2SbWMdnd9LruXB25gyx1XGQrMi4A/repos
+
+###
+
+GET http://localhost:5000/dati

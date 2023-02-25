@@ -1,5 +1,11 @@
 {
   "printWidth": 59,
   "arrowParens": "avoid",
-  "singleAttributePerLine": false
+  "singleAttributePerLine": false,
+  // "overrides": [
+  //   {
+  //     "files": ["./babel.config.json"],
+  //     "options": { "printWidth": 80 }
+  //   }
+  // ]
 }

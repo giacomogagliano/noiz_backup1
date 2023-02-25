@@ -21,6 +21,12 @@ const ProfileGridSetting = css`
     ". content .";
 `;
 
+export interface checkGridSettings_v1 {
+  <T extends { profilePage: boolean }>(
+    props: T
+  ): FlattenSimpleInterpolation;
+}
+
 export const checkGridSettings_v1 = <
   T extends { profilePage: boolean }
 >(
