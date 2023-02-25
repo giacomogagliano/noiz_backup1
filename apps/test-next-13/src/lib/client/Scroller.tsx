@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Component, FC } from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import { Navbar } from "../../components/Navbar";
 
@@ -28,7 +28,18 @@ export const FromTop = styled.div<{ top?: string; transition?: string }>`
   width: 100%;
 `;
 
-export default class Scroller extends Component<Props, State> {
+export interface AbstractScrollerProps {
+  scrollPosition: number;
+}
+export abstract class AbstractScroller<
+  P,
+  S extends AbstractScrollerProps
+> extends Component<P, S> {
+  setScrollPosition = (scrollPosition: number) =>
+    this.setState({ scrollPosition });
+}
+
+export default class Scroller extends AbstractScroller<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -51,6 +62,4 @@ export default class Scroller extends Component<Props, State> {
       this.setScrollPosition(window.scrollY);
     });
   }
-  setScrollPosition = (scrollPosition: number) =>
-    this.setState({ scrollPosition });
 }
