@@ -1,4 +1,4 @@
-export interface HandleAccoutsChangedFactory {
+export interface handleAccountsChangedFactory_v1 {
   (
     listAccounts: any,
     provider: any,
@@ -6,7 +6,7 @@ export interface HandleAccoutsChangedFactory {
   ): () => any;
 }
 
-export const handleAccountsChangedFactory_v1: HandleAccoutsChangedFactory =
+export const handleAccountsChangedFactory_v1: handleAccountsChangedFactory_v1 =
   function handleAccountsChangedFactory(
     listAccounts,
     provider,

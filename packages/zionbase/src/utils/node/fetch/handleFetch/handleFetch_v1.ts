@@ -1,5 +1,17 @@
-export const handleFetch_v1 = async <
-  T extends { [key: string | number | symbol]: any } = { id: string }
+export interface handleFetch_v1 {
+  <
+    T extends { [key: string | number | symbol]: any } = {
+      id: string;
+    }
+  >(
+    input: RequestInfo | URL,
+    init?: RequestInit | undefined
+  ): Promise<T>;
+}
+export const handleFetch_v1: handleFetch_v1 = async <
+  T extends { [key: string | number | symbol]: any } = {
+    id: string;
+  }
 >(
   input: RequestInfo | URL,
   init?: RequestInit | undefined

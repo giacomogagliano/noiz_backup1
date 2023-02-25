@@ -1,34 +1,23 @@
 // TODO #163 @giacomogagliano deprecare questa classe in favore di quelle nuove
 // create
 
-import {
-  PrimaryColors,
-  SecondaryColors,
-  TertiaryColors,
-  ColorWheel,
-} from "..";
-
-export class RGBPrimary_v1 extends PrimaryColors {
+export class RGBPrimary_v1 {
   constructor(
     public red: string,
     public green: string,
     public blue: string
-  ) {
-    super();
-  }
+  ) {}
 }
 
-export class RGBSecondary_v1 extends SecondaryColors {
+export class RGBSecondary_v1 {
   constructor(
     public yellow: string,
     public cyan: string,
     public magenta: string
-  ) {
-    super();
-  }
+  ) {}
 }
 
-export class RGBTertiary_v1 extends TertiaryColors {
+export class RGBTertiary_v1 {
   constructor(
     public red_yellow: string,
     public green_yellow: string,
@@ -36,12 +25,10 @@ export class RGBTertiary_v1 extends TertiaryColors {
     public blue_cyan: string,
     public blue_magenta: string,
     public red_magenta: string
-  ) {
-    super();
-  }
+  ) {}
 }
 
-export class RGB_v1 extends ColorWheel {
+export class RGB_v1 {
   constructor(
     public red: string = "hsl(0, 100%, 50%)",
     public red_yellow: string = "hsl(30, 100%, 50%)",
@@ -55,18 +42,5 @@ export class RGB_v1 extends ColorWheel {
     public blue_magenta: string = "hsl(270, 100%, 50%)",
     public magenta: string = "hsl(300, 100%, 50%)",
     public red_magenta: string = "hsl(330, 100%, 50%)"
-  ) {
-    super(
-      new RGBPrimary_v1(red, green, blue),
-      new RGBSecondary_v1(yellow, cyan, magenta),
-      new RGBTertiary_v1(
-        red_yellow,
-        green_yellow,
-        green_cyan,
-        blue_cyan,
-        blue_magenta,
-        red_magenta
-      )
-    );
-  }
+  ) {}
 }

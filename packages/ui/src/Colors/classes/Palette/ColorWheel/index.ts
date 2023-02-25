@@ -7,12 +7,3 @@ export {
 } from "./ColorWheel_v1";
 
 //////
-
-//// CYM
-export * from "./CYM";
-
-//// RGB
-export * from "./RGB";
-
-//// RYB
-export * from "./RYB";

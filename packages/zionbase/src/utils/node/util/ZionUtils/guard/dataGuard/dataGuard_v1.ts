@@ -1,4 +1,4 @@
-export interface IdataGuard_v1 {
+export interface dataGuard_v1 {
   <T>(data: T, err: string): NonNullable<T>;
 }
 
@@ -11,7 +11,7 @@ export interface IdataGuard_v1 {
  * @param err
  * @returns
  */
-export const dataGuard_v1: IdataGuard_v1 = function <T>(
+export const dataGuard_v1: dataGuard_v1 = function <T>(
   data: T,
   err: string
 ) {

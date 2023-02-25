@@ -1,18 +1,28 @@
-import { Palette_v1 as Palette } from "..";
+import { Palette } from "..";
+import { ColorWheels } from "../Palette_v2";
 
 export class PrimaryColors_v1 extends Palette {
-  constructor() {
-    super();
+  constructor(
+    color: number,
+    wheel: keyof ColorWheels = "rgb"
+  ) {
+    super(color, wheel);
   }
 }
 export class SecondaryColors_v1 extends Palette {
-  constructor() {
-    super();
+  constructor(
+    color: number,
+    wheel: keyof ColorWheels = "rgb"
+  ) {
+    super(color, wheel);
   }
 }
 export class TertiaryColors_v1 extends Palette {
-  constructor() {
-    super();
+  constructor(
+    color: number,
+    wheel: keyof ColorWheels = "rgb"
+  ) {
+    super(color, wheel);
   }
 }
 

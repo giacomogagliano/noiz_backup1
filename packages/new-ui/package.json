@@ -1,0 +1,14 @@
+{
+  "name": "@zaionstate/new-ui",
+  "version": "0.0.1",
+  "main": "dist/zaionstate-new-ui.cjs.js",
+  "module": "dist/zaionstate-new-ui.esm.js",
+  "author": "Giacomo Gagliano, Arianna Minucci",
+  "license": "MIT",
+  "devDependencies": {
+    "@preconstruct/cli": "^2.2.2"
+  },
+  "scripts": {
+    "build": "yarn preconstruct build"
+  }
+}

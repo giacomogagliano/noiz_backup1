@@ -1,4 +1,11 @@
 /// v3
+export {
+  Mix_v4 as Mix,
+  Mix_v4Ctor as MixCtor,
+} from "./Mix_v4";
+export type { IMix_v4 as IMix } from "./Mix_v4";
+
+/// v3
 export { Mix_v3, Mix_v3Ctor } from "./Mix_v3";
 export type {
   IMix_v3,
@@ -15,12 +22,9 @@ export type {
 } from "./Mix_v2";
 
 ///// v1
-export {
-  Mix_v1 as Mix,
-  Mix_v1Ctor as MixCtor,
-} from "./Mix_v1";
+export { Mix_v1, Mix_v1Ctor } from "./Mix_v1";
 export type {
-  IMix_v1 as IMix,
-  Mix_v1Constructor as MixConstructor,
-  Mix_v1Mixin as MixMixin,
+  IMix_v1,
+  Mix_v1Constructor,
+  Mix_v1Mixin,
 } from "./Mix_v1";

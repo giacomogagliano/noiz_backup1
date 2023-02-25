@@ -1,0 +1,17 @@
+# Graph
+
+## Descrizione
+
+Struttura dati
+
+## AdjacencyList
+
+A = B,C,D
+B = C,E,F
+
+## AdjacenctMatrix
+
+[0,1,0,0]
+[0,0,1,0]
+[0,0,0,1]
+[0,0,0,0]

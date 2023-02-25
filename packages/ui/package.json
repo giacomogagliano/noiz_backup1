@@ -5,13 +5,58 @@
   "source": "src/index.ts",
   "main": "dist/zionstate-ui.cjs.js",
   "module": "dist/zionstate-ui.esm.js",
+  "exports": {
+    ".": {
+      "import": "./dist/zionstate-ui.esm.mjs",
+      "default": "./dist/zionstate-ui.cjs.js"
+    },
+    "./style": {
+      "import": "./style/dist/zionstate-ui-style.esm.mjs",
+      "default": "./style/dist/zionstate-ui-style.cjs.js"
+    },
+    "./components": {
+      "import": "./components/dist/zionstate-ui-components.esm.mjs",
+      "default": "./components/dist/zionstate-ui-components.cjs.js"
+    },
+    "./classes": {
+      "import": "./classes/dist/zionstate-ui-classes.esm.mjs",
+      "default": "./classes/dist/zionstate-ui-classes.cjs.js"
+    },
+    "./colors": {
+      "import": "./colors-entrypoint/dist/zionstate-ui-colors-entrypoint.esm.mjs",
+      "default": "./colors-entrypoint/dist/zionstate-ui-colors-entrypoint.cjs.js"
+    },
+    "./next": {
+      "import": "./next/dist/zionstate-ui-next.esm.mjs",
+      "default": "./next/dist/zionstate-ui-next.cjs.js"
+    }
+  },
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "style",
+    "components",
+    "classes",
+    "colors-entrypoint",
+    "next"
   ],
+  "preconstruct": {
+    "exports": true,
+    "entrypoints": [
+      "index.ts",
+      "style.ts",
+      "components.ts",
+      "classes.ts",
+      "colors-entrypoint.ts",
+      "next.ts"
+    ]
+  },
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "yarn preconstruct build && run-p build:*",
+    "test": "mocha --require ts-node/register ./test/**/*.test.ts",
+    "build:pkg": "yarn preconstruct build",
+    "build:rollup": "rollup -c ./rollup.config.js",
+    "build": "yarn build:pkg && yarn build:rollup ",
     "build:types": "tsc --declaration --emitDeclarationOnly --outDir dist",
     "typecheck": "tsc --noEmit",
     "next_dev": "next dev",
@@ -31,9 +76,10 @@
     "highlight.js": "^11.7.0",
     "ink": "^3.2.0",
     "inquirer": "^9.1.4",
-    "next": "^12.3.0",
+    "next": "^13.1.1",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.0.1",
+    "react-dom": "^18.2.0",
     "react-markdown": "^8.0.3",
     "rehype-format": "^4.0.1",
     "rehype-highlight": "^5.0.2",
@@ -57,6 +103,7 @@
     "@babel/preset-env": "^7.18.6",
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.18.6",
+    "@preconstruct/cli": "^2.2.2",
     "@types/react": "^18.0.20",
     "@types/styled-components": "^5.1.26",
     "@types/ua-parser-js": "^0.7.36",
@@ -72,10 +119,11 @@
     "highlight.js": "^11.7.0",
     "ink": "^3.2.0",
     "inquirer": "^9.1.4",
-    "next": "^12.3.0",
+    "next": "^13.1.1",
     "npm-run-all": "^4.1.5",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.0.1",
+    "react-dom": "^18.2.0",
     "react-markdown": "^8.0.3",
     "rehype-format": "^4.0.1",
     "rehype-highlight": "^5.0.2",

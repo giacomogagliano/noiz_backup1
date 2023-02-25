@@ -100,6 +100,7 @@ type AreaProps = {
   image: boolean;
 } & ImageProps &
   AreaStyle;
+
 export const Area = styled.div<AreaProps>`
   display: grid;
   /* place-items: center; */

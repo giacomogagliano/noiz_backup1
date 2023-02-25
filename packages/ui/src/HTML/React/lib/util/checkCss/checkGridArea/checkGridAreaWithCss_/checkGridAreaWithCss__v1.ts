@@ -1,5 +1,18 @@
 import { CSSProperties } from "react";
-import { css } from "styled-components";
+import {
+  css,
+  FlattenSimpleInterpolation,
+} from "styled-components";
+
+export interface checkGridAreaWithCss__v1 {
+  <
+    T extends {
+      css_: { gridArea?: CSSProperties["gridArea"] };
+    }
+  >(
+    props: T
+  ): FlattenSimpleInterpolation | undefined;
+}
 
 export const checkGridAreaWithCss__v1 = <
   T extends {

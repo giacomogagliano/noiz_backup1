@@ -29,7 +29,7 @@ const makeProcessor = (
   }
 };
 
-export interface IuseProcessor_v3 {
+export interface useProcessor_v3 {
   (text: string, type: "html-react"): JSX.Element;
   (text: string, type: "md-react"): JSX.Element;
   (text: string, type: "md-raw-react"): JSX.Element;
@@ -40,7 +40,7 @@ export interface IuseProcessor_v3 {
 // type setContent = Dispatch<Content>;
 type Content = JSX.Element | string;
 
-export const useProcessor_v3: IuseProcessor_v3 = function (
+export const useProcessor_v3: useProcessor_v3 = function (
   text,
   type
 ): any {
