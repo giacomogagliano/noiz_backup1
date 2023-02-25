@@ -13,7 +13,10 @@ import {
 // mutazione
 // stato A
 // stato B
-// (breakpoint)
+// event on intersection
+// foo(breakpoint) {
+//   quando elemento arriva sul breapoint
+// }
 abstract class AbstractScroller_v2<
   P,
   S extends AbstractScrollerProps
