@@ -138,3 +138,6 @@ packages/blockchain/cache
 packages/blockchain/artifacts
 packages/database/src/Blockchain/artifacts
 packages/database/src/Blockchain/cache
+apps/test-ui/test-ui.tar
+bin/.bash_profile
+yarn.lock
