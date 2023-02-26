@@ -1,0 +1,10 @@
+http://localhost:3000/api/spesa
+
+###
+
+POST http://localhost:3000/api/spesa HTTP/1.1
+content-type: application/json
+
+{
+    "action":"plus"
+}
