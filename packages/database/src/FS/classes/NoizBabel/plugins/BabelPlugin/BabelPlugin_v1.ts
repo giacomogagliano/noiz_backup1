@@ -1,4 +1,5 @@
 import { PluginObj, Visitor } from "@babel/core";
+import { AbstractBabelPlugin } from "./BabelPlugin.types";
 
 export interface IBabelPlugin_v1 {
   name: string;
@@ -14,8 +15,11 @@ export interface BabelPlugin_v1<T = {}>
   makeVisitor<T>(visitor: Visitor<T>): this;
 }
 
-export class BabelPlugin_v1<T = {}> {
+export class BabelPlugin_v1<
+  T = {}
+> extends AbstractBabelPlugin {
   constructor() {
+    super();
     this.stringResult = [];
   }
   makeVisitor<T_>(visitor: Visitor<T_>) {

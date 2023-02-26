@@ -13,6 +13,7 @@ import {
 } from "@zionstate/zionbase/zionbase";
 import { fileURLToPath } from "url";
 import { Abortable } from "events";
+import { deprecate } from "util";
 export interface ISystem_v1 {}
 
 export interface System_v1 {}
@@ -34,6 +35,10 @@ export class System_v1 {
   }
   get files(): string[] {
     return this.files;
+  }
+  fs: typeof fs;
+  constructor() {
+    this.fs = fs;
   }
   setNameForTreeNode = (
     path: string,
@@ -58,7 +63,7 @@ export class System_v1 {
     }
   };
   arrayOfFoldersInDirectory = (path: string) => {
-    return fs
+    return this.fs
       .readdirSync(path, {
         withFileTypes: true,
       })
@@ -70,7 +75,7 @@ export class System_v1 {
       );
   };
   arrayOfFilesInDirectory = (path: string) => {
-    return fs
+    return this.fs
       .readdirSync(path, {
         withFileTypes: true,
       })
@@ -84,7 +89,7 @@ export class System_v1 {
   arrayOfNamesOfFilesInFolder = (
     path: string
   ): { name: string; path: string }[] => {
-    return fs
+    return this.fs
       .readdirSync(path)
       .filter(item => !/(^|\/)\.['\/\.]/g.test(item))
       .map(fileName => {
@@ -137,8 +142,8 @@ export class System_v1 {
    */
   createNestedDir(dir: string): string | undefined {
     //example './tmp/but/then/nested';
-    if (!fs.existsSync(dir))
-      return fs.mkdirSync(dir, { recursive: true });
+    if (!this.fs.existsSync(dir))
+      return this.fs.mkdirSync(dir, { recursive: true });
   }
   /**
    * @title buildTree()
@@ -147,7 +152,7 @@ export class System_v1 {
    * Structure Object.
    * @returns {Tree} returns a complete Tree starting from the rootPath
    */
-  buildTree = (rootPath: string): Tree | undefined => {
+  buildTree = deprecate((rootPath: string): Tree => {
     let newTree = new Tree();
     let _types = ["Folder", "File"];
     let nodes: TreeNode[] = [];
@@ -180,7 +185,9 @@ export class System_v1 {
       if (currentNode) {
         if (!currentNode.path) throw new Error("no path");
 
-        let children = fs.readdirSync(currentNode.path);
+        let children = this.fs.readdirSync(
+          currentNode.path
+        );
         let DSStore = system.blackListFileNames[0];
         // TODO aggiunta variabile per zittare ts, sistemare
         DSStore;
@@ -200,7 +207,9 @@ export class System_v1 {
           let childNode: File | Folder;
           if (!name) throw new Error("No name");
           if (!currentNode.depth)
-            throw new Error("no depth");
+            if (currentNode.isRoot()) {
+              currentNode.depth = 0;
+            } else throw new Error("no depth");
           if (_types[type] === _types[0]) {
             childNode = new Folder(
               name,
@@ -246,14 +255,14 @@ export class System_v1 {
     };
     nodes.forEach(addNode);
     return newTree;
-  };
+  }, "This function will soo be replaces by a better functioning one");
   /**
    *
    * @param {String} path percorso target
    * @param {*} callback funzione callback senza parametri
    */
   deleteFile(path: string, callback: fs.NoParamCallback) {
-    return fs.rm(path, callback);
+    return this.fs.rm(path, callback);
   }
   /**
    *
@@ -265,7 +274,7 @@ export class System_v1 {
     path: fs.PathLike,
     options?: fs.RmDirOptions
   ) {
-    return fs.rmdirSync(path, options);
+    return this.fs.rmdirSync(path, options);
   }
   /**
    *
@@ -273,7 +282,7 @@ export class System_v1 {
    * @returns fs.rmSync()
    */
   deleteRecursiveDir(path: fs.PathLike) {
-    return fs.rmSync(path, {
+    return this.fs.rmSync(path, {
       recursive: true,
       force: true,
     });
@@ -284,7 +293,7 @@ export class System_v1 {
    * @returns fm.existsSync()
    */
   existsSync(path: fs.PathLike) {
-    return fs.existsSync(path);
+    return this.fs.existsSync(path);
   }
   /**
    *
@@ -293,22 +302,22 @@ export class System_v1 {
    * @returns fs.StatSync()
    */
   statSync(path: fs.PathLike, options?: undefined) {
-    return fs.statSync(path, options);
+    return this.fs.statSync(path, options);
   }
   isFileInFolder(file: string, folder: fs.PathLike) {
-    let array = fs.readdirSync(folder);
+    let array = this.fs.readdirSync(folder);
     return array.includes(file);
   }
   getTreeNodeType(path: fs.PathLike) {
     let result;
-    fs.statSync(path).isDirectory()
+    this.fs.statSync(path).isDirectory()
       ? (result = 0)
       : (result = 1);
     return result;
   }
   // work on files
   getFileSize(path: fs.PathLike) {
-    let size = fs.statSync(path).size;
+    let size = this.fs.statSync(path).size;
     return size;
   }
   getFileExtension(path: string) {
@@ -325,7 +334,7 @@ export class System_v1 {
       | null
       | undefined
   ): string {
-    return fs.readFileSync(path, options).toString();
+    return this.fs.readFileSync(path, options).toString();
   }
   doo(
     path: fs.PathLike,
@@ -333,11 +342,13 @@ export class System_v1 {
   ) {
     // TODO ts errore
     //@ts-expect-error
-    if (options) return fs.readdirSync(path, options);
-    else return fs.readdirSync(path);
+    if (options) return this.fs.readdirSync(path, options);
+    else return this.fs.readdirSync(path);
   }
   getDirent(path: fs.PathLike) {
-    return fs.readdirSync(path, { withFileTypes: true });
+    return this.fs.readdirSync(path, {
+      withFileTypes: true,
+    });
   }
   joinPaths(paths: string[]) {
     // const functionName = this.joinPaths.name;
@@ -351,7 +362,10 @@ export class System_v1 {
     return path.join(...paths);
   }
   exists(path: string) {
-    return fs.existsSync(path);
+    return this.fs.existsSync(path);
+  }
+  setfs(newfs: typeof fs) {
+    this.fs = newfs;
   }
 }
 // /Users/WAW/Documents/Projects/ZION/node_modules/@types/node/events.d.ts
@@ -361,8 +375,11 @@ export class System_v1 {
 // export type IFileExport = IFile;
 // export type IFolderExport = IFolder;
 // export type IRootExport = IRoot;
-export let system: System_v1 = new System_v1();
-Object.assign(system, fs);
+let system_base: System_v1 = new System_v1();
+Object.assign(system_base, fs);
+
+export const system: System_v1 & typeof fs =
+  system_base as unknown as System_v1 & typeof fs;
 
 export type System_v1Ctor = {
   new (): System_v1;

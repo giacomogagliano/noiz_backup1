@@ -14,3 +14,6 @@ export * from "./Monorepo";
 export * from "./ZionGitHub";
 
 export * as lib from "./lib";
+
+//// ZaionVGit
+export * from './ZaionVGit';
