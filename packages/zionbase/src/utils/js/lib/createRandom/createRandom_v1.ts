@@ -88,6 +88,7 @@ export const createRandom_v1 = (
   options.set("number", CreateRandomNumber);
   options.set("string", CreateRandomString);
   const Creator = options.get(arg1);
+  if (!Creator) throw new Error("something went wrong");
   const responses = new Map();
   responses.set(undefined, () => {
     throw new Error(
