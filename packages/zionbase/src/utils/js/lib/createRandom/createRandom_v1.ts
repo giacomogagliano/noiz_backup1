@@ -105,9 +105,9 @@ export const typeChecker: createRandomType =
   createRandom_v1;
 
 interface createRandom {
-  (type: "symbol", lenght?: number): CreateRandomSymbol;
-  (type: "string", lenght?: number): CreateRandomString;
-  (type: "number", lenght?: number): CreateRandomNumber;
+  (type: "symbol", lenght?: number): symbol;
+  (type: "string", lenght?: number): string;
+  (type: "number", lenght?: number): number;
 }
 
 export const createRandom: createRandom =
