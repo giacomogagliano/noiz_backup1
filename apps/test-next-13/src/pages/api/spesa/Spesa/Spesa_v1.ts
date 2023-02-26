@@ -34,10 +34,10 @@ export class SpesaApplication extends Application {
     return this.lists.get(list);
   }
   updateList(): void {
-    console.log("will update the list");
+    window.console.log("will update the list");
   }
   deleteList(): void {
-    console.log("will delete the list");
+    window.console.log("will delete the list");
   }
   closeList(list: string): this {
     Object.freeze(this.lists.get(list));
