@@ -2,6 +2,7 @@ import { Strategy } from "../../../../zionbase/Types/Class/Strategy";
 import {
   CreateRandom,
   createRandomType,
+  arg1,
   returnType,
 } from "../../../../zionbase/Types/lib";
 // import type {createRandom} from "../../Types/lib"
@@ -73,7 +74,6 @@ class CreateRandomSymbol extends CreateRandom {
   }
 }
 
-type arg1 = "string" | "number" | "symbol";
 export const createRandom_v1 = (
   arg1: arg1,
   arg2?: number
@@ -88,6 +88,7 @@ export const createRandom_v1 = (
   options.set("number", CreateRandomNumber);
   options.set("string", CreateRandomString);
   const Creator = options.get(arg1);
+  if (!Creator) throw new Error("something went wrong");
   const responses = new Map();
   responses.set(undefined, () => {
     throw new Error(
@@ -98,16 +99,15 @@ export const createRandom_v1 = (
   responses.set(CreateRandomNumber, () => {});
   responses.set(CreateRandomString, () => {});
   responses.get(Creator)();
-  // @ts-ignore
-  return new Creator(arg2).create() as returnType;
+  return new Creator(arg2).create();
 };
 export const typeChecker: createRandomType =
   createRandom_v1;
 
 interface createRandom {
-  (type: "symbol", lenght?: number): CreateRandomSymbol;
-  (type: "string", lenght?: number): CreateRandomString;
-  (type: "number", lenght?: number): CreateRandomNumber;
+  (type: "symbol", lenght?: number): symbol;
+  (type: "string", lenght?: number): string;
+  (type: "number", lenght?: number): number;
 }
 
 export const createRandom: createRandom =
