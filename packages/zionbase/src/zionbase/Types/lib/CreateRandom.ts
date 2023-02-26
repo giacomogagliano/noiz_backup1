@@ -13,7 +13,7 @@ export abstract class CreateRandom {
   }
 }
 export type arg1 = "string" | "number" | "symbol";
-export type returnType = arg1;
+export type returnType = string | number | symbol;
 export type createRandomType = (
   arg1: arg1,
   arg2?: number
