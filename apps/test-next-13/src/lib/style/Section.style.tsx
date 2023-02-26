@@ -1,5 +1,6 @@
 "use client";
 import styled, { css } from "styled-components";
+import { TextColorGreen } from "./Header.style";
 import { Section, Container, BigHeading, SubHeading } from "./StylesSheet";
 
 const WlayoutGrid = css`
@@ -52,6 +53,7 @@ export const AreaSection = styled.div`
     ${BigHeading}
     #text-span- {
       ${TextSpan2}
+      ${TextColorGreen}
     }
   }
   #SubsHeading {
