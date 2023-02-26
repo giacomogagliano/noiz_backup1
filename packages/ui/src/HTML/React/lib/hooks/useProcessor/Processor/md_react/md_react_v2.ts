@@ -1,5 +1,5 @@
 import { createElement, Fragment } from "react";
-import rehypeHighlight from "rehype-highlight";
+// import rehypeHighlight from "rehype-highlight";
 import dockerfile from "highlight.js/lib/languages/dockerfile";
 import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
@@ -16,9 +16,9 @@ export const md_react_v2: Iprocessor =
       .use(remarkParse)
       .use(remarkGfm)
       .use(remarkRehype)
-      .use(rehypeHighlight, {
-        languages: { dockerfile },
-      })
+      // .use(rehypeHighlight, {
+      //   languages: { dockerfile },
+      // })
       .use(rehypeReact, {
         createElement,
         Fragment,

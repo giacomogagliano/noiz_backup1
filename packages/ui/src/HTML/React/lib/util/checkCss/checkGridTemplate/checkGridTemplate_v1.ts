@@ -1,4 +1,7 @@
-import { css } from "styled-components";
+import {
+  css,
+  FlattenSimpleInterpolation,
+} from "styled-components";
 import { checkPropsAndSetDefault } from "../checkPropsAndSetDefault";
 
 // function checkGridTemplateColumns<
@@ -11,6 +14,20 @@ import { checkPropsAndSetDefault } from "../checkPropsAndSetDefault";
 //     grid-template-columns: ${props.css_.gridTemplateColumns};
 //   `;
 // }
+
+export interface checkGridTemplate_v1 {
+  <
+    T extends {
+      css_: {
+        gridTemplateColumns?: string;
+        gridTemplateRows?: string;
+      };
+    }
+  >(
+    type: "columns" | "rows",
+    props: T
+  ): FlattenSimpleInterpolation | undefined;
+}
 
 export function checkGridTemplate_v1<
   T extends {

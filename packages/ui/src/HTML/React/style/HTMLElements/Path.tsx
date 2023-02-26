@@ -4,7 +4,11 @@ export interface IPath {
   options?: { fill?: boolean; stroke?: boolean };
 }
 
-export const Path = styled.path<IPath>`
+export interface PathProps {
+  options?: { fill?: boolean; stroke?: boolean };
+}
+
+export const Path = styled.path<PathProps>`
   fill: ${props =>
     props.options?.fill
       ? props.theme.primary.borderColor

@@ -1,7 +1,8 @@
 import { testEnvironment } from "@zionstate/test";
-import { Palette_v2 } from "../../../src/Colors/classes/Palette/Palette_v2";
+import { classes } from "../../../colors-entrypoint";
 
 const { expect, log } = testEnvironment();
+const Palette = classes.Palette;
 
 expect;
 log;
@@ -14,7 +15,7 @@ describe("Creazione palette RGB", () => {
   const EXPECTED_SECONDARY1 = 20 + 60;
   const EXPECTED_SECONDARY2 = 20 + 60 + 120;
   const EXPECTED_SECONDARY3 = 20 + 60 + 240;
-  const palette = new Palette_v2(coloreBase);
+  const palette = new Palette(coloreBase);
   const primary1 = palette.primary1.value;
   const primary2 = palette.primary2.value;
   const primary3 = palette.primary3.value;
@@ -63,7 +64,7 @@ describe("Creazione palette RGB", () => {
 describe("Test per metodo setBrightness", () => {
   const COLOR = 10;
   const BRIGHTNESS = 20;
-  const palette = new Palette_v2(COLOR, "ryb");
+  const palette = new Palette(COLOR, "ryb");
   palette.setBrightness(BRIGHTNESS);
   const EXPECTED_STRING = `hsl(${COLOR}, 100%, ${BRIGHTNESS}%)`;
   it(`dovrebbe ritornare ${EXPECTED_STRING}`, () => {
@@ -79,7 +80,7 @@ describe("", () => {
   const EXPECTED_STRING = `hsl(${
     COLOR + 60
   }, ${SATURATION}%, 50%)`;
-  const palette = new Palette_v2(COLOR, "cym");
+  const palette = new Palette(COLOR, "cym");
   palette.setSaturation(SATURATION);
   it(`dovrebbe ritornare questo valore: ${EXPECTED_STRING}`, () => {
     expect(palette.primary1.value).to.be.equal(

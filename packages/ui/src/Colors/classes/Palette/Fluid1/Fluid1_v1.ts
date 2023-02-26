@@ -3,6 +3,8 @@ import {
   Palette_v1 as Palette,
 } from "../../Palette";
 
+// TODO @giacomogagliano togliere i colori non presenti
+
 export type Fluid1Type_v1 = Pick<
   colors_,
   "orange" | "blue" | "blue_green" | "green" | "red_purple"

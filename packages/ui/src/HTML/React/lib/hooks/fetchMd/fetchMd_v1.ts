@@ -1,6 +1,10 @@
 import matter from "gray-matter";
 import { mdParser } from "../";
 
+export interface fetchMd_v1 {
+  (props: { src: string }): Promise<string>;
+}
+
 export async function fetchMd_v1(props: { src: string }) {
   const { src } = props;
   const response = await fetch(src);
