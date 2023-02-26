@@ -3,7 +3,9 @@
  * can be assigned to a key inside an object in Javascrip.
  * The type of the members is passed down as Generic variable.
  */
-export type GenericObject<T> = { [key: string | number | symbol]: T };
+export type GenericObject<T> = {
+  [key: string | number | symbol]: T;
+};
 
 /**
  * This Utility type narrows the fields (members) of a
@@ -26,7 +28,7 @@ export type narrowGenericObject<
  * This is a type for an utility function which accepts a
  * generic type and narrows it to the key passed in the arguments
  */
-type narrowGenericObjectFunc = <
+export type narrowGenericObjectFunc = <
   MembersType,
   G extends
     | narrowGenericObject<GenericObject<MembersType>, Key>
@@ -58,13 +60,13 @@ type narrowGenericObjectFunc = <
  * passed generic object.
  * @returns
  */
-export const narrowGenericObjectFunc: narrowGenericObjectFunc = (
-  members,
-  generic,
-  field
-) => {
-  generic;
-  if (field in generic === true)
-    return generic as narrowGenericObject<typeof members, typeof field>;
-  else throw new Error("Something went wrong");
-};
+export const narrowGenericObjectFunc: narrowGenericObjectFunc =
+  (members, generic, field) => {
+    generic;
+    if (field in generic === true)
+      return generic as narrowGenericObject<
+        typeof members,
+        typeof field
+      >;
+    else throw new Error("Something went wrong");
+  };

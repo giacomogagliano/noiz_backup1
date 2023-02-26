@@ -24,7 +24,6 @@ module.exports = {
       child_process: false,
       "@zionstate/database/FS": false,
     };
-
     return config;
   },
   experimental: {

@@ -15,6 +15,10 @@ type ParentSize = {
   height?: number;
 };
 
+export interface useCalculateFluidGrid_v1 {
+  (): [number, number, RefObject<HTMLDivElement>, number];
+}
+
 export function useCalculateFluidGrid_v1(): [
   number,
   number,

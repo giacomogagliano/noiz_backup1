@@ -4,7 +4,7 @@ export * as _app from "./_app";
 export { NoizApp, NoizAppProps } from "./_app";
 
 //// Badge
-export { Badge, BadgeProps } from "./Badge";
+export { Badge } from "./Badge";
 
 //// Basic
 export {

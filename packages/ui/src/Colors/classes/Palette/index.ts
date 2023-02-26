@@ -21,8 +21,9 @@ export * from "./Fluid2";
 //// Fluid3
 export * from "./Fluid3";
 
-//// Rainbow
-export * from "./Rainbow";
+// TODO @giacomogagliano migliorare
+// //// Rainbow
+// export * from "./Rainbow";
 
 //// NamedPalette
 export { RGB, CYM, RYB } from "./NamedPalette";
