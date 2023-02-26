@@ -64,7 +64,9 @@
     "test_of": "cd test && NODE_DEBUG=log nodemon --exec ts-node --esm",
     "test_IPFS": "cd test && NODE_DEBUG=log ts-node --project ./IPFS/tsconfig.json --esm",
     "clean": "rm -rf dist",
-    "build": "yarn preconstruct build && run-p build:*",
+    "build:pkg": "yarn preconstruct build",
+    "build:rollup": "rollup -c ./rollup.config.js",
+    "build": "yarn build:pkg && yarn build:rollup ",
     "build:types": "tsc --declaration --emitDeclarationOnly --outDir dist",
     "start_node": "cd src && cd Blockchain && npx hardhat node",
     "typecheck": "tsc --noEmit"
