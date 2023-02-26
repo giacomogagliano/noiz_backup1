@@ -27,24 +27,25 @@ export const TextSmall = css`
 `;
 
 export const TextSpan = css`
-  background-image: linear-gradient(180deg, #e1583b, #4d2d47 40%, #57c97b 74%);
+  background-image: linear-gradient(180deg, #20122d, #4d2d47 40%, #e1583b 74%);
   -webkit-background-clip: text;
   background-clip: text;
-  text-shadow: 2px 2px 4px
-    linear-gradient(180deg, #e1583b, #99598d 40%, #20122d 74%);
-  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: invert(1);
 `;
 export const TextColorGreen = css`
-  background-image: linear-gradient(113deg, #93bc1d, #32e5c5);
+  background-image: linear-gradient(180deg, #20122d, #4d2d47 40%, #e1583b 74%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  filter: invert(1);
 `;
 
 export const TextHero = css`
   margin-bottom: 20px;
   font-weight: 400;
   opacity: 0.5;
+  filter: invert(1);
 `;
 
 export const TextCenter = css`
