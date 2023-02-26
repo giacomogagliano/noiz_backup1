@@ -100,6 +100,7 @@
     "ink-use-stdout-dimensions": "^1.0.5",
     "inquirer": "^9.1.4",
     "ipfs-http-client": "^57.0.3",
+    "memfs": "^3.4.13",
     "mocha": "^10.2.0",
     "mongoose": "^6.5.2",
     "multiformats": "^9.7.0",
