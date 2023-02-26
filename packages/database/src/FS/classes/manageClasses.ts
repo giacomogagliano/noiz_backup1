@@ -6,7 +6,10 @@ import {
   readFileSync,
 } from "fs";
 import { join, basename } from "path";
-import { inflate as zlibinflate, deflate as zlibdeflate } from "zlib";
+import {
+  inflate as zlibinflate,
+  deflate as zlibdeflate,
+} from "zlib";
 
 ///// functions
 
@@ -24,7 +27,10 @@ function readDirs(
   path: string,
   options?: { onlyFolders: true }
 ): Dirent[] | null;
-function readDirs(path: string, options?: { onlyFolders?: boolean }) {
+function readDirs(
+  path: string,
+  options?: { onlyFolders?: boolean }
+) {
   if (checkFolder(path)) {
     let res = readdirSync(path, { withFileTypes: true });
     if (options) {
@@ -36,7 +42,9 @@ function readDirs(path: string, options?: { onlyFolders?: boolean }) {
 interface checkChildrenNode {
   (dir: FSEntity): string[] | null;
 }
-const checkChildrenNode: checkChildrenNode = function (dir) {
+const checkChildrenNode: checkChildrenNode = function (
+  dir
+) {
   if (dir.children) return dir.children;
   else return null;
 };
@@ -60,7 +68,8 @@ function addNode(this: FileSystemTree, node: FSEntity) {
   if (node.type === "root") this.root = node;
   if (node.type === "file") this.files.push(node);
   else this.folders.push(node);
-  if (node.value && node.value.name) this.nodes.set(node.value.name, node);
+  if (node.value && node.value.name)
+    this.nodes.set(node.value.name, node);
   this.nodes.set(node.name, node);
 }
 
@@ -121,7 +130,10 @@ function encode(string: string) {
 }
 // fatto
 function decode(buffer: Buffer) {
-  return Buffer.from(buffer.toString("utf8"), "base64").toString();
+  return Buffer.from(
+    buffer.toString("utf8"),
+    "base64"
+  ).toString();
 }
 
 // async function loadFile(path: string) {
@@ -145,25 +157,28 @@ function write(path: string, buffer: Buffer): 1 | 0 {
 function read(path: string): Buffer {
   return readFileSync(path);
 }
-const makeNode = (graph: FileSystemTree) => (n: FSEntity) => {
-  let node = new FSEntity(n);
-  if (n.kind) node.kind = n.kind;
-  if (n.value) {
-    node.value = n.value;
-    if (!n.value.name) n.value.name = n.name;
-    if (!n.value.path) n.value.path = n.path;
-  } else {
-    node.value = { name: n.name, path: n.path };
-  }
-  graph.addNode(node);
-};
+const makeNode =
+  (graph: FileSystemTree) => (n: FSEntity) => {
+    let node = new FSEntity(n);
+    if (n.kind) node.kind = n.kind;
+    if (n.value) {
+      node.value = n.value;
+      if (!n.value.name) n.value.name = n.name;
+      if (!n.value.path) n.value.path = n.path;
+    } else {
+      node.value = { name: n.name, path: n.path };
+    }
+    graph.addNode(node);
+  };
 
 async function start(this: Manager) {
   let path = join(this.path, this.filename);
   try {
     // read
     let buffer = readFileSync(path);
-    process.stdout.write("config file exists, proceeding..\n");
+    process.stdout.write(
+      "config file exists, proceeding..\n"
+    );
     // uncompress
     let uncompress = await Manager.inflate(buffer);
     // decode
@@ -191,9 +206,14 @@ async function save(this: Manager): Promise<Manager> {
   // encode
   let encoded = Manager.encode(string);
   // compress
-  let compressed = await Manager.deflate(Buffer.from(encoded));
+  let compressed = await Manager.deflate(
+    Buffer.from(encoded)
+  );
   // write
-  Manager.write(join(this.path, this.filename), compressed);
+  Manager.write(
+    join(this.path, this.filename),
+    compressed
+  );
   return this;
 }
 
@@ -209,12 +229,16 @@ const cb =
   (c: Dirent) => {
     let childPath = join(parentPath, c.name);
     let _children;
+    _children;
     let node: FSEntity;
     try {
       _children = readDirs(childPath);
       node = new FSEntity({
         children: [],
-        value: { name: c.name, path: join(current?.path!, c.name) },
+        value: {
+          name: c.name,
+          path: join(current?.path!, c.name),
+        },
         name: c.name,
         path: join(current?.path!, c.name),
         parent: parentName,
@@ -233,7 +257,10 @@ const cb =
         children: null,
         name: name,
         parent: parentName,
-        value: { name: c.name, path: join(current?.path!, c.name) },
+        value: {
+          name: c.name,
+          path: join(current?.path!, c.name),
+        },
         path: join(current?.path!, c.name),
         type: "file",
       });
@@ -250,7 +277,10 @@ const processor = (
 ) => {
   let parentName = current.name;
   let parentPath = current.path;
-  if (current.type === "folder" || current.type === "root") {
+  if (
+    current.type === "folder" ||
+    current.type === "root"
+  ) {
     let children = readDirs(current.path);
     if (children) {
       let node_children = children.map(
@@ -302,6 +332,7 @@ abstract class Tree extends Graph {
 abstract class TreeNode<T> {
   abstract children: T;
 }
+TreeNode;
 
 class FileSystemTree extends Tree {
   type: string = "tree";
@@ -317,6 +348,7 @@ abstract class Node<V> {
   abstract kind: string;
   abstract value: V;
 }
+Node;
 
 interface INode {
   name: string;
