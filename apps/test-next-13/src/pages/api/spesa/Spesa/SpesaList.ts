@@ -11,13 +11,13 @@ export class SpesaList extends List {
     return this;
   }
   removeProduct(product: Node<ProductValue>): void {
-    console.log("ill remove");
+    window.console.log("ill remove");
   }
   closeList(): void {
-    console.log("ill close");
+    window.console.log("ill close");
   }
   total(): number {
-    console.log("ill total");
+    window.console.log("ill total");
     return 0;
   }
 }
