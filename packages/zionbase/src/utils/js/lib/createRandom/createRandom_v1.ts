@@ -99,8 +99,7 @@ export const createRandom_v1 = (
   responses.set(CreateRandomNumber, () => {});
   responses.set(CreateRandomString, () => {});
   responses.get(Creator)();
-  // @ts-ignore
-  return new Creator(arg2).create() as returnType;
+  return new Creator(arg2).create();
 };
 export const typeChecker: createRandomType =
   createRandom_v1;
