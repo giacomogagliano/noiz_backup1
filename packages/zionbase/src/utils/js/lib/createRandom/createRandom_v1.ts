@@ -2,6 +2,7 @@ import { Strategy } from "../../../../zionbase/Types/Class/Strategy";
 import {
   CreateRandom,
   createRandomType,
+  arg1,
   returnType,
 } from "../../../../zionbase/Types/lib";
 // import type {createRandom} from "../../Types/lib"
@@ -73,7 +74,6 @@ class CreateRandomSymbol extends CreateRandom {
   }
 }
 
-type arg1 = "string" | "number" | "symbol";
 export const createRandom_v1 = (
   arg1: arg1,
   arg2?: number
