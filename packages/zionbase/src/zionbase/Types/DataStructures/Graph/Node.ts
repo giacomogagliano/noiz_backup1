@@ -5,6 +5,12 @@ enum NodeMethods {
   createId = "create-id",
 }
 type NodeMethodsUnion = keyof typeof NodeMethods;
+
+export interface BasicNode<T> {
+  type: string;
+  value: T;
+}
+
 export abstract class Node {
   #methods: Map<unknown, Strategy> = new Map();
   get methods() {
