@@ -13,8 +13,8 @@ export const AppearFromBottomLoader = ({
   triggerKey: string;
 }) => (
   <Loader
-    stateB={textBigSubStateB as unknown as string}
-    stateA={textBigSubStateA as unknown as string}
+    stateB={textBigSubStateB}
+    stateA={textBigSubStateA}
     triggerKey={triggerKey}
     threshold={1}
   >
