@@ -1,19 +1,24 @@
 {
   "folders": [
+    { "path": "." },
     {
-      "path": "."
+      "path": "apps/test-next-13/src/app/tests/spesa",
+      "name": "spesaApp/Page"
     },
     {
-      "path": "tasks"
+      "path": "apps/test-next-13/src/pages/api/spesa",
+      "name": "spesaApp/classes"
+    },
+    { "path": "packages/database/src/FS/classes", "name": "database/classes" },
+    { "path": "packages/database/src/FS/lib", "name": "database/lib" },
+    { "path": "packages/zionbase/src/utils", "name": "zionbase/utils" },
+    {
+      "path": "packages/zionbase/src/zionbase/DataStructures/Graph",
+      "name": "zionbase/Graph"
     },
     {
-      "path": "apps"
-    },
-    {
-      "path": "packages"
-    },
-    {
-      "path": "node_modules/gun"
+      "path": "packages/zionbase/src/zionbase/Types/DataStructures/Graph",
+      "name": "zionbase/types"
     }
   ],
   "settings": {}
