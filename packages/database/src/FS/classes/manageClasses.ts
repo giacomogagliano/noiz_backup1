@@ -418,3 +418,4 @@ class Manager {
 
 // .load manageClasses.ts
 let manager = new Manager(PATH());
+manager;
