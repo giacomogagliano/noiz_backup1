@@ -1,9 +1,8 @@
 {
   "folders": [
     { "path": "." },
-    { "path": "tasks" },
-    { "path": "apps" },
-    { "path": "packages" }
+    { "path": "packages/zionbase/src/utils" },
+    { "path": "packages/zionbase/src//zionbase" }
   ],
   "settings": {}
 }

@@ -5,7 +5,7 @@ interface BinaryTree {
 }
 
 interface Tree {
-  key: string;
+  key?: string;
   children: Tree[];
 }
 

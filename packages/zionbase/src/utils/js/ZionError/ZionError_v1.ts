@@ -4,6 +4,7 @@ export interface ZionError_v1 extends Error {
   name: string;
   message: string;
   stack?: string;
+  log(): void;
 }
 
 export interface ZionErrorConstructor {
@@ -27,7 +28,7 @@ export class ZionError_v1 extends Error {
     if (name) this.name = name;
   }
   log() {
-    console.log(this);
+    process.stdout.write(JSON.stringify(this) + "\n");
   }
 }
 

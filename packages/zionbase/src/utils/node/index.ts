@@ -8,3 +8,4 @@ export {
 } from "./util";
 export * as process from "./process";
 export * as fetch from "./fetch";
+export * as zlib from './zlib'

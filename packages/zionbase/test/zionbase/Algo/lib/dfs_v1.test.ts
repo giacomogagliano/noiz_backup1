@@ -1,4 +1,5 @@
 import { testEnvironment } from "@zionstate/test";
+import { Node } from "../../../../src/zionbase/Algo/lib/recursive";
 import { dfs } from "../../../../zionbase";
 
 const { expect, log } = testEnvironment();
@@ -6,7 +7,7 @@ expect;
 log;
 
 interface Tree {
-  key: string;
+  key?: string;
   children: Tree[];
 }
 
@@ -27,7 +28,7 @@ describe("", () => {
   node4.children = [node6];
   node6.children = [node7];
   node7.children = [node8, node9];
-
+  // @ts-expect-error
   const res = dfs(node1);
   it("should report 1 as it is the key of node1", () => {
     expect(res[0]).to.be.equal("1");
@@ -43,5 +44,47 @@ describe("", () => {
   });
   it("should report 5 as it is the key of node9", () => {
     expect(res[8]).to.be.equal("5");
+  });
+});
+
+describe("benchmark comparison with recursive dfs", () => {
+  const graph: Node = {
+    value: "A",
+    children: [
+      {
+        value: "B",
+        children: [
+          {
+            value: "D",
+            children: [],
+          },
+          {
+            value: "E",
+            children: [],
+          },
+        ],
+      },
+      {
+        value: "C",
+        children: [
+          {
+            value: "F",
+            children: [],
+          },
+          {
+            value: "G",
+            children: [],
+          },
+        ],
+      },
+    ],
+  };
+  it("", () => {
+    const start = performance.now();
+    // @ts-expect-error
+    dfs(graph);
+    const end = performance.now();
+    const elapsed = end - start;
+    log("elapsed", elapsed);
   });
 });
