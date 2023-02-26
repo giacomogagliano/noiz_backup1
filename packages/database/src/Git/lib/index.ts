@@ -21,3 +21,6 @@ export * from "./App";
 
 //// Package
 export * from "./Package";
+
+///////// buildTreeFromGit
+export * from "./buildTreeFromGit";
