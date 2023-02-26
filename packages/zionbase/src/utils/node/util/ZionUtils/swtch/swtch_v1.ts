@@ -3,12 +3,32 @@ import { swtch3 } from "./swtch3";
 import { swtch4 } from "./swtch4";
 import { swtch5 } from "./swtch5";
 
-export interface Iswtch_v1 {
-  <A extends T[], O extends any[], T>(arr: A, opt: O, test: A[0]): O[0];
-  <A extends T[], O extends any[], T>(arr: A, opt: O, test: A[1]): O[1];
-  <A extends T[], O extends any[], T>(arr: A, opt: O, test: A[2]): O[2];
-  <A extends T[], O extends any[], T>(arr: A, opt: O, test: A[3]): O[3];
-  <A extends T[], O extends any[], T>(arr: A, opt: O, test: A[4]): O[4];
+export interface swtch_v1 {
+  <A extends T[], O extends any[], T>(
+    arr: A,
+    opt: O,
+    test: A[0]
+  ): O[0];
+  <A extends T[], O extends any[], T>(
+    arr: A,
+    opt: O,
+    test: A[1]
+  ): O[1];
+  <A extends T[], O extends any[], T>(
+    arr: A,
+    opt: O,
+    test: A[2]
+  ): O[2];
+  <A extends T[], O extends any[], T>(
+    arr: A,
+    opt: O,
+    test: A[3]
+  ): O[3];
+  <A extends T[], O extends any[], T>(
+    arr: A,
+    opt: O,
+    test: A[4]
+  ): O[4];
 }
 
 /**
@@ -24,7 +44,11 @@ export interface Iswtch_v1 {
  * @param test
  * @returns
  */
-export const swtch_v1: Iswtch_v1 = function (arr, opt, test) {
+export const swtch_v1: swtch_v1 = function (
+  arr,
+  opt,
+  test
+) {
   if (arr.length === 2) return swtch2(arr, opt, test);
   if (arr.length === 3) return swtch3(arr, opt, test);
   if (arr.length === 4) return swtch4(arr, opt, test);

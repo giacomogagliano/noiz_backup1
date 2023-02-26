@@ -13,6 +13,10 @@ export interface BasicNode<I = number, T = {}> {
   value: T;
 }
 
+export interface Visitable {
+  visited?: boolean;
+}
+
 // Processor
 
 export interface processor<T> {
