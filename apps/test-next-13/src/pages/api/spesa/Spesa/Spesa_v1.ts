@@ -1,4 +1,4 @@
-import { generateRandom } from "./lib/generateRandom";
+import { createRandom } from "./lib/generateRandom";
 import { ID, ListValue } from "./List";
 import { Node } from "./Node";
 import { Product, ProductValue } from "./Product";
@@ -23,7 +23,7 @@ export abstract class Application {
 export class SpesaApplication extends Application {
   makelist(): SpesaList {
     let listaspesa = new SpesaList({ products: new Map() });
-    this.lists.set(generateRandom(), listaspesa);
+    this.lists.set(createRandom("string", 10), listaspesa);
     return listaspesa;
   }
   saveList(list: SpesaList): this {
