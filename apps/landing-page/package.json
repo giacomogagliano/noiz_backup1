@@ -1,0 +1,17 @@
+{
+  "name": "@zaionapps/landing-page",
+  "version": "0.0.1",
+  "main": "src/index.tsx",
+  "author": "Gagliano Giacomo, Minucci Arianna ",
+  "license": "MIT",
+  "dependencies": {
+    "@zionstate/ui": "0.0.1",
+    "next": "^13.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^5.3.5"
+  },
+  "scripts": {
+    "dev": "next dev"
+  }
+}
