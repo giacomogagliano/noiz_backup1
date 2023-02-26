@@ -8,7 +8,6 @@ const video = css`
 const body = css`
   margin: 0;
   min-height: 100%;
-  background-color: #fff;
   font-family: -apple-system, BlinkMacSystemFont, "Inter", "Roboto",
     "Helvetica Neue", "Segoe UI", "Arial", "Noto Sans", sans-serif !important;
   color: #1d1d1f;
