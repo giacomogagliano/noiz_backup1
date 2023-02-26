@@ -9,11 +9,17 @@ export const Hero = css`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url(assets/hero-bg_1.jpg),
-    linear-gradient(180deg, #e1583b, #4d2d47 40%, #20122d 74%);
+  background-image: linear-gradient(180deg, #e1583b, #4d2d47 40%, #20122d 74%),
+    url("assets/serverHero-1.jpeg");
   background-attachment: fixed;
-  background-position: 50% 0%, 0px 0px;
+  /* resize: initial; */
+  /* background-position: 0px 0px, -145px 0px; */
+  background-repeat: no-repeat;
   background-size: cover;
+  background-blend-mode: overlay;
+  @media screen and (min-width: 667px) {
+    /* background-position-x: 0px 0px; */
+  }
 `;
 export const TextSmall = css`
   font-size: 18px;
@@ -21,9 +27,11 @@ export const TextSmall = css`
 `;
 
 export const TextSpan = css`
-  background-image: linear-gradient(86deg, #f86339, #fdc945);
+  background-image: linear-gradient(180deg, #e1583b, #4d2d47 40%, #57c97b 74%);
   -webkit-background-clip: text;
   background-clip: text;
+  text-shadow: 2px 2px 4px
+    linear-gradient(180deg, #e1583b, #99598d 40%, #20122d 74%);
   -webkit-text-fill-color: transparent;
 `;
 export const TextColorGreen = css`
