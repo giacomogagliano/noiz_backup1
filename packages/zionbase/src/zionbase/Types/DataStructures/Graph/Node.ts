@@ -11,6 +11,15 @@ export interface BasicNode<T> {
   value: T;
 }
 
+export abstract class BasicNode<T>
+  implements BasicNode<T>
+{
+  value: T;
+  constructor(p: T) {
+    this.value = p;
+  }
+}
+
 export abstract class Node {
   #methods: Map<unknown, Strategy> = new Map();
   get methods() {
