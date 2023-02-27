@@ -22,9 +22,10 @@ const Example = Section;
 const Overview = Section;
 
 export const FullPage = () => {
+  const CONTENT_WRAPPER_ID = "content-wrapper";
   return (
     <FullPageComponent>
-      <div id="content-wrapper">
+      <div id={CONTENT_WRAPPER_ID}>
         <Suspense fallback={<div>loading</div>}>
           <Why></Why>
         </Suspense>
@@ -32,7 +33,7 @@ export const FullPage = () => {
           <Section></Section>
         </Suspense>
         <Example></Example>
-        <CardSection> CARD SECTION</CardSection>
+        <CardSection>CARD SECTION</CardSection>
         <Overview></Overview>
         <ParallaxIcons>PARALLAX ICONS</ParallaxIcons>
         <Preview>PREVIEW</Preview>
