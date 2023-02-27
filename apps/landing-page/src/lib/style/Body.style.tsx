@@ -32,7 +32,7 @@ const h2 = css`
 `;
 const p = css``;
 
-const img = css`
+const svg = css`
   max-width: 100%;
   vertical-align: middle;
   display: inline-block;
@@ -59,7 +59,7 @@ export const Body = styled.body`
   p {
   }
 
-  img {
-    ${img}
+  svg {
+    ${svg}
   }
 `;

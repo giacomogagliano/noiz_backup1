@@ -14,7 +14,11 @@ interface State {
 }
 
 const Nav = () => (
-  <Navbar bgcolor="white" buttonBgColor="#5351fb" color="white"></Navbar>
+  <Navbar
+    bgcolor="rgba(255, 255, 255, 0.8)"
+    buttonBgColor="#5351fb"
+    color="white"
+  ></Navbar>
 );
 
 const components = new Map();
@@ -24,8 +28,10 @@ export const FromTop = styled.div<{ top?: string; transition?: string }>`
   position: fixed;
   top: ${props => props.top};
   transition: top 0.5s;
-  z-index: 1;
+  z-index: 999;
   width: 100%;
+  border-bottom: 0.1px solid rgba(44, 44, 44, 0.1);
+  backdrop-filter: blur(3px);
 `;
 
 export interface AbstractScrollerProps {
