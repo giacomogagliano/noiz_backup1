@@ -30,19 +30,20 @@ const Links = () => {
   const GITHUB_LINK_NAV = "github-link-nav";
   const ACTION_BTN = "action-btn";
   // hrefs
-  const LINK_1 = "";
-  const LINK_COMM = "https://community.getumbrel.com/";
-  const START_LINK = "#start";
+  const LINK_PREVIEW = "#jump_preview";
+  const LINK_DASHBOARD = "#jump_dashboard";
+  const LINK_COMM = "#jump_community";
+  const LINK_SINGUP = "#jump_singup";
   // target
   const BLNK = "_blank";
   // github
   const ORG = "Zion-PTC";
   const REPO = "noiz-network-state";
 
-  const APPLE_STORE = new HreftargetProps({
+  const DASHBOARD = new HreftargetProps({
     id: LINK_NAV_HID,
-    href: LINK_1,
-    text: "Apple Store",
+    href: LINK_DASHBOARD,
+    text: "Dashboard",
   });
 
   const COMMUNITY = new HreftargetProps({
@@ -51,24 +52,24 @@ const Links = () => {
     text: "Community",
   });
 
-  const WEHIRING = new HreftargetProps({
+  const PREVIEW = new HreftargetProps({
     id: LINK_NAV,
-    href: LINK_1,
-    text: "We are hiring!!",
+    href: LINK_PREVIEW,
+    text: "Preview",
   });
 
-  const INSTALL_NOW = new HreftargetProps({
+  const SINGUP_NOW = new HreftargetProps({
     id: ACTION_BTN,
-    href: START_LINK,
-    text: "Install Now",
+    href: LINK_SINGUP,
+    text: "Sing Up",
   });
 
   return (
     <>
-      <HreTargetA {...APPLE_STORE}></HreTargetA>
+      <HreTargetA {...DASHBOARD}></HreTargetA>
       <HreTargetA {...COMMUNITY}></HreTargetA>
-      <HreTargetA {...WEHIRING}></HreTargetA>
-      <HreTargetA {...INSTALL_NOW}></HreTargetA>
+      <HreTargetA {...PREVIEW}></HreTargetA>
+      <HreTargetA {...SINGUP_NOW}></HreTargetA>
       <GitHubLinks id={GITHUB_LINK_NAV} org={ORG} repo={REPO}></GitHubLinks>
     </>
   );
