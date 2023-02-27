@@ -1,5 +1,7 @@
 "use client";
 import styled, { css } from "styled-components";
+import { classe } from "@zionstate/ui/classes";
+export const IconZion = classe.Icon;
 
 const video = css`
   display: inline-block;
