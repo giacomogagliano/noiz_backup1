@@ -12,7 +12,7 @@ const HeaderLinkPrimary = css<CssProps>`
   padding: 7px 20px;
   border-radius: 16px;
   background-color: ${props =>
-    props.buttonBgColor ? props.buttonBgColor : "#fff"};
+    props.buttonBgColor ? props.buttonBgColor : "rgba(255, 255, 255, 0.6)"};
   color: ${props => (props.color ? props.color : "#1d1d1f")};
   @media screen and (max-width: 479px) {
     padding: 5px 16px;
