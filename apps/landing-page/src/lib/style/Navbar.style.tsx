@@ -92,6 +92,7 @@ export const NavbarComponent = styled.div<CssProps>`
     svg {
       width: 50px;
       height: 50px;
+      fill: white;
     }
   }
   a {
