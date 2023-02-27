@@ -23,6 +23,10 @@ const Overview = Section;
 
 export const FullPage = () => {
   const CONTENT_WRAPPER_ID = "content-wrapper";
+  const JUMP_TO_COMMUNITY = "jump_community";
+  const JUMP_TO_SINGUP = "jump_singup";
+  const JUMP_TO_PREVIEW = "jump_preview";
+  const JUMP_TO_DASHBOARD = "jump_dashboard";
   return (
     <FullPageComponent>
       <div id={CONTENT_WRAPPER_ID}>
@@ -36,15 +40,18 @@ export const FullPage = () => {
         <CardSection>CARD SECTION</CardSection>
         <Overview></Overview>
         <ParallaxIcons>PARALLAX ICONS</ParallaxIcons>
-        <Preview>PREVIEW</Preview>
+        <Preview id={JUMP_TO_PREVIEW}>PREVIEW</Preview>
         <RollingCards>ROLLING CARDS</RollingCards>
         <ParallaxCards>PARALLAX CARDS</ParallaxCards>
         <GettingStarted> GETTING STARTED</GettingStarted>
-        <DashboardPreview> DASHBOARD PREVIEW</DashboardPreview>
+        <DashboardPreview id={JUMP_TO_DASHBOARD}>
+          {" "}
+          DASHBOARD PREVIEW
+        </DashboardPreview>
         <SocialFeedback>SOCIAL FEEDBACK DARK BACKGROUND</SocialFeedback>
-        <JoinCommuny>JOIN COMMUNITY</JoinCommuny>
+        <JoinCommuny id={JUMP_TO_COMMUNITY}>JOIN COMMUNITY</JoinCommuny>
         <SocialFeedback2>SOCIAL FEEDBACK LIGHT BACKGROUND</SocialFeedback2>
-        <SingUp>SING UP</SingUp>
+        <SingUp id={JUMP_TO_SINGUP}>SING UP</SingUp>
         <SocialLinks>SOCIAL LINKS </SocialLinks>
         <FooterLinks>FOTTER LINKS</FooterLinks>
       </div>
