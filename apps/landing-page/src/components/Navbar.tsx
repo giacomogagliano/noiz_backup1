@@ -98,8 +98,9 @@ export const Navbar = ({
       color={color}
     >
       <div id={OUTER_CONTAINER_ID}>
-        {/* <img src={SRC} loading={LOADING} alt={ALT} id={IMG_ID}></img> */}
-        <LogodiZion logoZion isFillContainer></LogodiZion>
+        <div id={IMG_ID}>
+          <LogodiZion logoZion isFillContainer></LogodiZion>
+        </div>
         <div id={LINKS_CONTAINER_ID}>
           <Links></Links>
         </div>

@@ -59,9 +59,9 @@ const HtmlHeader2 = css`
   }
 `;
 const HeaderLogo = css`
-  height: 30px;
-  margin-top: 18px;
-  margin-bottom: 18px;
+  height: auto;
+  margin-top: auto;
+  margin-bottom: auto;
 `;
 const DivBlock18 = css`
   display: flex;
@@ -82,16 +82,16 @@ export const NavbarComponent = styled.div<CssProps>`
   width: 100%;
   #div-block-18 {
     ${DivBlock18}
-    svg {
-      width: auto;
-      height: auto;
-    }
   }
   #div-block-19 {
     ${DivBlock19}
   }
   #header-logo {
     ${HeaderLogo}
+    svg {
+      width: 50px;
+      height: 50px;
+    }
   }
   a {
     background-color: transparent;
