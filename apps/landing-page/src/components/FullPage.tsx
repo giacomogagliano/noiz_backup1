@@ -45,7 +45,6 @@ export const FullPage = () => {
         <ParallaxCards>PARALLAX CARDS</ParallaxCards>
         <GettingStarted> GETTING STARTED</GettingStarted>
         <DashboardPreview id={JUMP_TO_DASHBOARD}>
-          {" "}
           DASHBOARD PREVIEW
         </DashboardPreview>
         <SocialFeedback>SOCIAL FEEDBACK DARK BACKGROUND</SocialFeedback>
