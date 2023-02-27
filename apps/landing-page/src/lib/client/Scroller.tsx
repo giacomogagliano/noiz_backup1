@@ -18,6 +18,7 @@ const Nav = () => (
     bgcolor="rgba(255, 255, 255, 0.8)"
     buttonBgColor="#5351fb"
     color="white"
+    stickyColor="black"
   ></Navbar>
 );
 
