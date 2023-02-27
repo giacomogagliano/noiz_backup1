@@ -1,7 +1,6 @@
 "use client";
 import styled, { css } from "styled-components";
-import { classe } from "@zionstate/ui/classes";
-export const LogodiZion = classe.Icon;
+
 type CssProps = {
   bgcolor?: string;
   buttonBgColor?: string;

@@ -1,6 +1,7 @@
 import React from "react";
 import { GitHubLinks } from "./GitHubLink";
-import { LogodiZion, NavbarComponent } from "../lib/style/Navbar.style";
+import { NavbarComponent } from "../lib/style/Navbar.style";
+import { IconZion } from "../lib/style/Body.style";
 
 interface HreftargetProps {
   href: string;
@@ -103,7 +104,7 @@ export const Navbar = ({
     >
       <div id={OUTER_CONTAINER_ID}>
         <div id={IMG_ID}>
-          <LogodiZion logoZion isFillContainer></LogodiZion>
+          <IconZion logoZion isFillContainer></IconZion>
         </div>
         <div id={LINKS_CONTAINER_ID}>
           <Links></Links>
