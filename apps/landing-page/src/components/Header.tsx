@@ -8,6 +8,7 @@ import {
   HeroTextStyle,
 } from "../lib/style/Header.style";
 import { AppearFromBottomLoader } from "./AppearFromBottomLoader";
+import { IconZion } from "../lib/style/Body.style";
 
 const HERO_ID = "hero";
 const HEADER_ID = "header";
@@ -72,11 +73,7 @@ export const Header = ({
           <GradientButtonStyle id={GRADIENT_BUTTON_ID}>
             <a id={GRADIENT_BUTTON_EFFECT} key={GRADIENT_BUTTON_EFFECT_KEY}>
               <div id={GRADIENT_BUTTON_TXT_ID}>{GRADIENT_BUTTON_TXT}</div>
-              <img
-                src={GRADIENT_BUTTON_SRC_ICON}
-                loading={GRADIENT_BUTTON_ICON_LOADING_TYPE}
-                alt={GRADIENT_BUTTON_ICON_ALT}
-              ></img>
+              <IconZion arrowRight></IconZion>
             </a>
           </GradientButtonStyle>
         </AppearFromBottomLoader>
