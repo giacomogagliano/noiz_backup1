@@ -79,11 +79,13 @@ export const Navbar = ({
   bgcolor,
   buttonBgColor,
   color,
+  stickyColor,
   src,
 }: {
   bgcolor?: string;
   buttonBgColor?: string;
   color?: string;
+  stickyColor?: string;
 } & NavBarProps) => {
   const SRC = "assets/gotek-write.svg";
   const LOADING = "lazy";
@@ -96,6 +98,7 @@ export const Navbar = ({
       bgcolor={bgcolor}
       buttonBgColor={buttonBgColor}
       color={color}
+      stickyColor={stickyColor}
     >
       <div id={OUTER_CONTAINER_ID}>
         <div id={IMG_ID}>

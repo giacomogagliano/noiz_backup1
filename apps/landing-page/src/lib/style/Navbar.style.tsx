@@ -6,6 +6,7 @@ type CssProps = {
   bgcolor?: string;
   buttonBgColor?: string;
   color?: string;
+  stickyColor?: string;
 };
 const HeaderLinkPrimary = css<CssProps>`
   padding: 7px 20px;
@@ -17,8 +18,8 @@ const HeaderLinkPrimary = css<CssProps>`
     padding: 5px 16px;
   }
 `;
-const HeaderStickyLink = css`
-  color: #1d1d1f;
+const HeaderStickyLink = css<CssProps>`
+  color: ${props => (props.stickyColor ? props.stickyColor : "#fff")};
 `;
 const HeaderLink = css`
   position: relative;
