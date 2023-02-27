@@ -5,31 +5,33 @@
   "source": "src/index.ts",
   "main": "dist/zionstate-ui.cjs.js",
   "module": "dist/zionstate-ui.esm.js",
+
   "exports": {
+    "./next": {
+      "module":"./next/dist/zionstate-ui-next.esm.js",
+      "default":"./next/dist/zionstate-ui-next.cjs.js"
+    },
     ".": {
-      "import": "./dist/zionstate-ui.esm.mjs",
-      "default": "./dist/zionstate-ui.cjs.js"
+      "module":"./dist/zionstate-ui.esm.js",
+      "default":"./dist/zionstate-ui.cjs.js"
     },
     "./style": {
-      "import": "./style/dist/zionstate-ui-style.esm.mjs",
-      "default": "./style/dist/zionstate-ui-style.cjs.js"
-    },
-    "./components": {
-      "import": "./components/dist/zionstate-ui-components.esm.mjs",
-      "default": "./components/dist/zionstate-ui-components.cjs.js"
+      "module":"./style/dist/zionstate-ui-style.esm.js",
+      "default":"./style/dist/zionstate-ui-style.cjs.js"
     },
     "./classes": {
-      "import": "./classes/dist/zionstate-ui-classes.esm.mjs",
-      "default": "./classes/dist/zionstate-ui-classes.cjs.js"
+      "module":"./classes/dist/zionstate-ui-classes.esm.js",
+      "default":"./classes/dist/zionstate-ui-classes.cjs.js"
     },
-    "./colors": {
-      "import": "./colors-entrypoint/dist/zionstate-ui-colors-entrypoint.esm.mjs",
-      "default": "./colors-entrypoint/dist/zionstate-ui-colors-entrypoint.cjs.js"
+    "./components": {
+      "module":"./components/dist/zionstate-ui-components.esm.js",
+      "default":"./components/dist/zionstate-ui-components.cjs.js"
     },
-    "./next": {
-      "import": "./next/dist/zionstate-ui-next.esm.mjs",
-      "default": "./next/dist/zionstate-ui-next.cjs.js"
-    }
+    "./colors-entrypoint": {
+      "module":"./colors-entrypoint/dist/zionstate-ui-colors-entrypoint.esm.js",
+      "default":"./colors-entrypoint/dist/zionstate-ui-colors-entrypoint.cjs.js"
+    },
+    "./package.json":"./package.json"
   },
   "types": "dist/index.d.ts",
   "files": [
